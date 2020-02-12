@@ -1,2 +1,2 @@
-# ilhase
- web project _ recruitment and job search
+# 일하세
+ 50대 이상 중/장년층을 위한 구인 구직 사이트
