@@ -5,9 +5,9 @@
 
     $server_name = "127.0.0.1";
     $user_name = "root";
-    $password = "01240124";
+    $password = "123456";
     $conn = mysqli_connect($server_name, $user_name, $password);
-    if(!$conn){ 
+    if(!$conn){
         die("Connection _failed: " . mysqli_connect_error());
     }
 
@@ -26,9 +26,7 @@
         $result = mysqli_query($conn, $sql);
         if(!$result) {
             echo "DB 생성 실패! ".mysqli_error($conn);
-        } else {
-            echo "yaho!";
-        }
+        } 
     }
 
     $dbconn = mysqli_select_db($conn, "ilhase") or die('Error:' . mysqli_error($conn));
