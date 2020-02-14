@@ -21,7 +21,7 @@
         <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" id="search_box" type="search" placeholder="검색" aria-label="Search">
-                <input id="btn_submit" type="image" src="./img/search.png" alt="Submit"/>
+                <input id="btn_submit" type="image" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="Submit"/>
             </form>
         </li>
         <li class="nav_login" id="nav_user"><a href="#">로그인</a></li>

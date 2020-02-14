@@ -26,16 +26,16 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
       <div id="slide" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner"> <!-- 슬라이드 쇼 -->
           <div class="carousel-item active" > <!--가로-->
-                <img class="d-block w-100" src="./img/mainbanner1.jpg" alt="First slide">
+                <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="First slide">
                 <div class="caption_slide">
                     <a href="#" id="btn_go">구직공고 바로가기</a>
                 </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="./img/mainbanner1.jpg" alt="Second slide">
+            <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="./img/mainbanner1.jpg" alt="Third slide">
+            <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="Third slide">
           </div>
         </div>
 
@@ -61,7 +61,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
             <h2  class="title" id="search_title">빠른 검색</h2>
             <form id="searchJob_box" action="#" method="post">
                 <input id="search_job" type="text" placeholder="검색">
-                <input id="btn_searchJob" type="image" name="" src="./img/search.png" alt="searchJob">
+                <input id="btn_searchJob" type="image" name="" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="searchJob">
             </form>
             <div id="pick_job">
                 <ul>
@@ -78,7 +78,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
             <div id="intro_box" class="row">
               <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100">
-                      <img class="card-img-top" src="./img/introduce1.jpg" alt="사용설명서1">
+                      <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg" alt="사용설명서1">
                       <div class="card-body">
                               <h5 class="card-title">1. 일하세 사용법</h5>
                               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -89,7 +89,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
               </div>
               <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100">
-                      <img class="card-img-top" src="./img/introduce2.jpg" alt="">
+                      <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg" alt="">
                           <div class="card-body">
                               <h5 class="card-title">2. 일하세 사용법</h5>
                               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -100,7 +100,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
 
               <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100">
-                      <img class="card-img-top" src="./img/introduce3.jpg" alt="">
+                      <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce3.jpg" alt="">
                           <div class="card-body">
                               <h5 class="card-title">3. 일하세 사용법</h5>
                               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -112,7 +112,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
 
               <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100">
-                      <img class="card-img-top" src="./img/introduce4.jpg" alt="">
+                      <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg" alt="">
                           <div class="card-body">
                               <h5 class="card-title">4. 일하세 사용법</h5>
                               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
