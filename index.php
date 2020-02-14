@@ -26,16 +26,16 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
       <div id="slide" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner"> <!-- 슬라이드 쇼 -->
           <div class="carousel-item active" > <!--가로-->
-                <img class="d-block w-100" src="http://127.0.0.1/ilhase/img/mainbanner1.jpg" alt="First slide">
+                <img class="d-block w-100" src="./img/mainbanner1.jpg" alt="First slide">
                 <div class="caption_slide">
                     <a href="#" id="btn_go">구직공고 바로가기</a>
                 </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="http://127.0.0.1/ilhase/img/mainbanner1.jpg" alt="Second slide">
+            <img class="d-block w-100" src="./img/mainbanner1.jpg" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="http://127.0.0.1/ilhase/img/mainbanner1.jpg" alt="Third slide">
+            <img class="d-block w-100" src="./img/mainbanner1.jpg" alt="Third slide">
           </div>
         </div>
 
