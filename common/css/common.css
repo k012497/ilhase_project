@@ -23,8 +23,8 @@ a:hover {
 
 /* ------------------------------- media query ------------------------------- */
 
-/* 해상도 1280이상 */
-@media (min-width: 1280px)  {
+/* 해상도 1900이상 */
+@media (min-width: 1900px)  {
 
 
   /* ------------------------------- header ------------------------------- */
@@ -203,8 +203,8 @@ a:hover {
     outline:none;
   }
   #btn_searchJob {
-    width:40px;
-    height:40px;
+    width:30px;
+    height:30px;
     vertical-align:middle;
     margin-left:0.8rem;
     margin-bottom:0.5rem;
@@ -285,8 +285,8 @@ a:hover {
 
 }
 
-/* 해상도 1025 ~ 1280PX 사이  */
-@media (min-width: 1025px) and (max-width: 1280px) {
+/* 해상도 1025 ~ 1900PX 사이  */
+@media (min-width:1025px) and (max-width:1900px) {
   /* ------------------------------- header ------------------------------- */
 
   /*  bootstrap 수정  */
@@ -370,8 +370,8 @@ a:hover {
   /**부트스트렙수정 **/
   .container {
       padding: 0;
-      margin: 0;
-      max-width:100%;
+      width:85%;
+      margin:0 auto;
   }
 
   .jumbotron {
@@ -379,17 +379,15 @@ a:hover {
       width:100%;
   }
 
-
   .title {
       font-size: 24px;
       font-weight:700;
       user-select: none;
-      margin-left:10px;
   }
 
 
-.row {
-      width: 95%;
+  .row {
+      width:95%;
       margin-left:0px;
   }
 
@@ -403,18 +401,16 @@ a:hover {
   /* 내가 수정 추가 */
   .caption_slide {
     position:absolute;
-    left:15.5%;
-    bottom:2rem;
-    min-width:220px;
-    min-height:20px;
+    left:17%;
+    bottom:3rem;
   }
   #btn_go {
-    min-width:210px;
-    min-height:60px;
-    font-size:1rem;
+    font-size:1.2rem;
     border-radius:0.34rem;
+    min-width:250px;
+    min-height:80px;
     display:block;
-    line-height:60px;
+    line-height:80px;
     font-weight:bold;
     letter-spacing:1px;
     color:#007bff;
@@ -430,7 +426,7 @@ a:hover {
     text-decoration:none;
   }
   .search {
-    width:92.8%;
+    width:100%;
     height:60px;
     position:relative;
     margin:4rem auto;
@@ -441,13 +437,13 @@ a:hover {
     line-height:60px;
   }
   #searchJob_box {
-    width:40%;
+    width:50%;
     height:60px;
     padding:0;
     float:left;
-    margin-left:12em;
-    margin-right:12em;
-    border-radius:0.8rem;
+    margin-left:3em;
+    margin-right:3em;
+    border-radius:0.5rem;
     background-color:#eee;
     border:1px solid #ddd;
     overflow:hidden;
@@ -463,19 +459,37 @@ a:hover {
     outline:none;
   }
   #btn_searchJob {
-    width:40px;
-    height:40px;
+    display:inline-block;
+    width:30px;
+    height:30px;
     vertical-align:middle;
-    margin-left:0.8rem;
+    margin-left:1rem;
     margin-bottom:0.5rem;
   }
-  .floatnone {
-    clear:both;
-  }
-  #intro_wrap{
-    width:92.8%;
-    margin:5rem auto;
 
+  #pick_job {
+    width:100%;
+  }
+  #pick_job ul {
+    margin-left:6em;
+    margin-right:6em;
+  }
+  #pick_job ul li {
+    padding-top:1em;
+    width:150px;
+
+  }
+  #pick_job ul li a {
+    color:#333;
+
+  }
+  #pick_job ul li a:hover {
+      color:rgb(37, 139, 247);
+  }
+
+  #intro_wrap{
+    width:100%;
+    margin:5rem auto;
   }
   #intro_box {
     width:100%;
@@ -521,6 +535,9 @@ a:hover {
     color:rgb(51, 51, 51);
   }
 
+  #copyrihgt {
+    text-align:center;
+  }
 
 }
 
