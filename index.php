@@ -35,7 +35,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
             <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="Third slide">
           </div>
         </div>
-
         <!-- 왼쪽 오른쪽 화살표 버튼 -->
         <a class="carousel-control-prev" href="#slide" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span> <!-- <span>Previous</span> -->
@@ -44,7 +43,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
             <span class="carousel-control-next-icon" aria-hidden="true"></span> <!-- <span>Next</span> -->
         </a>
         <!-- / 화살표 버튼 끝 -->
-
         <!-- 인디케이터 -->
         <ul class="carousel-indicators">
           <li data-target="#slide" data-slide-to="0" class="active"></li> <!--0번부터시작-->
@@ -69,8 +67,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
                 </ul>
             </div>
           </div>
-          <div id="intro_wrap" class="floatnone">
-            <h2 class="title">이렇게 이용해 보세요!</h2>
+          <div id="intro_wrap">
+            <h2 class="title" id="tb_text">이렇게 이용해 보세요!</h2>
             <!--홈페이지 사용 설명-->
             <div id="intro_box" class="row">
               <div class="col-lg-3 col-md-6 mb-4">
@@ -160,8 +158,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
     $('.carousel').carousel({
       interval: 5000
     })
-    $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-
     </script>
 
 </body>
