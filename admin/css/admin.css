@@ -45,16 +45,17 @@ form, ul {
 
 .manage_member_list, .manage_product_list, .plan_list {
     display: block;
-    /* text-align: center; */
+    margin-bottom: 5rem;
 }
 
 .manage_member_item, .manage_product_item {
     text-align: center;
-    width: 200px;
-    height: 200px;
+    width: 12rem;
+    height: 12rem;
     margin: 10px;
     background-color: #eee;
     border-radius: 100px;
+    padding: 23%;
 }
 
 .target {
