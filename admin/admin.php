@@ -15,8 +15,9 @@
     </header>
     <script>
         // 외부로 빼기 ------------------------
-        $(document).ready(function () {
+        
 
+        $(document).ready(function () {
 
             // 스크롤 이동
             $(".nav-link, #btn_top").click(function() {
@@ -93,7 +94,7 @@
                 </li>
             </ul>
             <div class="search_memeber">
-                <form action="search_member.php?mode=select" method="post">
+                <form action="search_member.php?mode=select" id="search_member_form" method="post">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
                             <input type="radio" name="member_type" value="person" id="option1" autocomplete="off" checked> 개인 회원
@@ -104,8 +105,51 @@
                     </div>
 
                     <input type="text" name="id" placeholder="ID" style="padding-left: 10px;">
-                    <input type="submit" id="btn_search_member" value="조회">
+                    <input type="button" onclick="get_member_data();" id="btn_search_member" value="조회">
                 </form>
+            </div>
+            <!-- person modal -->
+            <div class="modal">
+                <div class="modal_overlay"></div>
+                <div class="modal_content">
+                    <h4 class="modal_title"></h4>
+                    <button class="btn_close" onclick="close_modal();">𝗫</button>
+                    <br /><br />
+                    <form name="p_member_info" method="post">
+                        <input type="hidden" name="id">
+                        <label for="">이름</label><input type="text" name="name"><br />
+                        <label for="">생년월일</label><input type="text" name="birth"><br />
+                        <label for="">성별</label><input type="text" name="gender"><br />
+                        <label for="">이메일</label><input type="text" name="email"><br />
+                        <label for="">휴대폰</label><input type="text" name="phone"><br />
+                        <label for="">주소</label><input type="text" name="address" disabled="true"><br />
+                    </form>
+
+                    <button onclick="query_person('update');">수정</button>
+                    <button onclick="query_person('delete');">삭제</button>
+                </div>
+            </div>
+            <!-- corporate modal -->
+            <div class="modal">
+                <div class="modal_overlay"></div>
+                <div class="modal_content">
+                    <h4 class="modal_title"></h4>
+                    <button class="btn_close" onclick="close_modal();">𝗫</button>
+                    <br /><br />
+                    <form name="c_member_info" method="post">
+                        <input type="hidden" name="id">
+                        <label for="">회사명</label><input type="text" name="b_name"><br />
+                        <label for="">업종</label><input type="text" name="job_category" disabled="true"><br />
+                        <label for="">대표자명</label><input type="text" name="ceo"><br />
+                        <label for="">사업자 번호</label><input type="text" name="b_license_num" disabled="true"><br />
+                        <label for="">주소</label><input type="text" name="address"><br />
+                        <label for="">이메일</label><input type="text" name="email"><br />
+                        <label for="">남은 이용 횟수</label><input type="text" name="available_service" ><br />
+                    </form>
+
+                    <button onclick="query_corporate('update');">수정</button>
+                    <button onclick="query_corporate('delete');">삭제</button>
+                </div>
             </div>
         </div>
 
@@ -177,6 +221,95 @@
 
 
     <script>
+        let member_obj = ""; 
+        const personal_modal = document.getElementsByClassName('modal')[0];
+        const corporate_modal = document.getElementsByClassName('modal')[1];
+
+        function get_member_data(){
+            var form_data = $("#search_member_form").serialize();
+
+            $.ajax({
+            cache : false,
+            url : "search_member.php?mode=select", // 요기에
+            type : 'POST', 
+            data : form_data, 
+            success : function(data) {
+                member_obj = JSON.parse(data);
+                console.log(member_obj);
+                // 전달 받은 회원정보를 담은 모달창 오픈
+                open_info_modal(member_obj);
+            }, // success 
+            error : function(xhr, status) {
+                alert(xhr + " : " + status);
+            }
+            });
+        }
+
+        function open_info_modal(member_obj){
+            console.log(member_obj.member_type);
+            let title = null;
+            let input = null;
+            switch(member_obj.member_type){
+                case 'person' :
+                    title = personal_modal.children[1].querySelector('.modal_title');
+                    title.textContent = member_obj.name + "(" + member_obj.id+ ")" +"님의 회원 정보";
+
+                    input = personal_modal.children[1].querySelectorAll('input');
+                    input[0].value = member_obj.id;
+                    input[1].value = member_obj.name;
+                    input[2].value = member_obj.birth;
+                    input[3].value = member_obj.gender;
+                    input[4].value = member_obj.email;
+                    input[5].value = member_obj.phone;
+                    input[6].value = member_obj.old_address + "(" + member_obj.zipcode + ")";
+
+
+                    personal_modal.style.display = 'block';
+                    break;
+
+                case 'corporate' :
+                    console.log('hee');
+                    title = corporate_modal.children[1].querySelector('.modal_title');
+                    title.textContent = member_obj.b_name + "(" + member_obj.id+ ")" +"님의 회원 정보";
+
+                    input = corporate_modal.children[1].querySelectorAll('input');
+                    input[0].value = member_obj.id;
+                    input[1].value = member_obj.b_name;
+                    input[2].value = member_obj.job_category;
+                    input[3].value = member_obj.ceo;
+                    input[4].value = member_obj.b_license_num;
+                    input[5].value = member_obj.address;
+                    input[6].value = member_obj.email;
+                    input[7].value = member_obj.available_service;
+
+                    console.log('open@@@@');
+                    console.log(member_obj.member_type);
+
+                    corporate_modal.style.display = 'block';
+                    break;
+            }
+
+            
+
+        }
+
+        function close_modal() {
+            personal_modal.style.display = 'none';
+            corporate_modal.style.display = 'none';
+        }
+
+        function query_person(mode) {
+            document.p_member_info.action = "dml_person.php?mode=" + mode;
+            document.p_member_info.submit();
+        }
+
+        function query_corporate(mode) {
+            document.c_member_info.action = "dml_corporate.php?mode=" + mode;
+            document.c_member_info.submit();
+        }
+
+
+        // count up animation
         var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
         $('.target').animateNumber(
             {
