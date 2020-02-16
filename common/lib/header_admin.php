@@ -29,13 +29,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" data-target="#manage_member" href="#">회원관리<span class="sr-only">(current)</span></a>
+          <a class="nav-link" data-target="#manage_member">회원관리<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-target="#manage_product" href="#">상품관리</a>
+          <a class="nav-link" data-target="#manage_product">상품관리</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-target="#customer_support" href="#">고객센터</a>
+          <a class="nav-link" data-target="#customer_support">고객센터</a>
         </li>
         <li class="nav-item dropdown" id="nav_user">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +48,7 @@
         </li>
     </ul>
 
-    <button id="btn_top"> 🔝 </button>
+    <button class="text_border" id="btn_top" data-target="#admin_main_top"> ▴ top </button>
 
   </div>
 </nav>

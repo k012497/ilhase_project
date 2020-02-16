@@ -20,6 +20,15 @@ a:hover {
   text-decoration:none;
 }
 
+select {
+    border: 0;
+    background-color: white;
+    padding: 0.2rem 1rem;
+}
+
+.text_border {
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
 
 /* ------------------------------- media query ------------------------------- */
 /* 웹 브라우저 중심으로 배치 */

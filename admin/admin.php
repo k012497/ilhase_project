@@ -16,14 +16,15 @@
     <script>
         // 외부로 빼기 ------------------------
         $(document).ready(function () {
-            // var test = $(".nav-link");
-            // console.log(test);
-            $(".nav-link").click(function() {
+
+
+            // 스크롤 이동
+            $(".nav-link, #btn_top").click(function() {
                 var scrollPosition = $($(this).attr("data-target")).offset().top;
                 console.log("clicked!", scrollPosition);
 
                 $('html, body').animate({
-                    scrollTop: scrollPosition
+                    scrollTop: scrollPosition - 71
                 }, 500);
             });
 
@@ -92,12 +93,19 @@
                 </li>
             </ul>
             <div class="search_memeber">
-                <form action="search_member.php?mode" method="post">
-                    <label for="id">회원 상세 조회</label>
+                <form action="search_member.php?mode=select" method="post">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="member_type" value="person" id="option1" autocomplete="off" checked> 개인 회원
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="member_type" value="corporate" id="option2" autocomplete="off"> 기업 회원
+                        </label>
+                    </div>
+
                     <input type="text" name="id" placeholder="ID" style="padding-left: 10px;">
-                    <input type="button" value="조회">
+                    <input type="submit" id="btn_search_member" value="조회">
                 </form>
-                
             </div>
         </div>
 
