@@ -1,0 +1,148 @@
+nav {
+    position: fixed;
+    width: 100%;
+}
+
+form, ul {
+    text-align: center;
+}
+
+#btn_top {
+    font-size: 26px;
+    border: 0;
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    outline: 0;
+    cursor: pointer;
+}
+
+#admin_main_top {
+    height: 900px;
+    background: url("../img/admin_main.jpeg") no-repeat;
+}
+
+#main_top_logo {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-55%);
+}
+
+.admin_menu {
+    padding: 60px 0;
+}
+.admin_menu .title {
+    margin-bottom: 60px;
+}
+
+.manage_member_list, .manage_product_list, .plan_list {
+    display: block;
+    /* text-align: center; */
+}
+
+.manage_member_item, .manage_product_item {
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: #eee;
+    border-radius: 100px;
+}
+
+.target {
+    animation: 2s focus linear;
+}
+
+@keyframes focus{
+    0%{color: transparent;}
+    10%{color: black}
+    80%{color: black;}
+    90%{color: transparent;}
+    100%{color: black;}
+}
+
+#sort_plan_list {
+    float: right;
+    margin-right: 5rem;
+}
+
+.add_plan select {
+    width: 100px;
+    border: 0;
+    background-color: white;
+    padding: 0.2rem 1rem;
+}
+
+.plan_list {
+    clear: both;
+}
+
+.plan_list span {
+    display: inline-block;
+    text-align: center;
+}
+
+.plan_list li:first-child {
+    padding: 0.5em;
+    border-top: 1.5px solid #555;
+    border-bottom: 1.5px solid #555;
+}
+
+.plan_list li span {
+    line-height: 1rem;
+}
+
+.plan_list .col1 {
+    width: 50px;
+}
+
+.plan_list .col2 {
+    width: 150px;
+}
+
+.plan_list .col3 {
+    width: 150px;
+}
+
+.plan_list .col4 {
+    width: 150px;
+}
+
+.plan_list .col5 {
+    width: 150px;
+}
+
+.plan_list .col6 {
+    width: 150px;
+}
+
+#btn_write_notice {
+    border: 0;
+    border-radius: 20px;
+    background-color: #ddd;
+    padding: 0.5em 1.5em;
+    color: #555;
+    outline: 0;
+}
+
+.cs_content {
+    width: 100%;
+    text-align: center;
+    
+}
+
+.cs_content div {
+    display: inline-block;
+}
+
+#cs_left {
+    float: left;
+    width: 50%;
+}
+
+#cs_right {
+    float: left;
+    width: 50%;
+    line-height: 3rem;
+}
