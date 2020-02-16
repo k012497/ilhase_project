@@ -5,7 +5,7 @@
 
     $server_name = "127.0.0.1";
     $user_name = "root";
-    $password = "123456";
+    $password = "01240124";
     $conn = mysqli_connect($server_name, $user_name, $password);
     if(!$conn){
         die("Connection _failed: " . mysqli_connect_error());
@@ -14,10 +14,10 @@
     $sql = "show databases";
     $result = mysqli_query($conn,$sql) or die('Error: ' . mysqli_error($conn));
     while ($row = mysqli_fetch_row($result)) {
-    if($row[0] === "ilhase"){
-        $db_exists = true;
-        break;
-    }
+        if($row[0] === "ilhase"){
+            $db_exists = true;
+            break;
+        }
     }
 
     // ilhase DB가 존재하지 않는 경우, DB 생성
@@ -33,9 +33,10 @@
 
     // filtering data from user
     function filter_data($data) {
-    $data = trim($data); // 양 끝의 공백 제거
-    $data = stripslashes($data); //  backslash 제거
-    $data = htmlspecialchars($data); // 특수문자를 HTML entities로 변환
-    return $data;
+        $data = trim($data); // 양 끝의 공백 제거
+        $data = stripslashes($data); //  backslash 제거
+        $data = htmlspecialchars($data); // 특수문자를 HTML entities로 변환
+        
+        return $data;
     }
 ?>

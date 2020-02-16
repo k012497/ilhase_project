@@ -16,9 +16,10 @@ function create_table($conn, $table_name){
         switch ($table_name) {
             case 'address' :
                 $sql = "CREATE TABLE `address` (
-                    `si_do` char(2) COLLATE utf8mb4_general_ci NOT NULL,
-                    `si_gun_gu` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-                    PRIMARY KEY (`si_do`,`si_gun_gu`)
+                    `num` smallint(6) NOT NULL AUTO_INCREMENT,
+                    `si_do` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `si_gun_gu` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    PRIMARY KEY (`num`)
                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
 
@@ -45,9 +46,10 @@ function create_table($conn, $table_name){
                 $sql = "CREATE TABLE `corporate` (
                     `id` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                     `pw` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `b_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                     `job_category` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                     `ceo` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                    `b_license_num` int(10) unsigned NOT NULL,
+                    `b_license_num` varchar(10) NOT NULL,
                     `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                     `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                     `available_service` int(11) NOT NULL DEFAULT '3',
@@ -70,10 +72,11 @@ function create_table($conn, $table_name){
                 
             case 'job_industry' :
                 $sql = "CREATE TABLE `job_industry` (
-                    `category` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-                    `section` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-                    PRIMARY KEY (`category`,`section`)
-                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                    `num` tinyint(4) NOT NULL AUTO_INCREMENT,
+                    `category` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `section` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    PRIMARY KEY (`num`)
+                  ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
 
             case 'notice' :
@@ -154,23 +157,24 @@ function create_table($conn, $table_name){
             case 'recruitment' :
                 $sql = "CREATE TABLE `recruitment` (
                     `num` int(11) NOT NULL AUTO_INCREMENT,
-                    `title` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-                    `details` text COLLATE utf8mb4_general_ci NOT NULL,
-                    `recruiter_name` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-                    `recruiter_phone` varchar(14) COLLATE utf8mb4_general_ci NOT NULL,
-                    `recruiter_email` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
-                    `homepage` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL,
-                    `industry` varchar(22) COLLATE utf8mb4_general_ci NOT NULL,
+                    `title` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `recruiter_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `recruiter_phone` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `recruiter_email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                    `homepage` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                    `industry` varchar(22) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                     `personnel` tinyint(3) NOT NULL,
-                    `require_career` varchar(4) COLLATE utf8mb4_general_ci NOT NULL,
-                    `require_edu` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-                    `pay` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-                    `recruit_type` varchar(3) COLLATE utf8mb4_general_ci NOT NULL,
-                    `period_start` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-                    `period_end` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-                    `file_name` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL,
-                    `file_copied` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL,
-                    `regist_date` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+                    `require_career` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `require_edu` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `pay` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `recruit_type` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `period_start` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `period_end` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    `work_place` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+                    `file_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                    `file_copied` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                    `regist_date` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                     PRIMARY KEY (`num`)
                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
