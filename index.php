@@ -12,9 +12,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
     <title>일하세</title>
 </head>
 <body>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
@@ -35,6 +32,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
             <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="Third slide">
           </div>
         </div>
+
         <!-- 왼쪽 오른쪽 화살표 버튼 -->
         <a class="carousel-control-prev" href="#slide" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span> <!-- <span>Previous</span> -->
@@ -43,6 +41,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
             <span class="carousel-control-next-icon" aria-hidden="true"></span> <!-- <span>Next</span> -->
         </a>
         <!-- / 화살표 버튼 끝 -->
+
         <!-- 인디케이터 -->
         <ul class="carousel-indicators">
           <li data-target="#slide" data-slide-to="0" class="active"></li> <!--0번부터시작-->
@@ -53,7 +52,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
     </div>
     <div class="container">
           <div class="search">
-            <h2  class="title" id="search_title">빠른 검색</h2>
+            <h2 class="title" id="search_title">빠른 검색</h2>
             <form id="searchJob_box" action="#" method="post">
                 <input id="search_job" type="text" placeholder="검색">
                 <input id="btn_searchJob" type="image" name="" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="searchJob">
@@ -67,8 +66,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
                 </ul>
             </div>
           </div>
-          <div id="intro_wrap">
-            <h2 class="title" id="tb_text">이렇게 이용해 보세요!</h2>
+          <div id="intro_wrap" class="floatnone">
+            <h2 class="title">이렇게 이용해 보세요!</h2>
             <!--홈페이지 사용 설명-->
             <div id="intro_box" class="row">
               <div class="col-lg-3 col-md-6 mb-4">
@@ -158,6 +157,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
     $('.carousel').carousel({
       interval: 5000
     })
+    $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+
     </script>
 
 </body>
