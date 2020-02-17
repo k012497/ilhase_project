@@ -1,11 +1,19 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     $mode = $_GET['mode'];
-    $id = $_POST['id'];
+    $id = "";
+    
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+    }
 
     switch($mode){
         case 'select':
             select_person();
+            break;
+
+        case 'select_count':
+            select_person_count();
             break;
 
         case 'delete':
@@ -44,6 +52,17 @@
         } else {
             echo "찾을 수 없습니다.";
         }
+    }
+
+    function select_person_count(){
+        global $conn;
+
+        $sql = "select count(*) from person";
+        $result = mysqli_query($conn, $sql);
+        if($result){
+            echo mysqli_fetch_array($result)[0];
+        }
+
     }
 
     function update_person(){
