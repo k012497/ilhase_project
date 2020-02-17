@@ -13,44 +13,6 @@
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
     </header>
-    <script>
-        // 외부로 빼기 ------------------------
-        $(document).ready(function () {
-            // var test = $(".nav-link");
-            // console.log(test);
-            $(".nav-link").click(function() {
-                var scrollPosition = $($(this).attr("data-target")).offset().top;
-                console.log("clicked!", scrollPosition);
-
-                $('html, body').animate({
-                    scrollTop: scrollPosition
-                }, 500);
-            });
-
-            // 크기에 따른 높이 설정
-            const fit_height = $('.fit_height');
-            fit_height.css({
-                'height' : window.innerHeight,
-            });
-
-            // 창크기 변화 감지
-            $(window).resize(function() {
-                // $('#admin_main_top').css({
-                //     'width' : '100%',
-                //     'background-size': '100%'
-                // });
-                fit_height.css({
-                'height' : window.innerHeight,
-            });
-
-            console.log(window.outerHeight, window.innerHeight, window.outerWidth, window.outerWidth);
-            });
-
-        $("body").animate({
-	        scrollTop: 300
-        }, 500);
-        });
-    </script>
 
     <div id="admin_main_top" class="fit_height" src="" alt="">
         <div id="main_top_logo">
@@ -58,12 +20,9 @@
             <span style="font-size: 120px; font-weight:500;">일하세</span>
         </div>
     </div>
-
-
-    <!-- <p>Fun level <span id="target" style="font-size: 30px;"></span>.</p> -->
     
     <script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
-    <script src="jquery.animateNumber.js"></script>
+    <script src="./js/jquery.animateNumber.js"></script>
 
     <div class="container">
         <div class="fit_height admin_menu" id="manage_member">
@@ -92,12 +51,62 @@
                 </li>
             </ul>
             <div class="search_memeber">
-                <form action="search_member.php?mode" method="post">
-                    <label for="id">회원 상세 조회</label>
+                <form action="search_member.php?mode=select" id="search_member_form" method="post">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="member_type" value="person" id="option1" autocomplete="off" checked> 개인 회원
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="member_type" value="corporate" id="option2" autocomplete="off"> 기업 회원
+                        </label>
+                    </div>
+
                     <input type="text" name="id" placeholder="ID" style="padding-left: 10px;">
-                    <input type="button" value="조회">
+                    <input type="button" onclick="get_member_data();" id="btn_search_member" value="조회">
                 </form>
-                
+            </div>
+            <!-- person modal -->
+            <div class="modal">
+                <div class="modal_overlay"></div>
+                <div class="modal_content">
+                    <h4 class="modal_title"></h4>
+                    <button class="btn_close" onclick="close_modal();">𝗫</button>
+                    <br /><br />
+                    <form name="p_member_info" method="post">
+                        <input type="hidden" name="id">
+                        <label for="">이름</label><input type="text" name="name"><br />
+                        <label for="">생년월일</label><input type="text" name="birth"><br />
+                        <label for="">성별</label><input type="text" name="gender"><br />
+                        <label for="">이메일</label><input type="text" name="email"><br />
+                        <label for="">휴대폰</label><input type="text" name="phone"><br />
+                        <label for="">주소</label><input type="text" name="address" disabled="true"><br />
+                    </form>
+
+                    <button onclick="query_person('update');">수정</button>
+                    <button onclick="query_person('delete');">삭제</button>
+                </div>
+            </div>
+            <!-- corporate modal -->
+            <div class="modal">
+                <div class="modal_overlay"></div>
+                <div class="modal_content">
+                    <h4 class="modal_title"></h4>
+                    <button class="btn_close" onclick="close_modal();">𝗫</button>
+                    <br /><br />
+                    <form name="c_member_info" method="post">
+                        <input type="hidden" name="id">
+                        <label for="">회사명</label><input type="text" name="b_name"><br />
+                        <label for="">업종</label><input type="text" name="job_category" disabled="true"><br />
+                        <label for="">대표자명</label><input type="text" name="ceo"><br />
+                        <label for="">사업자 번호</label><input type="text" name="b_license_num" disabled="true"><br />
+                        <label for="">주소</label><input type="text" name="address"><br />
+                        <label for="">이메일</label><input type="text" name="email"><br />
+                        <label for="">남은 이용 횟수</label><input type="text" name="available_service" ><br />
+                    </form>
+
+                    <button onclick="query_corporate('update');">수정</button>
+                    <button onclick="query_corporate('delete');">삭제</button>
+                </div>
             </div>
         </div>
 
@@ -142,6 +151,9 @@
                             <span class="col5">판매량</span>
                             <span class="col6">매출</span>
                         </li>
+                        <?php
+                            include "dml_plan.php";
+                        ?>
                     </ul>
                     <form action="#" method="post">
                         <label for="id">새로운 플랜 추가</label>
@@ -167,19 +179,6 @@
         </div>
     </div>
 
-
-    <script>
-        var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
-        $('.target').animateNumber(
-            {
-                number: 1533,
-                numberStep: comma_separator_number_step
-            },
-            {
-                easing: 'swing',
-                duration: 1500
-            }
-        );
-    </script>
+    <script src="./js/admin.js"></script>
 </body>
 </html>
