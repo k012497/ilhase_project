@@ -1,3 +1,4 @@
+<!-- css -->
 <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/tui-chart.css"/>
 <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/codemirror.css'/>
 <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/lint/lint.css'/>
@@ -6,6 +7,7 @@
 <div id='map_chart'></div>
 <div id='donut_chart'></div>
 
+<!-- js -->
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/core-js/2.5.7/core.js'></script>
 <script type='text/javascript' src='https://uicdn.toast.com/tui.code-snippet/v1.5.0/tui-code-snippet.min.js'></script>
 <script type='text/javascript' src='https://uicdn.toast.com/tui.chart/latest/raphael.js'></script>
