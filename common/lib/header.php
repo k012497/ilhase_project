@@ -22,7 +22,7 @@
           <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php">홈<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php?mode=all">채용</a>
+          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php">채용</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">이력서</a>

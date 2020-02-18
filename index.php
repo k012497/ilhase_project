@@ -22,11 +22,11 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
           <div class="carousel-item active" > <!--가로-->
                 <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="First slide">
                 <div class="caption_slide">
-                    <a href="#" id="btn_go">구직공고 바로가기</a>
+                    <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" id="btn_go">구직공고 바로가기</a>
                 </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="Second slide">
+            <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner3.jpg" alt="Second slide">
           </div>
           <div class="carousel-item">
             <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="Third slide">
@@ -152,12 +152,11 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
             <p class="m-0" id="copyrihgt">Copyright &copy; ilhase 2020</p>
         </div>
     </footer>
-
     <script>
-    $('.carousel').carousel({
-      interval: 5000
-    })
-    $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+    // $('.carousel').carousel({
+    //   interval: 5000
+    // });
+    // $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
 
     </script>
 
