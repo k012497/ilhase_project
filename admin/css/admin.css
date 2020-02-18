@@ -59,7 +59,7 @@ form, ul {
 }
 
 .target {
-    animation: 2s focus linear;
+    animation: 1.5s focus linear;
 }
 
 @keyframes focus{
@@ -131,6 +131,16 @@ form, ul {
 .plan_list .col6 {
     width: 150px;
 }
+
+.plan_list_item {
+    padding: 0.3rem;
+    line-height: 2rem;
+}
+
+.plan_list_item a {
+    cursor: pointer;
+}
+
 
 #btn_write_notice {
     border: 0;

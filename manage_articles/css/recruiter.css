@@ -1,0 +1,233 @@
+p{
+  font-size: 20px;
+}
+#div_main{
+  width: 1100px;
+  margin: auto;
+}
+#recruiter_title{
+    display: inline-block;
+    margin: 20px 0 50px 0;
+}
+#recruiter_info{
+    margin: 20px 0 50px 0;
+}
+#div_recruiter_info{
+  position: relative;
+  display: block;
+  left: 250px;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+#recruiter_first{
+  margin-bottom: 20px;
+}
+#div_main strong{
+  color: red;
+}
+input{
+  border-radius: 5px;
+  border: 1px solid #777;
+}
+#div_recruiter_name{
+  display: inline-block;
+  width: 30%;
+}
+#div_recruiter_name input{
+  width: 300px;
+  height: 40px;
+}
+#div_recruiter_phone{
+  display: inline-block;
+  margin: 0;
+}
+#div_recruiter_phone input{
+  width: 300px;
+  height: 40px;
+}
+#div_recruiter_email{
+  display: inline-block;
+  width: 30%;
+}
+#div_recruiter_email input{
+  width: 300px;
+  height: 40px;
+}
+#div_recruiter_homepage{
+  display: inline-block;
+  margin: 0;
+}
+#div_recruiter_homepage input{
+  width: 300px;
+  height: 40px;
+}
+#div_industry{
+  position: relative;
+  left: 250px;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+
+#div_category{
+  width: 30%;
+  display: inline-block;
+}
+#category_select{
+  border: 1px solid #777;
+  border-radius: 5px;
+  width: 300px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+}
+#industry_detail{
+  display: inline-block;
+}
+#select_section{
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #777;
+}
+
+#div_personnel input{
+  width: 70px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #777;
+}
+#div_career{
+  display: block;
+  margin-top: 20px;
+}
+#div_personnel{
+  display: inline-block;
+  position: relative;
+}
+#div_require_career{
+  display: inline-block;
+  margin-left: 25px;
+}
+#career{
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  display: inline-block;
+}
+#unrelate{
+  display: inline-block;
+  margin-left: 5px;
+}
+#edu_select{
+  height: 40px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  margin-left: 25px;
+}
+
+#pay{
+  width: 275px;
+  height: 40px;
+  border-radius: 5px;
+}
+#div_pay{
+  margin-top: 25px;
+}
+#input_pay{
+  margin-left: -5px;
+  margin-top: -10px;
+  display: block;
+}
+#input_pay input{
+  margin: 5px;
+  margin-left: 13px;
+}
+#div_recruit_type{
+  margin-top: 25px;
+}
+#recruit_type{
+  margin-top: -5px;
+}
+#recruit_type input{
+  margin: 10px;
+}
+#div_period{
+  margin-top: 20px;
+}
+
+#period input{
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+}
+#div_workplace{
+  margin-top: 20px;
+}
+
+#workplace input{
+  width: 615px;
+  height: 40px;
+  border-radius: 5px;
+}
+#div_recruit_title{
+  position: relative;
+  left: 250px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+#recruit_title{
+  width: 615px;
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+textarea{
+  border-radius: 5px;
+  border: 1px solid #777;
+}
+
+#div_image_upload{
+  margin-top: 30px;
+
+}
+#div_image_upload p{
+  display: inline;
+  position: relative;
+}
+#div_image_upload button{
+  border: 0;
+  background-color: white;
+  outline: 0;
+}
+#div_image_upload img{
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+  top: -2px;
+}
+#div_btn_regist{
+  position: relative;
+  left: 500px;
+  box-sizing: border-box;
+  margin-top: 50px;
+}
+#div_btn_regist button{
+  width:100px;
+  height: 50px;
+  background-color: #5780f6;
+  border: none;
+  color:#fff;
+  padding: 15px 0;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 2px;
+  font-size:15px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}

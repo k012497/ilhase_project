@@ -1,18 +1,29 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     $mode = $_GET['mode'];
-    $id = $_POST['id'];
+    $id = "";
+    
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+    }
 
     switch($mode){
         case 'select':
             select_corporate();
             break;
+
+        case 'select_count':
+            select_corporate_count();
+            break;
+
         case 'delete':
             delete_corporate();
             break;
+
         case 'update':
             update_corporate();
             break;
+
         default:
             echo "wrong mode!";
             break;
@@ -38,6 +49,16 @@
             echo json_encode($member_data, JSON_UNESCAPED_UNICODE);
         } else {
             echo "찾을 수 없습니다.";
+        }
+    }
+
+    function select_corporate_count(){
+        global $conn;
+
+        $sql = "select count(*) from corporate";
+        $result = mysqli_query($conn, $sql);
+        if($result){
+            echo mysqli_fetch_array($result)[0];
         }
     }
 

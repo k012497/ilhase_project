@@ -91,7 +91,7 @@ function insert_init_data($conn, $table_name){
                 break;
 
             case 'favorite' :
-                $sql = "insert into `favorite` values (null, '1', '4jo4jo')";
+                $sql = "insert into `favorite` values (null, '40', '4jo4jo')";
                 break;
 
             case 'notice' :

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/admin.css">
 
 </head>
-<body>
+<body onload="init();">
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
     </header>
@@ -32,21 +32,21 @@
                     <div class="manage_member_item">
                         <span >개인 회원 수</span>
                         <br /><br />
-                        <span class="target" style="font-size: 30px;"></span>
+                        <span id="person_count" class="target" style="font-size: 30px;"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="manage_member_item">
+                        <span>기업 회원 수</span>
+                        <br /><br />
+                        <span id="corporate_count" class="target" style="font-size: 30px;"></span>
                     </div>
                 </li>
                 <li>
                     <div class="manage_member_item">
                         <span>개인 회원 수</span>
                         <br /><br />
-                        <span class="target" style="font-size: 30px;"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="manage_member_item">
-                        <span>개인 회원 수</span>
-                        <br /><br />
-                        <span class="target" style="font-size: 30px;"></span>
+                        <span id="total_count" style="font-size: 30px;"></span>
                     </div>
                 </li>
             </ul>
@@ -118,14 +118,14 @@
                         <div class="manage_product_item">
                             <span >총 매출액</span>
                             <br /><br />
-                            <span class="target" style="font-size: 30px;"></span>
+                            <span id="total_revenue" class="target" style="font-size: 30px;"></span>
                         </div>
                     </li>
                     <li>
                         <div class="manage_product_item">
                             <span>총 판매량</span>
                             <br /><br />
-                            <span class="target" style="font-size: 30px;"></span>
+                            <span id="sales_volume" class="target" style="font-size: 30px;"></span>
                         </div>
                     </li>
                     <li>
@@ -149,18 +149,16 @@
                             <span class="col3">내용</span>
                             <span class="col4">가격</span>
                             <span class="col5">판매량</span>
-                            <span class="col6">매출</span>
+                            <span class="col6">매출액</span>
                         </li>
-                        <?php
-                            include "dml_plan.php";
-                        ?>
+
                     </ul>
-                    <form action="#" method="post">
+                    <form action="dml_plan.php?mode=insert" id="add_plan_form" method="post">
                         <label for="id">새로운 플랜 추가</label>
                         <input type="text" placeholder="이름" name="name">
                         <input type="text" placeholder="내용" name="description">
-                        <input type="text" placeholder="가격" name="price">
-                        <input type="button" value="추가">
+                        <input type="number" placeholder="가격" name="price">
+                        <input type="button" id="btn_add_plan" value="추가">
                     </form>
                 </div>
             </div>
