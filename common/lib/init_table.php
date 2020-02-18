@@ -87,11 +87,21 @@ function insert_init_data($conn, $table_name){
                 break;
 
             case 'apply' :
-                $sql = "insert into `apply` values (null, '기본 이력서', '1', '4jo4jo', now())";
+                $sql = "insert into `apply` values (null, '기본 이력서', '50', '4jo4jo', now())";
                 break;
 
             case 'favorite' :
-                $sql = "insert into `favorite` values (null, '40', '4jo4jo')";
+                $sql = "insert into `favorite` values (null, '40', '4jo4jo'),
+                    (null, '41', '4jo4jo'),
+                    (null, '42', '4jo4jo'),
+                    (null, '43', '4jo4jo'),
+                    (null, '44', '4jo4jo'),
+                    (null, '68', '4jo4jo'),
+                    (null, '64', '4jo4jo'),
+                    (null, '41', 'test12'),
+                    (null, '42', 'test12'),
+                    (null, '43', 'test12'),
+                    (null, '44', '4jo4jo'),";
                 break;
 
             case 'notice' :
