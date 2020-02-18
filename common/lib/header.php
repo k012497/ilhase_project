@@ -27,8 +27,15 @@
         <li class="nav-item">
           <a class="nav-link" href="#">이력서</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">고객센터</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          고객센터
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/faq.php">자주 묻는 질문</a>
+              <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/notice.php">공지사항</a>
+              <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/qna.php">1:1 문의</a>
+          </div>
         </li>
         <li>
             <form class="form-inline my-2 my-lg-0">

@@ -1,0 +1,86 @@
+
+.middle {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.text_qna {
+  margin-top: 20px;
+  margin-left: 10%;
+  font-size: 20px;
+}
+
+input[id*="answer"] {
+  display: none;
+}
+
+input[id*="answer"] + label {
+  display: block;
+  padding: 20px;
+  border-bottom: 1.5px solid #232188;
+  color: #333;
+  width: 500px;
+  cursor: pointer;
+  position: relative;
+}
+
+input[id*="answer"] + label img {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  margin-top: -15px;
+  display: inline-block;
+}
+
+input[id*="answer"]:checked + label img {
+  transform: rotate(180deg);
+}
+
+input[id*="answer"] + label + div {
+  display: block;
+  max-height: 0;
+  transition: all .35s;
+  overflow: hidden;
+  background: #E6E6E6;
+  font-size: 13px;
+}
+
+input[id*="answer"]:checked + label + div {
+  position: relative;
+  max-height: 110px;
+}
+
+/* input[id*="answer"]:checked:before .text {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #3498db;
+  left: 20px;
+  bottom: -7px;
+  transform: rotate(45deg);
+} */
+
+input[id*="answer"] + label + div p {
+  display: inline-block;
+  padding: 20px;
+}
+
+.person_questions {
+  display: none;
+}
+
+.corporate_questions {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.common {
+  display: block;
+}
