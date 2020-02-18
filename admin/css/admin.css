@@ -45,7 +45,7 @@ form, ul {
 
 .manage_member_list, .manage_product_list, .plan_list {
     display: block;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 .manage_member_item, .manage_product_item {
@@ -59,7 +59,7 @@ form, ul {
 }
 
 .target {
-    animation: 1.5s focus linear;
+    animation: 2s focus linear;
 }
 
 @keyframes focus{
@@ -70,11 +70,45 @@ form, ul {
     100%{color: black;}
 }
 
+.search_member {
+    margin-bottom: 3rem;
+}
+
 #btn_search_member {
     width: 4rem;
     height: 2.5rem;
     border-radius: 5px;
     border: 1px solid #777;
+}
+
+.apply_history {
+    width: 95%;
+    display: inline-block;
+    height: 4rem;
+    overflow: auto;
+    background-color: white;
+    margin-top: 0.5rem;
+}
+
+.apply_history li {
+    display: block;
+}
+
+.apply_history ul {
+    width: 100%;
+}
+
+.apply_history div{
+    background-color: #ddd;
+    border-bottom: 1px solid #777;
+    font-weight: bolder;
+}
+
+.apply_history .col1, .apply_history .col2, .apply_history .col3 {
+    display: inline-block;
+    width: 33%;
+    letter-spacing: -1px;
+    overflow: hidden;
 }
 
 #sort_plan_list {
@@ -84,9 +118,6 @@ form, ul {
 
 .add_plan select {
     width: 100px;
-    /* border: 0;
-    background-color: white;
-    padding: 0.2rem 1rem; */
 }
 
 .plan_list {
@@ -141,37 +172,6 @@ form, ul {
     cursor: pointer;
 }
 
-
-#btn_write_notice {
-    border: 0;
-    border-radius: 20px;
-    background-color: #ddd;
-    padding: 0.5em 1.5em;
-    color: #555;
-    outline: 0;
-}
-
-.cs_content {
-    width: 100%;
-    text-align: center;
-    
-}
-
-.cs_content div {
-    display: inline-block;
-}
-
-#cs_left {
-    float: left;
-    width: 50%;
-}
-
-#cs_right {
-    float: left;
-    width: 50%;
-    line-height: 3rem;
-}
-
 .btn-group>.btn.active {
     z-index: 0;
 }
@@ -188,7 +188,9 @@ form, ul {
 }
 
 #manage_member .modal_overlay {
-    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
@@ -196,6 +198,7 @@ form, ul {
 
 #manage_member .modal_content {
     text-align: center;
+    border-radius: 20px;
     background-color: #eee;
     position: relative;
     width: 100%;
@@ -216,10 +219,14 @@ form, ul {
 
 .modal_content .modal_title {
     display: inline-block;
+    letter-spacing: -0.3px;
+    font-weight: bolder;
 }
 
 .modal_content label {
     width: 18%;
+    letter-spacing: -0.3px;
+    font-weight: bolder;
 }
 
 .modal_content input {
@@ -228,4 +235,80 @@ form, ul {
     margin: 0.5rem;
     padding: 15px;
     outline: 0;
+}
+
+.chart {
+    text-align: center;
+}
+
+#map_chart, #donut_chart {
+    display: inline-block;
+}
+
+#btn_write_notice {
+    border: 1px solid #555;
+    border-radius: 20px;
+    padding: 0.5em 1.5em;
+    color: #555;
+    outline: 0;
+    cursor: pointer;
+}
+
+.cs_content {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 11rem;
+    user-select: none;
+}
+
+.cs_content div {
+    display: inline-block;
+}
+
+#cs_left {
+    float: left;
+    width: 50%;
+    height: 5rem;
+    padding-left: 10rem;
+    font-size: 1.3rem;
+}
+
+#cs_right {
+    float: left;
+    width: 50%;
+    line-height: 3rem;
+    padding-right: 10rem;
+    color: white;
+    background-image: url('../img/speech_bubble.png');
+    background-position: 22%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    height: 5rem;
+}
+
+#cs_left div{
+    position: relative;
+    top: 1rem;
+}
+
+.qna_count_container {
+    font-weight: 600;
+    font-size: larger;
+}
+
+#cs_right span {
+    position: absolute;
+    right: 18.2rem;
+    height: 5rem;
+    line-height: 4.5rem;
+}
+
+#customer_support {
+    background-image: url('../img/cs_img.png');
+    background-position: 0 30%;
+    background-repeat: no-repeat;
+    background-size: contain;
 }

@@ -4,6 +4,7 @@ let corporate_count = "";
 const personal_modal = document.getElementsByClassName('modal')[0];
 const corporate_modal = document.getElementsByClassName('modal')[1];
 const PLAN_COLUMNS = 6;
+const APPLY_HISTORY_COLUMN = 3;
 let plan_list_max_num = 0;
 let comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
 
@@ -21,7 +22,7 @@ function get_person_count(){
             },
             {
                 easing: 'swing',
-                duration: data * 90
+                duration: 1000
             }
         );
         }, // success 
@@ -46,10 +47,10 @@ function get_corporate_count(){
             },
             {
                 easing: 'swing',
-                duration: data * 90
+                duration: 1000
             }
         );
-        }, // success 
+        },
         error : function(xhr, status) {
             alert(xhr + " : " + status);
         }
@@ -62,33 +63,39 @@ function get_total_count(){
 
 function get_member_data(){
     var form_data = $("#search_member_form").serialize();
+
     $.ajax({
         cache : false,
         url : "search_member.php?mode=select",
         type : 'POST', 
         data : form_data, 
         success : function(data) {
-            member_obj = JSON.parse(data);
-            console.log(member_obj);
-            // 전달 받은 회원정보를 담은 모달창 오픈
-            open_info_modal(member_obj);
-        }, // success 
+            if(!data){
+                alert('아이디를 확인해 주세요!');
+                    return;
+            } else {
+                member_obj = JSON.parse(data);
+                get_apply_data(member_obj.id);
+                
+            }
+            
+        },
         error : function(xhr, status) {
             alert(xhr + " : " + status);
         }
     });
 }
 
-function open_info_modal(member_obj){
-    console.log(member_obj.member_type);
-    let title = null;
-    let input = null;
-    switch(member_obj.member_type){
-        case 'person' :
-            title = personal_modal.children[1].querySelector('.modal_title');
-            title.textContent = member_obj.name + "(" + member_obj.id+ ")" +"님의 회원 정보";
+function get_apply_data(id){
+    $.get('dml_person.php?mode=apply_history', { id : id }, function(apply_history){
+        history_obj = JSON.parse(apply_history);
+        // 전달 받은 회원정보를 담은 모달창 오픈
+        open_info_modal(member_obj, history_obj);
+    });
+}
 
-            input = personal_modal.children[1].querySelectorAll('input');
+function set_person_input_data(){
+    input = personal_modal.children[1].querySelectorAll('input');
             input[0].value = member_obj.id;
             input[1].value = member_obj.name;
             input[2].value = member_obj.birth;
@@ -96,6 +103,46 @@ function open_info_modal(member_obj){
             input[4].value = member_obj.email;
             input[5].value = member_obj.phone;
             input[6].value = member_obj.old_address + "(" + member_obj.zipcode + ")";
+}
+
+function set_apply_history_data(history_obj){
+    // 개인 회원의 지원 내역을 li 태그에 담아서 ul의 자식으로 추가
+    const apply_list = document.querySelector('.apply_history_list');
+    apply_list.innerHTML = "";
+
+    if(history_obj){
+        for(let i = 0 ; i < history_obj.length ; i++){
+            let list_item = document.createElement('li');
+
+            for(let j = 0 ; j < APPLY_HISTORY_COLUMN ; j++){
+                let column = document.createElement('span');
+                column.className = "col" + (j + 1);
+                if(j === 0) {
+                    column.innerHTML = history_obj[i].title;
+                } else if(j === 1) {
+                    column.innerHTML = history_obj[i].industry.split(" ")[0];
+                } else if(j === 2) {
+                    column.innerHTML = history_obj[i].apply_date;
+                }
+                list_item.appendChild(column);
+            }
+
+            apply_list.appendChild(list_item);
+        }
+    }
+}
+
+function open_info_modal(member_obj, history_obj){
+    console.log(member_obj.member_type);
+    let title = null;
+    let input = null;
+    switch(member_obj.member_type){
+        case 'person' :
+            title = personal_modal.children[1].querySelector('.modal_title');
+            title.textContent = member_obj.name + "(" + member_obj.id+ ")" +"님의 회원 정보";
+            
+            set_person_input_data(member_obj);
+            set_apply_history_data(history_obj);
 
             personal_modal.style.display = 'block';
             break;
@@ -114,9 +161,6 @@ function open_info_modal(member_obj){
             input[6].value = member_obj.email;
             input[7].value = member_obj.available_service;
 
-            console.log('open@@@@');
-            console.log(member_obj.member_type);
-
             corporate_modal.style.display = 'block';
             break;
     }
@@ -129,15 +173,56 @@ function close_modal() {
 }
 
 function query_person(mode) {
+    if(mode === 'delete'){
+        const response = confirm('정말 삭제하시겠습니까?');
+        if(!response){
+            return;
+        }
+    }
     document.p_member_info.action = "dml_person.php?mode=" + mode;
     document.p_member_info.submit();
 }
 
 function query_corporate(mode) {
+    if(mode === 'delete'){
+        const response = confirm('정말 삭제하시겠습니까?');
+        if(!response){
+            return;
+        }
+    }
     document.c_member_info.action = "dml_corporate.php?mode=" + mode;
     document.c_member_info.submit();
 }
 
+function get_revenue(){
+    $.get('dml_chart.php', {mode : 'revenue'}, function(data){
+        $('#total_revenue').animateNumber(
+            {
+                number: data,
+                numberStep: comma_separator_number_step
+            },
+            {
+                easing: 'swing',
+                duration: 1000
+            }
+        )
+    });
+}
+
+function get_sales() {
+    $.get('dml_chart.php', {mode : 'sales'}, function(data){
+        $('#sales_volume').animateNumber(
+            {
+                number: data,
+                numberStep: comma_separator_number_step
+            },
+            {
+                easing: 'swing',
+                duration: 1000
+            }
+        )
+    });
+}
 
 function get_plan_list(){
     $.ajax({
@@ -215,12 +300,15 @@ function display_plan_list(plan, num) {
     btn_delete.innerHTML = "𝗫";
     // btn_delete.href = "dml_plan.php?mode=delete&num=" + plan.num;
     btn_delete.addEventListener('click', function(){
-        $.get('dml_plan.php', {mode : 'delete', name : plan.name}, function () {
-            // 새로고침
-            console.log("reload");
-            ul.removeChild(li);
-            // get_plan_list();
-        });
+        const response = confirm('정말 삭제하시겠습니까?');
+        if(response){
+            $.get('dml_plan.php', {mode : 'delete', name : plan.name}, function () {
+                // 새로고침
+                console.log("reload");
+                ul.removeChild(li);
+                // get_plan_list();
+            });
+        }
     });
     li.appendChild(btn_delete);
 
@@ -234,10 +322,24 @@ function display_plan_list(plan, num) {
 //     },
 //     {
 //         easing: 'swing',
-//         duration: 1500
+//         duration: 1000
 //     }
 // );
 
+function get_unanswerd_questions(){
+    $.get('dml_chart.php', {mode : 'questions_count'}, function(data){
+        $('.qna_count').animateNumber(
+            {
+                number: data,
+                numberStep: comma_separator_number_step
+            },
+            {
+                easing: 'swing',
+                duration: 10
+            }
+        )
+    });
+}
 
 $(document).ready(function () {
     $("#btn_add_plan").click(function(){
@@ -301,7 +403,15 @@ function init() {
     get_corporate_count();
 
     // manage product
+    get_revenue();
+    get_sales();
     get_plan_list();
 
     // cs
+    get_unanswerd_questions();
 }
+
+document.getElementById('input_id').addEventListener('submit', function(e){
+    e.preventDefault();
+    console.log(e);
+});

@@ -48,7 +48,7 @@
               );
             echo json_encode($member_data, JSON_UNESCAPED_UNICODE);
         } else {
-            echo "찾을 수 없습니다.";
+            echo false;
         }
     }
 
@@ -68,7 +68,7 @@
         $sql = "delete from corporate where id = '$id'";
         $result = mysqli_query($conn, $sql);
         if($result){
-            echo "삭제 성공";
+            // echo "삭제 성공";
         } else {
             echo "삭제 실패 ".mysqli_error($conn);
         }
@@ -86,7 +86,7 @@
         $sql = "update corporate set b_name = '$b_name', ceo = '$ceo', address = '$address', email = '$email', available_service = '$available_service' where id = '$id'";
         $result = mysqli_query($conn, $sql);
         if($result){
-            echo "업데이트 성공";
+            // echo "업데이트 성공";
         } else {
             echo "업데이트 실패 ".mysqli_error($conn);
         }

@@ -17,7 +17,7 @@
     <div id="admin_main_top" class="fit_height" src="" alt="">
         <div id="main_top_logo">
             <span style="font-size: 32px;">중장년 구인구직 플랫폼</span><br />
-            <span style="font-size: 120px; font-weight:500;">일하세</span>
+            <span style="font-size: 120px; font-weight:700;">일하세</span>
         </div>
     </div>
     
@@ -46,12 +46,12 @@
                     <div class="manage_member_item">
                         <span>개인 회원 수</span>
                         <br /><br />
-                        <span id="total_count" style="font-size: 30px;"></span>
+                        <span id="total_count" style="font-size: 30px;">2424</span>
                     </div>
                 </li>
             </ul>
-            <div class="search_memeber">
-                <form action="search_member.php?mode=select" id="search_member_form" method="post">
+            <div class="search_member">
+                <form action="" onsubmit="get_member_data(); return false;" id="search_member_form" method="post">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
                             <input type="radio" name="member_type" value="person" id="option1" autocomplete="off" checked> 개인 회원
@@ -61,17 +61,21 @@
                         </label>
                     </div>
 
-                    <input type="text" name="id" placeholder="ID" style="padding-left: 10px;">
+                    <input type="text" name="id" placeholder="ID" style="padding-left: 10px;" id="input_id">
                     <input type="button" onclick="get_member_data();" id="btn_search_member" value="조회">
                 </form>
             </div>
+            <div class="chart">
+                <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/admin/map_chart.php";?>
+            </div>
+            
             <!-- person modal -->
             <div class="modal">
                 <div class="modal_overlay"></div>
                 <div class="modal_content">
                     <h4 class="modal_title"></h4>
                     <button class="btn_close" onclick="close_modal();">𝗫</button>
-                    <br /><br />
+                    <br />
                     <form name="p_member_info" method="post">
                         <input type="hidden" name="id">
                         <label for="">이름</label><input type="text" name="name"><br />
@@ -80,6 +84,12 @@
                         <label for="">이메일</label><input type="text" name="email"><br />
                         <label for="">휴대폰</label><input type="text" name="phone"><br />
                         <label for="">주소</label><input type="text" name="address" disabled="true"><br />
+                        <div class="apply_history">
+                            <div>
+                                <span class="col1">지원한 공고</span><span class="col2">직종</span><span class="col3">날짜</span>
+                            </div>
+                            <ul class="apply_history_list"></ul>
+                        </div>
                     </form>
 
                     <button onclick="query_person('update');">수정</button>
@@ -132,7 +142,7 @@
                         <div class="manage_product_item">
                             <span>뭐하지</span>
                             <br /><br />
-                            <span class="target" style="font-size: 30px;"></span>
+                            <span class="target" style="font-size: 30px;">284</span>
                         </div>
                     </li>
                 </ul>
@@ -164,14 +174,19 @@
             </div>
         </div>
         <div class="fit_height admin_menu" id="customer_support">
-            <h2 class="title" style="display: inline; margin-right: 20px;">고객센터</h2> <button id="btn_write_notice"> ➕ 공지사항 등록하기 </button>
+            <h2 class="title" style="display: inline-block; margin-right: 20px;">고객센터</h2>
+            <button id="btn_write_notice" onclick="location.href='http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/write_notice_form.php?mode=insert'"> ➕ 공지사항 등록하기 </button>
             <br />
             <div class="cs_content">
                 <div id="cs_left">
-                    <span>답변을 기다리는 문의</span> <br />
-                    <span>0건</span>
+                    <div>
+                        <span>답변을 기다리는 문의</span> <br />
+                        <span class="qna_count_container"><span class="qna_count">0</span>건</span>
+                    </div>
                 </div>
-                <div id="cs_right">자세히 보기</div>
+                <div id="cs_right">
+                    <span><a href="#">자세히 보기</a></span>
+                </div>
             </div>
         </div>
         </div>
