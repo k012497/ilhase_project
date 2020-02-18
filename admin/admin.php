@@ -7,24 +7,26 @@
     <title>Document</title>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/admin.css">
-
 </head>
 <body onload="init();">
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
     </header>
 
+    <!-- top -->
     <div id="admin_main_top" class="fit_height" src="" alt="">
         <div id="main_top_logo">
             <span style="font-size: 32px;">중장년 구인구직 플랫폼</span><br />
             <span style="font-size: 120px; font-weight:700;">일하세</span>
         </div>
     </div>
-    
+
     <script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
     <script src="./js/jquery.animateNumber.js"></script>
 
+    <!-- main container -->
     <div class="container">
+        <!-- 회원 관리 -->
         <div class="fit_height admin_menu" id="manage_member">
             <h2 class="title">회원 관리</h2>
             <ul class="manage_member_list">
@@ -120,6 +122,7 @@
             </div>
         </div>
 
+        <!-- 상품 관리 -->
         <div class="fit_height admin_menu" id="manage_product">
             <h2 class="title">상품 관리</h2>
             <div>
@@ -140,18 +143,21 @@
                     </li>
                     <li>
                         <div class="manage_product_item">
-                            <span>뭐하지</span>
+                            <span>효자 상품</span>
                             <br /><br />
-                            <span class="target" style="font-size: 30px;">284</span>
+                            <span style="font-size: 30px;">basic plan</span>
                         </div>
                     </li>
                 </ul>
+                <div class="chart">
+                    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/admin/plan_chart.php";?>
+                </div>
                 <div class="add_plan">
-                    <select name="sort" id="sort_plan_list">정렬
+                    <!-- <select name="sort" id="sort_plan_list">정렬
                         <option value="">번호순</option>
                         <option value="">판매량순</option>
                         <option value="">매출순</option>
-                    </select><br />
+                    </select><br /> -->
                     <ul class="plan_list">
                         <li>
                             <span class="col1">NO</span>
@@ -161,7 +167,6 @@
                             <span class="col5">판매량</span>
                             <span class="col6">매출액</span>
                         </li>
-
                     </ul>
                     <form action="dml_plan.php?mode=insert" id="add_plan_form" method="post">
                         <label for="id">새로운 플랜 추가</label>
@@ -173,6 +178,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- 고객 센터 -->
         <div class="fit_height admin_menu" id="customer_support">
             <h2 class="title" style="display: inline-block; margin-right: 20px;">고객센터</h2>
             <button id="btn_write_notice" onclick="location.href='http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/write_notice_form.php?mode=insert'"> ➕ 공지사항 등록하기 </button>
@@ -189,9 +196,11 @@
                 </div>
             </div>
         </div>
+
         </div>
     </div>
 
+    
     <script src="./js/admin.js"></script>
 </body>
 </html>
