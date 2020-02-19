@@ -1,0 +1,9 @@
+.visual{position:relative;}
+.visual button {position:absolute;z-index:10; top:50%;transform:translateY(-50%);
+width:71px;height:71px;border-radius: 100%;background:rgba(0,0,0,.5);
+border:none;}
+.visual button:before{font-family: 'xeicon';color:#fff;font-size: 45px;}
+.visual button.slick-prev {left:0; font-size:0;color:transparent;}
+.visual button.slick-prev:before{content:"\e93d";}
+.visual button.slick-next {right:0;font-size:0;color:transparent;}
+.visual button.slick-next:before{content:"\e940";}

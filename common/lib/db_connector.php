@@ -5,7 +5,7 @@
 
     $server_name = "127.0.0.1";
     $user_name = "root";
-    $password = "01240124";
+    $password = "123456";
     $conn = mysqli_connect($server_name, $user_name, $password);
     if(!$conn){
         die("Connection _failed: " . mysqli_connect_error());
@@ -26,7 +26,7 @@
         $result = mysqli_query($conn, $sql);
         if(!$result) {
             echo "DB 생성 실패! ".mysqli_error($conn);
-        } 
+        }
     }
 
     $dbconn = mysqli_select_db($conn, "ilhase") or die('Error:' . mysqli_error($conn));
@@ -36,7 +36,7 @@
         $data = trim($data); // 양 끝의 공백 제거
         $data = stripslashes($data); //  backslash 제거
         $data = htmlspecialchars($data); // 특수문자를 HTML entities로 변환
-        
+
         return $data;
     }
 ?>

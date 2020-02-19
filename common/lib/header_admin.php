@@ -43,7 +43,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">문의 메세지</a>
-                <a class="dropdown-item" href="#">로그아웃</a>
+                <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/member_page/logout.php">로그아웃</a>
             </div>
         </li>
     </ul>

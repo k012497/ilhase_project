@@ -20,7 +20,7 @@ function insert_init_data($conn, $table_name){
             case 'admin' :
                 $sql = "insert into `admin` values ('".ADMIN_ID."', '".ADMIN_PW."')";
                 break;
-                
+
             case 'person' :
                 $sql = "insert into `person` values ('4jo4jo', '123123', '김사조', '1968-01-01', 'example@test.com', '010-1234-5678', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
                     ('ksj123', '123123', '김소진', '1959-07-01', 'example@test.com', '010-1124-4433', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
@@ -101,7 +101,7 @@ function insert_init_data($conn, $table_name){
                     (null, '41', 'test12'),
                     (null, '42', 'test12'),
                     (null, '43', 'test12'),
-                    (null, '44', '4jo4jo'),";
+                    (null, '44', '4jo4jo')";
                 break;
 
             case 'notice' :
@@ -115,20 +115,20 @@ function insert_init_data($conn, $table_name){
             case 'recruit_plan' :
                 $sql = "insert into `recruit_plan` values (null, 'basic plan', '채용공고 10개', '49900')";
                 break;
-                
+
             case 'qna' :
                 $sql = "insert into `qna` values (null, 0, 0, 0, '4jo4jo', '김사조', '질문 있어요', '질문 없어요', 0, now());";
                 break;
-            
+
             case 'purchase' :
                 $sql = "insert into `purchase` values (null, now(), 'celestial', '1', 'basic plan', '49900', '카카오페이')";
                 break;
 
             case 'resume' :
-                $sql = "INSERT INTO `resume` VALUES (null, 0, '4jo4jo', '김사조', 'example@test.com', '서울 성동구 행당동 286-16', '여', '1968-01-01', '010-1234-5678', '기본 이력서', '안녕하세요? 성실하면 김사조입니다.', 
+                $sql = "INSERT INTO `resume` VALUES (null, 0, '4jo4jo', '김사조', 'example@test.com', '서울 성동구 행당동 286-16', '여', '1968-01-01', '010-1234-5678', '기본 이력서', '안녕하세요? 성실하면 김사조입니다.',
                 null, null, null, null, null, now());";
                 break;
-            
+
             case 'address' :
                 $sql = "
                 insert into `address` values (null, '서울', '서울 전체')
@@ -146,7 +146,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '서울', '마포구')
                 ,(null, '서울', '종로구')
                 ,(null, '서울', '성동구')
-                
+
                 ,(null, '서울', '성북구')
                 ,(null, '강원', '강릉시')
                 ,(null, '서울', '송파구')
@@ -166,7 +166,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '강원', '홍천군')
                 ,(null, '강원', '화천군')
                 ,(null, '강원', '동해시')
-                
+
                 ,(null, '강원', '속초시')
                 ,(null, '경기', '가평군')
                 ,(null, '강원', '양양군')
@@ -226,7 +226,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '경기', '포천시')
                 ,(null, '경기', '하남시')
                 ,(null, '경기', '화성시')
-            
+
                 ,(null, '경남', '경남 전체')
                 ,(null, '경남', '거제시')
                 ,(null, '경남', '거창군')
@@ -251,7 +251,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '경남', '함안군')
                 ,(null, '경남', '함양군')
                 ,(null, '경남', '합천군')
-            
+
                 ,(null, '경북', '경북 전체')
                 ,(null, '경북', '경산시')
                 ,(null, '경북', '경주시')
@@ -278,14 +278,14 @@ function insert_init_data($conn, $table_name){
                 ,(null, '경북', '포항시')
                 ,(null, '경북', '포항시 남구')
                 ,(null, '경북', '포항시 북구')
-            
+
                 ,(null, '광주', '광주 전체')
                 ,(null, '광주', '광산구')
                 ,(null, '광주', '남구')
                 ,(null, '광주', '동구')
                 ,(null, '광주', '북구')
                 ,(null, '광주', '서구')
-            
+
                 ,(null, '대구', '대구 전체')
                 ,(null, '대구', '남구')
                 ,(null, '대구', '달서구')
@@ -295,14 +295,14 @@ function insert_init_data($conn, $table_name){
                 ,(null, '대구', '서구')
                 ,(null, '대구', '수성구')
                 ,(null, '대구', '중구')
-            
+
                 ,(null, '대전', '대전 전체')
                 ,(null, '대전', '대덕구')
                 ,(null, '대전', '동구')
                 ,(null, '대전', '서구')
                 ,(null, '대전', '유성구')
                 ,(null, '대전', '중구')
-            
+
                 ,(null, '부산', '부산 전체')
                 ,(null, '부산', '강서구')
                 ,(null, '부산', '금정구')
@@ -320,14 +320,14 @@ function insert_init_data($conn, $table_name){
                 ,(null, '부산', '영도구')
                 ,(null, '부산', '중구')
                 ,(null, '부산', '해운대구')
-            
+
                 ,(null, '울산', '울산 전체')
                 ,(null, '울산', '남구')
                 ,(null, '울산', '동구')
                 ,(null, '울산', '북구')
                 ,(null, '울산', '울주군')
                 ,(null, '울산', '중구')
-                
+
                 ,(null, '인천', '인천 전체')
                 ,(null, '인천', '강화군')
                 ,(null, '인천', '계양구')
@@ -339,7 +339,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '인천', '연수구')
                 ,(null, '인천', '옹진군')
                 ,(null, '인천', '중구')
-            
+
                 ,(null, '전남', '전남 전체')
                 ,(null, '전남', '강진군')
                 ,(null, '전남', '고흥군')
@@ -359,7 +359,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '전남', '함평군')
                 ,(null, '전남', '해남군')
                 ,(null, '전남', '화순군')
-            
+
                 ,(null, '전북', '전북 전체')
                 ,(null, '전북', '고창군')
                 ,(null, '전북', '군산시')
@@ -377,11 +377,11 @@ function insert_init_data($conn, $table_name){
                 ,(null, '전북', '전주시 완산구')
                 ,(null, '전북', '정읍시')
                 ,(null, '전북', '진안군')
-            
+
                 ,(null, '제주', '제주 전체')
                 ,(null, '제주', '서귀포시')
                 ,(null, '제주', '제주시')
-                
+
                 ,(null, '충남', '충남 전체')
                 ,(null, '충남', '계룡시')
                 ,(null, '충남', '공주시')
@@ -401,7 +401,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '충남', '청양군')
                 ,(null, '충남', '태안군')
                 ,(null, '충남', '홍성군')
-            
+
                 ,(null, '충북', '충북 전체')
                 ,(null, '충북', '괴산군')
                 ,(null, '충북', '단양군')
@@ -419,7 +419,7 @@ function insert_init_data($conn, $table_name){
                 ,(null, '충북', '청주시 청원구')
                 ,(null, '충북', '청주시 흥덕구')
                 ,(null, '충북', '충주시')
-            
+
                 ,(null, '세종', '세종특별자치시');";
 
                 break;
@@ -433,57 +433,57 @@ function insert_init_data($conn, $table_name){
                 ,(null, '생산/제조/단순노무', '사무 보조')
                 ,(null, '생산/제조/단순노무', '농림 어업')
                 ,(null, '생산/제조/단순노무', '기타')
-                        
+
                 ,(null, '경비/시설관리', '경비원')
                 ,(null, '경비/시설관리', '건물/시설관리')
                 ,(null, '경비/시설관리', '주차 관리')
                 ,(null, '경비/시설관리', '안전 점검원')
-                        
+
                 ,(null, '청소/미화', '청소원')
                 ,(null, '청소/미화', '아파트 청소')
                 ,(null, '청소/미화', '건물/모텔 청소')
                 ,(null, '청소/미화', '환경 미화')
                 ,(null, '청소/미화', '세차/세탁')
                 ,(null, '청소/미화', '방역')
-                        
+
                 ,(null, '도우미', '가사도우미')
                 ,(null, '도우미', '요양/간병')
                 ,(null, '도우미', '산후조리')
                 ,(null, '도우미', '육아/보육')
                 ,(null, '도우미', '학교/병원급식')
                 ,(null, '도우미', '문화시설')
-                        
+
                 ,(null, '음식점/마트/주유', '주방')
                 ,(null, '음식점/마트/주유', '서빙')
                 ,(null, '음식점/마트/주유', '편의점/마트')
                 ,(null, '음식점/마트/주유', '매표소/카운터')
                 ,(null, '음식점/마트/주유', '주유')
                 ,(null, '음식점/마트/주유', '커피숍/바리스타')
-                        
+
                 ,(null, '배달/운전/택배', '배달')
                 ,(null, '배달/운전/택배', '택배')
                 ,(null, '배달/운전/택배', '퀵서비스')
                 ,(null, '배달/운전/택배', '운전')
                 ,(null, '배달/운전/택배', '운송')
-                        
+
                 ,(null, '안내/접수/상담', '안내원')
                 ,(null, '안내/접수/상담', '접수/예약')
                 ,(null, '안내/접수/상담', '상담원')
-                        
+
                 ,(null, '공공/전문', '교육/강사/해설사')
                 ,(null, '공공/전문', '교통/생활지도')
                 ,(null, '공공/전문', '리서치/설문')
                 ,(null, '공공/전문', '번역')
                 ,(null, '공공/전문', '문화예술')
                 ,(null, '공공/전문', '기타')
-                        
+
                 ,(null, '취업창업형(시장형)', '공동작업형 사업')
                 ,(null, '취업창업형(시장형)', '제조 판매형')
                 ,(null, '취업창업형(시장형)', '노노케어')
                 ,(null, '취업창업형(시장형)', '취약계층 지원봉사')
                 ,(null, '취업창업형(시장형)', '공공시설 지원봉사')
                 ,(null, '취업창업형(시장형)', '경륜전수 지원봉사');";
-                
+
             default:
                 // 존재하지 않는 테이블명일 때
                 echo "<script>alert('존재하지 않는 테이블명 입니다.');</script>";

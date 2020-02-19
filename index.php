@@ -1,6 +1,17 @@
 <?php
+$id="";
+$username="";
+$member_type="";
 session_start();
 include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
+if(isset($_SESSION['userid']))
+  $id   = $_SESSION['userid'];
+
+if(isset($_SESSION['username']))
+  $username=$_SESSION["username"];
+
+if(isset($_SESSION["usermember_type"]))
+  $member_type=$_SESSION["usermember_type"];
 
 ?>
 <!DOCTYPE html>
@@ -10,10 +21,17 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>일하세</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 </head>
 <body>
     <header>
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+        <?php
+        if($member_type=="admin"){
+          include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
+        }else{
+          include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
+        }
+        ?>
     </header>
     <!-- Jumbotron Header -->
     <div class="jumbotron">
