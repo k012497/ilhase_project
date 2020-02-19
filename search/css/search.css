@@ -36,6 +36,7 @@ position:relative;
   display:block;
   background-color:transparent;
   cursor:pointer;
+  border:0;
 }
 .col_box img{
   position:absolute;
@@ -224,12 +225,14 @@ grid-auto-rows:minmax(20px,30px);
   }
   #employment_data {
     width:100%;
+    min-height:300px;
   }
   #employment_data ul{
       display:grid;
       grid-template-columns:repeat(4,23.8%);
       grid-gap:20px;
-      height:500px;
+      min-height:300px;
+      padding-bottom:100px;
 
   }
   #employment_data ul li {
@@ -240,7 +243,7 @@ grid-auto-rows:minmax(20px,30px);
   }
   #employment_data ul li img{
         max-width:100%;
-        height:150px;
+        height:200px;
         border-radius:0.23rem;
     }
   #employment_data ul li span {
@@ -254,18 +257,7 @@ grid-auto-rows:minmax(20px,30px);
   #employment_data ul li #ep_title {
     font-size:1.3rem;
   }
-  #employment_data ul li #ep_contents {
-    text-overflow: ellipsis;
-    overflow:hidden;
-    white-space:nowrap;
-    color:#888;
 
-  }
-    #employment_data ul li #ep_work_place{
-      text-overflow: ellipsis;
-      overflow:hidden;
-      white-space:nowrap;
-    }
     #employment_data ul li #ep_period {
       color:red;
 
