@@ -225,12 +225,14 @@ grid-auto-rows:minmax(20px,30px);
   }
   #employment_data {
     width:100%;
+    min-height:300px;
   }
   #employment_data ul{
       display:grid;
       grid-template-columns:repeat(4,23.8%);
       grid-gap:20px;
-      height:300px;
+      min-height:300px;
+      padding-bottom:100px;
 
   }
   #employment_data ul li {

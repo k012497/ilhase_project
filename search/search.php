@@ -305,19 +305,21 @@
                   // console.log(data);
 
                   if(data){
-                      console.log("5");
                     $('#ep_databox').append(data);
                     start += list;
                     console.log("전체 start: "+start);
                     $('#ep_databox li').each(function(index,item){
                         $(item).addClass("fadein");
                     });
-                    console.log("6");
                     return;
                   } else {
-                      // empty 검사하기
-                          $('#ep_databox').empty();
-                          $('#ep_databox').append('<p>일치하는 데이터가 없습니다</p>');
+                    if($('#ep_databox').is(':empty')){
+                      console.log($('#ep_databox').is(':empty'));
+                      $('#ep_databox').empty();
+                      $('#ep_databox').append('<p>일치하는 데이터가 없습니다</p>');
+                    }else {
+                      alert("더이상 데이터가 없습니다!");
+                    }
 
                   }
                 },
@@ -345,7 +347,6 @@
                     if(data){
                           $('#ep_databox').append(data);
                           console.log("산업스타트 : "+idu_start);
-                          console.log("데이터받을떄 is_bottom : "+is_bottom);
                           $('#ep_databox li').each(function(index,item){
                               $(item).addClass("fadein");
                           });
@@ -356,6 +357,8 @@
                         console.log($('#ep_databox').is(':empty'));
                         $('#ep_databox').empty();
                         $('#ep_databox').append('<p>일치하는 데이터가 없습니다</p>');
+                      }else{
+                          alert("더이상 데이터가 없습니다!");
                       }
                     }
                   },
