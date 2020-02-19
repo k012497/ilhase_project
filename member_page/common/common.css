@@ -1,0 +1,34 @@
+aside{
+  position: relative;
+  left: 150px;
+  margin-top: 30px;
+}
+#profile sub{
+  font-size: 11px;
+}
+
+#div_left_menu{
+  width: 200px;
+  display: inline-block;
+  float: left;
+}
+#div_left_menu ul li{
+  list-style: none;
+  background-color: lightgray;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+#div_left_menu ul li:hover,#div_left_menu a:hover{
+  background-color: skyblue;
+  color: white;
+
+}
+#div_left_menu ul li a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: transparent;
+}
