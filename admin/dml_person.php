@@ -5,6 +5,8 @@
     
     if(isset($_POST['id'])){
         $id = $_POST['id'];
+    }else if(isset($_GET['id'])){
+        $id = $_GET['id'];
     }
 
     switch($mode){
@@ -23,6 +25,10 @@
         case 'update':
             update_person();
             echo "update".$id;
+            break;
+
+        case 'apply_history':
+            get_apply_history();
             break;
 
         default:
@@ -50,7 +56,7 @@
               );
             echo json_encode($member_data, JSON_UNESCAPED_UNICODE);
         } else {
-            echo "찾을 수 없습니다.";
+            echo false;
         }
     }
 
@@ -77,7 +83,7 @@
         $sql = "update person set name = '$name', birth = '$birth', gender = '$gender', email = '$email', phone = '$phone' where id = '$id'";
         $result = mysqli_query($conn, $sql);
         if($result){
-            echo "업데이트 성공";
+            // echo "업데이트 성공";
         } else {
             echo "업데이트 실패".mysqli_error($conn);
         }
@@ -89,10 +95,29 @@
         $sql = "delete from person where id = '$id'";
         $result = mysqli_query($conn, $sql);
         if($result){
-            echo "삭제 성공";
+            // echo "삭제 성공";
         } else {
             echo "삭제 실패 ".mysqli_error($conn);
         }
+    }
+
+    function get_apply_history(){
+        global $conn, $id;
+
+        $apply_data_list = array();
+        $sql = "select title, r.industry, a.regist_date as apply_date from recruitment r join apply a where r.num = (select recruit_id from apply where member_id = '$id');";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_row($result)){
+            $apply_data = array(
+                'title' => filter_data($row[0]),
+                'industry' => filter_data($row[1]),
+                'apply_date' => filter_data($row[2])
+            );
+
+            array_push($apply_data_list, $apply_data);
+        }
+        
+        echo json_encode($apply_data_list, JSON_UNESCAPED_UNICODE);
     }
 
 ?>
