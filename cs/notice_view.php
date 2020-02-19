@@ -44,6 +44,9 @@ if(isset($_GET["num"]) && !empty($_GET["num"])){
   $hit = $row['hit'];
   $regist_date = $row['regist_date'];
 
+  $content = str_replace(" ", "&nbsp;", $content);
+  $content = str_replace("\n", "<br>", $content);
+
   if(!empty($file_copied)){
     // file_copied가 빈 값이 아니면 파일 정보를 가져옴
     $image_info = getimagesize("./data/".$file_copied);
@@ -66,19 +69,66 @@ if(isset($_GET["num"]) && !empty($_GET["num"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/ilhase/common/css/notice.css">
+
     <title></title>
   </head>
   <body>
     <header>
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+
+        <?php
+          if(true){
+            // 회원일 경우
+            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
+          } else {
+            // 관리자일 경우
+            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
+          }?>
     </header>
-    <h2 class="title">공지사항 > 내용</h2>
-      <ul id="view_content">
-        <li>
-          <span class="col1"><b>제목 : </b><?=$subject?></span>
-          <span class="col2"><?=$regist_date?></span>
-        </li>
-        <li></li>
-      </ul>
+    <div id="content">
+      <h2 class="title">공지사항 > 내용</h2>
+        <div id="list_top_title">
+          <li>
+            <span class="col1"><b>제목 : </b><?=$subject?></span>
+            <span class="col2_view"><?=$regist_date?></span>
+          </li>
+        </div><!--end of list_top_title  -->
+          <ul class="notice_contents">
+            <li>
+              <?php
+              if($file_name) {
+    						$real_name = $file_copied;
+    						$file_path = "./data/".$real_name;
+    						$file_size = filesize($file_path);
+                echo "▷ 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
+    			       		<a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
+                // 올린 파일 글 내용에 보이기
+    			    }
+              ?>
+            </li><br>
+            <li  class="buttons"><?=$content ?></li><br>
+            <li class="list_button">
+              <button onclick="location.href='notice.php?page=<?=$page?>'">목록</button>
+              </li>
+                <?php
+                  // 세션 값을 검사해서 관리자일 때만 수정 버튼
+                  if(false){
+                    // 회원일 경우
+                  } else {
+                    // 관리자일 경우
+                    ?>
+                    <li class="list_button"><button  onclick="location.href='write_notice_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수정</button></li>
+                    <?php
+                  }
+                ?>
+              </ul>
+
+
+    </div>
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
+        </div>
+    </footer>
   </body>
 </html>

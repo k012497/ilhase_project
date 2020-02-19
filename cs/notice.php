@@ -37,26 +37,22 @@ $number = $total_record - $start;
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <!-- <link rel="stylesheet" href="/ilhase/common/css/common1.css"> -->
     <link rel="stylesheet" href="/ilhase/common/css/notice.css">
-    <script type="text/javascript" src="../js/member_form.js"></script>
     <title></title>
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
   </head>
   <body>
-    <div id="wrap">
       <div id="content">
-           <h2 class="title">공지사항</h2><br>
-
+        <h2 class="title">공지사항</h2><br>
          <div id="list_top_title">
+
            <ul class="notice_list_menu">
              <li id="list_title1">번호</li>
              <li id="list_title2">제목</li>
-             <li id="list_title3">조회수</li>
-             <li id="list_title4">글쓴이</li>
-             <li id="list_title5">날짜</li>
+             <li id="list_title3">날짜</li>
+             <li id="list_title5">조회수</li>
            </ul>
          </div><!--end of list_top_title  -->
 
@@ -115,7 +111,6 @@ $number = $total_record - $start;
       </div><!--end of list content -->
 
       </div><!--end of content -->
-    </div><!--end of wrap  -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
