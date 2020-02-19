@@ -1,4 +1,5 @@
 <!-- js -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -20,10 +21,44 @@
           <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php">홈<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php">채용</a>
+          <?php
+          $id="";
+          $username="";
+          $member_type="";
+
+          if(isset($_SESSION['userid']))
+            $id   = $_SESSION['userid'];
+
+          if(isset($_SESSION['username']))
+            $username=$_SESSION["username"];
+
+          if(isset($_SESSION["usermember_type"]))
+            $member_type=$_SESSION["usermember_type"];
+            if($member_type=="person"){
+           ?>
+          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php">
+            채용</a>
+            <?php
+          }else{
+             ?>
+             <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php">
+               지원자</a>
+               <?php
+             }
+                ?>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">이력서</a>
+          <?php
+              if($member_type=="person"){
+           ?>
+           <a class="nav-link" href="#">이력서</a>
+             <?php
+           }else{
+              ?>
+              <a class="nav-link" href="#">공고</a>
+                <?php
+              }
+                 ?>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,21 +77,9 @@
             </form>
         </li>
         <?php
-        $id="";
-        $username="";
-        $member_type="";
-
-        if(isset($_SESSION['userid']))
-          $id   = $_SESSION['userid'];
-
-        if(isset($_SESSION['username']))
-          $username=$_SESSION["username"];
-
-        if(isset($_SESSION["usermember_type"]))
-          $member_type=$_SESSION["usermember_type"];
           if($member_type==""){
          ?>
-        <li class="nav_login" id="nav_user"><a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/member_page/login_form.php">로그인</a></li>
+        <li class="nav_login" id="nav_user"><a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/login_form.php">로그인</a></li>
         <?php
       }else if($member_type=="person"){
          ?>
@@ -73,12 +96,31 @@
                 <a class="dropdown-item" href="#">관심 공고</a>
                 <a class="dropdown-item" href="#">알림</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/member_page/logout.php">로그아웃</a>
+                <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/logout.php">로그아웃</a>
             </div>
         </li>
         <?php
-      }
+      }else{
          ?>
+         <li class="nav-item dropdown" id="nav_user">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <?php
+               echo $username;
+              ?>
+             </a>
+             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <a class="dropdown-item" href="#">내 정보</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#">지원자 열람</a>
+                 <a class="dropdown-item" href="#">공고 플랜관리</a>
+                 <a class="dropdown-item" href="#">알림</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/logout.php">로그아웃</a>
+             </div>
+         </li>
+         <?php
+       }
+          ?>
     </ul>
 
   </div>

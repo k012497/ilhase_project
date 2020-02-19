@@ -23,7 +23,7 @@
 
     echo "
 	      <script>
-	          location.href = 'http://".$_SERVER['HTTP_HOST']."/ilhase/common/member_page/login_form/php';
+	          location.href = 'http://".$_SERVER['HTTP_HOST']."/ilhase/member_page/login_form.php';
 	      </script>
 	  ";
 ?>

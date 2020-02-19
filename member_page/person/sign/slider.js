@@ -23,7 +23,7 @@ $(function () {
       $('.slick-next').attr('disabled', true);
     }else{
       $.ajax({
-        url: 'member_check_id.php',
+        url: 'http://localhost/ilhase/common/lib/member_check_id.php',
         type: 'POST',
         data: {"inputId":idValue},
         success: function(data){

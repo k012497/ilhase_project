@@ -19,7 +19,7 @@ if(isset($_SESSION["username"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="./sns_login.js"></script>
+    <script src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/sns_login.js"></script>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
@@ -61,7 +61,7 @@ if(isset($_SESSION["username"])){
               <h1 class="card-title text-center" style="color:#113366;">로그인 폼</h1>
             </div>
             <div class="card-body">
-              <form class="form-signin" method="POST" action="login.php" name="login_2">
+              <form class="form-signin" method="POST" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/login.php" name="login_2">
                 <h4 class="form-signin-heading">
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
@@ -90,7 +90,7 @@ if(isset($_SESSION["username"])){
                           <input type="hidden" name="join_name" id="name"  value="">
                           <input type="hidden" name="email" id="email"  value="">
                           <a href="#" type="button" onclick="kakao_login();"
-                            style="background-image:url('kakao_account_login_btn.png');width:222px;height:49px;"
+                            style="background-image:url('http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/kakao_account_login_btn.png');width:222px;height:49px;"
                           ></a>
                         </form>
                       </div>
@@ -113,7 +113,7 @@ if(isset($_SESSION["username"])){
             var naverLogin = new naver.LoginWithNaverId(
               {
                 clientId: "NQzYhgZ1ajZ0m1J4T9Fv",
-                callbackUrl: "http://localhost/ilhase/common/member_page/naver_login.php",
+                callbackUrl: "http://localhost/ilhase/common/lib/naver_login.php",
                 isPopup: false, /* 팝업을 통한 연동처리 여부 */
                 loginButton: {color: "green", type: 3, height: 50} /* 로그인 버튼의 타입을 지정 */
               }
