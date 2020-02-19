@@ -134,16 +134,14 @@
               industry_list=$('#industy_list'),
               ep_databox=$('#ep_databox'),
               start=0,
-              list=8,
+              list=10,
               idu_start=0,
-              idu_list=8;
+              idu_list=10;
               select_industy='',
               industy_data='',
               select_alignment=$('select[name=alignment]').val(),
               select_area=$('#area_selectBox > p').text(),
               select_career=$('select[name=career]').val();
-              var isScroll=false;
-              var isSelectDetailind=false;
 
           if (select_area==="지역") {
               //처음에 들어올시에 지역 셀렉트 박스 전체로
@@ -166,23 +164,24 @@
 
           //스크롤 할시 구직 데이터 가져오기
           $(window).scroll(function(){
-            isScroll=true;
+            console.log("1");
             var dh=$(document).height(),
                 wh=$(window).height(),
                 st=$(window).scrollTop(),
                 st=Math.ceil(st);
                 console.log("dh:"+dh+" | wh:"+wh+" | st:"+st);
                 var industryTitle=$.trim($('#search_all').text());
-                if((wh+st)>=dh){
-
-                  if (industryTitle==="전체>") {
+                if((wh+st) == dh){
+                  if (industryTitle === "전체>") {
                     console.log(industryTitle);
                     append_list(industryTitle,select_alignment,select_career,selectAreainit.text());
 
                   } else {
+                        console.log("2");
                         var select_industrydaile=$('#industy_list option:selected').val();
                         console.log(industryTitle+select_industrydaile);
                         industry_append_list(industryTitle,select_alignment,select_career,selectAreainit.text(),select_industrydaile);
+                        console.log("3");
                   }
                }
           });
@@ -213,13 +212,11 @@
                                console.log("선택된 상세산업리스트:"+select_industrydaile);
                               console.log("타이틀:"+title.text()+"/정렬:"+select_alignment+"/ 경력: "+select_career+"/ 지역:"+selectAreainit.text());
                               idu_start=0; //산업종류 클릭할떄마다 idu_start 초기화
-                              isScroll=false; //산업종류 클릭할때마다 스크롤 불리언 초기화
                               industry_append_list(title.text(),select_alignment,select_career,selectAreainit.text(),select_industrydaile);
 
 
-
-
                           },
+
                           error:function(request,status,error){
                             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                           }
@@ -230,11 +227,10 @@
             // 세부 산업 선택했을 때 체인지 이벤트
             var change_industryList='';
             $('#industy_list').on("change",function(){
-              idu_start=0;
-              isSelectDetailind=true;
               change_industryList=$(this).val();
               console.log("디테일산업 클릭했을때 " + change_industryList + "/ idu_start : "+idu_start);
               ep_databox.empty();
+              idu_start=0;
               industry_append_list(title.text(), select_alignment,select_career,selectAreainit.text(),change_industryList);
             });
 
@@ -297,7 +293,7 @@
             });
 
 
-            //구직 리스트 가져오기
+            //전체구직 리스트 가져오기
             function append_list(tit,al,cr,sa) {
 
               $.ajax({
@@ -309,24 +305,20 @@
                   // console.log(data);
 
                   if(data){
-
+                      console.log("5");
                     $('#ep_databox').append(data);
                     start += list;
                     console.log("전체 start: "+start);
                     $('#ep_databox li').each(function(index,item){
                         $(item).addClass("fadein");
                     });
+                    console.log("6");
                     return;
-                  }
-                  if(data===""){
-                      if (isScroll===true) {
-                          alert("데이터를 모두 가져왔습니다.");
-                      }else {
+                  } else {
+                      // empty 검사하기
                           $('#ep_databox').empty();
                           $('#ep_databox').append('<p>일치하는 데이터가 없습니다</p>');
-                      }
-                  }else {
-                    alert("오류로 내용을 가져올 수 없습니다.");
+
                   }
                 },
                 error:function(request,status,error){
@@ -335,16 +327,8 @@
               });
             }
 
-            //모달창 닫기 함수
-            function modal_close() {
-              setTimeout(function(){
-                   $('#area_innerBox').hide();
-              },400);
-              $('#area_contents').addClass('cancel');
-              $('#area_contents').removeClass('open');
-            };
 
-            //산업 클릭시 가져오는 구직 리스트
+            //세부산업 클릭시 가져오는 구직 리스트
             function industry_append_list(tit, al, cr, sa, industryDtaile) {
                 $.ajax({
                   url:'./dml_recruitment.php?industryDtaile='+industryDtaile,
@@ -357,30 +341,23 @@
                     "select_area_contents":sa
                   },
                   success:function(data){
+                    console.log(data, '도착한 데이터!');
                     if(data){
-
                           $('#ep_databox').append(data);
                           console.log("산업스타트 : "+idu_start);
-                          console.log("데이터받을떄 isScroll : "+isScroll);
+                          console.log("데이터받을떄 is_bottom : "+is_bottom);
                           $('#ep_databox li').each(function(index,item){
                               $(item).addClass("fadein");
                           });
                           idu_start += idu_list;
                           return;
+                    } else {
+                      if($('#ep_databox').is(':empty')){
+                        console.log($('#ep_databox').is(':empty'));
+                        $('#ep_databox').empty();
+                        $('#ep_databox').append('<p>일치하는 데이터가 없습니다</p>');
+                      }
                     }
-                    if(data===""){
-                        if (isScroll===true) {
-                            alert("데이터를 모두 가져왔습니다.");
-                        }else {
-                            $('#ep_databox').empty();
-                            $('#ep_databox').append('<p>일치하는 데이터가 없습니다</p>');
-                        }
-                        return;
-                    }else {
-                      alert("오류로 내용을 가져올 수 없습니다.");
-                    }
-
-
                   },
                   error:function(request,status,error){
                     console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -388,6 +365,16 @@
                 });
 
             }
+
+            //모달창 닫기 함수
+            function modal_close() {
+              setTimeout(function(){
+                   $('#area_innerBox').hide();
+              },400);
+              $('#area_contents').addClass('cancel');
+              $('#area_contents').removeClass('open');
+            };
+
 
 
 
