@@ -157,6 +157,7 @@ function create_table($conn, $table_name){
             case 'recruitment' :
                 $sql = "CREATE TABLE `recruitment` (
                   `num` int(11) NOT NULL AUTO_INCREMENT,
+                  `corporate_id` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
                   `title` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                   `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                   `recruiter_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -175,8 +176,10 @@ function create_table($conn, $table_name){
                   `file_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                   `file_copied` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                   `regist_date` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                  PRIMARY KEY (`num`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                  PRIMARY KEY (`num`),
+                  KEY `recruitment_cid_fk` (`corporate_id`),
+                  CONSTRAINT `recruitment_cid_fk` FOREIGN KEY (`corporate_id`) REFERENCES `corporate` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
 
             case 'recruit_plan' :
@@ -223,9 +226,7 @@ function create_table($conn, $table_name){
 
         if(mysqli_query($conn,$sql)){
             // 테스트용
-            echo '<script >
-                alert("'.$table_name.' 테이블이 생성되었습니다.");
-            </script>';
+            // echo '<script >alert("'.$table_name.' 테이블이 생성되었습니다.");</script>';
         } else {
             echo "테이블 생성 실패! ".mysqli_error($conn);
         }
