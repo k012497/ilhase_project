@@ -98,6 +98,17 @@ notice_list_menu {
   height: 30px;
 }
 
+/* 공지사항 -> 내용 -> 수 파일텍스트 위치 이동 */
+.notice_file_view {
+  margin-left: 100px;
+}
+
+#textarea_content {
+  width: 840px;
+  height: 445px;
+  resize: none;
+}
+
 #input_subject {
   width: 350px;
 }

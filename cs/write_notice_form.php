@@ -84,7 +84,7 @@ if($mode === 'update'){
 
             </li>
             <li>
-              <div class="col1">파일업로드 :
+              <div class="notice_file_view">파일업로드 :
                 <?php
                   if($mode=="insert"){
                     echo '<input type="file" name="upfile" >이미지(2MB)파일(0.5MB)';
@@ -102,16 +102,16 @@ if($mode === 'update'){
                     echo '<div class="clear"></div>';
                   }
                 ?>
-              </div><!--end of col2  -->
+              </div><!--end of col1  -->
             </li>
             </ul>
 
         </form>
       <!-- php로 mode 검사 해서 수정일 경우 제목,내용,파일 불러오기 -->
       <ul class="notice_contents">
-        <li><button class="list_butto" type="button" onclick="check_input()">수정하기</button></li>
+        <li><button class="list_button" type="button" onclick="check_input()">완 료</button></li>
         <li>
-          <button class="list_butto" onclick="location.href='notice_view.php?page=<?=$page?>&num=<?=$num?>'">취소</button></li>
+          <button class="list_button" onclick="location.href='notice_view.php?page=<?=$page?>&num=<?=$num?>'">취 소</button></li>
         </ul>
       </div> <!--End Of Content -->
 
