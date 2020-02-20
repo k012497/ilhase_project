@@ -122,7 +122,7 @@ if(isset($_GET["num"]) && !empty($_GET["num"])){
                   }
                 ?>
               </ul>
-
+ <!-- page=<?=$page?> -->
 
     </div>
     <footer class="py-5 bg-dark">
