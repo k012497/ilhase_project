@@ -48,12 +48,58 @@ notice_list_menu {
 .menus {
 	float:left;
 }
-
+/* *********************************************************** */
+/* 공지사항 & 내용 & */
 #content {
+  margin: 0 auto;
 	overflow:hidden;
 	margin-top:56px;
 	width:998px;
 	min-height: 600px;
+}
+
+/* list content */
+#list_item {
+  margin: 0 auto;
+	width: 85%;
+	height:40px;
+	margin-top:2px;
+	padding:5px;
+	border-bottom:solid 1px #eeeeee;
+}
+
+/* 공지사항 > 내용 & */
+#list_item {
+  margin: 0 auto;
+  padding-left: 300px;
+  min-height: 500px;
+	width: 85%;
+	height:40px;
+	margin-top:2px;
+	padding:5px;
+	border-bottom:solid 1px #eeeeee;
+}
+
+/* 글 게시 날짜 & 시간시간 */
+.col2_view {
+  float: right;
+}
+
+.notice_contents {
+  padding-right: 0px;
+  padding-left: 0px;
+  float: right;
+  margin-right: 90px;
+}
+
+.list_button{
+
+  width: 50px;
+  height: 30px;
+}
+
+#input_subject {
+  width: 350px;
 }
 
 #content #main_img {
@@ -174,6 +220,7 @@ notice_list_menu {
 }
 /* list menu */
 #list_top_title {
+  margin: 0 auto;
 	width: 85%;
 	height:40px;
 	padding:7px;
@@ -182,6 +229,7 @@ notice_list_menu {
 	/* border-bottom: solid 2px #aaaaaa; */
 	background-color:#eeeeee;
 	margin-bottom:3px;
+
 }
 
 #list_top_title li {
@@ -201,7 +249,7 @@ notice_list_menu {
 }
 
 #list_top_title #list_title4 {
-	margin-left:32px;
+	margin-left:140px;
 }
 
 #list_top_title #list_title5 {
@@ -210,15 +258,6 @@ notice_list_menu {
 
 #list_content {
 	height:380px;
-}
-
-/* list content */
-#list_item {
-	width: 85%;
-	height:40px;
-	margin-top:2px;
-	padding:5px;
-	border-bottom:solid 1px #eeeeee;
 }
 
 #list_item #list_item1{
@@ -230,18 +269,20 @@ notice_list_menu {
 #list_item #list_item2{
 	float:left;
 	width:560px;
+  padding-left: 40px;
 }
 
 #list_item #list_item3{
 	float:left;
-	width:65px;
-	text-align:center;
+	width:150px;
+	/* text-align:center; */
 }
 
 #list_item #list_item4{
 	float:left;
 	width:80px;
-	text-align:center;
+	text-align:right;
+  padding-right: 15px;
 }
 
 #list_item #list_item5{
@@ -343,7 +384,7 @@ notice_list_menu {
 }
 
 #write_row3 .col2 textarea {
-    margin-top:1px;
+  margin-top:1px;
 	border:solid 1px #cccccc;
 }
 
