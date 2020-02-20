@@ -4,20 +4,20 @@ include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
 $num = $page = $hit = "";
 
 if(isset($_GET['num'])){
-  $num = $_GET['num'];
+  $num = filter_data($_GET['num']);
 }
 
 if(isset($_GET['page'])){
-  $page = $_GET['page'];
+  $page = filter_data($_GET['page']);
 }
 
 if(isset($_GET['hit'])){
-  $hit = $_GET['hit'];
+  $hit = filter_data($_GET['hit']);
 }
 
-if(isset($_GET["num"]) && !empty($_GET["num"])){
-  $num = filter_data($_GET["num"]);
-  $hit = filter_data($_GET["hit"]);
+if(isset($_GET["num"]) && !empty($_GET["hit"])){
+  // $num = filter_data($_GET["num"]);
+  // $hit = filter_data($_GET["hit"]);
   $q_num = mysqli_real_escape_string($conn, $num);
 
   $sql = "UPDATE `notice` SET `hit`=$hit WHERE `num`=$q_num;"; // 조회수 증가
@@ -26,8 +26,8 @@ if(isset($_GET["num"]) && !empty($_GET["num"])){
   if (!$result) {
     die('Error: ' . mysqli_error($conn));
   } // 조회수 증가
-
-  $sql="SELECT * from `notice` where num ='$q_num';"; // 글 번호로 내용 가져오기
+}
+  $sql="SELECT * from `notice` where num ='$num';"; // 글 번호로 내용 가져오기
   $result = mysqli_query($conn,$sql);
   if (!$result) {
     die('Error: ' . mysqli_error($conn));
@@ -61,7 +61,7 @@ if(isset($_GET["num"]) && !empty($_GET["num"])){
     $image_height = 0;
     $image_type = "";
   }
-}
+
 
 ?>
 
