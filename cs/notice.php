@@ -5,7 +5,7 @@ define('SCALE', 10);
 //*****************************************************
 $sql=$result=$total_record=$total_page=$start="";
 $row="";
-$memo_id=$memo_num=$memo_date=$memo_nick=$memo_content="";
+$memo_content="";
 $total_record=0;
 //*****************************************************
 if(isset($_GET["mode"])&&$_GET["mode"]=="search"){
@@ -63,8 +63,6 @@ $number = $total_record - $start;
             mysqli_data_seek($result,$i);
             $row=mysqli_fetch_array($result);
             $num=$row['num'];
-            $id=$row['id'];
-            $name=$row['name'];
 
             $hit=$row['hit'];
             $date= substr($row['regist_date'],0,10);
