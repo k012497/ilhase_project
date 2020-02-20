@@ -23,11 +23,15 @@
     $pay            = $row['pay'];
     $work_place     = $row['work_place'];
     $details        = $row['details'];
+    $content = str_replace(" ", "&nbsp;", $details);
+    $content = str_replace("\n", "&#10;", $details);
     $personnel        = $row['personnel'];
     $recruiter_name        = $row['recruiter_name'];
     $recruiter_phone        = $row['recruiter_phone'];
     $recruiter_email        = $row['recruiter_email'];
     $recruit_type           = $row['recruit_type'];
+
+
 
    ?>
   <head>
@@ -47,17 +51,17 @@
               <img src="<?=$src?>" alt="회사이미지">
             </div>
             <h1 id="announcement_title">
-              <?=$b_name?><span id="sub_title">(<?=$title?>)</span>
+              <?=$title?>
+              <span id="sub_title">(<?=$b_name?>)</span>
               <span id="period"><?=$period_start?> ~ <?=$period_end?><button id="btn_apply" type="submit" name="button">지원하기</button></span>
             </h1>
             <div id="company_info">
               <h2 class="info_title"> > 기업정보</h2>
-
               <ul>
+                <li><span class="colum">회&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;사&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</span><span class="colum2"><?=$b_name?></span></li>
                 <li><span class="colum">대&nbsp;&nbsp;표&nbsp;&nbsp;자&nbsp;&nbsp;명  </span><span class="colum2"><?=$ceo?></span></li>
                 <li><span class="colum">업&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;종 </span><span class="colum2"><?=$job_category?></span></li>
                 <li><span class="colum">4대보험가입 </span><span  class="colum2">4대보험 가입</span></li>
-                <li><span class="colum">사업자등록증 </span><span class="colum2">유</span></li>
                 <li><span class="colum">주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소 </span><span  class="colum2"><?=$address?></span></li>
               </ul>
               <div id="container">
@@ -80,7 +84,7 @@
             </div>
             <div id="details_info">
               <h2 class="info_title"> > 상세모집요강</h2>
-                <p><?=$details?></p>
+                <p><?=$content?></p>
                 <ul>
                   <li><span class="colum">모&nbsp;&nbsp;집&nbsp;&nbsp;인&nbsp;&nbsp;원</span><span class="colum3"> <?=$personnel?>명</span></li>
                   <li><span class="colum">접&nbsp;&nbsp;수&nbsp;&nbsp;기&nbsp;&nbsp;간</span><span class="colum3"><?=$period_start?> ~ <?=$period_end?></span></li>
@@ -299,10 +303,14 @@
           toggleMapWrapper(true, position);
       }
 
+
+      //
+
+
       //지원하기 버튼
       $('#btn_apply').click(function(){
 
-        
+
 
       });
 

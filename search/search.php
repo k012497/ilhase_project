@@ -208,7 +208,7 @@
               select_industy=$.trim($(this).text());
               industry_list.show();
               industry_list.empty();
-              var select_industrydaile='';
+
               ep_databox.empty();
               $.ajax({
                     url:'./dml_job_industry.php',
@@ -222,7 +222,7 @@
                                }
                                $('#industy_list').find('option:first').attr('selected','selected');
 
-                               select_industrydaile=$('#industy_list option:selected').val();
+                                var select_industrydaile=$('#industy_list option:selected').val();
                                 var title=$('.title#search_all');
                                 var select_alignment=$('select[name=alignment]').val();
                                 var select_career=$('select[name=career]').val();
@@ -233,7 +233,7 @@
                                console.log("선택된 상세산업리스트:"+select_industrydaile);
                               console.log("타이틀:"+title.text()+"/정렬:"+select_alignment+"/ 경력: "+select_career+"/ 지역:"+selectAreainit.text());
                               idu_start=0; //산업종류 클릭할떄마다 idu_start 초기화
-                              industry_($.trim(title.text()),select_alignment,select_career,area_text[0],area_text[1],select_industrydaile);
+                              industry_append_list($.trim(title.text()),select_alignment,select_career,area_text[0],area_text[1],select_industrydaile,user_id);
 
 
                           },
@@ -553,33 +553,6 @@
               });
 
             }
-
-          // //관심공고 등록 비교
-          // function check_favorite_job (num,user_id) {
-          //   // if (user_id=='') {
-          //   //   console.log("로그인이 아님");
-          //   //   return;
-          //   // }
-          //   $.ajax({
-          //     url:'./dml_favorite.php?mode=compare',
-          //     type:'POST',
-          //     data:{"num":num,"user_id":user_id},
-          //     success:function(data){
-          //         console.log(data);
-          //         if (data==="true") {
-          //           $('#interest_insert span').hasClass('click_heart');
-          //         }else if(data==="false") {
-          //           $('#interest_insert span').removeClass('click_heart');
-          //         }
-          //
-          //     },
-          //     error:function(request,status,error){
-          //       console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-          //     }
-          //   });
-          //
-          // }
-
 
   });
 

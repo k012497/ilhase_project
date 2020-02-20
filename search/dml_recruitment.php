@@ -61,7 +61,6 @@ function all_data() {
   global $conn,$start,$list,$select_career,$user_id;
 
   //전체 페이지에서 전체 데이터 가져올떄 sql
-
   $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where require_career='$select_career' order by num desc";
 
   $filter_result=mysqli_query($conn,$filter_sql);
@@ -94,8 +93,9 @@ function all_data() {
                 <li>
                   <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                     <img src='".$src."' alt='회사이미지'>
-                    <span id='ep_title'>".$title."</span>
+                    <span id='ep_title'>".$title."(".$b_name.")</span>
                     <span id='ep_pay'>".$pay."</span>
+                    <span id='work_place'>근무지 : ".$work_place."</span>
                     <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
                   </a>
                   <div id='interest_insert'>
@@ -112,8 +112,9 @@ function all_data() {
               <li>
                 <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                   <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."</span>
+                  <span id='ep_title'>".$title."(".$b_name.")</span>
                   <span id='ep_pay'>".$pay."</span>
+                  <span id='work_place'>근무지 : ".$work_place."</span>
                   <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
                 </a>
                 <div id='interest_insert'>
@@ -129,45 +130,87 @@ function all_data() {
       echo mysqli_error($conn);
     }//
 
-
-
   } // end of for
 }// end of all_data
+
+
+
 //전체페이지에서 지역으로 찾을떄 사용된 함수
 function all_industry_select_data($select_gu){
   global $conn,$start,$list,$select_career,$select_area_contents;
 
-  $sql="select * from recruitment where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
 
-  $result=mysqli_query($conn,$sql);
-  $count=mysqli_num_rows($result);
+  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
+
+  $filter_result=mysqli_query($conn,$filter_sql);
+  $count=mysqli_num_rows($filter_result);
 
   for($i=$start ; $i < $start+$list && $i < $count ; $i++){
-    mysqli_data_seek($result,$i);
-    $row=mysqli_fetch_array($result);
+    mysqli_data_seek($filter_result,$i);
+    $row=mysqli_fetch_array($filter_result);
+    $num=$row['num'];
+    $b_name=$row['b_name'];
     $title=$row['title'];
     $pay=$row['pay'];
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
+    $work_place=$row['work_place'];
     $file_name=$row['file_name'];
-    $file_copied=$row['file_copied'];
     $src='';
     if ($file_name) {
       $src='./img/'+$file_name;
     }else {
       $src='./img/basicimg.jpg';
     }
-    echo "
-          <li>
-            <a href='#'>
-              <img src='".$src."' alt='회사이미지'>
-              <span id='ep_title'>".$title."</span>
-              <span id='ep_pay'>".$pay."</span>
-              <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-            </a>
-          </li>
-    ";
-  }
+
+    // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
+    $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
+    $fav_result=mysqli_query($conn,$fav_sql);
+    if($row = mysqli_fetch_array($fav_result)){
+      if($row[0] > 0){
+        // 관심공고로 지정한 경우
+        echo "
+              <li>
+                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                  <img src='".$src."' alt='회사이미지'>
+                  <span id='ep_title'>".$title."(".$b_name.")</span>
+                  <span id='ep_pay'>".$pay."</span>
+                  <span id='work_place'>근무지 : ".$work_place."</span>
+                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                </a>
+                <div id='interest_insert'>
+                    <p>관심 공고등록</p>
+                    <span class='heart_img click_heart'></span>
+                    <input type='hidden' name='pick_job' value='$num'>
+                </div>
+              </li>
+              <script>console.log('관심');</script>
+        ";
+      } else if ( $row[0] == 0) {
+        // 관심공고로 지정하지 않은 경우
+        echo "
+              <li>
+                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                  <img src='".$src."' alt='회사이미지'>
+                  <span id='ep_title'>".$title."(".$b_name.")</span>
+                  <span id='ep_pay'>".$pay."</span>
+                  <span id='work_place'>근무지 : ".$work_place."</span>
+                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                </a>
+                <div id='interest_insert'>
+                    <p>관심 공고등록</p>
+                    <span class='heart_img'></span>
+                    <input type='hidden' name='pick_job' value='$num'>
+                </div>
+              </li>
+        ";
+      }
+    } else {
+      echo mysqli_error($conn);
+    }//
+
+
+  }//end of for
 
 };
 
@@ -175,71 +218,112 @@ function all_industry_select_data($select_gu){
 function all_area_select($select_gu){
   global $conn,$start,$list,$select_career,$select_area_contents;
 
-  $sql="select * from recruitment where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
-  $result=mysqli_query($conn,$sql);
-  $count=mysqli_num_rows($result);
+  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
+  $filter_result=mysqli_query($conn,$filter_sql);
+  $count=mysqli_num_rows($filter_result);
 
   for($i=$start ; $i < $start+$list && $i < $count ; $i++){
-    mysqli_data_seek($result,$i);
-    $row=mysqli_fetch_array($result);
+    mysqli_data_seek($filter_result,$i);
+    $row=mysqli_fetch_array($filter_result);
+    $num=$row['num'];
+    $b_name=$row['b_name'];
     $title=$row['title'];
     $pay=$row['pay'];
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
+    $work_place=$row['work_place'];
     $file_name=$row['file_name'];
-    $file_copied=$row['file_copied'];
     $src='';
     if ($file_name) {
       $src='./img/'+$file_name;
     }else {
       $src='./img/basicimg.jpg';
     }
-    echo "
-          <script>
-            console.log('$select_career','$select_area_contents','$select_gu');
-          </script>
-          <li>
-            <a href='#'>
-              <img src='".$src."' alt='회사이미지'>
-              <span id='ep_title'>".$title."</span>
-              <span id='ep_pay'>".$pay."</span>
-              <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-            </a>
-          </li>
-    ";
-  }
+
+    // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
+    $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
+    $fav_result=mysqli_query($conn,$fav_sql);
+    if($row = mysqli_fetch_array($fav_result)){
+      if($row[0] > 0){
+        // 관심공고로 지정한 경우
+        echo "
+                <li>
+                  <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                    <img src='".$src."' alt='회사이미지'>
+                    <span id='ep_title'>".$title."(".$b_name.")</span>
+                    <span id='ep_pay'>".$pay."</span>
+                    <span id='work_place'>근무지 : ".$work_place."</span>
+                    <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                  </a>
+                  <div id='interest_insert'>
+                      <p>관심 공고등록</p>
+                      <span class='heart_img click_heart'></span>
+                      <input type='hidden' name='pick_job' value='$num'>
+                  </div>
+                </li>
+                <script>console.log('관심');</script>
+        ";
+      } else if ( $row[0] == 0) {
+        // 관심공고로 지정하지 않은 경우
+        echo "
+              <li>
+                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                  <img src='".$src."' alt='회사이미지'>
+                  <span id='ep_title'>".$title."(".$b_name.")</span>
+                  <span id='ep_pay'>".$pay."</span>
+                  <span id='work_place'>근무지 : ".$work_place."</span>
+                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                </a>
+                <div id='interest_insert'>
+                    <p>관심 공고등록</p>
+                    <span class='heart_img'></span>
+                    <input type='hidden' name='pick_job' value='$num'>
+                </div>
+              </li>
+        ";
+      }
+    } else {
+      echo mysqli_error($conn);
+    }//
+
+  }//end of for
 
 }
 
 // 다른 산업분류에서 데이터 가져올떄 함수
 function production_data() {
-  global $conn,$start,$list,$select_career,$select_industryDtaile,$select_area_contents,$select_gu;
+  global $conn,$start,$list,$select_career,$select_industryDtaile,$select_area_contents,$select_gu,$user_id;
 
-  $sql='';
+  $filter_sql='';
   if ($select_area_contents==="전체") {
-    $sql="select * from recruitment where industry like '%$select_industryDtaile%' and require_career='$select_career' order by num desc";
+    //지역을 선택할떄 전체일때
+    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' order by num desc";
 
   }else {
+    //지역을 선택할때 각 지역의 전체를 선택할떄 (ex. 서울 전체 , 광주 전체)
     if ($select_gu===($select_area_contents." 전체") || ($select_gu===($select_area_contents."전체"))) {
-      $sql="select * from recruitment where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
+      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
     }else{
-      $sql="select * from recruitment where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
+      //그외 지역 선택할떄
+      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
     }
   }
 
 
-  $result=mysqli_query($conn,$sql);
-  $count=mysqli_num_rows($result);
+  $filter_result=mysqli_query($conn,$filter_sql);
+  $count=mysqli_num_rows($filter_result);
 
   for($i=$start ; $i < $start+$list && $i < $count ; $i++){
-    mysqli_data_seek($result,$i);
-    $row=mysqli_fetch_array($result);
+    mysqli_data_seek($filter_result,$i);
+    $row=mysqli_fetch_array($filter_result);
+    $num=$row['num'];
+    $b_name=$row['b_name'];
     $title=$row['title'];
     $pay=$row['pay'];
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
+    $work_place=$row['work_place'];
     $file_name=$row['file_name'];
-    $file_copied=$row['file_copied'];
     $src='';
     if ($file_name) {
       $src='./img/'+$file_name;
@@ -247,17 +331,54 @@ function production_data() {
 
       $src='./img/basicimg.jpg';
     }
-    echo "
-          <li>
-            <a href='#'>
-              <img src='".$src."' alt='회사이미지'>
-              <span id='ep_title'>".$title."</span>
-              <span id='ep_pay'>".$pay."</span>
-              <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-            </a>
-          </li>
-    ";
-  }
+
+    // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
+    $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
+    $fav_result=mysqli_query($conn,$fav_sql);
+    if($row = mysqli_fetch_array($fav_result)){
+      if($row[0] > 0){
+        // 관심공고로 지정한 경우
+        echo "
+              <li>
+                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                  <img src='".$src."' alt='회사이미지'>
+                  <span id='ep_title'>".$title."(".$b_name.")</span>
+                  <span id='ep_pay'>".$pay."</span>
+                  <span id='work_place'>근무지 : ".$work_place."</span>
+                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                </a>
+                <div id='interest_insert'>
+                    <p>관심 공고등록</p>
+                    <span class='heart_img click_heart'></span>
+                    <input type='hidden' name='pick_job' value='$num'>
+                </div>
+              </li>
+              <script>console.log('관심');</script>
+        ";
+      } else if ( $row[0] == 0) {
+        // 관심공고로 지정하지 않은 경우
+        echo "
+              <li>
+                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                  <img src='".$src."' alt='회사이미지'>
+                  <span id='ep_title'>".$title."(".$b_name.")</span>
+                  <span id='ep_pay'>".$pay."</span>
+                  <span id='work_place'>근무지 : ".$work_place."</span>
+                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                </a>
+                <div id='interest_insert'>
+                    <p>관심 공고등록</p>
+                    <span class='heart_img'></span>
+                    <input type='hidden' name='pick_job' value='$num'>
+                </div>
+              </li>
+        ";
+      }
+    } else {
+      echo mysqli_error($conn);
+    }//
+
+  }//end of for
 
 }
 
