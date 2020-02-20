@@ -21,7 +21,7 @@
 
 <!-- html -->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black; position: fixed; width: 100%; z-index: 1600;">
-  <a class="navbar-brand" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php" style="color: white;">일하세</a>
+  <a class="navbar-brand" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/admin.php" style="color: white;">일하세</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
