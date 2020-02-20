@@ -70,7 +70,7 @@ if(isset($_GET["num"]) && !empty($_GET["num"])){
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/ilhase/common/css/notice.css">
-
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title></title>
   </head>
   <body>

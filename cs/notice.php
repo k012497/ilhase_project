@@ -52,7 +52,7 @@ $number = $total_record - $start;
              <li id="list_title1">번호</li>
              <li id="list_title2">제목</li>
              <li id="list_title3">날짜</li>
-             <li id="list_title5">조회수</li>
+             <li id="list_title4">조회수</li>
            </ul>
          </div><!--end of list_top_title  -->
 
@@ -65,7 +65,7 @@ $number = $total_record - $start;
             $num=$row['num'];
             $id=$row['id'];
             $name=$row['name'];
-            $nick=$row['nick'];
+
             $hit=$row['hit'];
             $date= substr($row['regist_date'],0,10);
             $subject=$row['subject'];
@@ -77,9 +77,9 @@ $number = $total_record - $start;
               <div id="list_item2">
                   <a href="./notice_view.php?num=<?=$num?>&page=<?=$page?>&hit=<?=$hit + 1?>"><?=$subject?></a>
               </div>
-              <div id="list_item3"><?=$nick?></div>
-              <div id="list_item4"><?=$date?></div>
-              <div id="list_item5"><?=$hit?></div>
+
+              <div id="list_item3"><?=$date?></div>
+              <div id="list_item4"><?=$hit?></div>
             </div><!--end of list_item -->
             <div id="memo_content"><?=$memo_content?></div>
         <?php

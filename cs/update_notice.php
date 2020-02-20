@@ -53,7 +53,7 @@
   } // end of upfile_name && !upfile_error
 
   echo "/".$subject."/";
-    $sql  = "update notice set subject='$subject', content='2222', file_name='$upfile_name', file_type='$upfile_type', file_copied='$copied_file_name' where num = $num;";
+    $sql  = "update notice set subject='안녕하세요', content='2222', file_name='$upfile_name', file_type='$upfile_type', file_copied='$copied_file_name' where num = $num;";
 
     $result = mysqli_query($conn,$sql);
     if(!$result){
@@ -62,10 +62,10 @@
       echo $subject.$content.$sql;
     }
 
-    // mysqli_close($conn);
-    // echo "
-	  //     <script>
-	  //       location.href = 'notice_view.php?page=$page';
-	  //     </script>
-	  // ";
+    mysqli_close($conn);
+    echo "
+	      <script>
+	        location.href = './notice_view.php?num=$num&page=$page';
+	      </script>
+	  ";
 ?>

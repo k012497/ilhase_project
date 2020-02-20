@@ -41,7 +41,8 @@ if($mode === 'update'){
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/ilhase/common/css/notice.css">
-
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    </script>
     <script>
 
       function check_input() {
