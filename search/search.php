@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
+  <?php
+    session_start();
+   ?>
   <head>
     <meta charset="utf-8">
     <title>일하세-채용</title>
     <link rel="stylesheet" href="./css/search.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   </head>
   <body>
     <header>
@@ -12,7 +16,8 @@
     <section>
       <div class="wrap">
         <h1 class="title" id="search_all">
-          <a href="./search.php">전체</a><span>></span></h1>
+          <a href="./search.php">전체</a><span>></span>
+        </h1>
         <div id="job_box">
             <div class="col_box">
               <button>
@@ -72,17 +77,20 @@
           <div id="area_selectBox">
             <p>지역</p>
           </div>
-          <select name="career">
+          <select name="career" id="career_list">
             <option value="무관" selected >무관</option>
-            <option value="신입">신입</option>
             <option value="경력">경력</option>
           </select>
           <select name="industry" id="industy_list">
           </select>
         </div>
         <div id="employment_data">
-          <ul id="ep_databox">
-          </ul>
+          <!-- <form name='pick_favorite_job' action='./dml_favorite.php' method='post'> -->
+            <ul id="ep_databox">
+
+            </ul>
+            <!-- <input type='hidden' name='user_id' value=''> -->
+          <!-- </form> -->
         </div>
       </div>
       <div id="area_innerBox">
@@ -142,6 +150,10 @@
               select_alignment=$('select[name=alignment]').val(),
               select_area=$('#area_selectBox > p').text(),
               select_career=$('select[name=career]').val();
+              var isSelectArea=false;
+              var isheartClick=false;
+              var count=0;
+              var user_id='<?=$id?>';
 
           if (select_area==="지역") {
               //처음에 들어올시에 지역 셀렉트 박스 전체로
@@ -158,9 +170,11 @@
           $('.nav-item:nth-child(1)').removeClass('active');
           $('.nav-item:nth-child(2)').addClass('active');
 
+          var strArea=select_area.replace(/(\s*)/g,"");
+          var area_text=strArea.split('>');
           //전체 페이지에서 구직 데이터 (최신순 & 전체 & 경력무관)
-          append_list(industry_title,select_alignment,select_career,selectAreainit.text());
 
+          append_list(industry_title,select_alignment,select_career,$.trim(selectAreainit.text()),area_text[1],user_id);
 
           //스크롤 할시 구직 데이터 가져오기
           $(window).scroll(function(){
@@ -169,25 +183,27 @@
                 wh=$(window).height(),
                 st=$(window).scrollTop(),
                 st=Math.ceil(st);
-                console.log("dh:"+dh+" | wh:"+wh+" | st:"+st);
+                // console.log("dh:"+dh+" | wh:"+wh+" | st:"+st);
                 var industryTitle=$.trim($('#search_all').text());
+                var select_area=$('#area_selectBox > p').text();
+                var select_career=$('select[name=career]').val();
+                var strArea=select_area.replace(/(\s*)/g,"");
+                var area_text=strArea.split('>');
                 if((wh+st) == dh){
                   if (industryTitle === "전체>") {
                     console.log(industryTitle);
-                    append_list(industryTitle,select_alignment,select_career,selectAreainit.text());
-
+                    append_list(industryTitle,select_alignment,select_career,area_text[0],area_text[1],user_id);
                   } else {
                         console.log("2");
                         var select_industrydaile=$('#industy_list option:selected').val();
                         console.log(industryTitle+select_industrydaile);
-                        industry_append_list(industryTitle,select_alignment,select_career,selectAreainit.text(),select_industrydaile);
+                        industry_append_list(industryTitle,select_alignment,select_career,area_text[0],area_text[1],select_industrydaile,user_id);
                         console.log("3");
                   }
                }
-          });
+             });
 
           //산업종류 선택시
-           var title=$('.title#search_all');
           $('.col_box button').click(function(){
               select_industy=$.trim($(this).text());
               industry_list.show();
@@ -205,14 +221,19 @@
                                  $('#search_all').html('<a href="./search.php">전체</a>'+'>'+industy_data[i].category);
                                }
                                $('#industy_list').find('option:first').attr('selected','selected');
-                               select_industrydaile=$('#industy_list option:selected').val();
 
-                                var change_industryList='';
+                               select_industrydaile=$('#industy_list option:selected').val();
+                                var title=$('.title#search_all');
+                                var select_alignment=$('select[name=alignment]').val();
+                                var select_career=$('select[name=career]').val();
+                                var select_area=$('#area_selectBox > p').text();
+                                var strArea=select_area.replace(/(\s*)/g,"");
+                                var area_text=strArea.split('>');
                                console.log($.trim(title.text()));
                                console.log("선택된 상세산업리스트:"+select_industrydaile);
                               console.log("타이틀:"+title.text()+"/정렬:"+select_alignment+"/ 경력: "+select_career+"/ 지역:"+selectAreainit.text());
                               idu_start=0; //산업종류 클릭할떄마다 idu_start 초기화
-                              industry_append_list(title.text(),select_alignment,select_career,selectAreainit.text(),select_industrydaile);
+                              industry_($.trim(title.text()),select_alignment,select_career,area_text[0],area_text[1],select_industrydaile);
 
 
                           },
@@ -222,17 +243,44 @@
                           }
                   });
 
-              }); // end of click (.col_box button)
+            }); // end of click (.col_box button)
 
-            // 세부 산업 선택했을 때 체인지 이벤트
-            var change_industryList='';
+            // 세부 산업셀렉트박스 선택했을 때 체인지 이벤트
             $('#industy_list').on("change",function(){
-              change_industryList=$(this).val();
+              var title=$('.title#search_all');
+              var change_industryList=$(this).val();
+              var select_career=$('select[name=career]').val();
+              var select_area=$('#area_selectBox > p').text();
+              var strArea=select_area.replace(/(\s*)/g,"");
+              var area_text=strArea.split('>');
               console.log("디테일산업 클릭했을때 " + change_industryList + "/ idu_start : "+idu_start);
               ep_databox.empty();
               idu_start=0;
-              industry_append_list(title.text(), select_alignment,select_career,selectAreainit.text(),change_industryList);
+              industry_append_list($.trim(title.text()), select_alignment,select_career,area_text[0],area_text[1],change_industryList,user_id);
             });
+
+
+            //경력셀렉트 선택했을 떄 체인지 이벤트
+              $('#career_list').on("change",function(){
+                  var title=$('.title#search_all'),
+                      select_alignment=$('select[name=alignment]').val(),
+                      select_area=$('#area_selectBox > p').text();
+                  var strArea=select_area.replace(/(\s*)/g,"");
+                  var area_text=strArea.split('>');
+                  var select_career_data=$(this).val();
+                  var select_industrydaile=$('select[name=industry]').val();
+                  if ($.trim(title.text())=="전체>") {
+                      console.log("전체에서  " + select_career_data + "/ start : "+start+" / select_area : "+area_text[0]+area_text[1]);
+                      ep_databox.empty();
+                      start=0;
+                      append_list($.trim(title.text()),select_alignment,select_career_data,area_text[0],area_text[1],user_id);
+                  }else {
+                      console.log("디테일산업 클릭했을때 " + select_career_data + "/"+select_alignment+"/"+area_text[0]+"/"+area_text[1]);
+                      ep_databox.empty();
+                      idu_start=0;
+                      industry_append_list($.trim(title.text()),select_alignment,select_career_data,area_text[0],area_text[1],select_industrydaile,user_id);
+                  }
+               });
 
 
 
@@ -245,23 +293,28 @@
                 },200);
 
             });
+
             //모달창(지역 셀렉트) 클릭 이벤트(닫기)
             $('#area_close').click(function(){
                   modal_close();
             });
 
+            var area_list=$('#area_tb li');
             //지역 selsect박스 안에 지역 데이터 구현
             $('#area_tb li').click(function(){
               area=$(this).text();
+              console.log(area);
+              isSelectArea=true;
               area_list.removeClass('area_active');
               $(this).addClass('area_active');
-              $('#si_gun_gu').empty();
+
                $.ajax({
                  url:'./dml_address.php',
                  type:'GET',
                  data:{"area":area},
                  success:function(data){
                     si_gun_gu=JSON.parse(data);
+                      $('#si_gun_gu').empty();
                       for(var i=0;i<si_gun_gu.length;i++){
                         $('#si_gun_gu').append('<label><input type="radio" name="si_gun_gu" value="'+si_gun_gu[i].areaName+'">'+si_gun_gu[i].areaName+'</label>');
                       }
@@ -270,47 +323,130 @@
                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                  }
                });
-
             });
 
             //지역 셀렉트 박스안에 선택버튼  클릭시 이벤트
             $('#btn_si_gun_gu').click(function(){
+                      area_list.removeClass('area_active');
                       var checkData=$('input[name=si_gun_gu]:checked').val(),
-                          ischeckData=$('input[name=si_gun_gu]').is(':checked');
-                          areaSelctBox=$('#area_selectBox > p');
-                          if (area==="전체") {
+                          ischeckData=$('input[name=si_gun_gu]').is(':checked'),
+                          industry_title=$('#search_all').text(),
+                          areaSelctBox=$('#area_selectBox > p'),
+                          select_industrydaile=$('#industy_list option:selected').val();
+                          if(isSelectArea===false){
+                            alert("검색할 지역을 선택해주세요!");
+                            return;
+                          }
+
+                        if ($.trim(industry_title)==="전체>") {
+
+                            if (area==="전체") {
+                                areaSelctBox.text(area);
+                                isSelectArea=false;
+                                console.log($.trim(industry_title)+"/"+select_alignment+"/"+select_career+"/"+area+"/"+checkData);
+                                ep_databox.empty();
+                                start=0;
+                                append_list($.trim(industry_title),select_alignment,select_career,area,checkData,user_id);
+                                modal_close();
+                                return;
+                            }else {
+                                if (ischeckData===false) {
+                                  alert("시/군 을 선택해주세요!");
+                                  return;
+                                }
+                                isSelectArea=false;
+                                console.log($.trim(industry_title)+"/"+select_alignment+"/"+select_career+"/"+area+"/"+checkData);
+                                ep_databox.empty();
+                                start=0;
+                                append_list($.trim(industry_title),select_alignment,select_career,area,checkData,user_id);
+                                modal_close();
+
+                           }
+
+
+                         }else{
+
+                           if (area==="전체") {
                               areaSelctBox.text(area);
+                               console.log($.trim(industry_title)+"/"+select_alignment+"/"+select_career+"/"+area+"/"+checkData+"/"+select_industrydaile);
+                               ep_databox.empty();
+                               idu_start=0;
+                               isSelectArea=false;
+                               industry_append_list($.trim(industry_title),select_alignment,select_career,area,checkData,select_industrydaile,user_id);
                               modal_close();
                               return;
-                          }
-                          if (checkData==="" || ischeckData===false) {
-                            alert("시/군 을 선택해주세요!");
-                            return;
-                          }else {
-                            areaSelctBox.text(area+" > "+checkData);
-                              modal_close();
-                          }
-            });
+                            }else{
+                                if (ischeckData===false) {
+                                    alert("시/군 을 선택해주세요!");
+                                    return;
+                                }
+                                console.log($.trim(industry_title)+"/"+select_alignment+"/"+select_career+"/"+area+"/"+checkData+"/"+select_industrydaile);
+                                ep_databox.empty();
+                                idu_start=0;
+                                isSelectArea=false;
+                                industry_append_list($.trim(industry_title),select_alignment,select_career,area,checkData,select_industrydaile,user_id);
+                                modal_close();
+                           }
+
+                         }//end of ($.trim(industry_title)==="전체>")
+                         if(ischeckData===true) {
+                           areaSelctBox.text(area+" > "+checkData);
+                             isSelectArea=false;
+
+                             modal_close();
+                         }
+
+            }); // end of onclick btn_si_gun_gu
 
 
             //전체구직 리스트 가져오기
-            function append_list(tit,al,cr,sa) {
-
+            function append_list(tit,al,cr,sa,select_gu,user_id) {
+              console.log(2);
               $.ajax({
-                url:'./dml_recruitment.php',
+                url:'./dml_recruitment.php?select_gu='+select_gu,
                 type:'POST',
-                data:{"start":start,"list":list,"titleData":tit,
-                      "select_alignment":al,"select_career":cr,"select_area_contents":sa},
+                data:{"start":start,
+                      "list":list,
+                      "titleData":tit,
+                      "select_alignment":al,
+                      "select_career":cr,
+                      "select_area_contents":sa,
+                      "user_id":user_id
+                    },
                 success:function(data){
                   // console.log(data);
-
                   if(data){
+                    //관심공고 등록 비교
                     $('#ep_databox').append(data);
+                      // var num=$('#interest_insert p').nextAll('input[type=hidden]').val();
+                      // console.log(num);
+                      // check_favorite_job(num,user_id);
                     start += list;
                     console.log("전체 start: "+start);
                     $('#ep_databox li').each(function(index,item){
                         $(item).addClass("fadein");
                     });
+
+                    // 기존 이벤트 제거
+                    $('#interest_insert p').off('click');
+                    //관심공고 누를떄(하트누를떄)
+                    $('#interest_insert p').click(function(e){
+                      console.log("cliclick", e);
+                      var pick_job_num=$(this).nextAll('input[type=hidden]').val();
+                      if (user_id=='') {
+                        alert('로그인 해주세요!');
+                        return;
+                      }
+                      if($(this).next().hasClass('click_heart')){
+                        console.log('has class?');
+                        favorite_job_remove(user_id,pick_job_num);
+                        $(this).next().removeClass('click_heart');
+                      }else{
+                        favorite_job_add(user_id,pick_job_num);
+                        $(this).next().addClass('click_heart');
+                      }
+                    });
+
                     return;
                   } else {
                     if($('#ep_databox').is(':empty')){
@@ -330,20 +466,22 @@
             }
 
 
-            //세부산업 클릭시 가져오는 구직 리스트
-            function industry_append_list(tit, al, cr, sa, industryDtaile) {
+
+          //세부산업 클릭시 가져오는 구직 리스트
+            function industry_append_list(tit, al, cr, sa,select_gu,industryDtaile,user_id) {
                 $.ajax({
-                  url:'./dml_recruitment.php?industryDtaile='+industryDtaile,
+                  url:'./dml_recruitment.php?industryDtaile='+industryDtaile+'&select_gu='+select_gu,
                   type:'POST',
                   data:{"start":idu_start,
                     "list":idu_list,
                     "titleData":tit,
                     "select_alignment":al,
                     "select_career":cr,
-                    "select_area_contents":sa
+                    "select_area_contents":sa,
+                    "user_id":user_id
                   },
                   success:function(data){
-                    console.log(data, '도착한 데이터!');
+                    // console.log(data, '도착한 데이터!');
                     if(data){
                           $('#ep_databox').append(data);
                           console.log("산업스타트 : "+idu_start);
@@ -373,15 +511,81 @@
             function modal_close() {
               setTimeout(function(){
                    $('#area_innerBox').hide();
-              },400);
+              },350);
               $('#area_contents').addClass('cancel');
               $('#area_contents').removeClass('open');
             };
 
+            //관심공고 등록
+            function favorite_job_add(id,pick_job_num){
+
+              $.ajax({
+                url:'./dml_favorite.php?mode=add',
+                type:'POST',
+                data:{"user_id":id,"pick_job_num":pick_job_num},
+                success:function(data){
+                      console.log(data);
+                      alert('관심공고에 등록되었습니다!');
+
+                },
+                error:function(request,status,error){
+                  console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+              });
+
+            }
+
+            //관심공고 삭제
+            function favorite_job_remove(id,pick_job_num){
+              console.log('favorite_job_remove?');
+              $.ajax({
+                url:'./dml_favorite.php?mode=remove',
+                type:'POST',
+                data:{"user_id":id,"pick_job_num":pick_job_num},
+                success:function(){
+                      console.log('success!');
+                      alert('관심공고에 삭제되었습니다!');
+
+                },
+                error:function(request,status,error){
+                  console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+              });
+
+            }
+
+          // //관심공고 등록 비교
+          // function check_favorite_job (num,user_id) {
+          //   // if (user_id=='') {
+          //   //   console.log("로그인이 아님");
+          //   //   return;
+          //   // }
+          //   $.ajax({
+          //     url:'./dml_favorite.php?mode=compare',
+          //     type:'POST',
+          //     data:{"num":num,"user_id":user_id},
+          //     success:function(data){
+          //         console.log(data);
+          //         if (data==="true") {
+          //           $('#interest_insert span').hasClass('click_heart');
+          //         }else if(data==="false") {
+          //           $('#interest_insert span').removeClass('click_heart');
+          //         }
+          //
+          //     },
+          //     error:function(request,status,error){
+          //       console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+          //     }
+          //   });
+          //
+          // }
+
+
+  });
 
 
 
-        });
+
     </script>
   </body>
 </html>

@@ -1,0 +1,167 @@
+/* 상세채용공고  */
+/* 작성자: 남채현 */
+
+#wrap {
+  width:1200px;
+  margin:0 auto;
+}
+section {
+  padding-bottom:50px;
+}
+#company_img {
+  width:100%;
+}
+#company_img img {
+  padding-top:30px;
+  max-width:100%;
+  height:auto;
+}
+#announcement_title {
+  margin-top:1.5rem;
+}
+#sub_title {
+  padding-left:0.3rem;
+  font-size:1.5rem;
+  letter-spacing:-1px;
+  line-height:65px;
+}
+#period {
+  padding-left:0.5rem;
+  font-size:1.2rem;
+  color:red;
+  letter-spacing:-1px;
+  line-height:65px;
+}
+#company_info {
+  width:100%;
+  margin-top:20px;
+  float:left;
+}
+#company_info ul {
+  width:50%;
+  margin-top:30px;
+}
+#company_info ul li {
+  display:block;
+  width:100%;
+  height:20px;
+  margin-bottom:30px;
+
+}
+#company_info h2 {
+  float:left;
+  width:100%;
+  font-size:1.5rem;
+  border-bottom:1px solid #333;
+  padding-left:10px;
+}
+.info_title {
+  font-size:1.5rem;
+  line-height:50px;
+  border-bottom:1px solid #333;
+  padding-left:10px;
+}
+
+#btn_apply {
+  float:right;
+  width:50%;
+  line-height:65px;
+  background: #397fb3;
+  background: -webkit-linear-gradient(left, #42e695, #3bb2b8);
+  background: -o-linear-gradient(left, #42e695, #3bb2b8);
+  background: linear-gradient(to right, #42e695, #3bb2b8);
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+#btn_apply:hover {
+  background-color: #397fb3;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border-radius:5px;
+  transform: translateY(-7px);
+}
+
+.colum {
+  display:inline-block;
+  width:138px;
+  text-align:left;
+  padding:0.3rem 1.2rem;
+  border-right:1px solid #333;
+  margin-right:10px;
+  text-align:left;
+
+}
+.colum2 {
+  display:inline-block;
+  width:300px;
+  padding:0.3rem 0.8rem;
+
+
+}
+.colum3 {
+  display:inline-block;
+  width:900px;
+  padding:0.5rem 0.8rem;
+
+}
+#container {
+  float:right;
+  position:relative;
+  width:50%;
+  height:300px;
+  overflow:hidden;
+  background-color:blue;
+  margin-top:30px;
+}
+/* #container {overflow:hidden; height:400px; position:relative;} */
+#mamWrapper { width:100%; height:400px; z-index:1;}
+#rvWrapper { width:50%; height:400px; position:absolute; top:0; right:0; z-index:0; }
+#container.view_roadview #mapWrapper {width:50%; }
+#roadviewControl {position:absolute; top:5px; left:5px; width:42px; height:42px; z-index:1; cursor:pointer;
+        background: url(http://t1.daumcdn.net/localimg/localimages/07/2018/pc/common/img_search.png) 0 -450px no-repeat;
+}
+#roadviewControl.active {background-position:0 -350px;}
+#close {position: absolute;padding: 4px;top: 5px;left: 5px;cursor: pointer;background: #fff;border-radius: 4px;border: 1px solid #c8c8c8;box-shadow: 0px 1px #888;}
+#close .img {display: block;background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/rv_close.png) no-repeat;width: 14px;height: 14px;}
+#employment_info { clear:both;}
+#employment_info ul{
+  width:100%;
+  margin-top:20px;
+}
+#employment_info ul li {
+  display:block;
+  height:20px;
+  margin-bottom:30px;
+}
+#details_info p {
+  padding:1rem 1rem;
+}
+#details_info ul li {
+  display:block;
+  height:20px;
+  margin-bottom:30px;
+}
+
+#notice {
+  display:inline-block;
+  font-size:0.8rem;
+  color:red;
+}
+
+.container {
+  width:1200px!important;
+
+}
+#footer_info {
+  width:1200%!important;
+
+}
+#footer_box {
+  padding-top:1rem;
+  padding-bottom:1rem;
+}
