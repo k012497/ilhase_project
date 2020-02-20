@@ -24,7 +24,7 @@
     $work_place     = $row['work_place'];
     $details        = $row['details'];
     $content = str_replace(" ", "&nbsp;", $details);
-    $content = str_replace("\n", "&#10;", $details);
+    $content = str_replace("\n", "<br> ", $details);
     $personnel        = $row['personnel'];
     $recruiter_name        = $row['recruiter_name'];
     $recruiter_phone        = $row['recruiter_phone'];
