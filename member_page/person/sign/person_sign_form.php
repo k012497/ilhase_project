@@ -61,7 +61,7 @@ if(isset($_SESSION["username"])){
 </head>
 <body>
     <header>
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_plain.php";?>
     </header>
     <div style="height:550px">
     <div class="container">
@@ -176,7 +176,6 @@ if(isset($_SESSION["username"])){
       <input type="hidden" name="email" id="i10">
     </form>
       <script src="slider.js"></script>
-      <!-- <script src="./slider.js"></script> -->
 <!-- 메인 슬라이드 End -->
 
     </div>
