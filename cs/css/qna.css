@@ -1,0 +1,104 @@
+.container .title {
+    margin: 3rem 0;
+}
+
+.send_question {
+    position: relative;
+    text-align: right;
+    border-bottom: 1px solid black;
+}
+
+.send_question .profile {
+    display: inline-block;
+    text-align: center;
+}
+
+.profile img{
+    display: inline-block;
+    width: 5rem;
+}
+
+#top_description {
+    display: inline-block;
+    background-color: rgb(133, 198, 241);
+    color: white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-right: 1.5rem;
+}
+
+#top_description span:first-child {
+    font-size: 2rem;
+}
+
+.send_question textarea {
+    background: #eee;
+    border: 0;
+    resize: none;
+    width: 80%;
+    overflow: auto;
+    outline: 0;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.send_question button {
+    position: relative;
+    top: -0.8rem;
+    background-color: #555;
+    padding: 0.5rem 1rem;
+    color: white;
+    border: 0;
+    border-radius: 3px;
+}
+
+form {
+    display: inline-block;
+    width: 80%;
+    margin-bottom: 6rem;
+}
+
+.past_qna {
+    width: 65%;
+    margin: 0 auto 5rem auto;
+    /* margin-bottom: 5rem; */
+}
+
+.past_qna div {
+    margin: 1rem 0;
+}
+
+.question_preview {
+    text-align: left;
+}
+
+.answer_preview {
+    text-align: right;
+    margin: 1rem 0;
+}
+
+.message{
+    padding: 0.7rem 1rem;
+    border-radius: 3px;
+}
+
+.date {
+    color: #777;
+    position: relative;
+    bottom: -0.7rem;
+}
+
+.question_preview .message{
+    background-color: #eee;
+    margin-right: 0.5rem;
+}
+
+.answer_preview .message{
+    background-color: rgb(133, 198, 241);
+    margin-left: 0.5rem;
+    color: white;
+}
