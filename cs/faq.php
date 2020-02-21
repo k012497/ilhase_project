@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -61,9 +61,11 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
         corporate_questions = document.body.getElementsByClassName('corporate_questions');
 
         // 개인 회원, 기업 회원 질문을 다 보여주도록 세팅
-        const check_boxes = document.body.querySelectorAll('input');
-        select_personal_question(check_boxes[0]);
-        select_corporate_question(check_boxes[1]);
+        const check_boxes = document.body.querySelectorAll('input[type*=checkbox]');
+
+        select_corporate_question(check_boxes[0]);
+        select_personal_question(check_boxes[1]);
+
       }
     </script>
   </head>
@@ -71,18 +73,16 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div class="text_qna">
-      자주 묻는 질문
-    </div> <br>
+    <h3 class="text_qna title">자주 묻는 질문</h3>
     <div class="middle" action="index.html" method="post">
 
 
       <ul>
         <li>
-          <input id="chk_person" type="checkbox" onchange="select_personal_question(this);">&nbsp; 개 인 &nbsp;&nbsp;&nbsp;
+          <input id="chk_person" type="checkbox" checked="true" onchange="select_personal_question(this);">&nbsp; 개 인 &nbsp;&nbsp;&nbsp;
           <!-- <input id="chk_common" type="checkbox" onchange="select_common_question(this);" checked>&nbsp; 공 통  -->
           &nbsp;&nbsp;&nbsp;
-          <input id="chk_corporate" type="checkbox" onchange="select_corporate_question(this);">&nbsp; 기 업
+          <input id="chk_corporate" type="checkbox" checked="true" onchange="select_corporate_question(this);">&nbsp; 기 업
         </li>
       <br><br><br>
 
