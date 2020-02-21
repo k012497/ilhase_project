@@ -1,6 +1,7 @@
 let member_obj = ""; 
 let person_count = "";
 let corporate_count = "";
+let recruitment_count = "";
 const personal_modal = document.getElementsByClassName('modal')[0];
 const corporate_modal = document.getElementsByClassName('modal')[1];
 const PLAN_COLUMNS = 6;
@@ -39,7 +40,6 @@ function get_corporate_count(){
         type : 'GET', 
         data : "", 
         success : function(data) {
-            console.log(data);
             $('#corporate_count').animateNumber(
             {
                 number: data,
@@ -57,8 +57,29 @@ function get_corporate_count(){
     });
 }
 
-function get_total_count(){
-
+function get_recruitment_count(){
+    $.ajax({
+        cache : false,
+        url : "dml_chart.php?mode=recruitment_count",
+        type : 'GET', 
+        data : "", 
+        success : function(data) {
+            console.log(data);
+            $('#recruitment_count').animateNumber(
+            {
+                number: data,
+                numberStep: comma_separator_number_step
+            },
+            {
+                easing: 'swing',
+                duration: 1000
+            }
+        );
+        },
+        error : function(xhr, status) {
+            alert(xhr + " : " + status);
+        }
+    });
 }
 
 function get_member_data(){
@@ -106,6 +127,7 @@ function set_person_input_data(){
 }
 
 function set_apply_history_data(history_obj){
+    console.log('set_apply_history_data', history_obj);
     // 개인 회원의 지원 내역을 li 태그에 담아서 ul의 자식으로 추가
     const apply_list = document.querySelector('.apply_history_list');
     apply_list.innerHTML = "";
@@ -133,7 +155,7 @@ function set_apply_history_data(history_obj){
 }
 
 function open_info_modal(member_obj, history_obj){
-    console.log(member_obj.member_type);
+    // console.log(member_obj.member_type);
     let title = null;
     let input = null;
     switch(member_obj.member_type){
@@ -224,6 +246,12 @@ function get_sales() {
     });
 }
 
+function get_best_product(){
+    $.get('dml_chart.php', {mode : 'best_product'}, function(data){
+        $('#best_product').text(data);
+    });
+}
+
 function get_plan_list(){
     $.ajax({
         cache : false,
@@ -232,7 +260,6 @@ function get_plan_list(){
         data : "", 
         success : function(data) {
             plan_obj = JSON.parse(data);
-            console.log(plan_obj);
             set_plan_list(plan_obj);
         }, // success 
         error : function(xhr, status) {
@@ -303,10 +330,7 @@ function display_plan_list(plan, num) {
         const response = confirm('정말 삭제하시겠습니까?');
         if(response){
             $.get('dml_plan.php', {mode : 'delete', name : plan.name}, function () {
-                // 새로고침
-                console.log("reload");
                 ul.removeChild(li);
-                // get_plan_list();
             });
         }
     });
@@ -402,10 +426,12 @@ function init() {
     // manage member
     get_person_count();
     get_corporate_count();
+    get_recruitment_count();
 
     // manage product
     get_revenue();
     get_sales();
+    get_best_product();
     get_plan_list();
 
     // cs

@@ -14,12 +14,20 @@
     }
 
     switch($mode){
+        case 'recruitment_count':
+            get_recruitment_count();
+            break;
+
         case 'revenue':
             get_revenue();
             break;
 
         case 'sales':
             get_sales();
+            break;
+
+        case 'best_product':
+            get_best_product();
             break;
 
         case 'count_by_area':
@@ -40,6 +48,20 @@
 
         case 'questions_count':
             get_questions_count();
+            break;
+    }
+
+    function get_recruitment_count(){
+        global $conn;
+
+        $sql = "select count(*) from recruitment";
+        $result = mysqli_query($conn, $sql);
+        if($result){
+            echo mysqli_fetch_array($result)[0];
+        } else {
+            echo mysqli_error($conn);
+        }
+        
     }
 
     function get_revenue(){
@@ -56,6 +78,16 @@
         global $conn;
 
         $sql = "select count(*) from purchase";
+        $result = mysqli_query($conn, $sql);
+        if($result){
+            echo mysqli_fetch_array($result)[0];
+        }
+    }
+
+    function get_best_product(){
+        global $conn;
+
+        $sql = "select plan_name from purchase group by plan_name order by sum(price) desc limit 1;";
         $result = mysqli_query($conn, $sql);
         if($result){
             echo mysqli_fetch_array($result)[0];
@@ -117,5 +149,16 @@
         if($result){
             echo mysqli_fetch_array($result)[0];
         }
+    }
+
+    function get_monthly_revenue(){
+        global $conn;
+
+        $sql = "select sum(price), MID(date, 1, 7) as m from purchase where plan_name = 'small plan' group by m order by m desc limit 6;";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)){
+            //echo;
+        }
+        
     }
 ?>
