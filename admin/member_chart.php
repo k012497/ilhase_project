@@ -147,7 +147,7 @@
     var donut_options = {
         chart: {
             width: 400,
-            height: 400,
+            height: 500,
             title: '직종별 수요 비율 (%)',
             format: function(value, chartType, areaType, valuetype, legendName) {
                 if (areaType === 'makingSeriesLabel') { // formatting at series area
