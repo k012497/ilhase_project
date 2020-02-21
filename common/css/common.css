@@ -29,6 +29,47 @@ select {
 .text_border {
 	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
+#current_location{
+  margin-left:1rem;
+}
+#current_location,#location_info {
+  font-size:1rem;
+}
+
+.card-body span {
+  display:block;
+}
+
+#card_title {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space: nowrap;
+  text-align:center;
+
+}
+#ep_b_name {
+  text-align:center;
+  font-size:1.2rem;
+  margin-bottom:0.5rem;
+
+}
+#near_location_job {
+  margin-top:2rem;
+}
+#go_recruit_details:hover {
+    color:#5DB6DE;
+}
+
+.card-body {
+  text-align:center;
+}
+
+
+/* #company_img {
+  max-width:150px;
+  height:auto;
+} */
+
 
 /* ------------------------------- media query ------------------------------- */
 /* 웹 브라우저 중심으로 배치 */
@@ -110,6 +151,9 @@ select {
     text-decoration:none;
 
   }
+  /* #location_info {
+    width:100%;
+  } */
 
   /* ------------------------------- main ------------------------------- */
   /**부트스트렙수정 **/
@@ -301,7 +345,7 @@ select {
 /* 해상도  1920PX 이하  */
 @media (max-width:1920px){
   .container {
-      width:1000px;
+      width:1100px;
   }
   /* 내가 수정 추가 */
   .caption_slide {
@@ -313,6 +357,7 @@ select {
     border-radius:0.34rem;
     padding:0 6.5em;
   }
+ 
 /* 해상도 1600 이하 */
 @media (max-width:1600px) {
 
@@ -325,6 +370,7 @@ select {
     border-radius:0.34rem;
     padding:0 4.3em;
   }
+  
 }
 
 /* 해상도 1280이하 */
@@ -698,4 +744,5 @@ select {
     margin:0;
   }
 
+  }
 }

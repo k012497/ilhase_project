@@ -106,7 +106,7 @@ function all_data() {
                 </li>
                 <script>console.log('관심');</script>
         ";
-      } else if ( $row[0] == 0) {
+      } else if ( $row[0] == 0 ) {
         // 관심공고로 지정하지 않은 경우
         echo "
               <li>
@@ -137,7 +137,7 @@ function all_data() {
 
 //전체페이지에서 지역으로 찾을떄 사용된 함수
 function all_industry_select_data($select_gu){
-  global $conn,$start,$list,$select_career,$select_area_contents;
+  global $conn,$start,$list,$select_career,$select_area_contents,$user_id;
 
 
   $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
@@ -216,7 +216,7 @@ function all_industry_select_data($select_gu){
 
 //전체페이지에서 각지역의 전체로 찾을때 (ex)서울 전체, 광주 전체 )
 function all_area_select($select_gu){
-  global $conn,$start,$list,$select_career,$select_area_contents;
+  global $conn,$start,$list,$select_career,$select_area_contents,$user_id;
 
   $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
   $filter_result=mysqli_query($conn,$filter_sql);
