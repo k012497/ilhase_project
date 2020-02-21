@@ -26,6 +26,7 @@ if(isset($_SESSION['userid']))
       $('#b_name').val("<?php echo $row['b_name'] ?>");
       $('#jc').val("<?php echo $row['job_category'] ?>");
       $('#ceo').val("<?php echo $row['ceo'] ?>");
+      $('#profile').val("<?php echo $row['ceo'] ?>");
       $('#b_license_num').val("<?php echo $row['b_license_num'] ?>");
       $('#email').val("<?php echo $row['email'] ?>");
       $('#address').val("<?php echo $row['address'] ?>");
