@@ -46,9 +46,9 @@
                         <img src="https://image.flaticon.com/icons/svg/42/42877.svg" alt="user" srcset=""><br />
                         <span><?=$user_name?></span>
                     </div>
-                    <form action="#">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요."></textarea>
-                        <button onclick="">전송하기</button>
+                    <form action="dml_qna.php?mode=q_insert" method="post">
+                        <textarea name="question" id="" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요."></textarea>
+                        <input type="submit" value="전송하기"></button>
                     </form>
                 </div>
             </div>
