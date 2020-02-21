@@ -62,10 +62,10 @@ form, ul {
     margin: 10px;
     background-color: #eee;
     border-radius: 100px;
-    padding: 23%;
+    padding: 23% 0;
 }
 
-.target {
+/* .target {
     animation: 2s focus linear;
 }
 
@@ -75,17 +75,10 @@ form, ul {
     80%{color: black;}
     90%{color: transparent;}
     100%{color: black;}
-}
+} */
 
 .search_member {
     margin-bottom: 3rem;
-}
-
-#btn_search_member {
-    width: 4rem;
-    height: 2.5rem;
-    border-radius: 5px;
-    border: 1px solid #777;
 }
 
 #manage_member .modal {
@@ -190,6 +183,16 @@ form, ul {
     margin-right: 5rem;
 }
 
+#add_plan_form input, #search_member_form input{
+    height: 2.5rem;
+    border : 0;
+    border-bottom: 1px solid #777;
+}
+
+#add_plan_form label {
+    width : 10rem;
+}
+
 .add_plan select {
     width: 100px;
 }
@@ -217,24 +220,8 @@ form, ul {
     width: 50px;
 }
 
-.plan_list .col2 {
-    width: 150px;
-}
-
-.plan_list .col3 {
-    width: 150px;
-}
-
-.plan_list .col4 {
-    width: 150px;
-}
-
-.plan_list .col5 {
-    width: 150px;
-}
-
-.plan_list .col6 {
-    width: 150px;
+.plan_list .col2,.plan_list .col3, .plan_list .col4, .plan_list .col5, .plan_list .col6 {
+    width: 9rem;
 }
 
 .plan_list_item {
@@ -252,6 +239,11 @@ form, ul {
 
 #map_chart, #donut_chart {
     display: inline-block;
+}
+
+#donut_chart {
+    position: relative;
+    left: 1rem;
 }
 
 /* customer support */
@@ -321,4 +313,16 @@ form, ul {
     background-position: 0 30%;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+#btn_search_member, #btn_add_plan {
+    width: 4rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid #777;
+}
+
+#manage_product #btn_add_plan, #manage_member #btn_search_member {
+    border: 1px solid #777;
+    margin: 0 1rem;
 }
