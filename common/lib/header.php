@@ -109,7 +109,7 @@
               ?>
              </a>
              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="#">내 정보</a>
+                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_edit_form.php">내 정보</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">지원자 열람</a>
                  <a class="dropdown-item" href="#">공고 플랜관리</a>

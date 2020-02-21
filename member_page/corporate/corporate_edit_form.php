@@ -1,33 +1,37 @@
 <?php
 session_start();
+// include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
-if(isset($_SESSION["userid"])){
-  $userid=$_SESSION["userid"];
-}else{
-  $userid="";
-}
-if(isset($_SESSION["username"])){
-  $username=$_SESSION["username"];
-}else{
-  $username="";
-}
+if(isset($_SESSION['userid']))
+  $id   = $_SESSION['userid'];
+  $con=mysqli_connect("127.0.0.1","root","123456","ilhase");
+  $sql="select * from corporate where id='$id'";
+  $result=mysqli_query($con,$sql);
+  $row=mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
-    <!-- font -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
-    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
     <script type="text/javascript">
     $(function(){
+      $('#id').val("<?php echo $row['id'] ?>");
+      $('#b_name').val("<?php echo $row['b_name'] ?>");
+      $('#jc').val("<?php echo $row['job_category'] ?>");
+      $('#ceo').val("<?php echo $row['ceo'] ?>");
+      $('#b_license_num').val("<?php echo $row['b_license_num'] ?>");
+      $('#email').val("<?php echo $row['email'] ?>");
+      $('#address').val("<?php echo $row['address'] ?>");
+      $('#id').attr('disabled', true);
+      $('#b_license_num').attr('disabled', true);
+      $('#jc').attr('disabled', true);
       var id_check=0,
           pass_check=0,
           email_check=0,
@@ -45,7 +49,7 @@ if(isset($_SESSION["username"])){
       $('#email_check').click(function(){
         var emailValue=$('#email').val();
         $.ajax({
-          url: './PHPMailer-master/PHPMailer_Test.php',
+          url: './sign/PHPMailer-master/PHPMailer_Test.php',
           type: 'POST',
           data: {"email":emailValue},
           success: function(data){
@@ -68,7 +72,7 @@ if(isset($_SESSION["username"])){
         var b_license_num_value=$('#b_license_num').val();
         var b_license_num_value_result="";
         $.ajax({
-          url: 'b_license_num_check.php',
+          url: './sign/b_license_num_check.php',
           type: 'POST',
           data: {"b_license_num":b_license_num_value},
           success: function(data){
@@ -123,7 +127,7 @@ if(isset($_SESSION["username"])){
           id_check=0;
         }else{
         $.ajax({
-          url: 'member_check_id.php',
+          url: './sign/member_check_id.php',
           type: 'POST',
           data: {"inputId":idValue},
           success: function(data){
@@ -152,14 +156,8 @@ if(isset($_SESSION["username"])){
       });
       $('#corporate_insert_button').click(function(){
         $("#jc option:selected").val();
-        if(id_check==0){
-          alert("아이디를 확인해주세요");
-          return false;
-        }else if(pass_check==0){
+         if(pass_check==0){
           alert("비밀번호를 확인해주세요");
-          return false;
-        }else if(b_license_num_check==0){
-          alert("사업자번호를 확인해주세요");
           return false;
         }else if(email_check==0){
           alert("이메일를 확인해주세요");
@@ -177,17 +175,19 @@ if(isset($_SESSION["username"])){
           alert("주소를 확인해주세요");
           return false;
         }else{
-          document.coperate_insert_submit.submit();
+          document.coperate_update_submit.submit();
         }
       });
     });
     </script>
-    <title>일하세</title>
-</head>
+  </head>
   <body>
-    <header>
+      <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
-    </header>
+      </header>
+    <div id="div_left_menu">
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/corporate/member_side_menu.php";?>
+    </div>
     <div class="" style="width:800px;margin: 0 auto;">
 
     <div class="container">
@@ -195,7 +195,8 @@ if(isset($_SESSION["username"])){
 <tbody>
   <tr>
     <td>
-      <form name="coperate_insert_submit" action="corperate_insert.php" method="post">
+      <form name="coperate_update_submit"
+      action="corperate_update.php?id='<?php echo $row['id']; ?>'&jc='<?php echo $row['job_category'] ?>&b_license_num=<?php echo $row['b_license_num'] ?>'" method="post">
 
       <h5><span style="color:red">*</span>아이디</h3>
       <input type="text" class="form-control" placeholder="아이디를 입력해주세요" id="id"
@@ -249,8 +250,6 @@ if(isset($_SESSION["username"])){
       <h5><span style="color:red">*</span>사업자 등록번호</h3>
       <input type="text" class="form-control" placeholder="사업자 등록번호를 입력해주세요"
       id="b_license_num" name="b_license_num">
-      <input type="button" class="form-control" value="조회" id="b_license_num_button">
-      <h4 id="b_license_num_h4"></h4>
     </td>
   </tr>
   <tr>
@@ -274,7 +273,7 @@ if(isset($_SESSION["username"])){
   </tr>
   <tr>
     <td colspan="2">
-      <input type="button" class="form-control" value="회원 가입"
+      <input type="button" class="form-control" value="수정"
       id="corporate_insert_button">
     </td>
   </tr>
@@ -284,10 +283,5 @@ if(isset($_SESSION["username"])){
     </div>
 
   </div>
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
-        </div>
-    </footer>
   </body>
 </html>

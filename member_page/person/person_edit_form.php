@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="../common/common.css">
-    <link rel="stylesheet" href="./person.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
+    <link rel="stylesheet" href="./css/person.css">
   </head>
   <body>
     <form class="" action="index.html" method="post">
