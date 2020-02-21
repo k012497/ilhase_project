@@ -24,7 +24,6 @@
 
         case 'update':
             update_person();
-            echo "update".$id;
             break;
 
         case 'apply_history':
@@ -105,7 +104,7 @@
         global $conn, $id;
 
         $apply_data_list = array();
-        $sql = "select title, r.industry, a.regist_date as apply_date from recruitment r join apply a where r.num = (select recruit_id from apply where member_id = '$id');";
+        $sql = "select title, r.industry, a.regist_date as apply_date from recruitment r join apply a where r.num in (select recruit_id from apply where member_id = '$id');";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_row($result)){
             $apply_data = array(
