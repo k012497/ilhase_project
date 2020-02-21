@@ -69,49 +69,57 @@ if($mode === 'update'){
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
       <div id="content">
-          <h2 class="title">공지사항 > 내용 > 수정</h2>
-	    <form name="write_notice" method="post" action="update_notice.php?num=<?=$num?>&page=<?=$page?>" enctype="multipart/form-data">
-          <!-- ul, li 만들기 -->
-          <ul id="write_notice">
-            <li class="col1">제목 : <input id="input_subject" type="text" name="subject" value="<?=$subject?>"></li>
-            <li class="col2">내용 : <textarea id="textarea_content" name="content"><?=$content?></textarea></li>
+        <h2 class="title">공지사항 > 내용 > 수정</h2>
+  	    <form name="write_notice" method="post" action="update_notice.php?num=<?=$num?>&page=<?=$page?>" enctype="multipart/form-data">
 
-          </li>
-          <li>
-            <div class="col1">파일업로드</div>
-            <div class="col2">
-              <?php
-                if($mode=="insert"){
-                  echo '<input type="file" name="upfile" >이미지(2MB)파일(0.5MB)';
-                }else{
-              ?>
-                <input type="file" name="upfile" onclick='document.getElementById("del_file").checked=true; document.getElementById("del_file").disabled=true'>
-             <?php
-                }
-              ?>
-              <?php
-                if($mode=="update" && !empty($file_name)){
-                  echo "$file_name 파일등록";
-                  echo '<input type="checkbox" id="del_file" name="del_file" value="1">삭제';
-                  echo '<div class="clear"></div>';
-                }
-              ?>
-            </div><!--end of col2  -->
-          </li>
-          </ul>
+          <div id="list_top_title">
+            <ul  id="write_notice">
+              <li class="col1">제목 : <input id="input_subject" type="text" name="subject" value="<?=$subject?>"></li>
+            </ul>
+          </div>
 
-      </form>
+            <div id="list_item">
+              <li class="col2">내용 : <textarea id="textarea_content" name="content"><?=$content?></textarea></li>
+            </div>
+
+            </li>
+            <li>
+              <div class="notice_file_view">파일업로드 :
+                <?php
+                  if($mode=="insert"){
+                    echo '<input type="file" name="upfile" >이미지(2MB)파일(0.5MB)';
+                  }else{
+                ?>
+                  <input type="file" name="upfile" onclick='document.getElementById("del_file").checked=true; document.getElementById("del_file").disabled=true'>
+               <?php
+                  }
+                ?>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <?php
+                  if($mode=="update" && !empty($file_name)){
+                    echo "$file_name 파일등록";
+                    echo '<input type="checkbox" id="del_file" name="del_file" value="1">삭제';
+                    echo '<div class="clear"></div>';
+                  }
+                ?>
+              </div><!--end of col1  -->
+            </li>
+            </ul>
+
+        </form>
       <!-- php로 mode 검사 해서 수정일 경우 제목,내용,파일 불러오기 -->
-      <ul class="buttons">
-        <li><button type="button" onclick="check_input()">수정하기</button></li>
+      <ul class="notice_contents">
+        <li><button class="list_button" type="button" onclick="check_input()">완 료</button></li>
         <li>
-          <button onclick="location.href='notice_view.php?page=<?=$page?>&num=<?=$num?>'">취소</button></li>
+          <button class="list_button" onclick="location.href='notice_view.php?page=<?=$page?>&num=<?=$num?>'">취 소</button></li>
         </ul>
       </div> <!--End Of Content -->
 
 
-    <footer>
-        <?php include "footer.php";?>
-    </footer>
+      <footer class="py-5 bg-dark">
+          <div class="container">
+              <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
+          </div>
+      </footer>
   </body>
 </html>

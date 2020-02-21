@@ -93,35 +93,41 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
             <span class="col2_view"><?=$regist_date?></span>
           </li>
         </div><!--end of list_top_title  -->
-          <ul class="notice_contents">
-            <li>
+
+        <div id="list_item">
+          <li  class="buttons"><?=$content ?></li>
+          <?php
+          if($file_name) {
+            $real_name = $file_copied;
+            $file_path = "./data/".$real_name;
+            $file_size = filesize($file_path);
+            echo "<br><br>▷ 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
+            // 올린 파일 글 내용에 보이기
+          }
+          ?>
+        </li>
+        </div>
+
+        <ul class="notice_contents">
+          <li>
+          <br>
+          <li>
+            <button class="list_button" onclick="location.href='notice.php?page=<?=$page?>'">목 록</button>
+            </li>
               <?php
-              if($file_name) {
-    						$real_name = $file_copied;
-    						$file_path = "./data/".$real_name;
-    						$file_size = filesize($file_path);
-                echo "▷ 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
-    			       		<a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
-                // 올린 파일 글 내용에 보이기
-    			    }
+                // 세션 값을 검사해서 관리자일 때만 수정 버튼
+                if(false){
+                  // 회원일 경우
+                } else {
+                  // 관리자일 경우
               ?>
-            </li><br>
-            <li  class="buttons"><?=$content ?></li><br>
-            <li class="list_button">
-              <button onclick="location.href='notice.php?page=<?=$page?>'">목록</button>
-              </li>
-                <?php
-                  // 세션 값을 검사해서 관리자일 때만 수정 버튼
-                  if(false){
-                    // 회원일 경우
-                  } else {
-                    // 관리자일 경우
-                    ?>
-                    <li class="list_button"><button  onclick="location.href='write_notice_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수정</button></li>
-                    <?php
-                  }
-                ?>
-              </ul>
+                  <li><button class="list_button" onclick="location.href='write_notice_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수 정</button></li>
+                  <li><button class="list_button" onclick="location.href='notice_view_delete.php?num=<?=$num?>&page=<?=$page?>'">삭 제</button></li>
+              <?php
+                }
+              ?>
+        </ul>
  <!-- page=<?=$page?> -->
 
     </div>
