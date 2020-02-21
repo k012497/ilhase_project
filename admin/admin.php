@@ -34,27 +34,27 @@
                     <div class="manage_member_item">
                         <span >개인 회원 수</span>
                         <br /><br />
-                        <span id="person_count" class="target" style="font-size: 30px;"></span>
+                        <span id="person_count" class="target" style="font-size: 30px;"></span><span>명</span>
                     </div>
                 </li>
                 <li>
                     <div class="manage_member_item">
                         <span>기업 회원 수</span>
                         <br /><br />
-                        <span id="corporate_count" class="target" style="font-size: 30px;"></span>
+                        <span id="corporate_count" class="target" style="font-size: 30px;"></span><span>명</span>
                     </div>
                 </li>
                 <li>
                     <div class="manage_member_item">
-                        <span>개인 회원 수</span>
+                        <span>등록된 공고</span>
                         <br /><br />
-                        <span id="total_count" style="font-size: 30px;">2424</span>
+                        <span id="recruitment_count" style="font-size: 30px;"></span><span>개</span>
                     </div>
                 </li>
             </ul>
             <div class="search_member">
                 <form action="" onsubmit="get_member_data(); return false;" id="search_member_form" method="post">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-right : 1rem;">
                         <label class="btn btn-secondary active">
                             <input type="radio" name="member_type" value="person" id="option1" autocomplete="off" checked> 개인 회원
                         </label>
@@ -68,7 +68,7 @@
                 </form>
             </div>
             <div class="chart">
-                <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/admin/map_chart.php";?>
+                <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/admin/member_chart.php";?>
             </div>
             
             <!-- person modal -->
@@ -131,21 +131,21 @@
                         <div class="manage_product_item">
                             <span >총 매출액</span>
                             <br /><br />
-                            <span id="total_revenue" class="target" style="font-size: 30px;"></span>
+                            <span id="total_revenue" class="target" style="font-size: 30px;"></span><span>원</span>
                         </div>
                     </li>
                     <li>
                         <div class="manage_product_item">
                             <span>총 판매량</span>
                             <br /><br />
-                            <span id="sales_volume" class="target" style="font-size: 30px;"></span>
+                            <span id="sales_volume" class="target" style="font-size: 30px;"></span><span>개</span>
                         </div>
                     </li>
                     <li>
                         <div class="manage_product_item">
                             <span>효자 상품</span>
                             <br /><br />
-                            <span style="font-size: 30px;">basic plan</span>
+                            <span id="best_product" style="font-size: 26px; letter-spacing: -1px;"></span>
                         </div>
                     </li>
                 </ul>
@@ -172,7 +172,7 @@
                         <label for="id">새로운 플랜 추가</label>
                         <input type="text" placeholder="이름" name="name">
                         <input type="text" placeholder="내용" name="description">
-                        <input type="number" placeholder="가격" name="price">
+                        <input type="number" max="9999999" placeholder="가격" name="price">
                         <input type="button" id="btn_add_plan" value="추가">
                     </form>
                 </div>
@@ -200,7 +200,6 @@
         </div>
     </div>
 
-    
     <script src="./js/admin.js"></script>
 </body>
 </html>
