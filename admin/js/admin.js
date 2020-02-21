@@ -381,12 +381,13 @@ $(document).ready(function () {
 
     // 창크기 변화 감지
     $(window).resize(function() {
+        console.log();
         // $('#admin_main_top').css({
         //     'width' : '100%',
         //     'background-size': '100%'
         // });
         fit_height.css({
-        'height' : window.innerHeight,
+        'min-height' : window.innerHeight,
     });
 
     console.log(window.outerHeight, window.innerHeight, window.outerWidth, window.outerWidth);
