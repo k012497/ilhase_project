@@ -77,14 +77,14 @@ session_start();
     <div class="container">
       <h3 class="title">자주 묻는 질문</h3>
 
-      <div class="middle" action="index.html" method="post">
+      <div class="question_list" action="index.html" method="post">
 
         <ul>
           <li>
-            <input id="chk_person" type="checkbox" checked="true" onchange="select_personal_question(this);">&nbsp; 개 인 &nbsp;&nbsp;&nbsp;
+            <input id="chk_person" type="checkbox" checked="true" onchange="select_personal_question(this);"><label for="chk_person"></label>&nbsp; 개인회원 &nbsp;&nbsp;&nbsp;
             <!-- <input id="chk_common" type="checkbox" onchange="select_common_question(this);" checked>&nbsp; 공 통  -->
             &nbsp;&nbsp;&nbsp;
-            <input id="chk_corporate" type="checkbox" checked="true" onchange="select_corporate_question(this);">&nbsp; 기 업
+            <input id="chk_corporate" type="checkbox" checked="true" onchange="select_corporate_question(this);"><label for="chk_corporate"></label>&nbsp; 기업회원
           </li>
         <br><br><br>
 
@@ -103,14 +103,14 @@ session_start();
           <input type="radio" name="question" id="answer02">
           <label class="person_questions" for="answer02">개인 회원가입을 하면 어떤 서비스를 이용할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
           <div class="text">
-            <p>개인 회원은 이력서 탭에서 이력서를 추가, 수정, 삭제할 수 있습니다.<br />이 이력서들을 바탕으로 지원하고싶은 공고에 지원할 수 있습니다.<br />지원을 하지 않더라도 관심공고에 등록하여 원하는 채용 공고를 스크랩하여 원하는 공고만 모아볼 수 있습니다. 또한 1:1 문의를 이용할 수 있습니다.</p>
+            <p>개인 회원은 이력서 탭에서 이력서를 추가, 수정, 삭제할 수 있습니다.<br />이 이력서들을 바탕으로 지원하고싶은 공고에 지원할 수 있습니다.<br />지원을 하지 않더라도 관심공고에 등록하여 원하는 채용 공고를 스크랩하여 원하는 공고만 모아볼 수 있습니다. <br />또한 1:1 문의를 이용할 수 있습니다.</p>
           </div>
         </li>
         <li class="person_questions">
           <input type="radio" name="question" id="answer03">
           <label class="person_questions" for="answer03">개인회원이 채용 공고 등록을 할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
           <div class="text">
-            <p>공고 등록은 개인회원으로 이용할 수 없는 서비스입니다.<br /> 개인회원은 기업회원으로 전환할 수 없으며, 사업자등록증이 있는 경우에 한해서 기업회원으로 가입을 하신 후 공고를 등록할 수 있습니다.</p>
+            <p>공고 등록은 개인회원으로 이용할 수 없는 서비스입니다.<br /> 개인회원은 기업회원으로 전환할 수 없으며,<br /> 사업자등록증이 있는 경우에 한해서 기업회원으로 가입을 하신 후 공고를 등록할 수 있습니다.</p>
           </div>
         </li>
 
@@ -118,7 +118,7 @@ session_start();
           <input type="radio" name="question" id="answer04">
           <label class="person_questions" for="answer04">개인 회원의 아이디를 변경할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
           <div class="text">
-            <p>아이디, 생년월일, 성별은 변경하실 수 없습니다.<br />정보가 잘못된 경우 관리자에게 문의하시거나, 새로 회원가입을 하여 이용해주시길 바랍니다.</p>
+            <p>아이디, 생년월일, 성별은 변경하실 수 없습니다.<br />정보가 잘못된 경우 관리자에게 문의하시거나, 다시 가입을 하여 이용해주시길 바랍니다.</p>
           </div>
         </li>
 
