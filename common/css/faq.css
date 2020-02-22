@@ -1,14 +1,10 @@
-
+.container .title {
+  margin: 3rem 0;
+}
 .middle {
   display: inline-block;
   text-align: center;
   width: 100%;
-}
-
-.text_qna {
-  margin-top: 20px;
-  margin-left: 10%;
-  font-size: 20px;
 }
 
 input[id*="answer"] {
@@ -16,9 +12,10 @@ input[id*="answer"] {
 }
 
 input[id*="answer"] + label {
-  display: block;
+  display: inline-block;
   padding: 20px;
-  border-bottom: 1.5px solid #232188;
+  width: 100%;
+  border-bottom: 1.5px solid #777;
   color: #333;
   width: 500px;
   cursor: pointer;

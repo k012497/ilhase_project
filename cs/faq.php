@@ -73,61 +73,110 @@ session_start();
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <h3 class="text_qna title">자주 묻는 질문</h3>
-    <div class="middle" action="index.html" method="post">
 
+    <div class="container">
+      <h3 class="title">자주 묻는 질문</h3>
 
-      <ul>
+      <div class="middle" action="index.html" method="post">
+
+        <ul>
+          <li>
+            <input id="chk_person" type="checkbox" checked="true" onchange="select_personal_question(this);">&nbsp; 개 인 &nbsp;&nbsp;&nbsp;
+            <!-- <input id="chk_common" type="checkbox" onchange="select_common_question(this);" checked>&nbsp; 공 통  -->
+            &nbsp;&nbsp;&nbsp;
+            <input id="chk_corporate" type="checkbox" checked="true" onchange="select_corporate_question(this);">&nbsp; 기 업
+          </li>
+        <br><br><br>
+
+        <ul class="faq_list">
+        <!-- 공통 질문 -->
         <li>
-          <input id="chk_person" type="checkbox" checked="true" onchange="select_personal_question(this);">&nbsp; 개 인 &nbsp;&nbsp;&nbsp;
-          <!-- <input id="chk_common" type="checkbox" onchange="select_common_question(this);" checked>&nbsp; 공 통  -->
-          &nbsp;&nbsp;&nbsp;
-          <input id="chk_corporate" type="checkbox" checked="true" onchange="select_corporate_question(this);">&nbsp; 기 업
+          <input type="radio" name="question" id="answer01">
+          <label for="answer01" class="visible">아이디/비밀번호가 생각나지 않아요.<img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>우측 상단의 로그인 버튼을 누른 후, '아이디/비밀번호 찾기'를 통해 검색이 가능합니다.<br />아이디/비밀번호 찾기에서 문제가 있는 경우 관리자에게 1:1 문의 바랍니다.</p>
+          </div>
         </li>
-      <br><br><br>
 
+        <!-- 개인회원 질문 -->
+        <li class="person_questions">
+          <input type="radio" name="question" id="answer02">
+          <label class="person_questions" for="answer02">개인 회원가입을 하면 어떤 서비스를 이용할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>개인 회원은 이력서 탭에서 이력서를 추가, 수정, 삭제할 수 있습니다.<br />이 이력서들을 바탕으로 지원하고싶은 공고에 지원할 수 있습니다.<br />지원을 하지 않더라도 관심공고에 등록하여 원하는 채용 공고를 스크랩하여 원하는 공고만 모아볼 수 있습니다. 또한 1:1 문의를 이용할 수 있습니다.</p>
+          </div>
+        </li>
+        <li class="person_questions">
+          <input type="radio" name="question" id="answer03">
+          <label class="person_questions" for="answer03">개인회원이 채용 공고 등록을 할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>공고 등록은 개인회원으로 이용할 수 없는 서비스입니다.<br /> 개인회원은 기업회원으로 전환할 수 없으며, 사업자등록증이 있는 경우에 한해서 기업회원으로 가입을 하신 후 공고를 등록할 수 있습니다.</p>
+          </div>
+        </li>
 
-          <!-- <input type="radio" name="accordion" id="answer01">
-          <label for="answer01">이력서는 어떻게 사용하나요? <img src="../img/arrow.png" alt=""> </label>
-          <div class="">
-            <p>여기에 추가되는 부분이 자주묻는 질문을 답변하는 내용이 들어있다.</p>
-          </div> -->
-          <ul>
-            <li class="person_questions">
-              <input type="checkbox" id="answer01">
-              <label class="person_questions" for="answer01">개인 이력서는 어떻게 사용하나요? <img src="../img/arrow.png" alt=""> </label>
-              <div class="text">
-                <p>여기에 추가되는 부분이 자주묻는 질문을 답변하는 내용이 들어있습니다.</p>
-              </div>
-            </li>
-            <li class="person_questions">
-              <input type="checkbox" id="answer05">
-              <label class="person_questions" for="answer05">개인 이력서는 어떻게 사용하나요? <img src="../img/arrow.png" alt=""> </label>
-              <div class="text">
-                <p>여기에 추가되는 부분이 자주묻는 질문을 답변하는 내용이 들어있습니다.</p>
-              </div>
-            </li>
+        <li class="person_questions">
+          <input type="radio" name="question" id="answer04">
+          <label class="person_questions" for="answer04">개인 회원의 아이디를 변경할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>아이디, 생년월일, 성별은 변경하실 수 없습니다.<br />정보가 잘못된 경우 관리자에게 문의하시거나, 새로 회원가입을 하여 이용해주시길 바랍니다.</p>
+          </div>
+        </li>
 
-            <li>
-              <input type="checkbox" id="answer02">
-              <label for="answer02">공통 이력서는 어떻게 사용하나요? <img src="../img/arrow.png" alt=""> </label>
-              <div class="text">
-                <p>여기에 추가되는 부분이 자주묻는 질문을 답변하는 내용이 들어있습니다.</p>
-              </div>
-            </li>
+        <li class="corporate_questions">
+          <input type="radio" name="question" id="answer05">
+          <label class="corporate_questions" for="answer05">채용 공고 수정은 어디에서 어떻게 하나요?<img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>기업 회원으로 로그인 하신 후, '공고'탭에서 하실 수 있습니다.<br />수정하려는 공고를 클릭하여 수정을 하실 수 있습니다.</p>
+          </div>
+        </li>
+        <!-- 기업회원 질문 -->
+        <li class="corporate_questions">
+          <input type="radio" name="question" id="answer06">
+          <label  class="corporate_questions" for="answer06">기업 회원의 상호명, 대표자명을 변경할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>변경이 가능합니다.<br />기업회원 로그인 후, 우측 상단의 회사명을 클릭하여 '내 정보'에 들어가셔서 수정하실 수 있습니다. <br />다만 업종과 사업자등록번호는 변경하실 수 없습니다.</p>
+          </div>
+        </li>
 
-            <li class="corporate_questions">
-              <input type="checkbox" id="answer03">
-              <label  class="corporate_questions" for="answer03">기업 어떻게 사용하나요? <img src="../img/arrow.png" alt=""> </label>
-              <div class="text">
-                <p>여기에 추가되는 부분이 자주묻는 질문을 답변하는 내용이 들어있습니다.</p>
-              </div>
-            </li>
+        <li class="corporate_questions">
+          <input type="radio" name="question" id="answer07">
+          <label  class="corporate_questions" for="answer07">채용공고는 어디서 올리나요?<img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>기업 회원으로 로그인 후, <br />'공고'탭에서 '신규 등록하기'를 클릭하여 등록할 수 있습니다.</p>
+          </div>
+        </li>
 
-          </ul>
+        <li class="corporate_questions">
+          <input type="radio" name="question" id="answer08">
+          <label  class="corporate_questions" for="answer08">세금계산서를 발행할 수 있나요?<img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>세금계산서를 별도로 발행해드리지 않습니다. 다른 계산서가 필요하신 경우 1:1문의 바랍니다.</p>
+          </div>
+        </li>
+
+        <li class="corporate_questions">
+          <input type="radio" name="question" id="answer09">
+          <label  class="corporate_questions" for="answer09">진행중인 채용공고 마감을 하고 싶으면 어떻게 하나요?<img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>기업 회원으로 로그인 후, <br />'공고'탭에서 마감하려는 공고를 클릭 후 마감날짜를 수정 또는 공고를 삭제하여주시기 바랍니다.</p>
+          </div>
+        </li>
+
+        <li class="corporate_questions">
+          <input type="radio" name="question" id="answer10">
+          <label  class="corporate_questions" for="answer10">구입한 플랜을 환불하고싶어요.<img src="../img/arrow.png" alt=""> </label>
+          <div class="text">
+            <p>환불은 구입한 플랜을 사용하지 않은 상태에서만 가능하며, <br />1:1 문의를 통해 환불처리를 도와드리겠습니다.</p>
+          </div>
+        </li>
       </ul>
-
+  </ul>
+        </ul>
+  
+      </div>
     </div>
+
+    <!-- footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
