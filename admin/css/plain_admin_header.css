@@ -1,0 +1,8 @@
+.navbar {
+    background: black;
+    position: static;
+  }
+
+  #btn_top {
+    display: none;
+  }
