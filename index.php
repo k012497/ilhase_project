@@ -40,7 +40,7 @@ if(isset($_SESSION["usermember_type"]))
           <div class="carousel-item active" > <!--가로-->
                 <img class="d-block w-100" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/mainbanner1.jpg" alt="First slide">
                 <div class="caption_slide">
-                    <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" id="btn_go">구직공고 바로가기</a>
+                    <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php?mode=recruitment" id="btn_go">구직공고 바로가기</a>
                 </div>
           </div>
           <div class="carousel-item">
@@ -71,10 +71,15 @@ if(isset($_SESSION["usermember_type"]))
     <div class="container">
           <div class="search">
             <h2 class="title" id="search_title">빠른 검색</h2>
-            <form id="searchJob_box" action="#" method="post">
-                <input id="search_job" type="text" placeholder="검색">
-                <input id="btn_searchJob" type="image" name="" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="searchJob">
+            <form id="searchJob_box" name="search_box" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" method="get">
+                <input id="search_job" name="search_word" type="text" placeholder="ex) 서울,부산,경비,제조,청소,신입,경력...">
+                <input type="hidden" name="mode" value="index_search"> 
+                <input id="btn_searchJob" type="image" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="searchJob">
             </form>
+            <div id="atuo_keword">
+                  <ul>
+                  </ul>
+            </div>
             <div id="pick_job">
                 <ul>
                   <li><a href="#">#인기구직1</a></li>
@@ -137,8 +142,25 @@ if(isset($_SESSION["usermember_type"]))
           <div id="recommend_box">
             <!-- 지역 기반 추천 공고 -->
             <h2 class="title"><span>주변에서 이런 사람을 찾아요</span>
+              <?php
+                $user_address_sql="select new_address from person where id='$id'";
+                $user_result=mysqli_query($conn,$user_address_sql);
+                $find_row=mysqli_fetch_array($user_result);
+                mysqli_close($conn);
+
+                if($id==''){
+                  //로그인 안되면 기존 ip로 위치 
+              ?>
               <span id="current_location">(현재 위치 :</span>
               <span id="location_info"></span>
+              <?php
+                }else {
+              ?>
+              <span id="current_location"><?=$id?>님의 주소 : </span>
+              <span id="location_info"><?=$find_row[0]?></span>
+              <?php
+                }
+              ?>
             </h2>
             <div id="near_location_job" class="row" >
             </div>
@@ -171,42 +193,48 @@ if(isset($_SESSION["usermember_type"]))
         </div>
     </footer>
     <script type="text/javascript">
-     var lat = '37.562134';
-     var lng = '127.035188';
+     var lat = '';
+     var lng = '';
+     var user_id="<?=$id?>";
      var address='';
-
+     var rute="<?= $_SERVER['HTTP_HOST']?>";
+     console.log(rute);
 
       //지도 경도와 위치를 가져와서 구글 api로 지역주소 string으로 변환  
      function getLocation() {
 
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
-                // lat = position.coords.latitude; //위도
-                // lng = position.coords.longitude; //경도
+                lat = position.coords.latitude; //위도
+                lng = position.coords.longitude; //경도
                 console.log(lat + " / " + lng);
                 jQuery.ajax({
                     url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng +
-                            '&sensor=true&key=AIzaSyDYGArSYlSdtFgFIJ2CycLM2R_SibM_BIQ',
+                            '&sensor=true&key=AIzaSyD0d6XLU_Z9YZZUKaOqLKtOfy-ZXoJ4ysU',
                     type: 'POST',
                     success: function (myJSONResult) {
                         if (myJSONResult.status == 'OK') {
                             //현재 컴퓨터의 위도 경도로 위치값이 전달되면 
                             address =  myJSONResult.results[5].formatted_address; //주소 받아옴
-                            $('#location_info').text(address+")");
+                            if(user_id==''){
+                              $('#location_info').text(address+")");
+                            }
                             console.log(address);
                             $.ajax({
                                 url:'./common/lib/recommend_based_on_location.php',
                                 type : 'post',
                                 data:{
-                                   'loc' : address 
+                                   'loc' : address,
+                                   'user_id' : user_id
                                 },
                                 success:function(data){
                                   if(data){
-                                    // 받은 리스트 뿌리기
+                                    // 받은 데이터 리스트 뿌리기
                                   $('#near_location_job').append(data);
 
                                   }else {
-                                    $('#location_info').text(data);
+                                     // 받은 데이터 없을때
+                                    $('#near_location_job').text(data);
                                   }
                                   
                                   
@@ -214,7 +242,7 @@ if(isset($_SESSION["usermember_type"]))
                                 error:function(request,status,error){
                                     console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                                 }
-                            });
+                            }); // end of ajax
 
                             } else if (myJSONResult.status == 'ZERO_RESULTS') {
                             alert(
@@ -225,6 +253,31 @@ if(isset($_SESSION["usermember_type"]))
                             alert("할당량이 초과되었습니다.");
                         } else if (myJSONResult.status == 'REQUEST_DENIED') {
                             alert("요청이 거부되었습니다.\n\n대부분의 경우 sensor 매개변수가 없기 때문입니다.");
+                            //api 요청에러 일떄 거부됬을때 디폴트 값으로 위치 찾기
+                            $('#location_info').text("서울 강남구)");
+                            $.ajax({
+                                url:'./common/lib/recommend_based_on_location.php',
+                                type : 'post',
+                                data:{
+                                   'loc' : '서울 강남구',
+                                   'user_id' : user_id
+                                },
+                                success:function(data){
+                                  if(data){
+                                    // 받은 데이터 리스트 뿌리기
+                                  $('#near_location_job').append(data);
+
+                                  }else {
+                                     // 받은 데이터 없을때
+                                    $('#near_location_job').text(data);
+                                  }
+                                  
+                                  
+                                },
+                                error:function(request,status,error){
+                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                }
+                            }); // end of ajax
                         } else if (myJSONResult.status == 'INVALID_REQUEST') {
                             alert("일반적으로 쿼리(address 또는 latlng)가 누락되었음을 나타냅니다.");
                         }
@@ -243,6 +296,43 @@ if(isset($_SESSION["usermember_type"]))
 
 }
 getLocation(); //함수 실행
+
+$(function(){
+
+  $('#search_job').keyup(function(){
+
+      if($(this).val()===""){
+        $("#atuo_keword").hide();
+      }else {
+        $.ajax({
+          // async : false,
+          url:"http://"+rute+"/ilhase/search/dml_recruitment.php?mode=auto_keyword",
+          data:{"keyword" : $.trim($(this).val()) },
+          method:'GET',
+          success:function(data){
+            $('#atuo_keword').show();
+            $('#atuo_keword ul').empty();
+            $('#atuo_keword ul').append(data);
+            $('#atuo_keword ul li').each(function(){
+                $(this).click(function(){
+                  // $('#search_job').val('');
+                  $('#search_job').val($(this).text());
+                  console.log($('#search_job').val());
+                });
+
+            }); //end of each
+          }//end of data
+        });//end of ajax
+      } // end of $(this).val()
+
+  });//end of keyup 
+  
+});
+
+$('body').click(function(){
+  $("#atuo_keword").hide();
+});
+
 
 </script>
 
