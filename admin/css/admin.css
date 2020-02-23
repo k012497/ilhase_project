@@ -8,6 +8,13 @@ form, ul {
     text-align: center;
 }
 
+.navbar {
+    background-color: black;
+    /* position: fixed; */
+    width: 100%;
+    z-index: 1600;
+}
+
 .nav-link {
     cursor: pointer;
 }
@@ -261,7 +268,7 @@ form, ul {
     width: 100%;
     text-align: center;
     position: relative;
-    top: 11rem;
+    top: 15rem;
     user-select: none;
 }
 
@@ -270,16 +277,17 @@ form, ul {
 }
 
 #cs_left {
-    float: left;
-    width: 50%;
+    /* float: left; */
+    width: 500px;
     height: 5rem;
     padding-left: 10rem;
     font-size: 1.3rem;
 }
 
 #cs_right {
-    float: left;
-    width: 50%;
+    vertical-align: top;
+    position: relative;
+    width: 500px;
     line-height: 3rem;
     padding-right: 10rem;
     color: white;
@@ -287,7 +295,6 @@ form, ul {
     background-position: 22%;
     background-repeat: no-repeat;
     background-size: contain;
-
     height: 5rem;
 }
 
@@ -301,16 +308,15 @@ form, ul {
     font-size: larger;
 }
 
-#cs_right span {
+#cs_right a {
     position: absolute;
-    right: 18.2rem;
-    height: 5rem;
-    line-height: 4.5rem;
+    top: 0.7rem;
+    left: 8rem;
 }
 
 #customer_support {
     background-image: url('../img/cs_img.png');
-    background-position: 0 30%;
+    background-position: 0 35%;
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -323,6 +329,6 @@ form, ul {
 }
 
 #manage_product #btn_add_plan, #manage_member #btn_search_member {
-    border: 1px solid #777;
     margin: 0 1rem;
+    border: 1px solid #777;
 }

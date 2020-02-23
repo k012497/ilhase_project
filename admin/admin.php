@@ -186,20 +186,26 @@
             <br />
             <div class="cs_content">
                 <div id="cs_left">
-                    <div>
+
                         <span>답변을 기다리는 문의</span> <br />
                         <span class="qna_count_container"><span class="qna_count">0</span>건</span>
-                    </div>
+
                 </div>
                 <div id="cs_right">
-                    <span><a href="#">자세히 보기</a></span>
+                    <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/qna_list.php">자세히 보기</a>
                 </div>
+                
             </div>
         </div>
 
         </div>
     </div>
 
+    <style>
+        .navbar {
+            position: fixed;
+        }
+    </style>
     <script src="./js/admin.js"></script>
 </body>
 </html>
