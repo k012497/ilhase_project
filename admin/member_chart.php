@@ -259,6 +259,7 @@
 
     function get_count_by_industry(industry, idx) {
         $.ajax({
+            async : false,
             type: "get",
             url: "dml_chart.php?mode=count_by_industry",
             data: { industry : industry },
