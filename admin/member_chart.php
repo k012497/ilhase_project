@@ -191,45 +191,98 @@
     // tui.chart.pieChart(donut_chart, industry_data, donut_options);
 
     function get_all_area_name(){
-        $.get('dml_chart.php?mode=area_name', "", function (area_name_array) {
-            name_array = JSON.parse(area_name_array);
-            for(let i = 0 ; i < name_array.length ; i++){
-                get_count_by_area(name_array[i], i);
+        $.ajax({
+            async : false,
+            type: "get",
+            url: "dml_chart.php?mode=area_name",
+            data: "",
+            success: function (area_name_array) {
+                name_array = JSON.parse(area_name_array);
+                for(let i = 0 ; i < name_array.length ; i++){
+                    get_count_by_area(name_array[i], i);
+                }
             }
         });
+        // $.get('dml_chart.php?mode=area_name', "", function (area_name_array) {
+            //     name_array = JSON.parse(area_name_array);
+            //     for(let i = 0 ; i < name_array.length ; i++){
+            //         get_count_by_area(name_array[i], i);
+            //     }
+            // });
     }
     
     function get_count_by_area(area, idx){
-        $.get('dml_chart.php?mode=count_by_area', { area : area }, function(count){
-            // area_data에 데이터 입력
+        $.ajax({
+            async : false,
+            type: "get",
+            url: "dml_chart.php?mode=count_by_area",
+            data: { area : area },
+            success: function (count) {
+                // area_data에 데이터 입력
             area_data.series[idx].data = parseInt(count);
             if(idx === 16){
                 // 마지막 데이터 입력 후 차트 그리기 
                 tui.chart.mapChart(map_chart, area_data, map_options);
             }
+            }
         });
+        // $.get('dml_chart.php?mode=count_by_area', { area : area }, function(count){
+        //     // area_data에 데이터 입력
+        //     area_data.series[idx].data = parseInt(count);
+        //     if(idx === 16){
+        //         // 마지막 데이터 입력 후 차트 그리기 
+        //         tui.chart.mapChart(map_chart, area_data, map_options);
+        //     }
+        // });
     }
     
     function get_all_industry() {
-        $.get('dml_chart.php?mode=industry_name', "", function (industry_name_array) {
-            industry_array = JSON.parse(industry_name_array);
-            for(let i = 0 ; i < industry_array.length ; i++){
-                get_count_by_industry(industry_array[i], i);
+        $.ajax({
+            async : false,
+            type: "get",
+            url: "dml_chart.php?mode=industry_name",
+            data: "",
+            success: function (industry_name_array) {
+                industry_array = JSON.parse(industry_name_array);
+                for(let i = 0 ; i < industry_array.length ; i++){
+                    get_count_by_industry(industry_array[i], i);
+                }
             }
         });
+        // $.get('dml_chart.php?mode=industry_name', "", function (industry_name_array) {
+        //     industry_array = JSON.parse(industry_name_array);
+        //     for(let i = 0 ; i < industry_array.length ; i++){
+        //         get_count_by_industry(industry_array[i], i);
+        //     }
+        // });
     }
 
     function get_count_by_industry(industry, idx) {
-        $.get('dml_chart.php?mode=count_by_industry', { industry : industry }, function(count){
-            // area_data에 데이터 입력
-            industry_data.series[idx].data = parseInt(count);
-            // console.log(industry, count);
-            if(idx === 8){
-                // 마지막 데이터 입력 후 차트 그리기 
-                console.log('draw donut with', industry_data.series[idx].data);
-                tui.chart.pieChart(donut_chart, industry_data, donut_options);
+        $.ajax({
+            type: "get",
+            url: "dml_chart.php?mode=count_by_industry",
+            data: { industry : industry },
+            success: function (count) {
+                // area_data에 데이터 입력
+                industry_data.series[idx].data = parseInt(count);
+                // console.log(industry, count);
+                if(idx === 8){
+                    // 마지막 데이터 입력 후 차트 그리기 
+                    console.log('draw donut with', industry_data.series[idx].data);
+                    tui.chart.pieChart(donut_chart, industry_data, donut_options);
+                }
             }
         });
+        // $.get('dml_chart.php?mode=count_by_industry', { industry : industry }, function(count){
+        //     // area_data에 데이터 입력
+        //     industry_data.series[idx].data = parseInt(count);
+        //     // console.log(industry, count);
+        //     if(idx === 8){
+        //         // 마지막 데이터 입력 후 차트 그리기 
+        //         console.log('draw donut with', industry_data.series[idx].data);
+        //         tui.chart.pieChart(donut_chart, industry_data, donut_options);
+        //     }
+        // });
     }
 
     function init_chart(){

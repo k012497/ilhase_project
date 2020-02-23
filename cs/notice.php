@@ -10,8 +10,8 @@ $total_record=0;
 //*****************************************************
 if(isset($_GET["mode"])&&$_GET["mode"]=="search"){
   //제목, 내용, 아이디
-  $find = test_input($_POST["find"]);
-  $search = test_input($_POST["search"]);
+  $find = filter_data($_POST["find"]);
+  $search = filter_data($_POST["search"]);
   $q_search = mysqli_real_escape_string($conn, $search);
   $sql="SELECT * from `notice` where $find like '%$q_search%' order by num desc;";
 }else{
@@ -37,7 +37,7 @@ $number = $total_record - $start;
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/ilhase/common/css/notice.css">
+    <link rel="stylesheet" href="./css/notice.css">
     <title></title>
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
@@ -101,8 +101,14 @@ $number = $total_record - $start;
         </div><!--end of page num -->
         <div id="button">
           <a href="./list.php?page=<?=$page?>"> <img src="../img/list.png" alt="">&nbsp;</a>
-          <?php //세션 아이디가 admin일 경우만 글쓰기 허용
-
+          <?php //세션 아이디가 admin일 경우만 수정 허용
+            if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
+          ?>
+              <ul>
+                <li><button onclick="location.href='#';">수정</button></li>
+                </ul>
+          <?php
+            }
           ?>
         </div><!--end of button -->
       </div><!--end of page button -->

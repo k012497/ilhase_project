@@ -9,6 +9,13 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
 
+<?php
+  if(isset($_GET['mode'])){
+    $mode = $_GET['mode'];
+  } else {
+    $mode = "";
+  }
+?>
 <style>
     #navbarSupportedContent .nav-link {
         color: white;
@@ -20,7 +27,7 @@
 </style>
 
 <!-- html -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black; position: fixed; width: 100%; z-index: 1600;">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <a class="navbar-brand" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/admin.php" style="color: white;">일하세</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,6 +35,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
+      <?php
+      if(!$mode){
+      ?>
         <li class="nav-item active">
           <a class="nav-link" data-target="#manage_member">회원관리<span class="sr-only">(current)</span></a>
         </li>
@@ -37,6 +47,10 @@
         <li class="nav-item">
           <a class="nav-link" data-target="#customer_support">고객센터</a>
         </li>
+      
+      <?php
+      }
+      ?>
         <li class="nav-item dropdown" id="nav_user">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             관리자
@@ -48,7 +62,13 @@
         </li>
     </ul>
 
-    <button class="text_border" id="btn_top" data-target="#admin_main_top"> ▴ top </button>
+    <?php
+    if(!$mode){
+    ?>
+      <button class="text_border" id="btn_top" data-target="#admin_main_top"> ▴ top </button>
+    <?php
+    }
+    ?>
 
   </div>
 </nav>
