@@ -9,23 +9,28 @@ const APPLY_HISTORY_COLUMN = 3;
 let plan_list_max_num = 0;
 let comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
 
+function animate_count_up(target, data){
+    $(target).animateNumber(
+        {
+            number: data,
+            numberStep: comma_separator_number_step
+        },
+        {
+            easing: 'swing',
+            duration: 1000
+        }
+    );
+}
+
 function get_person_count(){
     $.ajax({
+        // async : false,
         cache : false,
         url : "dml_person.php?mode=select_count",
         type : 'GET', 
         data : "", 
         success : function(data) {
-            $('#person_count').animateNumber(
-            {
-                number: data,
-                numberStep: comma_separator_number_step
-            },
-            {
-                easing: 'swing',
-                duration: 1000
-            }
-        );
+            animate_count_up('#person_count', data);
         }, // success 
         error : function(xhr, status) {
             alert(xhr + " : " + status);
@@ -40,16 +45,7 @@ function get_corporate_count(){
         type : 'GET', 
         data : "", 
         success : function(data) {
-            $('#corporate_count').animateNumber(
-            {
-                number: data,
-                numberStep: comma_separator_number_step
-            },
-            {
-                easing: 'swing',
-                duration: 1000
-            }
-        );
+            animate_count_up('#corporate_count', data);
         },
         error : function(xhr, status) {
             alert(xhr + " : " + status);
@@ -64,17 +60,7 @@ function get_recruitment_count(){
         type : 'GET', 
         data : "", 
         success : function(data) {
-            console.log(data);
-            $('#recruitment_count').animateNumber(
-            {
-                number: data,
-                numberStep: comma_separator_number_step
-            },
-            {
-                easing: 'swing',
-                duration: 1000
-            }
-        );
+            animate_count_up('#recruitment_count', data);
         },
         error : function(xhr, status) {
             alert(xhr + " : " + status);
@@ -88,7 +74,7 @@ function get_member_data(){
     $.ajax({
         cache : false,
         url : "search_member.php?mode=select",
-        type : 'POST', 
+        type : 'POST',
         data : form_data, 
         success : function(data) {
             if(!data){
@@ -218,31 +204,13 @@ function query_corporate(mode) {
 
 function get_revenue(){
     $.get('dml_chart.php', {mode : 'revenue'}, function(data){
-        $('#total_revenue').animateNumber(
-            {
-                number: data,
-                numberStep: comma_separator_number_step
-            },
-            {
-                easing: 'swing',
-                duration: 1000
-            }
-        )
+        animate_count_up('#total_revenue', data);
     });
 }
 
 function get_sales() {
     $.get('dml_chart.php', {mode : 'sales'}, function(data){
-        $('#sales_volume').animateNumber(
-            {
-                number: data,
-                numberStep: comma_separator_number_step
-            },
-            {
-                easing: 'swing',
-                duration: 1000
-            }
-        )
+        animate_count_up('#sales_volume', data);
     });
 }
 
@@ -254,6 +222,7 @@ function get_best_product(){
 
 function get_plan_list(){
     $.ajax({
+        async : false,
         cache : false,
         url : "dml_plan.php?mode=select",
         type : 'GET', 
@@ -338,34 +307,14 @@ function display_plan_list(plan, num) {
 
 }
 
-// // count up animation
-// $('.target').animateNumber(
-//     {
-//         number: 1533,
-//         numberStep: comma_separator_number_step
-//     },
-//     {
-//         easing: 'swing',
-//         duration: 1000
-//     }
-// );
-
 function get_unanswerd_questions(){
     $.get('dml_chart.php', {mode : 'questions_count'}, function(data){
-        $('.qna_count').animateNumber(
-            {
-                number: data,
-                numberStep: comma_separator_number_step
-            },
-            {
-                easing: 'swing',
-                duration: 10
-            }
-        )
+        animate_count_up('.qna_count', data);
     });
 }
 
 $(document).ready(function () {
+    // btn_add_plan 누를 때
     $("#btn_add_plan").click(function(){
         var form_data = $("#add_plan_form").serialize();
 
@@ -412,9 +361,9 @@ $(document).ready(function () {
         // });
         fit_height.css({
         'min-height' : window.innerHeight,
-    });
+        });
 
-    console.log(window.outerHeight, window.innerHeight, window.outerWidth, window.outerWidth);
+        console.log(window.outerHeight, window.innerHeight, window.outerWidth, window.outerWidth);
     });
 
     $("body").animate({
