@@ -93,24 +93,30 @@ notice_list_menu {
 }
 
 .list_button{
-
-  width: 50px;
-  height: 30px;
-}
-
-/* 공지사항 -> 내용 -> 수 파일텍스트 위치 이동 */
-.notice_file_view {
-  margin-left: 100px;
+  	width: 50px;
+  	height: 30px;
 }
 
 #textarea_content {
-  width: 840px;
-  height: 445px;
-  resize: none;
+  	width: 840px;
+  	height: 445px;
+	padding: 0.5rem 1rem;
+  	resize: none;
+}
+
+#write_notice, #write_notice li {
+	width: 100%;
+	padding: 0.5rem 1rem;
+}
+
+#write_notice label {
+	margin: 0 1rem;
+	display: inline;
 }
 
 #input_subject {
-  width: 350px;
+	width: 90%;
+	padding: 0 0.5rem;
 }
 
 #content #main_img {
