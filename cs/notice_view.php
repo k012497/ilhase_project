@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
 
 $num = $page = $hit = "";
@@ -69,7 +71,7 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/ilhase/common/css/notice.css">
+    <link rel="stylesheet" href="./css/notice.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title></title>
   </head>
@@ -77,16 +79,23 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     <header>
 
         <?php
-          if(true){
-            // 회원일 경우
-            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
-          } else {
+          if(empty($_SESSION['userid'])){
+            echo "<script>alert('로그인 후 이용해주세요!');
+                history.go(-1);
+              </script>";
+          } else if($_SESSION['userid'] === 'admin'){
             // 관리자일 경우
+            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
+            ?>
+            <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
+            <?php
+          } else {
+            // 회원일 경우
             include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
           }?>
     </header>
-    <div id="content">
-      <h2 class="title">공지사항 > 내용</h2>
+    <div class="container">
+      <h3 class="title">공지사항 > 내용</h3>
         <div id="list_top_title">
           <li>
             <span class="col1"><b>제목 : </b><?=$subject?></span>
@@ -94,8 +103,8 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
           </li>
         </div><!--end of list_top_title  -->
 
-        <div id="list_item">
-          <li  class="buttons"><?=$content ?></li>
+        <div id="notice_contents">
+          <li  class="buttons"><?=$content?></li>
           <?php
           if($file_name) {
             $real_name = $file_copied;
@@ -109,28 +118,22 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
         </li>
         </div>
 
-        <ul class="notice_contents">
-          <li>
+        <ul class="notice_buttons">
           <br>
-          <li>
-            <button class="list_button" onclick="location.href='notice.php?page=<?=$page?>'">목 록</button>
-            </li>
-              <?php
-                // 세션 값을 검사해서 관리자일 때만 수정 버튼
-                if(false){
-                  // 회원일 경우
-                } else {
-                  // 관리자일 경우
-              ?>
-                  <li><button class="list_button" onclick="location.href='write_notice_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수 정</button></li>
-                  <li><button class="list_button" onclick="location.href='notice_view_delete.php?num=<?=$num?>&page=<?=$page?>'">삭 제</button></li>
-              <?php
-                }
-              ?>
+          <li><button class="list_button" onclick="location.href='notice.php?page=<?=$page?>'">목록</button></li>
+            <?php
+              // 세션 값을 검사해서 관리자일 때만 수정/삭제 버튼
+              if($_SESSION['userid'] === 'admin'){
+            ?>
+                <li><button class="list_button" onclick="location.href='dml_notice_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수정</button></li>
+                <li><button class="list_button" onclick="location.href='dml_notice.php?mode=delete&num=<?=$num?>&page=<?=$page?>'">삭제</button></li>
+            <?php
+              }
+            ?>
         </ul>
  <!-- page=<?=$page?> -->
 
-    </div>
+    </div> <!-- container -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>

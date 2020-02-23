@@ -58,9 +58,9 @@ if($mode === 'update'){
           }
 
           if(mode === 'insert'){
-            document.write_notice.action = 'write_notice.php?mode=insert';
+            document.write_notice.action = 'dml_notice.php?mode=insert';
           } else if (mode === 'update'){
-            document.write_notice.action = 'write_notice.php?mode=update&num=<?=$num?>&page=<?=$page?>';
+            document.write_notice.action = 'dml_notice.php?mode=update&num=<?=$num?>&page=<?=$page?>';
           }
 
           document.write_notice.submit();
@@ -72,13 +72,14 @@ if($mode === 'update'){
   <body>
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
+        <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
     </header>
      
-    <div id="content">
+    <div class="container">
         <h3 class="title">
           <?php
             if($mode === "insert"){
-              echo "공지사항 > 글쓰기";
+              echo "공지사항 > 작성";
             } else {
               echo "공지사항 > 수정";
             }
@@ -118,19 +119,21 @@ if($mode === 'update'){
 
         </form>
       <!-- php로 mode 검사 해서 수정일 경우 제목,내용,파일 불러오기 -->
-      <ul class="notice_contents">
+      <ul class="notice_buttons">
         <li><button class="list_button" type="button" onclick="check_input()">완료</button></li>
         <li>
-          <button class="list_button" onclick="location.href='http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/admin.php'">취소</button></li>
-          <!-- <button class="list_button" onclick="location.href='notice_view.php?page=<?//=$page?>&num=<?//=$num?>'">취소</button></li> -->
+          <?php
+            if($mode === 'update'){
+          ?>
+            <button class="list_button" onclick="location.href='http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/notice.php?admin=true'">취소</button></li>
+          <?php
+            } else {
+          ?>
+              <button class="list_button" onclick="history.go(-1);">취소</button></li>
+          <?php
+            }
+          ?>
         </ul>
       </div> <!--End Of Content -->
-
-      <style>
-      .navbar {
-        background: black;
-        position: static;
-      }
-    </style>
   </body>
 </html>

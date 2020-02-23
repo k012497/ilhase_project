@@ -1,4 +1,5 @@
 <?php
+session_start();
 include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
 
 define('SCALE', 10);
@@ -40,11 +41,21 @@ $number = $total_record - $start;
     <link rel="stylesheet" href="./css/notice.css">
     <title></title>
     <header>
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <?php 
+      if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
+        include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
+      ?>
+        <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
+      <?php
+      } else {
+        include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
+      }
+      ?>
     </header>
   </head>
   <body>
-      <div id="content">
+      <div class="container">
         <h2 class="title">공지사항</h2><br>
          <div id="list_top_title">
 
@@ -97,19 +108,14 @@ $number = $total_record - $start;
             }
           ?>
           &nbsp;&nbsp;&nbsp;&nbsp;▶ 다음
-          <br><br><br><br><br><br><br>
         </div><!--end of page num -->
-        <div id="button">
-          <a href="./list.php?page=<?=$page?>"> <img src="../img/list.png" alt="">&nbsp;</a>
-          <?php //세션 아이디가 admin일 경우만 수정 허용
-            if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
-          ?>
-              <ul>
-                <li><button onclick="location.href='#';">수정</button></li>
-                </ul>
-          <?php
-            }
-          ?>
+        <?php //세션 아이디가 admin일 경우만 수정 허용
+          if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
+        ?>
+        <button id="btn_write_notice" onclick="location.href='write_notice_form.php?mode=insert';">글쓰기</button>
+        <?php
+          }
+        ?>
         </div><!--end of button -->
       </div><!--end of page button -->
       </div><!--end of list content -->
