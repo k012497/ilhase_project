@@ -7,7 +7,7 @@ switch ($mode) {
   case 'auto_keyword':
       //자동검색어 keyword 들어왔을때 (산업,지역 )
       $keyword=$_GET['keyword'];
-      $keyWord_area_sql="select distinct si_do, si_gun_gu from address where si_do like '%$keyword%' or si_gun_gu like '%$keyword%'";
+      $keyWord_area_sql="select * from address";
       $keyWord_industry_sql="select distinct section from job_industry where section like '%$keyword%'";
 
       $area_keyword_result=mysqli_query($conn,$keyWord_area_sql);
@@ -18,7 +18,11 @@ switch ($mode) {
       
       for($i=0;$i<$area_count;$i++){
         $area_row=mysqli_fetch_array($area_keyword_result);
-        echo"<li>".$area_row['si_do']."&nbsp;".$area_row['si_gun_gu']."</li>";          
+        $area_str=$area_row['si_do']." ".$area_row['si_gun_gu'];
+        if(strpos($area_str, $keyword)){
+          echo"<li>".$area_row['si_do']." ".$area_row['si_gun_gu']."</li>";     
+        }
+             
       }
       for($i=0;$i<$industry_count;$i++){
         $industry_row=mysqli_fetch_array($industry_keyword_result);
