@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
+include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 if(isset($_SESSION["userid"])){
   $userid=$_SESSION["userid"];
 }else{
@@ -12,13 +12,11 @@ if(isset($_SESSION["username"])){
   $username="";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="../common/css/common.css">
     <link rel="stylesheet" href="./css/manage.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   </head>
@@ -27,19 +25,19 @@ if(isset($_SESSION["username"])){
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
     <?php
-    	// if (!$userid )
-    	// {
-    	// 	echo("<script>
-    	// 			alert('이력서는 로그인이 필요합니다. :) ');
-    	// 			history.go(-1);
-    	// 			</script>
-    	// 		");
-    	// 	exit;
-    	// }
+    	if (!$userid )
+    	{
+    		echo("<script>
+    				alert('이력서는 로그인이 필요합니다. :) ');
+    				history.go(-1);
+    				</script>
+    			");
+    		exit;
+    	}
     ?>
       <form class="form_manage" action="resume_download.php" method="post" enctype="multipart/form-data">
         <div id="div_main">
-          <div id="div_recruit_sample where id">
+          <div id="div_recruit_sample">
             <h3 class="title" id="recruit_title">
                 <?php
                 $sql="select*from person where id='$userid'";
@@ -88,32 +86,33 @@ if(isset($_SESSION["username"])){
                     echo "<a href='#'>마감된 공고 삭제하기</a>";
                   }
                ?>
-
             </div>
             <div id="recruit_list">
+              <?php
+                $sql="SELECT * from resume where m_id ='$userid' order by num desc";
+                $result = mysqli_query($conn,$sql);
+                $row=mysqli_fetch_array($result);
+                $title=$row['title'];
+                $regist_date=$row['regist_date'];
+
+               ?>
               <ul>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
-                </li>
-                <li class="li_resume"><img src="../img/agreement.png" alt=""><p class="p_title">웹 개발자 구합니다.<br/> 2020.2.14</p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
+                <li class="li_resume"><img src="" alt=""><p class="p_title"><?=$title?><br/><?=$regist_date?></p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
                 </li>
                 <li id="finish_resume"><p>마감</p>
                 </li>
-                <li id="new_resume"><img src="./img/upload.png" alt=""><p> 신규 공고 등록하기</p>
-                </li>
+                <?php
+                $sql="select*from person where id='$userid'";
+                  $result=mysqli_query($conn,$sql);
+                    if($member_type=="person") {
+                        echo "<input id='new_resume' type='button' name='new_resume' value='신규 이력서 작성하기' onclick='location.href=`write_resume.php`'><img id='img_resume' src='./img/upload.png'>";
+                    }else{
+                        echo "<input id='new_resume' type='button' name='new_resume' value='신규 공고 등록하기' onclick='location.href=`new_recruitment_form.php`' ><img id='img_resume' src='./img/upload.png'>";
+                    }
+                 ?>
+
+                <!-- <li id="new_resume"><img src="./img/upload.png" alt=""><p> 신규 공고 등록하기</p>
+                </li> -->
               </ul>
             </div>
           </div>

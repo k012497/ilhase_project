@@ -52,11 +52,11 @@
           <?php
               if($member_type=="corporate"){
            ?>
-           <a class="nav-link" href="#">공고</a>
+           <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/manage_articles/manage_recruitment_form.php">공고</a>
              <?php
            }else{
               ?>
-              <a class="nav-link" href="#">이력서</a>
+              <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/manage_articles/manage_recruitment_form.php">이력서</a>
              <?php
                 }
               ?>
@@ -74,7 +74,7 @@
         <li>
             <form class="form-inline my-2 my-lg-0" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" method="get" >
                 <input class="form-control mr-sm-2" name="search_word" id="search_box" type="text" placeholder="검색" >
-                <input type="hidden" name="mode" value="index_search"> 
+                <input type="hidden" name="mode" value="index_search">
                 <input id="btn_submit" type="image" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="Submit"/>
             </form>
         </li>
@@ -92,7 +92,7 @@
              ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">내 정보</a>
+                <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/person_edit_form.php">내 정보</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">지원 내역</a>
                 <a class="dropdown-item" href="#">관심 공고</a>

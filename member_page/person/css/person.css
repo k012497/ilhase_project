@@ -13,27 +13,45 @@ strong{
   width: 100px;
   margin-bottom: 10px;
 }
+#label_gender{
+  margin-left: 10px;
+  width: 50px;
+}
+
 #div_member input{
   width: 452px;
   height: 37px;
   border-radius: 3px;
+  margin-top: 10px;
   border: 1px solid #777;
   text-align: center;
   margin-bottom: 20px;
   /* padding-top: 5px; */
   vertical-align: middle;
 }
+#div_member p{
+  font-size: 10px;
+  color: red;
+  position: relative;
+  left: 100px;
+  margin-top: -15px;
+}
 #member_name{
-  line-height: 20px;
+  line-height: 10px;
 }
 #div_member #input_name{
-  width: 250px;
+  width: 280px;
   height: 37px;
   border-radius: 3px;
   border: 1px solid #777;
 }
-#div_member #div_toggle{
-  margin-bottom: 10px;
+#div_member #gender{
+  width: 95px;
+  height: 37px;
+  position: relative;
+  right:40px;
+  border-radius: 3px;
+  border: 1px solid #777;
 }
 #member_address input{
   width: 224px;
@@ -42,7 +60,7 @@ strong{
   background-color: lightblue;
   color: white;
 }
-#basic_address #detail_address{
+#new_address #old_address{
   display: block;
   position: absolute;
 }
