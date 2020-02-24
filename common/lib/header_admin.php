@@ -6,14 +6,13 @@
 
 <!-- css -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
 
 <?php
-  if(isset($_GET['mode'])){
-    $mode = $_GET['mode'];
+  if(isset($_GET['main']) && $_GET['main'] === 'true'){
+    $main = $_GET['main'];
   } else {
-    $mode = "";
+    $main = "";
   }
 ?>
 <style>
@@ -28,7 +27,7 @@
 
 <!-- html -->
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/admin.php" style="color: white;">일하세</a>
+  <a class="navbar-brand" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/admin.php?main=true" style="color: white;">일하세</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -36,7 +35,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <?php
-      if(!$mode){
+      if($main){
       ?>
         <li class="nav-item active">
           <a class="nav-link" data-target="#manage_member">회원관리<span class="sr-only">(current)</span></a>
@@ -63,7 +62,7 @@
     </ul>
 
     <?php
-    if(!$mode){
+    if($main){
     ?>
       <button class="text_border" id="btn_top" data-target="#admin_main_top"> ▴ top </button>
     <?php
