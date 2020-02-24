@@ -125,17 +125,18 @@ function create_table($conn, $table_name){
 
             case 'purchase' :
                 $sql = "CREATE TABLE `purchase` (
-                    `num` int(11) NOT NULL AUTO_INCREMENT,
-                    `date` char(20) COLLATE utf8mb4_general_ci NOT NULL,
-                    `member_id` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-                    `plan_num` tinyint(3) NOT NULL,
-                    `plan_name` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-                    `price` int(7) NOT NULL,
-                    `method` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-                    PRIMARY KEY (`num`),
-                    KEY `purchase_id_fk` (`member_id`),
-                    CONSTRAINT `purchase_id_fk` FOREIGN KEY (`member_id`) REFERENCES `corporate` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                  `num` int(11) NOT NULL AUTO_INCREMENT,
+                  `date` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `member_id` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `plan_num` tinyint(3) NOT NULL,
+                  `plan_name` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `available_count` int(10) unsigned NOT NULL,
+                  `price` int(7) NOT NULL,
+                  `method` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  PRIMARY KEY (`num`),
+                  KEY `purchase_id_fk` (`member_id`),
+                  CONSTRAINT `purchase_id_fk` FOREIGN KEY (`member_id`) REFERENCES `corporate` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
 
             case 'qna' :
@@ -184,13 +185,13 @@ function create_table($conn, $table_name){
 
             case 'recruit_plan' :
                 $sql = "CREATE TABLE `recruit_plan` (
-                    `num` int(11) NOT NULL AUTO_INCREMENT,
-                    `name` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                    `description` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                    `price` int(7) NOT NULL,
-                    PRIMARY KEY (`num`),
-                    UNIQUE KEY `name` (`name`)
-                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                  `num` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `count` int(10) unsigned NOT NULL,
+                  `price` int(7) NOT NULL,
+                  PRIMARY KEY (`num`),
+                  UNIQUE KEY `name` (`name`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
 
             case 'resume' :
