@@ -45,8 +45,9 @@ $number = $total_record - $start;
            <ul class="notice_list_menu">
              <li id="list_title1">번호</li>
              <li id="list_title2">제목</li>
-             <li id="list_title3">날짜</li>
+             <li id="list_title3">작성자</li>
              <li id="list_title4">조회수</li>
+             <li id="list_title5">날짜</li>
            </ul>
          </div><!--end of list_top_title  -->
 
@@ -57,7 +58,8 @@ $number = $total_record - $start;
             mysqli_data_seek($result,$i);
             $row=mysqli_fetch_array($result);
             $num=$row['num'];
-            $hit=$row['hit'];
+            $hit = $row['hit'];
+            $name=$row['name'];
             $date= substr($row['regist_date'],0,10);
             $subject=$row['subject'];
             $subject=str_replace("\n", "<br>",$subject);
@@ -73,9 +75,9 @@ $number = $total_record - $start;
               <div id="list_item2">
                   <a href="./qna_view.php?num=<?=$num?>&page=<?=$page?>&hit=<?=$hit + 1?>"><?=$space.$subject?></a>
               </div>
-
-              <div id="list_item3"><?=$row['regist_date']?></div>
+              <div id="list_item3"><?=$name?></div>
               <div id="list_item4"><?=$hit?></div>
+              <div id="list_item5"><?=$row['regist_date']?></div>
             </div><!--end of list_item -->
             <div id="memo_content"><?=$memo_content?></div>
         <?php

@@ -253,49 +253,49 @@
 }
 
 #list_top_title #list_title3 {
-	margin-left:290px;
+	margin-left:150px;
 }
 
 #list_top_title #list_title4 {
-	margin-left:140px;
+	margin-left:40px;
 }
 
 #list_top_title #list_title5 {
-	margin-left:26px;
+	margin-left:100px;
 }
 
 #list_content {
 	min-height: 30rem;
 }
 
-#list_item #list_item1{
+#list_item #list_item1, #list_title1{
 	float:left;
 	width:40px;
 	text-align:center;
 }
 
-#list_item #list_item2{
+#list_item #list_item2, #list_title2{
 	float:left;
-	width:560px;
+	width:450px;
   padding-left: 40px;
 }
 
-#list_item #list_item3{
+#list_item #list_item3, #list_title3{
 	float:left;
-	width:150px;
+	width:100px;
 	/* text-align:center; */
 }
 
-#list_item #list_item4{
+#list_item #list_item4, #list_title4{
 	float:left;
-	width:80px;
-	text-align:right;
+	width:75px;
+  text-align: center;
   padding-right: 15px;
 }
 
-#list_item #list_item5{
+#list_item #list_item5, #list_title5{
 	float:left;
-	width:40px;
+	width:160px;
 	text-align:center;
 }
 

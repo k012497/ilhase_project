@@ -15,6 +15,12 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
     $hit = filter_data($_GET["hit"]);
     $q_num = mysqli_real_escape_string($conn, $num);
 
+    $sql="UPDATE `qna` SET `hit`=$hit WHERE `num`=$q_num;";
+    $result = mysqli_query($conn,$sql);
+    if (!$result) {
+      die('Error: ' . mysqli_error($conn));
+    }
+
     $sql="SELECT * from `qna` where num ='$q_num';";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
@@ -39,7 +45,7 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/ilhase/common/css/notice.css">
+    <link rel="stylesheet" href="./css/notice.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title></title>
   </head>
@@ -59,7 +65,8 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
       <h2 class="title">1 : 1 문의 > 내용</h2>
         <div id="list_top_title">
           <li>
-            <span class="col1"><b>제목 : </b><?=$subject?></span>
+            <span class="col1">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              조회 : <?=$hit?>&nbsp;&nbsp;&nbsp;<b>제목 : </b><?=$subject?></span>
             <span class="col2_view"><?=$regist_date?></span>
           </li>
         </div><!--end of list_top_title  -->
@@ -81,8 +88,18 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
                 } else {
                   // 관리자일 경우
               ?>
-                  <li><button class="list_button" onclick="location.href='write_qna_form.php?mode=response&num=<?=$num?>&page=<?=$page?>'">답 변</button></li>
-                  <li><button class="list_button" onclick="location.href='qna_view_delete.php?num=<?=$num?>&page=<?=$page?>'">삭 제</button></li>
+            <li><button class="list_button" onclick="location.href='write_qna_form.php?mode=response&num=<?=$num?>&page=<?=$page?>'">답 변</button></li>
+            <?
+              if(S_SESSION['userType'] === 'Admin') {
+                //Show
+              }
+              if(S_SESSION['userType'] === 'User') {
+                  //Hide
+
+              }
+            ?>
+            <li><button class="list_button" onclick="location.href='qna_view_delete.php?num=<?=$num?>&page=<?=$page?>'">삭 제</button></li>
+
               <?php
                 }
               ?>
