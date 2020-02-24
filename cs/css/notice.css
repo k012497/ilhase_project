@@ -244,26 +244,6 @@
 	display:inline;
 }
 
-#list_top_title #list_title1 {
-	margin-left:5px;
-}
-
-#list_top_title #list_title2 {
-	margin-left:250px;
-}
-
-#list_top_title #list_title3 {
-	margin-left:150px;
-}
-
-#list_top_title #list_title4 {
-	margin-left:40px;
-}
-
-#list_top_title #list_title5 {
-	margin-left:100px;
-}
-
 #list_content {
 	min-height: 30rem;
 }
