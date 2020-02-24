@@ -53,8 +53,24 @@
             <h1 id="announcement_title">
               <?=$title?>
               <span id="sub_title">(<?=$b_name?>)</span>
-              <span id="period"><?=$period_start?> ~ <?=$period_end?><button id="btn_apply" type="submit" name="button">지원하기</button></span>
-            </h1>
+              <span id="period"><?=$period_start?> ~ <?=$period_end?>
+              <button id="btn_apply"  name="button">지원하기</button>            
+            </span>
+            </h1> 
+            <div id="email_apply">
+                <div id="loading">
+                  <img id="loading_img" src="./img/loading.svg" width="80" height="80" alt="loding">
+                </div>
+                <form name="email_form" id="apply_resume_box" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/sign/PHPMailer-master/resume_email.php" method="post">
+                  <h2><?=$id?>님의 이력서 <span id="close_btn"></span></h2>
+                  <div id="select_resume_box">
+                  </div>
+                  <input type="hidden" name="user_id" value=<?=$id?>>
+                  <input type="hidden" name="receiver_email" value=<?=$recruiter_email?>>
+                  <input type="hidden" name="receiver_name" value=<?=$recruiter_name?>>                  
+                  <input id="btn_email_submit" type="submit" value="담당자에게 보내기">                    
+                </form>
+            </div>  
             <div id="company_info">
               <h2 class="info_title"> > 기업정보</h2>
               <ul>
@@ -306,13 +322,69 @@
 
       //
 
-
+      var $user_id='<?=$id?>';
       //지원하기 버튼
-      $('#btn_apply').click(function(){
+      $(function(){
+                $('#loading').hide();
+                $('#btn_apply').click(function(){
+                  if($user_id===''){
+                    alert('로그인을 해주세요!');
+                    return;
+                  }
+                  $('#email_apply').removeClass('cancel');  
+                  $('#email_apply').addClass('open');     
+                  $('#email_apply').show();
+                  
+                  $.ajax({
+                    url:'./dml_resume.php',
+                    type:'POST',
+                    data:{'user_id':$user_id},
+                    success:function(data){
+                      // console.log(data);
+                      $('#select_resume_box').empty();
+                      $('#select_resume_box').append(data);
+                      
+                      if($('#select_resume_box p').length>0){
+                        //해당 아이디가 기본이력서가 없을떄
+                        $('#btn_email_submit').prop("disabled", true);
+                        $('#btn_email_submit').css({
+                          'background':'linear-gradient(to right, #DBDBDB, #EAEAEA)',
+                          'color':'#333',
+                          'pointer-events':'none',
+                          'opacity':'0.4'
+                        });
+                        return;
+                      }else {
+                        //해당 아이디가 기본이력서가 있을때
+                        $('#btn_email_submit').prop("disabled",false);
+                        $('#btn_email_submit').click(function(){
+                          var isCheck = $('input:radio[name=resume]').is(':checked');
 
+                          if(isCheck===false){
+                            alert('이력서를 선택해주세요!');
+                            return;
+                          }
+                          $('#loading').show();
+                        });
+                      }
+                    }
 
+                  });
+                  
+                
+              });
+              //지원하기 모달창 닫기
+              $('#close_btn').click(function(){ 
+                $('#email_apply').addClass('cancel');
+                $('#email_apply').removeClass('open');  
+                setTimeout(function(){
+                  $('#email_apply').hide();
+                },400);
+              });
+              
 
       });
+     
 
     </script>
   </body>
