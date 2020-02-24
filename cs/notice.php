@@ -55,7 +55,7 @@ $number = $total_record - $start;
       ?>
     </header>
       <div class="container">
-        <h2 class="title">공지사항</h2><br>
+        <h2 class="title">공지사항</h2>
          <div id="list_top_title">
 
            <ul class="notice_list_menu">
