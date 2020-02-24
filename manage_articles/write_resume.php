@@ -1,3 +1,18 @@
+<?php
+session_start();
+include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
+if(isset($_SESSION["userid"])){
+  $userid=$_SESSION["userid"];
+}else{
+  $userid="";
+}
+if(isset($_SESSION["username"])){
+  $username=$_SESSION["username"];
+}else{
+  $username="";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -70,28 +85,48 @@
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <form name="write_form" action="index.html" method="post">
+    <?php
+        $sql    = "select * from person where id='$userid'";
+        $result = mysqli_query($conn, $sql);
+        $row    = mysqli_fetch_array($result);
+
+        $name = $row["name"];
+        $birth = $row["birth"];
+        $gender=$row["gender"];
+        $phone = $row["phone"];
+        $email = $row["email"];
+        $new_address =$row["new_address"];
+
+        mysqli_close($conn);
+    ?>
+    <form name="form_resume" action="./resume.php?m_id=<?=$userid?>" method="post" enctype="multipart/form-data">
       <div id="main_resume">
         <h3 class="title">이력서 작성</h3>
       </div>
       <div id="div_resume_main">
+        <div>
+          <input id="input_title" type="text" name="input_title" value="기본 이력서">
+
+            <input id="input_public" type="checkbox" name="input_public" value="public" checked>공개 여부
+
+
+        </div>
         <div id="div_image_profile">
-          <input type="file" id="imageFile" accept="image/*" onchange="checkImage();">
+          <input type="file" id="imageFile" name="upfile" accept="image/*" onchange="checkImage();">
           <img id="img_upload" src="./img/camera.png" alt="camera">
           <div id="profile_info">
-            <ul>
-              <li><h4>임채민</h4></li>
-              <li>1992년 12월 12일, 남</li>
-              <li>010-4678-6205</li>
-              <li>coals2020@Naver.com</li>
-              <li>경기도 고양시 덕양구 주교동</li>
-            </ul>
+            <input id="input_name" type="text" name="input_name" value="<?=$name?>" readonly>
+            <input id="input_birth" type="text" name="input_birth" value="<?=$birth?>" readonly>
+            <input id="input_gender" type="text" name="input_gender" value="<?=$gender?>" readonly>
+            <input id="input_phone" type="text" name="input_phone" value="<?=$phone?>" readonly>
+            <input id="input_email" type="text" name="input_email" value="<?=$email?>" readonly>
+            <input id="input_address" type="text" name="input_address" value="<?=$new_address?>" readonly>
           </div>
         </div>
         <div id="div_cover_letter">
           <div id="div_cover_letter_detail">
             <p>간단하게 자기를 소개 해보세요!!</p>
-            <textarea name="name" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;"></textarea>
+            <textarea name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;"></textarea>
           </div>
           <div id="div_show">
             <button type="button" id="btn_show" name="btn_show" onclick="showDiv()">더 자세한 이력을 작성하려면 클릭하세요</button>

@@ -88,26 +88,33 @@ if(isset($_SESSION["username"])){
                ?>
             </div>
             <div id="recruit_list">
+                <ul>
               <?php
                 $sql="SELECT * from resume where m_id ='$userid' order by num desc";
                 $result = mysqli_query($conn,$sql);
-                $row=mysqli_fetch_array($result);
-                $title=$row['title'];
-                $regist_date=$row['regist_date'];
 
+                while($row=mysqli_fetch_array($result)){
+                  $title=$row['title'];
+                  $regist_date=$row['regist_date'];
                ?>
-              <ul>
-                <li class="li_resume"><img src="" alt=""><p class="p_title"><?=$title?><br/><?=$regist_date?></p> <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
+                <li class="li_resume">
+                  <img src="" alt="">
+                  <p class="p_title"><?=$title?><br/><?=$regist_date?></p>
+                  <img class="btn_image" src="../img/cross.png" alt="버튼" onclick="">
                 </li>
+                <?php
+                }
+
+                ?>
                 <li id="finish_resume"><p>마감</p>
                 </li>
                 <?php
                 $sql="select*from person where id='$userid'";
                   $result=mysqli_query($conn,$sql);
                     if($member_type=="person") {
-                        echo "<input id='new_resume' type='button' name='new_resume' value='신규 이력서 작성하기' onclick='location.href=`write_resume.php`'><img id='img_resume' src='./img/upload.png'>";
+                        echo "<li class='li_resume'  onclick='location.href=`write_resume.php`'><img  src='./img/upload.png'><p  class='p_title'>신규 이력서 작성하기</p></li>";
                     }else{
-                        echo "<input id='new_resume' type='button' name='new_resume' value='신규 공고 등록하기' onclick='location.href=`new_recruitment_form.php`' ><img id='img_resume' src='./img/upload.png'>";
+                        echo "<li class='li_resume'  onclick='location.href=`new_recruitment_form.php`' ><img  src='./img/upload.png'>신규 공고 등록하기</li>";
                     }
                  ?>
 
