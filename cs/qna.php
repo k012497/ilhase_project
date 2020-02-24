@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/qna.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>1:1 문의</title>
 </head>
 <body>
@@ -47,7 +48,9 @@
                         <span><?=$user_name?></span>
                     </div>
                     <form action="dml_qna.php?mode=q_insert" method="post">
-                        <textarea name="question" id="" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요."></textarea>
+                        <input type="hidden" name="user_id" value="<?=$user_id?>">
+                        <input type="hidden" name="user_name" value="<?=$user_name?>">
+                        <textarea name="content" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요."></textarea>
                         <input type="submit" value="전송하기"></button>
                     </form>
                 </div>
@@ -56,31 +59,26 @@
         <h3 class="title past_qna">지난 문의 내역</h3>
         <div class="past_qna">
             <!-- 동적으로 추가 -->
-            <div class="question_preview">
-                <span class="message">관리자님 안녕하세요?</span>
-                <span class="date">2020-02-20</span>
-            </div><br/>
-            <div class="answer_preview">
-                <span class="date">2020-02-20</span>
-                <span class="message">안녕하세요 고객님</span>
-            </div>
-            <div class="question_preview">
-                <span class="message">관리자님 안녕하세요?</span>
-                <span class="date">2020-02-20</span>
-            </div><br/>
-            <div class="answer_preview">
-                <span class="date">2020-02-20</span>
-                <span class="message">안녕하세요 고객님</span>
-            </div>
-            <div class="question_preview">
-                <span class="message">관리자님 안녕하세요?</span>
-                <span class="date">2020-02-20</span>
-            </div><br/>
-            <div class="answer_preview">
-                <span class="date">2020-02-20</span>
-                <span class="message">안녕하세요 고객님</span>
-            </div>
+            
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            // $.ajax({
+            //     type: "post",
+            //     url: "url",
+            //     data: "data",
+            //     dataType: "dataType",
+            //     success: function (response) {
+                    
+            //     }
+            // });
+            $.post('dml_qna.php?mode=select_by_user', { user_id : '<?=$user_id?>' }, function(data){
+                console.log(data, 'test');
+                $('div.past_qna').append(data);
+            });
+        });
+    </script>
 </body>
 </html>

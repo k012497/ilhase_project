@@ -792,7 +792,7 @@ function insert_init_data($conn, $table_name){
                 break;
                 
             case 'qna' :
-                $sql = "insert into `qna` values (null, 0, 0, 0, '4jo4jo', '김사조', '질문 있어요', '질문 없어요', 0, now());";
+                $sql = "insert into `qna` values (null, 1, 0, 0, '4jo4jo', '김사조', '질문 있어요', '질문 없어요', 0, '2020-02-11 (12:33)');";
                 break;
             
             case 'purchase' :

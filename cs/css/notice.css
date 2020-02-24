@@ -1,9 +1,8 @@
 
-notice_list_menu {
+.notice_list_menu {
     box-sizing: border-box;
-		width: 100%;
+	width: 100%;
     margin: 0;
-    padding: 10px;
 }
 
 .notice_text {
@@ -50,33 +49,23 @@ notice_list_menu {
 }
 /* *********************************************************** */
 /* 공지사항 & 내용 & */
-#content {
-  margin: 0 auto;
-	overflow:hidden;
-	margin-top:56px;
-	width:998px;
-	min-height: 600px;
-}
 
 /* list content */
 #list_item {
-  margin: 0 auto;
-	width: 85%;
+	margin: 0 auto;
+	width: 880px;
 	height:40px;
 	margin-top:2px;
 	padding:5px;
 	border-bottom:solid 1px #eeeeee;
 }
 
-/* 공지사항 > 내용 & */
-#list_item {
-  margin: 0 auto;
-  padding-left: 300px;
-  min-height: 500px;
-	width: 85%;
-	height:40px;
+#notice_contents {
+	margin: 0 auto;
+	width: 80%;
+	height: 30rem;
 	margin-top:2px;
-	padding:5px;
+	padding: 1rem;
 	border-bottom:solid 1px #eeeeee;
 }
 
@@ -85,11 +74,15 @@ notice_list_menu {
   float: right;
 }
 
-.notice_contents {
-  padding-right: 0px;
-  padding-left: 0px;
-  float: right;
-  margin-right: 90px;
+.notice_buttons {
+	text-align: right;
+	margin: 1rem 0;
+	width: 90%;
+}
+
+.notice_buttons li {
+	position: relative;
+	top: -1rem;
 }
 
 .list_button{
@@ -98,8 +91,8 @@ notice_list_menu {
 }
 
 #textarea_content {
-  	width: 840px;
-  	height: 445px;
+	width: 90%;
+  	height: 30rem;
 	padding: 0.5rem 1rem;
   	resize: none;
 }
@@ -235,15 +228,13 @@ notice_list_menu {
 	margin-left:5px;
 	margin-top:1px;
 }
+
 /* list menu */
 #list_top_title {
-  margin: 0 auto;
-	width: 85%;
-	height:40px;
-	padding:7px;
-	margin-top: 10px;
+  	margin: 0 auto;
+	width: 880px;
+	padding: 0.5rem 1rem;
 	border-top: solid 2px #aaaaaa;
-	/* border-bottom: solid 2px #aaaaaa; */
 	background-color:#eeeeee;
 	margin-bottom:3px;
 
@@ -274,7 +265,7 @@ notice_list_menu {
 }
 
 #list_content {
-	height:380px;
+	min-height: 30rem;
 }
 
 #list_item #list_item1{
@@ -319,12 +310,12 @@ notice_list_menu {
 	text-align:center;
 }
 
-#button {
-	float:left;
-	width:18%;
-	text-align:right;
+#btn_write_notice {
+	display: block;
+	padding: 0.2rem;
+	float: right;
+	margin-right: 5rem;
 }
-
 /* write_form css */
 
 #write_form_title {

@@ -227,8 +227,23 @@ form, ul {
     width: 50px;
 }
 
-.plan_list .col2,.plan_list .col3, .plan_list .col4, .plan_list .col5, .plan_list .col6 {
+.plan_list .col2, .plan_list .col3, .plan_list .col4, .plan_list .col5 {
     width: 9rem;
+}
+
+.plan_list:first-child .col6 {
+    width: 8rem;
+    text-align: left;
+    text-indent: 2rem;
+}
+
+.plan_list_item .col1 {
+    width: 50px;
+    text-indent: -1.5rem;
+}
+
+.plan_list_item .col5 {
+    margin-right: -1rem;
 }
 
 .plan_list_item {
@@ -238,6 +253,10 @@ form, ul {
 
 .plan_list_item a {
     cursor: pointer;
+}
+
+.plan_list_item col6 {
+
 }
 
 .btn-group>.btn.active {
@@ -265,7 +284,7 @@ form, ul {
 
 .cs_content {
     display: inline-block;
-    width: 100%;
+    width: 1005px;
     text-align: center;
     position: relative;
     top: 15rem;
