@@ -9,7 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/ilhase/common/css/faq.css">
+    <link rel="stylesheet" href="./css/faq.css">
     <title>일하세</title>
 
     <script type="text/javascript">
@@ -172,7 +172,7 @@ session_start();
       </ul>
   </ul>
         </ul>
-  
+
       </div>
     </div>
 

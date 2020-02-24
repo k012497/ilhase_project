@@ -1,10 +1,13 @@
 <?php
+  session_start();
   include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
     if(isset($_GET['mode'])){
         $mode = $_GET['mode'];
     }
     if(isset($_POST['user_id'])){
         $user_id = $_POST['user_id'];
+    } else {
+      $user_id = $_SESSION['userid'];
     }
     if(isset($_POST['user_name'])){
         $user_name = $_POST['user_name'];
@@ -17,6 +20,7 @@
 
         case 'r_insert':
             // 답변 등록
+            insert_response();
             break;
 
         case 'update':
@@ -98,5 +102,61 @@
 
     }
 
-?>
+    function insert_response(){
+      global $conn, $user_id;
 
+      $content = trim($_POST["content"]);
+      $subject = trim($_POST["subject"]);
+      $subject = filter_data($_POST["subject"]);
+      $content = filter_data($_POST["content"]);
+
+      $user_name = $_SESSION['username'];
+      $num = filter_data($_GET["num"]);
+      // $hit = filter_data($_POST["hit"]);
+      $hit =0;
+      $q_subject = mysqli_real_escape_string($conn, $subject);
+      $q_content = mysqli_real_escape_string($conn, $content);
+      $q_num = mysqli_real_escape_string($conn, $num);
+      $regist_day=date("Y-m-d (H:i)");
+
+      $sql="SELECT * from qna where num =$q_num;";
+      $result = mysqli_query($conn,$sql);
+      if (!$result) {
+        die('Error: ' . mysqli_error($conn));
+      }
+      $row=mysqli_fetch_array($result);
+
+      //현재 그룹넘버값을 가져와서 저장한다.
+      $group_num=(int)$row['group_num'];
+      //현재 들여쓰기값을 가져와서 증가한후 저장한다.
+      $depth=(int)$row['depth'] + 1;
+      //현재 순서값을 가져와서 증가한후 저장한다.
+      $order=(int)$row['order'] + 1;
+
+      //현재 그룹넘버가 같은 모든 레코드를 찾아서 현재 $ord값보다 같거나 큰 레코드에 $ord 값을 1을 증가시켜 저장한다.
+      $sql="UPDATE `qna` SET `order`=`order`+1 WHERE `group_num` = $group_num and `order` >= $order";
+      $result = mysqli_query($conn,$sql);
+      if (!$result) {
+        die('UPDATE Error: ' . mysqli_error($conn));
+      }
+
+      $sql="INSERT INTO `qna` VALUES (null,
+        $group_num, $depth, $order, '$user_id','$user_name','$q_subject','$q_content', $hit,'$regist_day');";
+      $result = mysqli_query($conn,$sql);
+      if (!$result) {
+        die('INSERT Error: ' . mysqli_error($conn));
+      }
+
+      $sql="SELECT max(num) from qna;";
+      $result = mysqli_query($conn,$sql);
+      if (!$result) {
+        die('SELECT Error: ' . mysqli_error($conn));
+      }
+      $row=mysqli_fetch_array($result);
+      $max_num=$row['max(num)'];
+
+      echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
+
+    }
+
+?>
