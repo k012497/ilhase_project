@@ -125,7 +125,7 @@ if($mode === 'update'){
           <?php
             if($mode === 'update'){
           ?>
-            <button class="list_button" onclick="location.href='http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/notice.php?admin=true'">취소</button></li>
+            <button class="list_button" onclick="location.href='http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/notice.php?main=true'">취소</button></li>
           <?php
             } else {
           ?>

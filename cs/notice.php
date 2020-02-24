@@ -38,10 +38,11 @@ $number = $total_record - $start;
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/notice.css">
-    <title></title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <title>일하세</title>
+  </head>
+  <body>
     <header>
-      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
       <?php 
       if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
         include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
@@ -53,8 +54,6 @@ $number = $total_record - $start;
       }
       ?>
     </header>
-  </head>
-  <body>
       <div class="container">
         <h2 class="title">공지사항</h2><br>
          <div id="list_top_title">
@@ -126,5 +125,6 @@ $number = $total_record - $start;
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
         </div>
     </footer>
+    <link rel="stylesheet" href="./css/notice.css">
   </body>
 </html>

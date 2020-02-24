@@ -71,7 +71,6 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/notice.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title></title>
   </head>
@@ -139,5 +138,6 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
         </div>
     </footer>
+    <link rel="stylesheet" href="./css/notice.css">
   </body>
 </html>

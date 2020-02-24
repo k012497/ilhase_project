@@ -6,6 +6,7 @@
     $upfile_error    = $_FILES["upfile"]["error"];
     
     if ($upfile_name && !$upfile_error) {
+
         $file      = explode(".", $upfile_name); // ?
         $file_name = $file[0];
         $file_ext  = $file[1];
@@ -38,15 +39,12 @@
               </script>
             ");
             exit;
-        } else {
-            $upfile_name      = "";
-            $upfile_type      = "";
-            $copied_file_name = "";
-        }
-      } else {
+        } 
+
+    } else {
         $upfile_name      = "";
         $upfile_type      = "";
         $copied_file_name = "";
-      }// end of upfile_name && !upfile_error
+    } // end of upfile_name && !upfile_error
 
 ?>

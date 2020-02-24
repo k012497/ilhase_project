@@ -2,6 +2,7 @@
   include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
 
   $mode = $_GET['mode'];
+  $member_id = array();
   
   switch ($mode){
     case 'insert':
@@ -34,9 +35,15 @@ function insert_notice(){
   if(!$result){
     echo mysqli_error($conn);
   } else {
+    // 모든 회원에게 알림 보내기
+    $noti_title = "새로운 공지사항이 등록되었습니다.";
+    $noti_content = "새로운 공지사항 [".$n_subject."]이 등록되었습니다. 지금 확인해보세요!";
+    send_notification($noti_title, $noti_content);
     echo "<script>
       location.href = 'notice.php';
     </script>";
+
+    // reset($member_id);
     
   }
 }
@@ -134,6 +141,38 @@ function delete_notice(){
 	         location.href = 'notice.php?page=$page';
 	     </script>
 	   ";
+}
+
+function send_notification($title, $content){
+  global $conn, $member_id;
+
+  get_all_members_id();
+  echo count($member_id);
+
+  foreach($member_id as $id){
+    $sql = "insert into notification values (null, '$title', '$content', now(), 0, '$id')";
+    $result = mysqli_query($conn, $sql);
+    if(!$result){
+      mysqli_error($conn);
+    }
+  }
+
+}
+
+function get_all_members_id(){
+  global $conn, $member_id;
+  
+  $sql = "select id from person";
+  $result = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_array($result)){
+    array_push($member_id, $row[0]);
+  }
+
+  $sql = "select id from corporate";
+  $result = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_array($result)){
+    array_push($member_id, $row[0]);
+  }
 }
 
 ?>
