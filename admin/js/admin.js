@@ -270,7 +270,7 @@ function display_plan_list(plan, num) {
                 break;
 
             case 2:
-                span.innerHTML = plan.description;
+                span.innerHTML = plan.count + "개";
                 break;
 
             case 3:
@@ -317,7 +317,6 @@ $(document).ready(function () {
     // btn_add_plan 누를 때
     $("#btn_add_plan").click(function(){
         var form_data = $("#add_plan_form").serialize();
-
         $.ajax({
             cache : false,
             url : "dml_plan.php?mode=insert",
