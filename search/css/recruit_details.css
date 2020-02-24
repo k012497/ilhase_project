@@ -62,6 +62,8 @@ section {
 }
 
 #btn_apply {
+  text-align:center;
+  font-size:1.5rem;
   float:right;
   width:50%;
   line-height:65px;
@@ -156,6 +158,109 @@ section {
   width:1200px!important;
 
 }
+#email_apply {
+  display: none;
+  position: fixed;
+  /* Stay in place */
+  z-index: 10;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: hidden;
+  /* Enable scroll if needed */
+  /* background-color: rgb(0, 0, 0); */
+  /* Fallback color */
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  /* Black w/ opacity */
+}
+#loading {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+  display: block;
+  z-index: 11;
+  background-color:#fff;
+  opacity:0.7;
+	text-align: center;
+}
+
+#loading_img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 20;
+
+}
+
+
+
+#apply_resume_box {
+  position: relative;
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  /* border: 1px solid #888; */
+  width: 30%;
+  box-shadow: 0 0px 10px 0px #3c4a56;
+  border-radius: 1rem;
+}
+#select_resume_box {
+  display:block;
+  border:1px solid #c8c8c8;
+  border-radius:0.3rem;
+  padding:0.5rem 0;
+  text-align: center;
+  margin-top:1.5rem;
+  margin-bottom:1.5rem;
+}
+#go_resume{
+  text-decoration:underline;
+}
+#apply_resume_box h2 {
+  position: relative;
+  font-size:1.5rem;
+}
+#close_btn {
+  display:block;
+  width:30px;
+  height:30px;
+  position: absolute;
+  right:0;
+  top:0;
+  background-image:url('../img/cancel.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+  cursor: pointer;
+}
+#select_resume_box label {
+  margin-left:1rem;
+  cursor: pointer;
+}
+#btn_email_submit {
+  width:100%;
+  height:50px;
+  border:none;
+  border-radius:0.5rem;
+  cursor: pointer;
+  background: linear-gradient(to right, #42e695, #3bb2b8);
+  color:#fff;
+  transition:0.5s;
+}
+#btn_email_submit:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+#btn_email_submit:focus {
+  outline:none;
+}
+
 #footer_info {
   width:1200%!important;
 
@@ -163,4 +268,37 @@ section {
 #footer_box {
   padding-top:1rem;
   padding-bottom:1rem;
+}
+
+.open {
+  -webkit-animation: appear .8s cubic-bezier(.77, 0, .175, 1) forwards;
+}
+
+/* 모달 애니메이션 닫기 */
+.cancel {
+  -webkit-animation: dissappear .8s cubic-bezier(.77, 0, .175, 1) forwards;
+}
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes dissappear {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(50px);
+  }
 }
