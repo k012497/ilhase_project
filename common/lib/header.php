@@ -3,6 +3,7 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 <!-- css -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -34,31 +35,31 @@
 
           if(isset($_SESSION["usermember_type"]))
             $member_type=$_SESSION["usermember_type"];
-            if($member_type=="person"){
+            if($member_type=="corporate"){
            ?>
-          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php">
-            채용</a>
+          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php?mode=recruitment">
+            지원자</a>
             <?php
-          }else{
-             ?>
-             <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php">
-               지원자</a>
+            }else{
+            ?>
+             <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php?mode=recruitment">
+               채용</a>
                <?php
              }
                 ?>
         </li>
         <li class="nav-item">
           <?php
-              if($member_type=="person"){
+              if($member_type=="corporate"){
            ?>
-           <a class="nav-link" href="#">이력서</a>
+           <a class="nav-link" href="#">공고</a>
              <?php
            }else{
               ?>
-              <a class="nav-link" href="#">공고</a>
-                <?php
-              }
-                 ?>
+              <a class="nav-link" href="#">이력서</a>
+             <?php
+                }
+              ?>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,8 +72,9 @@
           </div>
         </li>
         <li>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" id="search_box" type="search" placeholder="검색" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" method="get" >
+                <input class="form-control mr-sm-2" name="search_word" id="search_box" type="text" placeholder="검색" >
+                <input type="hidden" name="mode" value="index_search"> 
                 <input id="btn_submit" type="image" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="Submit"/>
             </form>
         </li>
@@ -81,7 +83,7 @@
          ?>
         <li class="nav_login" id="nav_user"><a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/login_form.php">로그인</a></li>
         <?php
-      }else if($member_type=="person"){
+          }else if($member_type=="person"){
          ?>
         <li class="nav-item dropdown" id="nav_user">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
