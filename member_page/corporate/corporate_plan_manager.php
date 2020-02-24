@@ -1,15 +1,26 @@
 <?php
 session_start();
+include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
+
 // include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
-include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
-  $sql="select * from recruit_plan";
-  $result=mysqli_query($conn,$sql);
-  $numrow = mysqli_num_rows($result);
+
+  $sql="select * from purchase where member_id='".$_SESSION['userid']."'
+  ORDER BY num DESC;";
+  $result_purchase=mysqli_query($conn,$sql);
+  $numrow_purchase = mysqli_num_rows($result_purchase);
    //행(ROW) 수 만큼
-    for($i=0; $i<$numrow; $i++){
+    for($i=0; $i<$numrow_purchase; $i++){
         // mysql_fetch_array를 반복합니다.
-        $row[$i]=mysqli_fetch_array($result);
+        $row_purchase[$i]=mysqli_fetch_array($result_purchase);
     }
+    $sql="select * from recruit_plan";
+    $result=mysqli_query($conn,$sql);
+    $numrow = mysqli_num_rows($result);
+     //행(ROW) 수 만큼
+      for($i=0; $i<$numrow; $i++){
+          // mysql_fetch_array를 반복합니다.
+          $row[$i]=mysqli_fetch_array($result);
+      }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -28,10 +39,16 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
       .container th{
         text-align: center;
       }
-      .button_v {position: absolute;left:38px;top:110px;
-      width:91px;height:91px;border-radius: 100%;background:skyblue;
-      border:none;font-family:'xeicon';color:#fff;font-size: 45px;}
     </style>
+    <script type="text/javascript">
+      $(function(){
+        $('#plan_buy').click(function(){
+          console.log($('input[name="options"]:checked').val());
+          location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/kakaopay.php?plan="+$('input[name="options"]:checked').val()
+          +"&id=<?=$_SESSION['userid']?>";
+        });
+    });
+    </script>
   </head>
   <body>
       <header>
@@ -41,46 +58,29 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/corporate/member_side_menu.php";?>
     </div>
     <div class="container" style="margin-left:400px;margin-top:50px;">
+      <div class='row'>
+      <?php
+          for ($i=0; $i<$numrow; $i++) {
+              echo "
+              <div class='col-sm-2' style='background-color:lightgray;height:250px;border-radius:15px;
+              margin-right:5px;margin-top:5px;'>
+                <h4>".$row[$i]['name']."</h4>
+                <h4>".$row[$i]['description']."</h4>
+                <h5>".$row[$i]['price']."</h5>
+                <input type='radio' name='options' value='".$row[$i]['name']."'/>
+                <span class='radio'></span>
+                <span class='label'>".$row[$i]['name']."</span>
+              </div>
 
-    <!-- <div class="row">
+              ";
+          }
 
 
-        <div class="col-sm-offset-1 col-sm-2" style="background-color:lightgray;height:250px;border-radius:15px;">
-          <h4><?php echo $row[0]['name']; ?></h4>
-          <h5><?php echo $row[0]['description']; ?></h5>
-          <h5><?php echo $row[0]['price']; ?></h5>
-          <div class="button_v">
-            <i class='xi-check-min xi-2x'></i>
-          </div>
-        </div>
-        <div class="col-sm-2"style="background-color:lightgray;height:250px;border-radius:15px;margin-left:5px;">
-          <h4><?php echo $row[1]['name']; ?></h4>
-          <h5><?php echo $row[1]['description']; ?></h5>
-          <h5><?php echo $row[1]['price']; ?></h5>
-          <div class="button_v">
-            <i class='xi-check-min xi-2x'></i>
-          </div>
-        </div>
-        <div class="col-sm-2"style="background-color:lightgray;height:250px;border-radius:15px;margin-left:5px;">
-          <h4><?php echo $row[2]['name']; ?></h4>
-          <h5><?php echo $row[2]['description']; ?></h5>
-          <h5><?php echo $row[2]['price']; ?></h5>
-          <div class="button_v">
-            <i class='xi-check-min xi-2x'></i>
-          </div>
-        </div>
-        <div class="col-sm-2"style="background-color:lightgray;height:250px;border-radius:15px;margin-left:5px;">
-          <h4><?php echo $row[3]['name']; ?></h4>
-          <h5><?php echo $row[3]['description']; ?></h5>
-          <h5><?php echo $row[3]['price']; ?></h5>
-          <div class="button_v">
-            <i class='xi-check-min xi-2x'></i>
-          </div>
-        </div>
-    </div> -->
+       ?>
+       </div>
     <div class="col-md-offset-6 col-md-8">
-      <p><button type="button" class="btn btn-primary btn-block">플랜 구매</button></p>
-    </div>
+      <p><button type="button" class="btn btn-primary btn-block" id="plan_buy">플랜 구매</button></p>
+    </div><br>
     <h3>내가 가지고 있는 플랜</h3>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-4" style=";height:70px;border-radius:15px;">
@@ -123,31 +123,25 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
     <table class="table table-striped">
 <thead>
   <tr>
-    <th scope="col">구매번호</th>
+    <th scope="col">구매일자</th>
     <th scope="col">구매 플랜</th>
     <th scope="col">결제 수단</th>
-    <th scope="col">구매번호</th>
+    <th scope="col">구매가격</th>
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
+  <?php
+  for($i=0; $i<$numrow_purchase; $i++){
+    echo "
+    <tr>
+      <td>".$row_purchase[$i]['date']."</td>
+      <td>".$row_purchase[$i]['plan_name']."</td>
+      <td>".$row_purchase[$i]['method']."</td>
+      <td>".$row_purchase[$i]['price']."</td>
+    </tr>
+    ";
+  }
+   ?>
 </tbody>
 </table>
 </div>
