@@ -95,16 +95,15 @@ function create_table($conn, $table_name){
 
             case 'notification' :
                 $sql = "CREATE TABLE `notification` (
-                    `num` int(11) NOT NULL AUTO_INCREMENT,
-                    `title` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
-                    `content` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-                    `regist_date` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-                    `read` tinyint(4) NOT NULL,
-                    `member_id` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-                    PRIMARY KEY (`num`),
-                    KEY `noti_member_id_fk` (`member_id`),
-                    CONSTRAINT `noti_member_id_fk` FOREIGN KEY (`member_id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                  `num` int(11) NOT NULL AUTO_INCREMENT,
+                  `title` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `content` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `regist_date` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `read` tinyint(4) NOT NULL,
+                  `member_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  PRIMARY KEY (`num`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=1607 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                ";
                 break;
 
             case 'person' :
