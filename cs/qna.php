@@ -18,7 +18,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/qna.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>1:1 문의</title>
 </head>
@@ -76,9 +75,14 @@
             // });
             $.post('dml_qna.php?mode=select_by_user', { user_id : '<?=$user_id?>' }, function(data){
                 console.log(data, 'test');
-                $('div.past_qna').append(data);
+                if(data){
+                    $('div.past_qna').append(data);
+                } else {
+                    $('div.past_qna').append('<p style="text-align: center; color: gray;"> 📄 문의 내역이 없습니다.</p>');
+                }
             });
         });
     </script>
+    <link rel="stylesheet" href="./css/qna.css">
 </body>
 </html>
