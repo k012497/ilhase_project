@@ -119,13 +119,16 @@ if(isset($_SESSION["username"])){
           $file_copied =$row1["file_copied"];
         }
 
+      }else{
+        $mode=" ";
+
       }
 
      ?>
     <form name="form_resume" action="./resume.php?m_id=<?=$userid?>" method="post" enctype="multipart/form-data">
       <div id="main_resume">
         <?php
-          if ($_GET["mode"]=="update") {
+          if ($mode=="update") {
             echo "<h3 class='title'>이력서 수정</h3>";
           }else{
             echo "<h3 class='title'>이력서 작성</h3>";
@@ -135,7 +138,11 @@ if(isset($_SESSION["username"])){
       </div>
       <div id="div_resume_main">
         <div>
-          <input id="input_title" type="text" name="input_title" value="<?=$title?>">
+          <input id="input_title" type="text" name="input_title" value=" <?php
+            if ($mode==='update') {
+              $title;
+            }
+           ?> ">
 
             <input id="input_public" type="checkbox" name="input_public" value="<?=$public?>" checked>공개 여부
 
@@ -156,7 +163,14 @@ if(isset($_SESSION["username"])){
         <div id="div_cover_letter">
           <div id="div_cover_letter_detail">
             <p>간단하게 자기를 소개 해보세요!!</p>
-            <textarea name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;"><?=$cover_letter?></textarea>
+            <textarea name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;">
+              <?php
+                if ($mode === 'update') {
+                    $cover_letter;
+                }
+                ?>
+            </textarea>
+
           </div>
           <div id="div_show">
             <button type="button" id="btn_show" name="btn_show" onclick="showDiv()">더 자세한 이력을 작성하려면 클릭하세요</button>
@@ -165,7 +179,11 @@ if(isset($_SESSION["username"])){
             <div class="div_present">
               <p>이전에 하셨던 일이 있나요 ?</p>
               <!-- <input  id="text_job" type="text" name="" value="" readonly> -->
-              <textarea id="text_job" name="text_job" rows="8" cols="80" readonly><?=$career?></textarea>
+              <textarea id="text_job" name="text_job" rows="8" cols="80" readonly><?php
+                if ($mode === 'update') {
+                    $career;
+                }
+                ?></textarea>
               <input id="input_job" type="text" name="job" style="width:250px;" placeholder="맡았던 직무를 간단히 적어주세요">
               <input id="input_date" type="text" name="job_date" style="width:100px;" placeholder="언제">
               <input id="input_years" type="text" name="years" style="width:200px;" placeholder="얼마나 하셨나요?">
@@ -174,7 +192,11 @@ if(isset($_SESSION["username"])){
             <div class="div_present">
               <p>보유하신 자격증이 있나요?</p>
               <!-- <input  id="text_license" type="text" name="" value="서비스직,2015년,5년" readonly> -->
-                <textarea id="text_license" name="text_license" rows="8" cols="80" readonly><?=$license?></textarea>
+                <textarea id="text_license" name="text_license" rows="8" cols="80" readonly><?php
+                  if ($mode === 'update') {
+                      $license;
+                  }
+                  ?></textarea>
               <input id="input_license" type="text" name="license" style="width:305px;" placeholder="자격증 이름">
               <input id="input_license_date" type="text" name="license_date" style="width:250px;" placeholder="취득년도">
               <button class="btn_upload" type="button" id="btn_license" name="btn_license"> <img src="../img/plus.png" alt=""> </button>
@@ -182,7 +204,13 @@ if(isset($_SESSION["username"])){
             <div class="div_present">
               <p>학력도 적어주세요!</p>
               <!-- <input  id="text_school" type="text" name="" value="서비스직,2015년,5년" readonly> -->
-              <textarea id="text_school" name="text_school" rows="8" cols="80" readonly><?=$education?></textarea>
+              <textarea id="text_school" name="text_school" rows="8" cols="80" readonly>
+                <?php
+                if ($mode === 'update') {
+                    $education;
+                }
+                ?>
+              </textarea>
               <input id="input_school" type="text" name="school" style="width:250px;" placeholder="학교">
               <input id="input_graduation" type="text" name="graduation" style="width:150px;"placeholder="졸업년도">
               <input id="input_major" type="text" name="major" placeholder="전공"style="width:150px;" >
@@ -191,7 +219,7 @@ if(isset($_SESSION["username"])){
           </div>
         </div>
         <?php
-          if ($_GET["mode"]=="update") {
+          if ($mode === 'update') {
             echo "<button id='btn_ok' type='button' name='button'>수정하기</button>";
           }else{
             echo "<button id='btn_ok' type='button' name='button'>등록하기</button>";
