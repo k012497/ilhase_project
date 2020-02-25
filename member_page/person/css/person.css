@@ -4,18 +4,21 @@
   box-sizing: border-box;
   margin: 0 auto;
   top: 72px;
-  left: 230px;
+  left: 2rem;
 }
+
 strong{
-  color: red;
+  color: rgb(133, 198, 241);
 }
+
 #div_member label {
-  width: 100px;
+  width: 150px;
   margin-bottom: 10px;
 }
-#label_gender{
+
+#div_member #label_gender{
   margin-left: 10px;
-  width: 50px;
+  width: 100px;
 }
 
 #div_member input{
@@ -23,10 +26,9 @@ strong{
   height: 37px;
   border-radius: 3px;
   margin-top: 10px;
-  border: 1px solid #777;
+  border: 1px solid #999;
   text-align: center;
   margin-bottom: 20px;
-  /* padding-top: 5px; */
   vertical-align: middle;
 }
 #div_member p{
@@ -43,7 +45,6 @@ strong{
   width: 280px;
   height: 37px;
   border-radius: 3px;
-  border: 1px solid #777;
 }
 #div_member #gender{
   width: 95px;
@@ -51,18 +52,15 @@ strong{
   position: relative;
   right:40px;
   border-radius: 3px;
-  border: 1px solid #777;
 }
+
 #member_address input{
   width: 224px;
 }
-#btn_address{
-  background-color: lightblue;
-  color: white;
-}
-#new_address #old_address{
-  display: block;
-  position: absolute;
+
+#new_address, #old_address, #btn_edit{
+  position: relative;
+  right: -3.3rem;
 }
 #add_address{
   width: 452px;
@@ -78,76 +76,85 @@ strong{
   top: 120px;
   left: 102px;
 }
-#div_button input{
-  background-color: lightblue;
-  color: white;
-}
+
 #div_apply{
   position: relative;
   display: inline-block;
-  box-sizing: border-box;
   margin: 0 auto;
-  top: 72px;
-  left: 190px;
+  top: 90px;
 }
+
 #tb_apply{
   border-collapse: collapse;
   margin: 0 auto;
-  width: 900px;
-  border-bottom: 3px solid gray;
-  border-left: 1px solid #777;
-  border-right: 1px solid #777;
+  width: 700px;
 }
 
 th {
-  background-color: #777;
-  color: white;
+  background-color: #eee;
   font-weight: bold;
   text-align: center;
-  padding: 12px 0;
-  border: 1px solid #777;
+  padding: 0.5rem;
+}
+
+tr {
+  border-top: 1px solid #ddd;
 }
 
 td {
-  border: 1px dotte gray;
   padding: 10px 8px;
   text-align: center;
 }
 
-tr:nth-child(even) {
-  background-color: #D6EEFE;
-}
 tr.th_first{
   border-left: 1px solid gray;
 }
+
 .th_group{
   text-align: center;
 }
-#alarm_message{
+
+#btn_delete_history {
+  cursor: pointer;
+}
+
+/* notification */
+
+#notification{
   display: inline-block;
   position: relative;
   box-sizing: border-box;
   padding-bottom: 15px;
   margin: 0 auto;
-  width: 900px;
-  top: 72px;
-  left: 190px;
+  width: 700px;
+  top: 90px;
 }
 
-#alarm_message ul li{
+#notification ul li{
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   border-bottom: 1px solid #777;
   margin-bottom: 40px;
 }
-#message{
-  display: block;
-  margin-top: 10px;
-}
-.alarm_content{
 
+.noti_title {
+  cursor: pointer;
 }
-.alarm_receive{
+
+.date_received{
+  color: #777;
+  font-size: smaller;
   position: absolute;
   right: 0;
+}
+
+#member_address #btn_address, #div_button input {
+  border: 0;
+  background-color: rgb(133, 198, 241);
+  color: white;
+}
+
+.container {
+  min-height: 900px;
+  margin-bottom: 2rem;
 }

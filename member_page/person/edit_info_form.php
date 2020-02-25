@@ -17,17 +17,16 @@ if(isset($_SESSION["username"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="./css/person.css">
-    <script src="./js/edit.js"></script>
+    <title>일하세</title>
   </head>
   <body>
-
-      <header>
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
-      </header>
+    <header>
+      <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+    </header>
+    <div class="container">
     <div id="div_left_menu">
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/person/member_side_menu.php";?>
     </div>
@@ -83,5 +82,8 @@ if(isset($_SESSION["username"])){
       </div>
     </form>
     </div>
+    </div>
+
+    <script src="./js/edit.js"></script>
   </body>
 </html>
