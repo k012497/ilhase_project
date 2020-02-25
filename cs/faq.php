@@ -9,7 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/faq.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>일하세</title>
 
     <script type="text/javascript">
@@ -182,5 +182,7 @@ session_start();
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
         </div>
     </footer>
+
+    <link rel="stylesheet" href="./css/faq.css">
   </body>
 </html>

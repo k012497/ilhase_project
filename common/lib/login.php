@@ -27,7 +27,7 @@
      $root_path = $_SERVER['DOCUMENT_ROOT'];
      echo("
        <script>
-         location.href = 'http://".$_SERVER['HTTP_HOST']."/ilhase/admin/admin.php?admin=true';
+         location.href = 'http://".$_SERVER['HTTP_HOST']."/ilhase/admin/admin.php?main=true';
        </script>
      ");
    }else if(!$num_match){

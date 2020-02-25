@@ -6,6 +6,14 @@
     $serch_word='';
     if($mode==="index_search"){
       $serch_word=$_GET['search_word'];
+      if($serch_word===""){
+        echo "<script>
+            alert('내용을 적어주세요!');
+            history.go(-1);
+        </script>";   
+        exit;
+      }
+    
     }
    ?>
   <head>
@@ -195,9 +203,7 @@
 
            console.log(industry_title+select_alignment+select_career+selectAreainit.text());
 
-          //nav active 활성화
-          $('.nav-item:nth-child(1)').removeClass('active');
-          $('.nav-item:nth-child(2)').addClass('active');
+          
 
           var strArea=select_area.replace(/(\s*)/g,"");
           var area_text=strArea.split('>');
@@ -675,6 +681,15 @@
   });
 
 
+  //nav active 활성화
+    document.querySelectorAll('.nav-item').forEach(function(data, idx){
+    console.log(data, idx);
+    data.classList.remove('active');
+
+    if(idx === 1){
+        data.classList.add('active');
+        }
+    });
 
 
     </script>

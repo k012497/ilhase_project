@@ -162,7 +162,7 @@
                         <li>
                             <span class="col1">NO</span>
                             <span class="col2">이름</span>
-                            <span class="col3">내용</span>
+                            <span class="col3">공고 개수</span>
                             <span class="col4">가격</span>
                             <span class="col5">판매량</span>
                             <span class="col6">매출액</span>

@@ -32,7 +32,7 @@
         global $conn;
         
         $plan_list = array();
-        $sql = "select recruit_plan.num, recruit_plan.name, recruit_plan.description, recruit_plan.price, 
+        $sql = "select recruit_plan.num, recruit_plan.name, recruit_plan.count, recruit_plan.price, 
         (select count(*) from purchase where plan_num = recruit_plan.num) as sales, sum(purchase.price) as revenue 
         from recruit_plan left join purchase 
         on recruit_plan.num = purchase.plan_num 
@@ -42,7 +42,7 @@
             $plan_data = array(
                 'num' => $row['num'],
                 'name' => $row['name'],
-                'description' => $row['description'],
+                'count' => $row['count'],
                 'price' => $row['price'],
                 'sales' => $row['sales'],
                 'revenue' => $row['revenue']

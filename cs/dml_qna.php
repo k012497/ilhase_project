@@ -80,6 +80,8 @@
         }
 
         while($row = mysqli_fetch_array($result)){
+            $num = $row['num'];
+            $hit = $row['hit'];
             $content = str_replace(" ", "&nbsp;", $row['content']);
             $content = str_replace("\n", "<br>", $row['content']);
 
@@ -87,7 +89,7 @@
                 // 질문글인 경우
                 echo '
                     <div class="question_preview">
-                        <span class="message">'.$content.'</span>
+                        <a href="qna_view.php?num='.$num.'&hit='.$hit.'"><span class="message">'.$content.'</span></a>
                         <span class="date">'.$row['regist_date'].'</span>
                     </div>';
             } else {

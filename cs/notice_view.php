@@ -103,17 +103,18 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
         </div><!--end of list_top_title  -->
 
         <div id="notice_contents">
-          <li  class="buttons"><?=$content?></li>
           <?php
           if($file_name) {
             $real_name = $file_copied;
             $file_path = "./data/".$real_name;
             $file_size = filesize($file_path);
-            echo "<br><br>▷ 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
+            echo "<br>📁 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>
+                <img src='".$file_path."' width='".$image_width."' height='".$image_height."' /><br /><br />";
             // 올린 파일 글 내용에 보이기
           }
           ?>
+          <li  class="buttons"><?=$content?></li>
         </li>
         </div>
 

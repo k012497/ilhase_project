@@ -144,10 +144,17 @@
     function get_questions_count(){
         global $conn;
 
-        $sql = "select count(*) from qna where (select count(*) from qna group by group_num) < 2;";
+        $sql = "select count(*) from qna group by group_num;";
         $result = mysqli_query($conn, $sql);
         if($result){
-            echo mysqli_fetch_array($result)[0];
+            $count = 0;
+            while($row = mysqli_fetch_array($result)){
+                if($row[0] === '1'){
+                    // 답변이 달리지 않은 경우만 카운팅
+                    $count++;
+                }
+            }
+            echo $count;
         }
     }
 

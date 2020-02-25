@@ -1,12 +1,11 @@
 <?php
 session_start();
-// include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
-include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
+include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
+// include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
 if(isset($_SESSION['userid']))
   $id   = $_SESSION['userid'];
-  $con=mysqli_connect("127.0.0.1","root","123456","ilhase");
   $sql="select * from corporate where id='$id'";
-  $result=mysqli_query($con,$sql);
+  $result=mysqli_query($conn,$sql);
   $row=mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>

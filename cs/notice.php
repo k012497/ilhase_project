@@ -55,7 +55,7 @@ $number = $total_record - $start;
       ?>
     </header>
       <div class="container">
-        <h2 class="title">공지사항</h2><br>
+        <h2 class="title">공지사항</h2>
          <div id="list_top_title">
 
            <ul class="notice_list_menu">
@@ -102,7 +102,7 @@ $number = $total_record - $start;
               if($page==$i){
                 echo "<b>&nbsp;$i&nbsp;</b>";
               }else{
-                echo "<a href='./list.php?page=$i'>&nbsp;$i&nbsp;</a>";
+                echo "<a href='./notice.php?page=$i'>&nbsp;$i&nbsp;</a>";
               }
             }
           ?>
@@ -126,5 +126,16 @@ $number = $total_record - $start;
         </div>
     </footer>
     <link rel="stylesheet" href="./css/notice.css">
+    <script>
+      //nav active 활성화
+      document.querySelectorAll('.nav-item').forEach(function(data, idx){
+        console.log(data, idx);
+        data.classList.remove('active');
+
+        if(idx === 3){
+          data.classList.add('active');
+        }
+      });
+    </script>
   </body>
 </html>

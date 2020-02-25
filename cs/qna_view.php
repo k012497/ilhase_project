@@ -34,7 +34,7 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
     $subject=str_replace(" ", "&nbsp;",$subject);
     $content=str_replace("\n", "<br>",$content);
     $content=str_replace(" ", "&nbsp;",$content);
-    $regist_date=$row['regist_day'];
+    $regist_date=$row['regist_date'];
     $hit=$row['hit'];
     mysqli_close($conn);
 }
@@ -53,13 +53,9 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
     <header>
 
         <?php
-          if(true){
-            // 회원일 경우
-            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
-          } else {
-            // 관리자일 경우
-            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
-          }?>
+          include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
+        ?>
+        <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
     </header>
     <div id="content">
       <h2 class="title">1 : 1 문의 > 내용</h2>
