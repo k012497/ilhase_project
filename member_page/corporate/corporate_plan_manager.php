@@ -65,7 +65,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
               <div class='col-sm-2' style='background-color:lightgray;height:250px;border-radius:15px;
               margin-right:5px;margin-top:5px;'>
                 <h4>".$row[$i]['name']."</h4>
-                <h4>".$row[$i]['description']."</h4>
+                <h4>공고 ".$row[$i]['count']." 개</h4>
                 <h5>".$row[$i]['price']."</h5>
                 <input type='radio' name='options' value='".$row[$i]['name']."'/>
                 <span class='radio'></span>
@@ -83,41 +83,24 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     </div><br>
     <h3>내가 가지고 있는 플랜</h3>
     <div class="row">
-        <div class="col-sm-offset-1 col-sm-4" style=";height:70px;border-radius:15px;">
-          <table >
-            <tr>
-              <th style="border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;"><?php echo $row[0]['name']; ?></th>
-              <th style="border-radius: 0px 15px 15px 0px; width:150px; border:0px;text-align:center;height:70px;">0회</th>
-            </tr>
-          </table>
-        </div>
-        <div class="col-sm-4"style="height:70px;border-radius:15px;margin-left:5px;">
-          <table >
-            <tr>
-              <th style="border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;"><?php echo $row[1]['name']; ?></th>
-              <th style="border-radius: 0px 15px 15px 0px; width:150px; border:0px;text-align:center;height:70px;">0회</th>
-            </tr>
-          </table>
-        </div>
-        <div class="col-sm-4"style="height:70px;border-radius:15px;margin-top:10px;">
-          <table >
-            <tr>
-              <th style="border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;"><?php echo $row[2]['name']; ?></th>
-              <th style="border-radius: 0px 15px 15px 0px; width:150px; border:0px;text-align:center;height:70px;">0회</th>
-            </tr>
-          </table>
-        </div>
-        <div class="col-sm-4"style="height:70px;border-radius:15px;margin-left:5px;margin-top:10px;">
-          <table >
-            <tr>
-              <th style="border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;"><?php echo $row[3]['name']; ?></th>
-              <th style="border-radius: 0px 15px 15px 0px; width:150px; border:0px;text-align:center;height:70px;">0회</th>
-            </tr>
-          </table>
-        </div>
-        <div class="row">
+        <?php
+          for($i=0;$i<$numrow_purchase; $i++){
+            echo "
+            <div class='col-sm-4'style='height:70px;border-radius:15px;margin:5px;'>
+              <table >
+                <tr>
+                  <th style='border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;'>
+                  ".$row_purchase[$i]['plan_name']."</th>
+                  <th style='border-radius: 0px 15px 15px 0px; width:150px; border:0px;text-align:center;height:70px;'>
+                  ".$row_purchase[$i]['available_count']."회
+                  </th>
+                </tr>
+              </table>
+            </div>
+            ";
+          }
+         ?>
 
-     </div>
     </div>
     <h3>구매내역</h3>
     <table class="table table-striped">
