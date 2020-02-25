@@ -56,24 +56,18 @@ $(document).ready(function() {
     input_major.val();
   });
 
-  $("#btn_ok").click(function() {
-    var form_data = $("#form_resume").serialize();
-    form_data = form_data.replace(/%/g, '%25');
-    console.log(form_data);
-    $.ajax({
-        cache : false,
-        url : "resume.php",
-        type : 'POST',
-        data : form_data,
-        success : function(data) {
-            console.log(data);
-        },
-        error : function(xhr, status) {
-            alert(xhr + " : " + status);
-        }
-    });
+  $("#btn_insert").click(function() {
     alert("등록 되었습니다.");
     document.form_resume.submit();
+  });
+
+  $("#btn_update").click(function() {
+    alert("수정 되었습니다.");
+    document.form_resume.submit();
+  });
+
+  $("#btn_cancel").click(function() {
+     location.href="manage_recruitment_form.php";
   });
 
 

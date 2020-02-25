@@ -98,9 +98,9 @@ if(isset($_SESSION["username"])){
                   $title=$row['title'];
                   $regist_date=$row['regist_date'];
                ?>
-                <li class="li_resume" onclick="location.href='write_resume.php?mode=update&num=<?=$num?>'">
+                <li class="li_resume">
                   <img src="" alt="">
-                  <p class="p_title"><?=$title?><br/><?=$regist_date?></p>
+                  <p class="p_title" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
                   <img class="btn_image" name="upfile" src="../img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
                 </li>
                 <?php
@@ -113,7 +113,7 @@ if(isset($_SESSION["username"])){
                 $sql="select*from person where id='$userid'";
                   $result=mysqli_query($conn,$sql);
                     if($member_type=="person") {
-                        echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`write_resume.php`'><img  src='./img/upload.png'><p  class='p_title'>신규 이력서 작성하기</p></li>";
+                        echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`write_resume_form.php`'><img  src='./img/upload.png'><p  class='p_title'>신규 이력서 작성하기</p></li>";
                     }else{
                         echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`new_recruitment_form.php`' ><img  src='./img/upload.png'>신규 공고 등록하기</li>";
                     }

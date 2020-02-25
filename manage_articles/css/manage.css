@@ -106,6 +106,8 @@
 .li_resume .p_title{
   display: block;
   position: relative;
+  width: 200px;
+  height: 70px;
   float: left;
 }
 .li_resume .btn_image{
