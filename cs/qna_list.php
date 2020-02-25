@@ -31,6 +31,7 @@ $number = $total_record - $start;
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="./css/notice.css">
+    <link rel="stylesheet" href="./css/qna.css">
     <title>일하세</title>
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
