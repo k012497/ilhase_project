@@ -31,8 +31,11 @@
     $recruiter_email        = $row['recruiter_email'];
     $recruit_type           = $row['recruit_type'];
 
-
-
+    //선택한 공고의 num값으로 해당 아이디가 그 공고에 지원했는지 안했는지 검사
+    $check_resume_sql="select * from apply where recruit_id=$pick_job_num";
+    $check_result=mysqli_query($conn,$check_resume_sql);
+    $check_row=mysqli_fetch_array($check_result);
+    mysqli_close($conn);
    ?>
   <head>
     <meta charset="utf-8">
@@ -54,7 +57,17 @@
               <?=$title?>
               <span id="sub_title">(<?=$b_name?>)</span>
               <span id="period"><?=$period_start?> ~ <?=$period_end?>
-              <button id="btn_apply"  name="button">지원하기</button>            
+              <?php
+                if($check_row){
+                  echo"
+                     <button id='btn_apply_cancel'  name='button'>지원하기</button>
+                  ";
+                }else{
+              ?>
+              <button id="btn_apply"  name="button">지원하기</button>
+              <?php 
+                }
+              ?>            
             </span>
             </h1> 
             <div id="email_apply">
@@ -320,12 +333,14 @@
       }
 
 
-      //
 
       var $user_id='<?=$id?>';
-      //지원하기 버튼
+   
       $(function(){
                 $('#loading').hide();
+
+                
+                  //지원하기 버튼
                 $('#btn_apply').click(function(){
                   if($user_id===''){
                     alert('로그인을 해주세요!');
@@ -357,14 +372,23 @@
                       }else {
                         //해당 아이디가 기본이력서가 있을때
                         $('#btn_email_submit').prop("disabled",false);
+                        var recruit_id=<?=$pick_job_num?>;
+                        $('#btn_email_submit').off('click');
+                        var isCheck = $('input:radio[name="resume"]:checked').length;
                         $('#btn_email_submit').click(function(){
-                          var isCheck = $('input:radio[name=resume]').is(':checked');
-
-                          if(isCheck===false){
+                          // var recruit_id=$('input:radio[name=resume]:checked').prev().val();                        
+                          if(isCheck < 1){
+                            var title=$('input:radio[name="resume"]:checked').val();
                             alert('이력서를 선택해주세요!');
-                            return;
+                            return false;
+                          }else{
+                            applyresume($user_id,recruit_id,title);
+                            console.log($user_id,recruit_id,title);
+                            $('#loading').show();
+                            return true;
                           }
-                          $('#loading').show();
+                         
+                          
                         });
                       }
                     }
@@ -381,6 +405,28 @@
                   $('#email_apply').hide();
                 },400);
               });
+
+              //resume apply 등록
+              function applyresume(user_id,recruit_id,title){
+
+                console.log(user_id,recruit_id,title);
+                $.ajax({
+
+                  url:'./dml_apply.php',
+                  type:'POST',
+                  data:{'user_id':user_id,
+                        'recruit_id':recruit_id,
+                        'title':title
+                        },
+                  success:function(data){
+                      console.log(data);
+
+                  }
+                });
+
+
+              }
+             
               
 
       });

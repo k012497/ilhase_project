@@ -4,6 +4,7 @@
 $resume=$_POST['resume'];
 $num=$_POST['num'];
 
+
 $receiver_email=$_POST['receiver_email'];
 $rv_email=preg_replace("/\s+/", "",$receiver_email);
 $receiver_name=$_POST['receiver_name'];
@@ -82,8 +83,6 @@ try {
     // 첨부파일
     // $mail -> addAttachment("./kim.jpg");
     // $mail -> addAttachment("./anjihyn.jpg");
-    // srand((double)microtime()*1000000); //난수값 초기화
-    // $code=rand(100000,999999);
     // 메일 내용
     $mail -> isHTML(true);                                                         // HTML 태그 사용 여부
     $mail ->Subject = $sender_name."님 의 이력서입니다";                  // 메일 제목
@@ -122,12 +121,10 @@ try {
     // 메일 전송
     $mail -> send();
 
-
-
     echo "<script>
                 alert('담당자에게 메일을 보냈습니다!');
                 history.go(-1);
-    </script>";
+          </script>";
 
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error :", $mail ->ErrorInfo;

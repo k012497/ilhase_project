@@ -93,15 +93,9 @@ select {
   background-color:#eee;
 }
 
-/* 소진이 추가!!!!!!!!!!!!!!!!! */
-
 button {
   border: 1px solid #777;
   border-radius: 5px;
-}
-
-.container .title {
-	margin: 3rem 0;
 }
 
 /* ------------------------------- media query ------------------------------- */
@@ -302,7 +296,7 @@ button {
 
   #pick_job {
     position:absolute;
-    width:520px;
+    width:650px;
     height:30px;
     box-sizing:border-box;
     bottom:0;
@@ -312,18 +306,18 @@ button {
     margin-left:0em;
     margin-right:0em;
     padding-left:0;
+    width:650px;
   }
   #pick_job ul li {
     padding-top:0em;
     padding-left:0em;
-    width:125px;
+    width:21.5%;
     text-align:center;
+    cursor: pointer;
+    
   }
-  #pick_job ul li a {
-    color:#333;
 
-  }
-  #pick_job ul li a:hover {
+  #pick_job ul li:hover {
       color:rgb(37, 139, 247);
   }
   .floatnone {

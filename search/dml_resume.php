@@ -6,7 +6,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     $find_resume_sql="select * from resume where m_id='$user_id'";
 
     $result=mysqli_query($conn,$find_resume_sql);
-    $row=mysqli_fetch_array($result);
+
     $count=mysqli_num_rows($result);
     if(!isset($row)){
             echo "<p id='none_message'>입력하신 기본 이력서가 없습니다.<br>기본 입력서를 작성해주세요!</p>
@@ -15,6 +15,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         exit;
     }else{
             for($i=0;$i<$count;$i++){
+                $row=mysqli_fetch_array($result);
                 $title=$row['title'];
                 $num=$row['num'];
                 

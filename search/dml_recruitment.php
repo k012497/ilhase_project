@@ -102,12 +102,6 @@ switch ($mode) {
     break;
 }
 
-// function recruitment(){
-
-
-
-// }
-
 
 
 //전체페이지에서 전체 데이터 가져올떄 함수
