@@ -28,7 +28,7 @@ if(isset($_SESSION["username"])){
     </header>
     <div class="container">
     <div id="div_left_menu">
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/person/member_side_menu.php";?>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
     </div>
     <?php
         $sql    = "select * from person where id='$userid'";

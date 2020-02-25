@@ -1,4 +1,5 @@
-    <link rel="stylesheet" href="../common/common.css">
+    <!-- <link rel="stylesheet" href="../common/common.css"> -->
+    <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/css/common.css">
     <aside>
       <h3 id="profile" class="title"><?=$_SESSION['username']?></h3>
       <div id="left_menu">

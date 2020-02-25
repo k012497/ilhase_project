@@ -18,7 +18,7 @@
     </header>
     <div class="container">
         <div id="div_left_menu">
-          <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/person/member_side_menu.php";?>
+          <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
         </div>
         <div id="div_apply">
             <tr>

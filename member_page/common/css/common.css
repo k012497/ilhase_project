@@ -3,6 +3,10 @@ aside{
   margin-top: 3rem;
 }
 
+strong{
+  color: rgb(133, 198, 241);
+}
+
 .side_menu_item, #profile {
   font-weight: bolder;
 }
