@@ -39,6 +39,7 @@ $number = $total_record - $start;
   <head>
     <meta charset="utf-8">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/css/notification.css">
     <title>일하세</title>
   </head>
   <body>
@@ -80,23 +81,22 @@ $number = $total_record - $start;
             $subject=str_replace("\n", "<br>",$subject);
             $subject=str_replace(" ", "&nbsp;",$subject);
         ?>
-            <div id="list_item">
-              <div id="list_item1"><?=$number?></div>
-              <div id="list_item2">
+            <div class="list_item">
+              <div class="list_item1"><?=$number?></div>
+              <div class="list_item2">
                   <a href="./notice_view.php?num=<?=$num?>&page=<?=$page?>&hit=<?=$hit + 1?>"><?=$subject?></a>
               </div>
 
-              <div id="list_item3"><?=$date?></div>
-              <div id="list_item4"><?=$hit?></div>
+              <div class="list_item3"><?=$date?></div>
+              <div class="list_item4"><?=$hit?></div>
             </div><!--end of list_item -->
-            <div id="memo_content"><?=$memo_content?></div>
         <?php
             $number--;
          }//end of for
         ?>
 
         <div id="page_button">
-          <div id="page_num">이전◀ &nbsp;&nbsp;&nbsp;&nbsp;
+          <div id="page_num">이전 ◂ &nbsp;&nbsp;&nbsp;
           <?php
             for ($i=1; $i <= $total_page ; $i++) {
               if($page==$i){
@@ -106,7 +106,7 @@ $number = $total_record - $start;
               }
             }
           ?>
-          &nbsp;&nbsp;&nbsp;&nbsp;▶ 다음
+          &nbsp;&nbsp;&nbsp;▸ 다음
         </div><!--end of page num -->
         <?php //세션 아이디가 admin일 경우만 수정 허용
           if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
