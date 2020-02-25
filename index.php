@@ -82,11 +82,26 @@ if(isset($_SESSION["usermember_type"]))
             </div>
             <div id="pick_job">
                 <ul>
-                  <li><a href="#">#인기구직1</a></li>
-                  <li><a href="#">#인기구직2</a></li>
-                  <li><a href="#">#인기구직3</a></li>
-                  <li><a href="#">#인기구직4</a></li>
+                <?php
+                  $many_recruitment_sql="select industry, count(*) as count from recruitment group by industry having count > 1 order by count desc limit 4";
+                  $recruitment_result=mysqli_query($conn,$many_recruitment_sql);
+                  $count=mysqli_num_rows($recruitment_result);
+
+                  for($i=0;$i<$count;$i++){
+                    $row=mysqli_fetch_array($recruitment_result);
+                    $industry=$row['industry'];
+                   
+                    $array_industry=explode("/",$industry);
+                    $industry_str=end($array_industry);
+                    
+                    echo"
+                        <script>console.log('".$industry_str."');</script>
+                        <li>#".$industry_str."</li>  
+                    ";
+                  }
+                ?>
                 </ul>
+               
             </div>
           </div>
           <div id="intro_wrap" class="floatnone">
@@ -295,19 +310,20 @@ if(isset($_SESSION["usermember_type"]))
     }
 
 }
-getLocation(); //함수 실행
+getLocation(); //위치 공고 함수 실행
 
 $(function(){
-
+  //자동검색어
   $('#search_job').keyup(function(){
 
       if($(this).val()===""){
+        $('#atuo_keword ul').empty();
         $("#atuo_keword").hide();
       }else {
         $.ajax({
           // async : false,
           url:"http://"+rute+"/ilhase/search/dml_recruitment.php?mode=auto_keyword",
-          data:{"keyword" : $.trim($(this).val()) },
+          data:{"keyword" : $(this).val() },
           method:'GET',
           success:function(data){
             $('#atuo_keword').show();
@@ -328,11 +344,30 @@ $(function(){
   });//end of keyup 
   
 });
-
+//body누르면 자동검색창 hide
 $('body').click(function(){
   $("#atuo_keword").hide();
 });
+//빠른검색창 효과
+$('#search_job').focus(function(){
+  $('#searchJob_box').css({"border" : "1px solid #333" });
+});
+$('#search_job').blur(function(){
+  $('#searchJob_box').css({"border" : "1px solid #A6A6A6" });
+});
 
+$('#pick_job ul li').off('click');
+//추천 검색어 누를시
+$('#pick_job ul li').click(function(){
+
+    var select_word =$(this).text();
+    console.log(select_word);
+    var str_select=select_word.split("#");
+    $('input[name=search_word]').eq(1).val(str_select[1]);
+
+
+
+});
 
 </script>
 
