@@ -145,7 +145,7 @@ if(isset($_GET['num'])){
           if ($mode=="update") {
             echo "<h3 class='title' id='resume_title'>이력서 수정</h3>";
           }else{
-            echo "<h3 class='title'>이력서 작성</h3>";
+            echo "<h3 class='title' id='resume_title'>이력서 작성</h3>";
           }
          ?>
 
@@ -157,9 +157,11 @@ if(isset($_GET['num'])){
             <input id="input_public" type="checkbox" name="input_public" value="<?=$public?>" checked>공개 여부
         </div>
         <div id="div_image_profile">
-          <input id="imageFile" type="file" name="upfile" onchange="checkImage();" accept="image/*">
-          <!-- <input type="file" id="imageFile" name="upfile" accept="image/*" onchange="checkImage();"> -->
-          <img id="img_upload" src="./data/<?=$file_copied?>" alt="image" onerror="this.src='./img/person.png'">
+          <div id="imgFile_box">
+            <input id="imageFile" type="file" name="upfile" onchange="checkImage();" accept="image/*">
+            <!-- <input type="file" id="imageFile" name="upfile" accept="image/*" onchange="checkImage();"> -->
+            <img id="img_upload" src="./data/<?=$file_copied?>" alt="image" onerror="this.src='./img/imagefilebasic.jpg'">
+          </div>
           <div id="profile_info">
             <input id="input_name" type="text" name="input_name" value="<?=$name?>" readonly>
             <input id="input_birth" type="text" name="input_birth" value="<?=$birth?>" readonly>
@@ -175,13 +177,13 @@ if(isset($_GET['num'])){
             <textarea name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;"><?=$cover_letter?></textarea>
           </div>
           <div id="div_show">
-            <button type="button" id="btn_show" name="btn_show" onclick="showDiv()">더 자세한 이력을 작성하려면 클릭하세요</button>
+            <p id="btn_show" ><span id="btn_more_img"></span>더 자세한 이력을 작성하려면 클릭하세요</p>
           </div>
-          <div id="div_resume_detail" style="display:none;">
+          <div id="div_resume_detail" >
             <div class="div_present">
               <p>이전에 하셨던 일이 있나요 ?</p>
               <!-- <input  id="text_job" type="text" name="" value="" readonly> -->
-              <textarea id="text_job" name="text_job" rows="8" cols="80" readonly><?=$career?></textarea>
+              <textarea id="text_job" name="text_job" rows="5" cols="80" readonly><?=$career?></textarea>
               <input id="input_job" type="text" name="job" style="width:250px;" placeholder="맡았던 직무를 간단히 적어주세요">
               <input id="input_date" type="text" name="job_date" style="width:100px;" placeholder="언제">
               <input id="input_years" type="text" name="years" style="width:200px;" placeholder="얼마나 하셨나요?">
@@ -190,7 +192,7 @@ if(isset($_GET['num'])){
             <div class="div_present">
               <p>보유하신 자격증이 있나요?</p>
               <!-- <input  id="text_license" type="text" name="" value="서비스직,2015년,5년" readonly> -->
-                <textarea id="text_license" name="text_license" rows="8" cols="80" readonly><?=$license?></textarea>
+                <textarea id="text_license" name="text_license" rows="5" cols="80" readonly><?=$license?></textarea>
               <input id="input_license" type="text" name="license" style="width:305px;" placeholder="자격증 이름">
               <input id="input_license_date" type="text" name="license_date" style="width:250px;" placeholder="취득년도">
               <button class="btn_upload" type="button" id="btn_license" name="btn_license"> <img src="../img/plus.png" alt=""> </button>
@@ -198,7 +200,7 @@ if(isset($_GET['num'])){
             <div class="div_present">
               <p>학력도 적어주세요!</p>
               <!-- <input  id="text_school" type="text" name="" value="서비스직,2015년,5년" readonly> -->
-              <textarea id="text_school" name="text_school" rows="8" cols="80" readonly><?=$education?></textarea>
+              <textarea id="text_school" name="text_school" rows="5" cols="80" readonly><?=$education?></textarea>
               <input id="input_school" type="text" name="school" style="width:250px;" placeholder="학교">
               <input id="input_graduation" type="text" name="graduation" style="width:150px;"placeholder="졸업년도">
               <input id="input_major" type="text" name="major" placeholder="전공"style="width:150px;" >
@@ -206,6 +208,7 @@ if(isset($_GET['num'])){
             </div>
           </div>
         </div>
+        <div id="btn_box">
         <?php
           if ($mode === 'update') {
             echo "<button id='btn_update' type='button' name='button'>수정하기</button>";
@@ -215,20 +218,41 @@ if(isset($_GET['num'])){
          ?>
 
           <button id="btn_cancel" type="button"  name="button">취 소</button>
+
+
+        </div>
         </div>
         </div>
       </div>
     </form>
     <script>
-      var show = document.getElementById('div_resume_detail');
-      var btn = document.getElementById('btn_show');
-      function showDiv(){
-        if (show.style.display=='none') {
-          show.style.display='block';
-        }else{
-          show.style.display='none';
-        }
-      }
+      // var show = document.getElementById('div_resume_detail');
+      // var btn = document.getElementById('btn_show');
+
+        // if (show.style.display=='none') {
+        //   show.style.display='block';
+        // }else{
+        //   show.style.display='none';
+        // }
+   
+
+       //클릭 효과
+       $(function(){  
+        $('#btn_show').off('click');
+        $('#btn_show').click(function(){
+          $('#div_resume_detail').fadeToggle('500');
+        });
+        
+
+      });
+      //img를 누르면 upload 파일을 클릭
+      $(function(){
+        $('#img_upload').click(function(){
+          $('#imageFile').click();
+
+        });
+      });
+      
     </script>
   </body>
 </html>

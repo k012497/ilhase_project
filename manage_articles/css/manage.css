@@ -49,27 +49,31 @@
   position: relative;
 }
 #recruit_list ul{
-  display: inline-block;
+  width:100%;
+}
+#recruit_list ul li {
+  display:block;
+  float: left;
 }
 
 .li_resume{
-  width: 350px;
+  width:30%;
   height: 100px;
   text-decoration: none;
   border-radius: 10px;
   color: #474747;
-  margin: 5px;
+  margin:5px 5px;
   border:1px solid #ddd;
   transition:0.5s;
   cursor: pointer;
 }
 #li_write_resume{
-  width: 350px;
+  width: 30%;
   height: 100px;
   text-decoration: none;
   border-radius: 10px;
   color: #474747;
-  margin: 5px;
+  margin:5px 5px;
   background-color: lightblue;
   line-height: 100px;
   font-weight: bold;
@@ -81,14 +85,14 @@
   height: 30px;
   position: relative;
   top: 36px;
-  left:85px;
+  left:80px;
 
 }
 #recruit_list #finish_resume{
-  width: 48%;
+  width: 30%;
   height: 100px;
-  display: none;
   list-style: none;
+  display:none;
   text-decoration: none;
   border-radius: 10px;
   background-color: lightgray;
@@ -102,6 +106,7 @@
 }
 #recruit_list ul li:last-child {
   border:none;
+
 }
 #recruit_list ul li:last-child:hover {
   box-shadow:0px 0px 10px 2px rgba(139, 170, 255, 0.3);
@@ -160,20 +165,25 @@
 #new_resume p{
   float: left;
 }
+#form_resume {
+  width:1100px;
+  margin:0 auto;
+}
+/* 남채현 추가 2.26*/
+#resume_title {
+    line-height:55px;
+}
 #main_resume{
-  display: inline-block;
+  display: block;
   margin: 20px 0 50px 0;
 }
 #main_resume h3{
-  margin-left: 70px;
-  margin-bottom: 30px;
+  border-bottom:1px solid #333;
 }
 #div_resume_main{
-  position: relative;
-  left: 550px;
   box-sizing: border-box;
-  width: 1100px;
-  margin-bottom: 100px;
+  width:55%;
+  margin:0 auto;
 }
 
 #input_title{
@@ -186,35 +196,49 @@
   font-weight: bold;
   font-size: 25px;
 }
+#input_title:focus{
+  outline:none;
+}
 #input_public{
   margin-left: 20px;
 }
 #div_image_profile{
+  width:100%;
+  height:300px;
   position: relative;
-  overflow: hidden;
-  display: inline-block;
+  /* overflow: hidden; */
+  display: block;
 }
-#imageFile{
+#imgFile_box {
   position: absolute;
+  left:0;
+  top:10%;
   width: 200px;
   height: 250px;
-  opacity:0;
-  filter: alpha(opacity=0);
-  -ms-filter: alpha(opacity=0);
-  cursor:pointer;
-  z-index: 1;
+  border-radius:0.3rem;
+  padding:0.5rem 0.5rem;
+  border:1px solid #ddd;
+  box-sizing:border-box;
+  
 }
+#imageFile{
+  display:none;
+}
+
 #div_image_profile img{
-  width: 230px;
-  height: 222px;
-  display: inline-block;
-  background-color: #e0e0e0;
-  z-index: -1;
-  background-size: contain;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity:1;
+  z-index:1;
+  cursor: pointer;
 }
 #profile_info{
-  display: inline-block;
-  float: right;
+  position: absolute;
+  top:12%;
+  right:10%;
+  display: block;
+  margin-left:1rem;
 }
 #profile_info #input_birth{
   display: inline-block;
@@ -222,28 +246,44 @@
 }
 #profile_info #input_gender{
   display: inline-block;
+  width:136px;
 
 }
 #profile_info input{
   display: block;
-  padding: 10px;
+  width:100%;
+  height:45px;
+  padding: 3px;
   font-weight: bold;
   border: none;
+  background-color:transparent;
   margin-bottom: 3px;
+  border-bottom:1px solid #ddd;
+}
+#profile_info input:focus {
+  outline:none;
 }
 
 #div_cover_letter{
+  position: relative;
   margin-top: 30px;
 }
 #div_cover_letter p{
   font-size: 15px;
   font-weight: bold;
 }
+#div_cover_letter_detail textarea {
+  outline:none;
+  resize:none;
+  width:100%;
+  padding:0.5rem 0.5rem;
+}
 #div_show{
-  width: 30%;
+  width:100%;
 }
 #btn_show{
-  color:#2a6ff1;
+  width:100%;
+  color:#333;
   border: none;
   padding: 15px 0;
   text-align: center;
@@ -251,30 +291,54 @@
   display: inline-block;
   line-height: 2px;
   font-size:15px;
-  margin: 10px;
+  margin:10px 0px;
   cursor: pointer;
   border-radius: 3px;
+  background-color:transparent;
 }
-#btn_show:hover{
-  color: blue;
+#btn_show:focus{
+  outline:none;
 }
-
+#div_resume_detail {
+  display: none;
+}
+#btn_more_img {
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background-image:url('../img/arrow.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    vertical-align:text-bottom;
+    margin-right:0.5rem;
+}
 .div_present{
   margin-bottom: 15px;
 }
 .div_present #text_job,#text_license,#text_school{
   display: block;
-  border: none;
-  margin-bottom: 3px;
-  width: 400px;
+  border: 1px solid #777;
+  margin-bottom:10px;
+  width: 100%;
   resize: none;
+  border-radius:0.3rem;
 
+}
+.div_present textarea {
+  outline:none;
+  padding:0.5rem 0.5rem;
 }
 .div_present input{
   border: 1px solid #777;
-  border-radius: 3px;
+  border-radius:0.3rem;
   width: 200px;
   height: 30px;
+  padding:1rem 1rem;
+
+}
+.div_present input:focus {
+  outline:none;
 }
 .btn_upload{
   border: 0;
@@ -290,8 +354,11 @@
   margin-left: 10px;
   top: -2px;
 }
-#btn_update, #btn_insert{
-  width:100px;
+#btn_box {
+  width:100%;
+}
+#btn_update,#btn_insert{
+  width:50%;
   height: 50px;
   background-color: #5780f6;
   border: none;
@@ -302,12 +369,13 @@
   display: inline-block;
   line-height: 2px;
   font-size:15px;
-  margin: 10px;
+  margin:10px 0px;
+  margin-right:5px;
   cursor: pointer;
   border-radius: 5px;
 }
 #btn_cancel{
-  width:100px;
+  width:48%;
   height: 50px;
   background-color: #e2e2e2;
   border: none;
@@ -318,7 +386,10 @@
   display: inline-block;
   line-height: 2px;
   font-size:15px;
-  margin: 10px;
   cursor: pointer;
   border-radius: 5px;
 }
+#btn_cancel,#btn_update,#btn_insert:focus{
+  outline:none;
+}
+

@@ -201,7 +201,7 @@
               var search_start=0;
               var search_list=10;
               var applay_start=0;
-              var applay_list=10;
+              var applay_list=5;
               
               console.log(mode);
 
@@ -700,7 +700,7 @@
    
             //기업회원이 인재 페이지로 들어올시 전체 인재 데이터
             function show_all_applicant(mode){
-
+              console.log(applay_start);
               $.ajax({
                 url:'./dml_recruitment.php?mode='+mode,
                 type:'get',
@@ -709,7 +709,6 @@
                   'apply_list':applay_list
                 },
                 success:function(data){
-                  console.log(data);
                   $('#ep_databox').append(data);
                   applay_start += applay_list;
                   $('#ep_databox li').each(function(index,item){

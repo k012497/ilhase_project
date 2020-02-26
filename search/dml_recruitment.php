@@ -18,6 +18,7 @@ switch ($mode) {
 
         $count=mysqli_num_rows($result);
         for($i=$applay_start;$i<$applay_start+$applay_list && $i < $count;$i++){
+          mysqli_data_seek($result,$i);
           $row=mysqli_fetch_array($result);
           $num=$row['num'];
           $m_name=$row['m_name'];
@@ -28,11 +29,11 @@ switch ($mode) {
           $m_id=$row['m_id'];
           $src='';
           if ($file_copied) {
-          $src='./img/'+$file_copied;
+          $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
           }else {
           $src='../common/img/user.png';
           }
-          echo "   
+          echo "  
               <li onclick='show_resume();'>
                 <div id='apply_box' >
                 <a href='http://".$_SERVER["HTTP_HOST"]."/ilhase/member_page/corporate/corporate_resume_view.php?num=".$num."'>
@@ -172,7 +173,7 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
     $file_copied=$row['file_copied'];
     $src='';
     if ($file_copied) {
-      $src='./img/'+$file_copied;
+      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }
@@ -252,7 +253,7 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
     $file_copied=$row['file_copied'];
     $src='';
     if ($file_copied) {
-      $src='./img/'+$file_copied;
+      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }
@@ -329,7 +330,7 @@ function all_area_select($conn,$start,$list,$select_career,$select_area_contents
     $file_copied=$row['file_copied'];
     $src='';
     if ($file_copied) {
-      $src='./img/'+$file_copied;
+      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }
@@ -420,7 +421,7 @@ function production_data() {
     $file_copied=$row['file_copied'];
     $src='';
     if ($file_copied) {
-      $src='./img/'+$file_copied;
+      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
     }else {
 
       $src='./img/basicimg.jpg';
@@ -499,7 +500,7 @@ function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list)
     $file_copied=$row['file_copied'];
     $src='';
     if ($file_copied) {
-      $src='./img/'+$file_copied;
+      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }
