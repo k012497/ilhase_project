@@ -22,117 +22,117 @@ function insert_init_data($conn, $table_name){
                 break;
                 
             case 'person' :
-                $sql = "insert into `person` values ('4jo4jo', '123123', '김사조', '1968-01-01', 'example@test.com', '010-1234-5678', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('ksj123', '123123', '김소진', '1959-07-01', 'example@test.com', '010-1124-4433', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('lcm123', '123123', '임채민', '1959-06-01', 'example@test.com', '010-2354-9785', '남', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('nch123', '123123', '남채현', '1959-05-01', 'example@test.com', '010-4135-4233', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('lkh123', '123123', '이강현', '1959-05-01', 'example@test.com', '010-6244-4433', '남', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('lts123', '123123', '이태성', '1959-02-01', 'example@test.com', '010-1531-3576', '남', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                $sql = "insert into `person` values ('4jo4jo', '123123', '김사조', '1968-01-01', 'k012497@naver.com', '010-1234-5678', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('ksj123', '123123', '김소진', '1959-07-01', 'k012497@naver.com', '010-1124-4433', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('lcm123', '123123', '임채민', '1959-06-01', 'k012497@naver.com', '010-2354-9785', '남', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('nch123', '123123', '남채현', '1959-05-01', 'k012497@naver.com', '010-4135-4233', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('lkh123', '123123', '이강현', '1959-05-01', 'k012497@naver.com', '010-6244-4433', '남', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('lts123', '123123', '이태성', '1959-02-01', 'k012497@naver.com', '010-1531-3576', '남', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
 
-                    ('test12', '123123', '김테스트', '1959-01-01', 'example@test.com', '010-1124-4433', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('fruit', '123123', '김과일', '1968-07-01', 'example@test.com', '010-9928-8894', '여', '24243', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('mnmnm', '123123', '김엠앤', '1967-08-01', 'example@test.com', '010-1234-5253', '남', '14243', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
-                    ('kamill', '123123', '김카밀', '1966-09-01', 'example@test.com', '010-9933-5678', '남', '24243', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11')
+                    ('test12', '123123', '김테스트', '1959-01-01', 'k012497@naver.com', '010-1124-4433', '여', '51354', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('fruit', '123123', '김과일', '1968-07-01', 'k012497@naver.com', '010-9928-8894', '여', '24243', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('mnmnm', '123123', '김엠앤', '1967-08-01', 'k012497@naver.com', '010-1234-5253', '남', '14243', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11'),
+                    ('kamill', '123123', '김카밀', '1966-09-01', 'k012497@naver.com', '010-9933-5678', '남', '24243', '서울 성동구 행당동 286-16', '서울 성동구 무학봉28길 11')
                     
-                    ,('ator', 'jybu', 'Mosciski', '1960-03-25', 'marshall.rippin@example.net', '413-454-6426', '여', '26177', '77465 Anabelle Run Suite 193', '10609 Barbara Harbor Suite 967')
-                    ,('aabb', 'wtei', 'Weissnat', '1960-03-25', 'creichel@example.net', '00270569739', '여', '51082', '15177 Nolan Gateway', '15433 Cale Shores')
-                    ,('bfib', 'ujvb', 'Windler', '1949-04-25', 'kristina43@example.org', '(924)348-5699', '여', '58362', '3268 Glenna Squares', '35012 Langworth Path')
-                    ,('bojq', 'plfb', 'Abbott', '1949-04-25', 'scummings@example.org', '113.180.5260', '여', '34984', '051 Retta Dam', '39581 DuBuque Union Apt. 759')
-                    ,('bula', 'pfct', 'Kihn', '1960-03-25', 'pwelch@example.org', '1-596-278-5893', '여', '11053', '2730 Reva Glens', '1448 Annalise Trail Suite 618')
-                    ,('bwpd', 'zgge', 'Jones', '1949-04-25', 'hkling@example.org', '(850)690-2820', '여', '48482', '663 Ivy Bypass', '424 Michaela Walk')
-                    ,('cpfy', 'xvvp', 'Parker', '1949-04-25', 'arielle24@example.org', '172.629.5124', '여', '18040', '249 Filiberto Grove', '495 Bradtke Hollow')
-                    ,('cwby', 'uezo', 'Macejkovic', '1949-04-25', 'eblock@example.com', '1-238-125-4900', '여', '35141', '50430 Lind Walk', '8569 Bauch Vista')
-                    ,('dato', 'drkt', 'Frami', '1960-03-25', 'twhite@example.net', '433.515.1249x623', '여', '47628', '93297 Liza Light Suite 863', '4080 Foster Grove')
-                    ,('eegh', 'puzh', 'D\'Amore', '1949-04-25', 'godfrey11@example.net', '03755887163', '여', '10279', '1905 Raynor Crossing Suite 209', '5482 Dickens Squares Apt. 186')
-                    ,('efca', 'dxyh', 'Corwin', '1949-04-25', 'hilll.millie@example.com', '(957)214-1843', '여', '25691', '93644 Rita Trafficway', '46617 Smith Pines')
-                    ,('ehww', 'vfob', 'Weissnat', '1949-04-25', 'jayda.kuhn@example.com', '+72(7)4474726307', '여', '47468', '4405 Hauck Pine Suite 667', '05995 Stroman Cove')
-                    ,('erzz', 'gxeb', 'Ratke', '1949-04-25', 'ritchie.esteban@example.com', '489.661.2346x688', '여', '24252', '86651 Nicole Way', '84693 Romaguera Green Apt. 793')
-                    ,('eyhf', 'ndba', 'Mueller', '1960-03-25', 'rohan.lavina@example.com', '536-727-9188x5194', '여', '29964', '8504 Danial Land Apt. 077', '709 Alexis Spur Suite 193')
-                    ,('fagq', 'duem', 'Collins', '1949-04-25', 'novella.nader@example.org', '(873)233-6806', '여', '57957', '7431 Jayden Harbors Suite 563', '189 Bogan Mews Suite 641')
-                    ,('gied', 'ouec', 'Hauck', '1960-03-25', 'lakin.kurt@example.net', '417.030.5477', '남', '49932', '447 Raymond Divide', '4146 Juston Gardens Suite 456')
-                    ,('gkks', 'fwkx', 'Kreiger', '1949-04-25', 'naomie65@example.com', '526.291.1935', '남', '57444', '02038 Rempel Ways Apt. 195', '527 Kohler Springs')
-                    ,('gkut', 'xvcu', 'Cassin', '1949-04-25', 'mcollins@example.org', '+35(084619974', '남', '16523', '852 Warren Field Apt. 950', '289 Lynch Track Apt. 899')
-                    ,('gmna', 'joes', 'Stracke', '1949-04-25', 'wlarson@example.com', '178-716-8470', '남', '34530', '1942 Hodkiewicz Circle Suite 168', '5717 Wiza Fields')
-                    ,('hgnj', 'fqga', 'Fay', '1949-04-25', 'larkin.sophia@example.net', '486.179.314', '남', '57996', '293 Macejkovic Freeway Suite 600', '6040 Justen Parks')
-                    ,('hmze', 'fuwh', 'Wuckert', '1949-04-25', 'uheathcote@example.net', '526.652.01150', '남', '59914', '7240 Rebekah Creek', '8718 Conn Green Apt. 112')
-                    ,('hqzc', 'hhdr', 'Hauck', '1949-04-25', 'maggio.earnest@example.org', '1-007-163-266', '남', '13705', '9540 Aaron Crossing', '75809 Christine Island Suite 697')
-                    ,('hraf', 'ykrk', 'Feil', '1960-03-25', 'nigel39@example.net', '1-754-319]150', '남', '45078', '0943 Treutel Manor', '13291 Dooley Parks')
-                    ,('ibpg', 'lkkn', 'Hartmann', '1949-04-25', 'pearlie.kulas@example.com', '(260)294-8703', '남', '43750', '551 Avery Union Suite 823', '0677 Abbott Valleys')
-                    ,('ihiy', 'cxpn', 'O\'Reilly', '1949-04-25', 'konopelski.jacynthe@example.co', '(130)909-030', '남', '23247', '9523 Elena Camp Apt. 981', '5449 Gaetano Unions Suite 392')
-                    ,('iraa', 'nmuc', 'Gleason', '1949-04-25', 'orie00@example.com', '506.156.204', '남', '23892', '7582 Blanda Mountain', '4762 Edwin Drive')
-                    ,('isvh', 'rilr', 'Funk', '1949-04-25', 'maggio.arlie@example.org', '1-174-088-8903', '남', '23949', '90071 Padberg Lock', '768 Alaina Radial Suite 018')
-                    ,('ivag', 'kxyv', 'Willms', '1949-04-25', 'remington.lakin@example.net', '338-738-4798', '여', '16321', '86750 Kris Fork Apt. 212', '6953 Shanahan Manor Apt. 176')
-                    ,('jdtj', 'opej', 'Treutel', '1949-04-25', 'rice.aliyah@example.org', '1-463-]126', '여', '54341', '9397 Mueller Roads Apt. 280', '39827 Klein Crossing Apt. 918')
-                    ,('jhpk', 'odoo', 'Beer', '1949-04-25', 'ifisher@example.com', '1-011-467-4', '여', '32797', '6843 Heathcote Forks Apt. 329', '275 Klocko Lights Apt. 540')
-                    ,('jmap', 'kvso', 'Hackett', '1949-04-25', 'bd\'amore@example.net', '(531)096-7260', '여', '29406', '03160 Schuppe Meadows Suite 160', '82710 Mraz Summit')
-                    ,('jnvg', 'rdnk', 'Wisoky', '1949-04-25', 'bartell.dolores@example.org', '1-348-83102', '여', '45181', '16585 Aida Mountains', '3866 Abdullah Landing')
-                    ,('jwxr', 'vmpc', 'Altenwerth', '1960-03-25', 'ywitting@example.org', '890.231.2650', '여', '39496', '205 Denesik Union Apt. 395', '9743 Parker Heights')
-                    ,('kkuw', 'rwst', 'Bashirian', '1949-04-25', 'langosh.cristobal@example.org', '+7]6626277', '여', '16202', '19758 Auer Dale Apt. 736', '69364 Cormier Island')
-                    ,('kqfy', 'qkdm', 'Marvin', '1960-03-25', 'jmclaughlin@example.com', '1-801-383-65710', '여', '14377', '602 Schroeder Walks Suite 688', '5598 Cronin Flats Suite 522')
-                    ,('kxvg', 'tmvu', 'Homenick', '1949-04-25', 'rpaucek@example.net', '1-422-600-88782', '여', '50850', '983 Hipolito Mews', '4275 Deckow Summit Apt. 604')
-                    ,('lbry', 'vjjw', 'Walsh', '1949-04-25', 'ruecker.brooklyn@example.com', '(237)747-694', '여', '21237', '5192 Herman Walks Suite 419', '064 Esperanza Points Suite 278')
-                    ,('lhbh', 'vpzg', 'Crooks', '1949-04-25', 'esteban00@example.com', '682-967-3020', '여', '43200', '1615 Rebeca Crossing Apt. 241', '64110 Oberbrunner Meadows Suite 317')
-                    ,('lrtm', 'wqgg', 'Franecki', '1949-04-25', 'hahn.colin@example.net', '128-719-013', '여', '22509', '013 Jaiden Lights', '9299 Turcotte Trafficway')
-                    ,('lzes', 'wutd', 'Terry', '1960-03-25', 'kianna31@example.com', '630-909-4942', '여', '35424', '53142 Lenore Spring', '95878 Curt Shoals')
-                    ,('lzsd', 'hlev', 'Kuhic', '1949-04-25', 'rowland.boyle@example.net', '972.125.7601', '여', '27370', '086 Brielle Shoals Suite 860', '492 Jayne Crossroad')
-                    ,('mrwi', 'dmwu', 'Bayer', '1960-03-25', 'vnienow@example.com', '909.391.0785', '여', '38856', '66342 Constantin Plains Apt. 185', '1506 Vern Prairie')
-                    ,('nbcs', 'ymen', 'Lynch', '1949-04-25', 'cremin.ross@example.org', '063.292.51643', '남', '17252', '0863 Okuneva Island Apt. 110', '6380 Gerhold Drives')
-                    ,('ndvw', 'iusp', 'Herzog', '1949-04-25', 'vergie.stroman@example.org', '134-443-8214', '남', '21498', '670 Schaden Lakes', '880 Ernser Manors')
-                    ,('nqhd', 'tfkt', 'Gutkowski', '1949-04-25', 'annamarie21@example.com', '640.741.4131', '남', '34885', '258 Jalon Cliff', '1009 Herman Alley')
-                    ,('nukc', 'qmlk', 'Oberbrunne', '1960-03-25', 'estel.leuschke@example.com', '1-45186', '남', '25433', '035 Lindsey Walks Suite 699', '289 Eulah Greens')
-                    ,('ofap', 'vafi', 'Boehm', '1949-04-25', 'cronin.buck@example.net', '+38(6)4766032659', '남', '49142', '640 Cindy Path Apt. 215', '07672 Fanny Causeway')
-                    ,('ozxc', 'ihad', 'Rice', '1960-03-25', 'schiller.valerie@example.net', '+83(8)5918]21', '남', '47256', '15285 Salma Fields Apt. 867', '3174 Mitchell Centers Suite 645')
-                    ,('parx', 'oukg', 'Lakin', '1960-03-25', 'mallie96@example.net', '253.354.5969x46626', '남', '11201', '32010 Flatley Garden Apt. 995', '911 Kelly Park Suite 440')
-                    ,('pbfo', 'xuhx', 'Senger', '1960-03-25', 'karine.jast@example.org', '1-688-469-21]18', '남', '47441', '530 Toy Mount', '888 Bartholome River Suite 504')
-                    ,('phpu', 'qjze', 'Klein', '1949-04-25', 'esta.dibbert@example.org', '09392265802', '남', '54940', '273 Jermaine Burg Suite 588', '0830 Gaylord Tunnel')
-                    ,('pidm', 'wazz', 'Kilback', '1949-04-25', 'jeramie86@example.net', '829.474.9394', '남', '27628', '807 Earlene Freeway Suite 729', '5723 Virginie Neck')
-                    ,('pvck', 'eedk', 'Wuckert', '1949-04-25', 'joelle53@example.net', '(990)330-6]95', '남', '14459', '0728 Brice Union', '6477 Barton Flats')
-                    ,('pvoh', 'hufd', 'Tremblay', '1949-04-25', 'hegmann.ernie@example.com', '1-080-159', '남', '24470', '353 Daniela Station', '045 Lorenzo Drive')
-                    ,('pvzn', 'vjyy', 'Von', '1949-04-25', 'orpha.armstrong@example.com', '1-748-707-]81', '남', '40368', '26082 Andre Junctions', '1701 Yvette Dale')
-                    ,('qfsa', 'iwmw', 'Nitzsche', '1949-04-25', 'hwolff@example.net', '1-270-85200', '남', '31811', '07963 Stroman Ford Apt. 526', '6460 Dylan Parkway Suite 260')
-                    ,('qivh', 'giod', 'Kiehn', '1949-04-25', 'agusikowski@example.net', '849-300x738', '여', '53343', '09776 Coty Spring Apt. 357', '34488 Larkin Springs')
-                    ,('qjlz', 'jtci', 'Graham', '1949-04-25', 'zswift@example.org', '1-694-131-4176', '여', '37458', '85394 Jadyn Trafficway Apt. 935', '3653 Charles Street Apt. 839')
-                    ,('qrtz', 'ijmk', 'Konopelski', '1949-04-25', 'lambert33@example.com', '932.510.4521', '여', '26540', '32660 Ramona Trace', '3757 Aron Valley Suite 008')
-                    ,('qubu', 'rvvu', 'Pfeffer', '1949-04-25', 'kristopher.toy@example.com', '(545)465-184', '여', '45243', '3750 Mabelle Lock Suite 473', '9012 Johns Shoals')
-                    ,('rcaf', 'kxdr', 'Stroman', '1949-04-25', 'katarina.barton@example.com', '974.914.5428', '여', '30134', '9253 Jorge Springs', '5502 Lorenza Fork')
-                    ,('rcce', 'hyzm', 'Upton', '1960-03-25', 'freinger@example.net', '569-030-45674', '여', '52955', '17920 Senger Haven Apt. 486', '7535 Prosacco Mountain')
-                    ,('rcfj', 'wqid', 'Daniel', '1949-04-25', 'ludwig17@example.net', '1-401-925-6332', '여', '28849', '0458 Jast River', '74156 Dennis Skyway Apt. 681')
-                    ,('rqem', 'kroc', 'McClure', '1949-04-25', 'funk.hazle@example.com', '068-889-8023', '여', '15212', '239 Bruce Shore', '11492 Katharina Underpass')
-                    ,('sgwr', 'hejo', 'Mraz', '1949-04-25', 'dovie17@example.com', '05202549828', '여', '45103', '5108 Connelly Track Apt. 032', '961 Elmore Fields')
-                    ,('smah', 'gbrn', 'Bechtelar', '1949-04-25', 'ojerde@example.org', '(490)116-2416', '여', '29441', '7002 Kautzer Haven Suite 605', '9441 Alden Light Apt. 486')
-                    ,('snoq', 'clqx', 'Considine', '1960-03-25', 'kiera15@example.net', '(086)716-4375', '여', '38223', '203 Elliott Plain', '10609 Metz Spring Suite 335')
-                    ,('suwt', 'owki', 'Murray', '1949-04-25', 'moore.breanne@example.net', '015-862-9162453', '여', '18455', '4387 Schmeler Estate Suite 100', '3180 Bogan Road')
-                    ,('szbs', 'xnrw', 'Christians', '1949-04-25', 'lacey38@example.org', '(733)529-65', '여', '19281', '2338 Meagan Vista', '44300 Satterfield Rapid Apt. 297')
-                    ,('teqj', 'ffov', 'Lang', '1960-03-25', 'johnnie.stroman@example.org', '893-605-7690', '여', '42640', '9807 Lorna Keys Apt. 761', '3533 Christy Passage Suite 829')
-                    ,('timb', 'hsvj', 'Rowe', '1949-04-25', 'o\'conner.wilson@example.com', '221-841-951', '여', '46578', '509 Leola Summit Suite 979', '573 Lehner Park Apt. 467')
-                    ,('tjjx', 'fute', 'Leannon', '1949-04-25', 'braun.jayde@example.net', '+26(1)3024390030', '여', '56453', '9898 Greenholt Springs', '49157 Frida Track')
-                    ,('tlen', 'hkbn', 'Cole', '1949-04-25', 'geraldine39@example.org', '(945)235-0898', '여', '41111', '466 Von Pass', '94910 Abshire Pike Apt. 217')
-                    ,('tmaf', 'usqp', 'Crona', '1949-04-25', 'mann.dahlia@example.net', '753-829-1734', '여', '15542', '604 Albin Station Apt. 581', '0061 Destany Point')
-                    ,('toad', 'zjar', 'Zieme', '1949-04-25', 'dean78@example.net', '656.623.9507x67046', '여', '18653', '8437 Alba Shoals', '8673 Grant Walk Suite 618')
-                    ,('tqjn', 'fqwk', 'Hegmann', '1949-04-25', 'connelly.lenny@example.com', '426-1575', '여', '38688', '69602 Paolo Meadows Apt. 269', '765 Williamson Union Suite 613')
-                    ,('tyxy', 'rbrf', 'Bartell', '1960-03-25', 'ethan.balistreri@example.com', '487.133.2814', '여', '47925', '245 Langworth Plaza', '08664 Lia Plains Apt. 635')
-                    ,('tzrp', 'qkev', 'Cruickshan', '1960-03-25', 'jdoyle@example.net', '131.456.14986', '여', '18371', '25876 Wilkinson Locks Suite 786', '4400 Spinka Lakes')
-                    ,('uhsf', 'xfsb', 'Emmerich', '1949-04-25', 'tanya09@example.com', '117-749-40760', '여', '42370', '96547 Wisozk Pass Suite 305', '78489 Akeem Glens')
-                    ,('uiis', 'izse', 'Jacobi', '1949-04-25', 'xlang@example.com', '414-781-2092', '여', '35444', '212 Wolff Court', '244 Mertz Plaza Apt. 833')
-                    ,('ujei', 'flik', 'Bartell', '1949-04-25', 'hyman.hamill@example.org', '1-562-679-0113', '여', '40974', '93192 Lennie Forge Apt. 376', '8337 Savanna Overpass Apt. 347')
-                    ,('usix', 'gllg', 'Trantow', '1949-04-25', 'reichert.celestine@example.net', '(987)206-1864', '여', '49973', '88909 Camille Port Apt. 799', '417 Wilderman Apt. 752')
-                    ,('uszk', 'uemc', 'Kulas', '1960-03-25', 'marks.pedro@example.net', '(533)463-3943', '여', '20149', '919 Brycen Prairie Apt. 474', '6848 Smitham Cliff')
-                    ,('vhmk', 'inul', 'Lindgren', '1949-04-25', 'lupe.casper@example.org', '(530)796-0805', '여', '27845', '8361 Rosenbaum Villages Apt. 746', '919 Raven Junction')
-                    ,('vpns', 'bise', 'Walter', '1949-04-25', 'tanya54@example.com', '238-390-0389', '여', '22207', '4425 Coy Junction', '90065 Grady Orchard')
-                    ,('wfms', 'jtve', 'Considine', '1949-04-25', 'urussel@example.net', '176-430-5945', '여', '31315', '481 Torp Isle', '0188 Bahringer Avenue Suite 293')
-                    ,('xmxq', 'agza', 'Jerde', '1949-04-25', 'collins.louie@example.net', '267-144-0758', '여', '46632', '013 Luna Springs Apt. 577', '492 Summer Plain Suite 414')
-                    ,('xpxx', 'aafr', 'Becker', '1949-04-25', 'pascale33@example.org', '644-758-0058x863', '여', '47699', '756 Alexis Station Apt. 206', '9781 Schaefer Street Suite 721')
-                    ,('xrmy', 'buey', 'Schiller', '1949-04-25', 'kunze.brandon@example.com', '303-983-658', '여', '54025', '6493 Hickle Parkway Suite 754', '283 Odie Place Suite 315')
-                    ,('xysu', 'mjkk', 'Kassulke', '1949-04-25', 'ricardo48@example.net', '044.995.0477', '여', '26622', '52982 Dare Shores Apt. 279', '1154 Hand Neck Suite 110')
-                    ,('xzbr', 'loig', 'Wuckert', '1949-04-25', 'kuhic.conrad@example.com', '+33(24396', '여', '20540', '60632 Tanya Extensions Apt. 986', '582 Moen Roads Suite 304')
-                    ,('ylpl', 'dwxy', 'Huel', '1949-04-25', 'eblick@example.org', '515.772.9318x23524', '여', '39978', '204 Howe Mews Apt. 155', '9666 Hills Fields Suite 587')
-                    ,('yxui', 'eily', 'Welch', '1949-04-25', 'gboyer@example.org', '405.938.6138x6028', '여', '16248', '3066 Kuhn Valleys Apt. 402', '47976 Alexanne Roads Apt. 671')
-                    ,('zecr', 'jkzs', 'Rodriguez', '1949-04-25', 'fkrajcik@example.net', '(491)658-3754', '여', '23351', '6679 Ziemann Pike', '051 Cheyanne Mall')
-                    ,('zlav', 'wrav', 'Cruickshan', '1949-04-25', 'ukertzmann@example.org', '970-117187', '여', '37783', '16941 Kemmer Prairie', '36644 Rachael Highway')
-                    ,('zsxi', 'hlbs', 'Pacocha', '1949-04-25', 'ajenkins@example.com', '1-949-997-8917', '여', '52376', '68661 Mertz Island Suite 939', '3097 Ciara Shores Apt. 445')
-                    ,('ztgu', 'emvb', 'Windler', '1949-04-25', 'orpha.schultz@example.com', '623.606.1363', '여', '58015', '52844 Jacobi Dale', '62442 Bradly Squares')
-                    ,('zzlz', 'oeny', 'Stroman', '1949-04-25', 'tito00@example.org', '(076)044-0929', '여', '19651', '082 Weimann Pike Suite 839', '22556 Dwight Motorway Apt. 890')
-                    ,('zzrq', 'tbmj', 'Rosenbaum', '1949-04-25', 'moen.chelsey@example.net', '490-570-6353', '여', '36097', '5389 Icie Throughway Suite 453', '45354 Merle Neck Suite 870');
+                    ,('ator', 'jybu', 'Mosciski', '1960-03-25', 'k012497@naver.com', '413-454-6426', '여', '26177', '77465 Anabelle Run Suite 193', '10609 Barbara Harbor Suite 967')
+                    ,('aabb', 'wtei', 'Weissnat', '1960-03-25', 'k012497@naver.com', '00270569739', '여', '51082', '15177 Nolan Gateway', '15433 Cale Shores')
+                    ,('bfib', 'ujvb', 'Windler', '1949-04-25', 'k012497@naver.com', '(924)348-5699', '여', '58362', '3268 Glenna Squares', '35012 Langworth Path')
+                    ,('bojq', 'plfb', 'Abbott', '1949-04-25', 'k012497@naver.com', '113.180.5260', '여', '34984', '051 Retta Dam', '39581 DuBuque Union Apt. 759')
+                    ,('bula', 'pfct', 'Kihn', '1960-03-25', 'k012497@naver.com', '1-596-278-5893', '여', '11053', '2730 Reva Glens', '1448 Annalise Trail Suite 618')
+                    ,('bwpd', 'zgge', 'Jones', '1949-04-25', 'k012497@naver.com', '(850)690-2820', '여', '48482', '663 Ivy Bypass', '424 Michaela Walk')
+                    ,('cpfy', 'xvvp', 'Parker', '1949-04-25', 'k012497@naver.com', '172.629.5124', '여', '18040', '249 Filiberto Grove', '495 Bradtke Hollow')
+                    ,('cwby', 'uezo', 'Macejkovic', '1949-04-25', 'k012497@naver.com', '1-238-125-4900', '여', '35141', '50430 Lind Walk', '8569 Bauch Vista')
+                    ,('dato', 'drkt', 'Frami', '1960-03-25', 'k012497@naver.com', '433.515.1249x623', '여', '47628', '93297 Liza Light Suite 863', '4080 Foster Grove')
+                    ,('eegh', 'puzh', 'D\'Amore', '1949-04-25', 'k012497@naver.com', '03755887163', '여', '10279', '1905 Raynor Crossing Suite 209', '5482 Dickens Squares Apt. 186')
+                    ,('efca', 'dxyh', 'Corwin', '1949-04-25', 'k012497@naver.com', '(957)214-1843', '여', '25691', '93644 Rita Trafficway', '46617 Smith Pines')
+                    ,('ehww', 'vfob', 'Weissnat', '1949-04-25', 'k012497@naver.com', '+72(7)4474726307', '여', '47468', '4405 Hauck Pine Suite 667', '05995 Stroman Cove')
+                    ,('erzz', 'gxeb', 'Ratke', '1949-04-25', 'k012497@naver.com', '489.661.2346x688', '여', '24252', '86651 Nicole Way', '84693 Romaguera Green Apt. 793')
+                    ,('eyhf', 'ndba', 'Mueller', '1960-03-25', 'k012497@naver.com', '536-727-9188x5194', '여', '29964', '8504 Danial Land Apt. 077', '709 Alexis Spur Suite 193')
+                    ,('fagq', 'duem', 'Collins', '1949-04-25', 'k012497@naver.com', '(873)233-6806', '여', '57957', '7431 Jayden Harbors Suite 563', '189 Bogan Mews Suite 641')
+                    ,('gied', 'ouec', 'Hauck', '1960-03-25', 'k012497@naver.com', '417.030.5477', '남', '49932', '447 Raymond Divide', '4146 Juston Gardens Suite 456')
+                    ,('gkks', 'fwkx', 'Kreiger', '1949-04-25', 'k012497@naver.com', '526.291.1935', '남', '57444', '02038 Rempel Ways Apt. 195', '527 Kohler Springs')
+                    ,('gkut', 'xvcu', 'Cassin', '1949-04-25', 'k012497@naver.com', '+35(084619974', '남', '16523', '852 Warren Field Apt. 950', '289 Lynch Track Apt. 899')
+                    ,('gmna', 'joes', 'Stracke', '1949-04-25', 'k012497@naver.com', '178-716-8470', '남', '34530', '1942 Hodkiewicz Circle Suite 168', '5717 Wiza Fields')
+                    ,('hgnj', 'fqga', 'Fay', '1949-04-25', 'k012497@naver.com', '486.179.314', '남', '57996', '293 Macejkovic Freeway Suite 600', '6040 Justen Parks')
+                    ,('hmze', 'fuwh', 'Wuckert', '1949-04-25', 'k012497@naver.com', '526.652.01150', '남', '59914', '7240 Rebekah Creek', '8718 Conn Green Apt. 112')
+                    ,('hqzc', 'hhdr', 'Hauck', '1949-04-25', 'k012497@naver.com', '1-007-163-266', '남', '13705', '9540 Aaron Crossing', '75809 Christine Island Suite 697')
+                    ,('hraf', 'ykrk', 'Feil', '1960-03-25', 'k012497@naver.com', '1-754-319]150', '남', '45078', '0943 Treutel Manor', '13291 Dooley Parks')
+                    ,('ibpg', 'lkkn', 'Hartmann', '1949-04-25', 'k012497@naver.com', '(260)294-8703', '남', '43750', '551 Avery Union Suite 823', '0677 Abbott Valleys')
+                    ,('ihiy', 'cxpn', 'O\'Reilly', '1949-04-25', 'k012497@naver.com', '(130)909-030', '남', '23247', '9523 Elena Camp Apt. 981', '5449 Gaetano Unions Suite 392')
+                    ,('iraa', 'nmuc', 'Gleason', '1949-04-25', 'k012497@naver.com', '506.156.204', '남', '23892', '7582 Blanda Mountain', '4762 Edwin Drive')
+                    ,('isvh', 'rilr', 'Funk', '1949-04-25', 'k012497@naver.com', '1-174-088-8903', '남', '23949', '90071 Padberg Lock', '768 Alaina Radial Suite 018')
+                    ,('ivag', 'kxyv', 'Willms', '1949-04-25', 'k012497@naver.com', '338-738-4798', '여', '16321', '86750 Kris Fork Apt. 212', '6953 Shanahan Manor Apt. 176')
+                    ,('jdtj', 'opej', 'Treutel', '1949-04-25', 'k012497@naver.com', '1-463-]126', '여', '54341', '9397 Mueller Roads Apt. 280', '39827 Klein Crossing Apt. 918')
+                    ,('jhpk', 'odoo', 'Beer', '1949-04-25', 'k012497@naver.com', '1-011-467-4', '여', '32797', '6843 Heathcote Forks Apt. 329', '275 Klocko Lights Apt. 540')
+                    ,('jmap', 'kvso', 'Hackett', '1949-04-25', 'k012497@naver.com', '(531)096-7260', '여', '29406', '03160 Schuppe Meadows Suite 160', '82710 Mraz Summit')
+                    ,('jnvg', 'rdnk', 'Wisoky', '1949-04-25', 'k012497@naver.com', '1-348-83102', '여', '45181', '16585 Aida Mountains', '3866 Abdullah Landing')
+                    ,('jwxr', 'vmpc', 'Altenwerth', '1960-03-25', 'k012497@naver.com', '890.231.2650', '여', '39496', '205 Denesik Union Apt. 395', '9743 Parker Heights')
+                    ,('kkuw', 'rwst', 'Bashirian', '1949-04-25', 'k012497@naver.com', '+7]6626277', '여', '16202', '19758 Auer Dale Apt. 736', '69364 Cormier Island')
+                    ,('kqfy', 'qkdm', 'Marvin', '1960-03-25', 'k012497@naver.com', '1-801-383-65710', '여', '14377', '602 Schroeder Walks Suite 688', '5598 Cronin Flats Suite 522')
+                    ,('kxvg', 'tmvu', 'Homenick', '1949-04-25', 'k012497@naver.com', '1-422-600-88782', '여', '50850', '983 Hipolito Mews', '4275 Deckow Summit Apt. 604')
+                    ,('lbry', 'vjjw', 'Walsh', '1949-04-25', 'k012497@naver.com', '(237)747-694', '여', '21237', '5192 Herman Walks Suite 419', '064 Esperanza Points Suite 278')
+                    ,('lhbh', 'vpzg', 'Crooks', '1949-04-25', 'k012497@naver.com', '682-967-3020', '여', '43200', '1615 Rebeca Crossing Apt. 241', '64110 Oberbrunner Meadows Suite 317')
+                    ,('lrtm', 'wqgg', 'Franecki', '1949-04-25', 'k012497@naver.com', '128-719-013', '여', '22509', '013 Jaiden Lights', '9299 Turcotte Trafficway')
+                    ,('lzes', 'wutd', 'Terry', '1960-03-25', 'k012497@naver.com', '630-909-4942', '여', '35424', '53142 Lenore Spring', '95878 Curt Shoals')
+                    ,('lzsd', 'hlev', 'Kuhic', '1949-04-25', 'k012497@naver.com', '972.125.7601', '여', '27370', '086 Brielle Shoals Suite 860', '492 Jayne Crossroad')
+                    ,('mrwi', 'dmwu', 'Bayer', '1960-03-25', 'k012497@naver.com', '909.391.0785', '여', '38856', '66342 Constantin Plains Apt. 185', '1506 Vern Prairie')
+                    ,('nbcs', 'ymen', 'Lynch', '1949-04-25', 'k012497@naver.com', '063.292.51643', '남', '17252', '0863 Okuneva Island Apt. 110', '6380 Gerhold Drives')
+                    ,('ndvw', 'iusp', 'Herzog', '1949-04-25', 'k012497@naver.com', '134-443-8214', '남', '21498', '670 Schaden Lakes', '880 Ernser Manors')
+                    ,('nqhd', 'tfkt', 'Gutkowski', '1949-04-25', 'k012497@naver.com', '640.741.4131', '남', '34885', '258 Jalon Cliff', '1009 Herman Alley')
+                    ,('nukc', 'qmlk', 'Oberbrunne', '1960-03-25', 'k012497@naver.com', '1-45186', '남', '25433', '035 Lindsey Walks Suite 699', '289 Eulah Greens')
+                    ,('ofap', 'vafi', 'Boehm', '1949-04-25', 'k012497@naver.com', '+38(6)4766032659', '남', '49142', '640 Cindy Path Apt. 215', '07672 Fanny Causeway')
+                    ,('ozxc', 'ihad', 'Rice', '1960-03-25', 'k012497@naver.com', '+83(8)5918]21', '남', '47256', '15285 Salma Fields Apt. 867', '3174 Mitchell Centers Suite 645')
+                    ,('parx', 'oukg', 'Lakin', '1960-03-25', 'k012497@naver.com', '253.354.5969x46626', '남', '11201', '32010 Flatley Garden Apt. 995', '911 Kelly Park Suite 440')
+                    ,('pbfo', 'xuhx', 'Senger', '1960-03-25', 'k012497@naver.com', '1-688-469-21]18', '남', '47441', '530 Toy Mount', '888 Bartholome River Suite 504')
+                    ,('phpu', 'qjze', 'Klein', '1949-04-25', 'k012497@naver.com', '09392265802', '남', '54940', '273 Jermaine Burg Suite 588', '0830 Gaylord Tunnel')
+                    ,('pidm', 'wazz', 'Kilback', '1949-04-25', 'k012497@naver.com', '829.474.9394', '남', '27628', '807 Earlene Freeway Suite 729', '5723 Virginie Neck')
+                    ,('pvck', 'eedk', 'Wuckert', '1949-04-25', 'k012497@naver.com', '(990)330-6]95', '남', '14459', '0728 Brice Union', '6477 Barton Flats')
+                    ,('pvoh', 'hufd', 'Tremblay', '1949-04-25', 'k012497@naver.com', '1-080-159', '남', '24470', '353 Daniela Station', '045 Lorenzo Drive')
+                    ,('pvzn', 'vjyy', 'Von', '1949-04-25', 'k012497@naver.com', '1-748-707-]81', '남', '40368', '26082 Andre Junctions', '1701 Yvette Dale')
+                    ,('qfsa', 'iwmw', 'Nitzsche', '1949-04-25', 'k012497@naver.com', '1-270-85200', '남', '31811', '07963 Stroman Ford Apt. 526', '6460 Dylan Parkway Suite 260')
+                    ,('qivh', 'giod', 'Kiehn', '1949-04-25', 'k012497@naver.com', '849-300x738', '여', '53343', '09776 Coty Spring Apt. 357', '34488 Larkin Springs')
+                    ,('qjlz', 'jtci', 'Graham', '1949-04-25', 'k012497@naver.com', '1-694-131-4176', '여', '37458', '85394 Jadyn Trafficway Apt. 935', '3653 Charles Street Apt. 839')
+                    ,('qrtz', 'ijmk', 'Konopelski', '1949-04-25', 'k012497@naver.com', '932.510.4521', '여', '26540', '32660 Ramona Trace', '3757 Aron Valley Suite 008')
+                    ,('qubu', 'rvvu', 'Pfeffer', '1949-04-25', 'k012497@naver.com', '(545)465-184', '여', '45243', '3750 Mabelle Lock Suite 473', '9012 Johns Shoals')
+                    ,('rcaf', 'kxdr', 'Stroman', '1949-04-25', 'k012497@naver.com', '974.914.5428', '여', '30134', '9253 Jorge Springs', '5502 Lorenza Fork')
+                    ,('rcce', 'hyzm', 'Upton', '1960-03-25', 'k012497@naver.com', '569-030-45674', '여', '52955', '17920 Senger Haven Apt. 486', '7535 Prosacco Mountain')
+                    ,('rcfj', 'wqid', 'Daniel', '1949-04-25', 'k012497@naver.com', '1-401-925-6332', '여', '28849', '0458 Jast River', '74156 Dennis Skyway Apt. 681')
+                    ,('rqem', 'kroc', 'McClure', '1949-04-25', 'k012497@naver.com', '068-889-8023', '여', '15212', '239 Bruce Shore', '11492 Katharina Underpass')
+                    ,('sgwr', 'hejo', 'Mraz', '1949-04-25', 'k012497@naver.com', '05202549828', '여', '45103', '5108 Connelly Track Apt. 032', '961 Elmore Fields')
+                    ,('smah', 'gbrn', 'Bechtelar', '1949-04-25', 'k012497@naver.com', '(490)116-2416', '여', '29441', '7002 Kautzer Haven Suite 605', '9441 Alden Light Apt. 486')
+                    ,('snoq', 'clqx', 'Considine', '1960-03-25', 'k012497@naver.com', '(086)716-4375', '여', '38223', '203 Elliott Plain', '10609 Metz Spring Suite 335')
+                    ,('suwt', 'owki', 'Murray', '1949-04-25', 'k012497@naver.com', '015-862-9162453', '여', '18455', '4387 Schmeler Estate Suite 100', '3180 Bogan Road')
+                    ,('szbs', 'xnrw', 'Christians', '1949-04-25', 'k012497@naver.com', '(733)529-65', '여', '19281', '2338 Meagan Vista', '44300 Satterfield Rapid Apt. 297')
+                    ,('teqj', 'ffov', 'Lang', '1960-03-25', 'k012497@naver.com', '893-605-7690', '여', '42640', '9807 Lorna Keys Apt. 761', '3533 Christy Passage Suite 829')
+                    ,('timb', 'hsvj', 'Rowe', '1949-04-25', 'o\'k012497@naver.com', '221-841-951', '여', '46578', '509 Leola Summit Suite 979', '573 Lehner Park Apt. 467')
+                    ,('tjjx', 'fute', 'Leannon', '1949-04-25', 'k012497@naver.com', '+26(1)3024390030', '여', '56453', '9898 Greenholt Springs', '49157 Frida Track')
+                    ,('tlen', 'hkbn', 'Cole', '1949-04-25', 'k012497@naver.com', '(945)235-0898', '여', '41111', '466 Von Pass', '94910 Abshire Pike Apt. 217')
+                    ,('tmaf', 'usqp', 'Crona', '1949-04-25', 'k012497@naver.com', '753-829-1734', '여', '15542', '604 Albin Station Apt. 581', '0061 Destany Point')
+                    ,('toad', 'zjar', 'Zieme', '1949-04-25', 'k012497@naver.com', '656.623.9507x67046', '여', '18653', '8437 Alba Shoals', '8673 Grant Walk Suite 618')
+                    ,('tqjn', 'fqwk', 'Hegmann', '1949-04-25', 'k012497@naver.com', '426-1575', '여', '38688', '69602 Paolo Meadows Apt. 269', '765 Williamson Union Suite 613')
+                    ,('tyxy', 'rbrf', 'Bartell', '1960-03-25', 'k012497@naver.com', '487.133.2814', '여', '47925', '245 Langworth Plaza', '08664 Lia Plains Apt. 635')
+                    ,('tzrp', 'qkev', 'Cruickshan', '1960-03-25', 'k012497@naver.com', '131.456.14986', '여', '18371', '25876 Wilkinson Locks Suite 786', '4400 Spinka Lakes')
+                    ,('uhsf', 'xfsb', 'Emmerich', '1949-04-25', 'k012497@naver.com', '117-749-40760', '여', '42370', '96547 Wisozk Pass Suite 305', '78489 Akeem Glens')
+                    ,('uiis', 'izse', 'Jacobi', '1949-04-25', 'k012497@naver.com', '414-781-2092', '여', '35444', '212 Wolff Court', '244 Mertz Plaza Apt. 833')
+                    ,('ujei', 'flik', 'Bartell', '1949-04-25', 'k012497@naver.com', '1-562-679-0113', '여', '40974', '93192 Lennie Forge Apt. 376', '8337 Savanna Overpass Apt. 347')
+                    ,('usix', 'gllg', 'Trantow', '1949-04-25', 'k012497@naver.com', '(987)206-1864', '여', '49973', '88909 Camille Port Apt. 799', '417 Wilderman Apt. 752')
+                    ,('uszk', 'uemc', 'Kulas', '1960-03-25', 'k012497@naver.com', '(533)463-3943', '여', '20149', '919 Brycen Prairie Apt. 474', '6848 Smitham Cliff')
+                    ,('vhmk', 'inul', 'Lindgren', '1949-04-25', 'k012497@naver.com', '(530)796-0805', '여', '27845', '8361 Rosenbaum Villages Apt. 746', '919 Raven Junction')
+                    ,('vpns', 'bise', 'Walter', '1949-04-25', 'k012497@naver.com', '238-390-0389', '여', '22207', '4425 Coy Junction', '90065 Grady Orchard')
+                    ,('wfms', 'jtve', 'Considine', '1949-04-25', 'k012497@naver.com', '176-430-5945', '여', '31315', '481 Torp Isle', '0188 Bahringer Avenue Suite 293')
+                    ,('xmxq', 'agza', 'Jerde', '1949-04-25', 'k012497@naver.com', '267-144-0758', '여', '46632', '013 Luna Springs Apt. 577', '492 Summer Plain Suite 414')
+                    ,('xpxx', 'aafr', 'Becker', '1949-04-25', 'k012497@naver.com', '644-758-0058x863', '여', '47699', '756 Alexis Station Apt. 206', '9781 Schaefer Street Suite 721')
+                    ,('xrmy', 'buey', 'Schiller', '1949-04-25', 'k012497@naver.com', '303-983-658', '여', '54025', '6493 Hickle Parkway Suite 754', '283 Odie Place Suite 315')
+                    ,('xysu', 'mjkk', 'Kassulke', '1949-04-25', 'k012497@naver.com', '044.995.0477', '여', '26622', '52982 Dare Shores Apt. 279', '1154 Hand Neck Suite 110')
+                    ,('xzbr', 'loig', 'Wuckert', '1949-04-25', 'k012497@naver.com', '+33(24396', '여', '20540', '60632 Tanya Extensions Apt. 986', '582 Moen Roads Suite 304')
+                    ,('ylpl', 'dwxy', 'Huel', '1949-04-25', 'k012497@naver.com', '515.772.9318x23524', '여', '39978', '204 Howe Mews Apt. 155', '9666 Hills Fields Suite 587')
+                    ,('yxui', 'eily', 'Welch', '1949-04-25', 'k012497@naver.com', '405.938.6138x6028', '여', '16248', '3066 Kuhn Valleys Apt. 402', '47976 Alexanne Roads Apt. 671')
+                    ,('zecr', 'jkzs', 'Rodriguez', '1949-04-25', 'k012497@naver.com', '(491)658-3754', '여', '23351', '6679 Ziemann Pike', '051 Cheyanne Mall')
+                    ,('zlav', 'wrav', 'Cruickshan', '1949-04-25', 'k012497@naver.com', '970-117187', '여', '37783', '16941 Kemmer Prairie', '36644 Rachael Highway')
+                    ,('zsxi', 'hlbs', 'Pacocha', '1949-04-25', 'k012497@naver.com', '1-949-997-8917', '여', '52376', '68661 Mertz Island Suite 939', '3097 Ciara Shores Apt. 445')
+                    ,('ztgu', 'emvb', 'Windler', '1949-04-25', 'k012497@naver.com', '623.606.1363', '여', '58015', '52844 Jacobi Dale', '62442 Bradly Squares')
+                    ,('zzlz', 'oeny', 'Stroman', '1949-04-25', 'k012497@naver.com', '(076)044-0929', '여', '19651', '082 Weimann Pike Suite 839', '22556 Dwight Motorway Apt. 890')
+                    ,('zzrq', 'tbmj', 'Rosenbaum', '1949-04-25', 'k012497@naver.com', '490-570-6353', '여', '36097', '5389 Icie Throughway Suite 453', '45354 Merle Neck Suite 870');
                     ";
                     
                 break;
@@ -309,85 +309,85 @@ function insert_init_data($conn, $table_name){
                 break;
 
             case 'recruitment' :
-                $sql = "insert into `recruitment` values (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22','경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                $sql = "insert into `recruitment` values (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22','경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
 
-                    (null, 'starbucks', '포크 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '참치 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'starbucks', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '포크 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '참치 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'starbucks', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
 
-                    (null, 'chamchi', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '여행자거리 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chamchi', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '여행자거리 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chamchi', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
                     
-                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '포크 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '참치 생산라인 근무자', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '경로식당 식자재 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '실버카페 물류사업단', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '커피 원두 생산', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'ilhase', '누룽지 제조', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 생산/제조', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
 
-                    (null, 'mac123', '포크 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '참치 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
-                    (null, 'mac123', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '포크 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '참치 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '식자재 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 330000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '간단한 박스 포장 업무', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '커피 원두 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '월급 400000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
+                    (null, 'mac123', '누룽지 포장', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '생산/제조/단순노무 조립/포장', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '경기 성남시 분당구 백현동 19-2', null, null, now()),
 
-                    (null, 'chocolate1', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '여행자거리 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
-                    (null, 'chocolate1', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'kim@chae.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '연봉 2500만원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '여행자거리 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 9000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '아파트 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 8900원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '경비 인력 모집', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '공원 미화원', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '청소/미화 청소원', '3', '무관', '무관', '시급 12000원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
+                    (null, 'chocolate1', '건물 경비원 구인', '테스트 공고입니다. 성실한 분들 찾아요', '김채용', '010-9999-8888', 'k012497@naver.com', 'www.4jo.com', '경비/시설관리 경비원', '3', '무관', '무관', '연봉 2500만원', '시간제', '2020-01-22', '2020-02-22', '서울 성동구 도선동 39-1', null, null, now()),
                     
 
 
@@ -866,7 +866,7 @@ function insert_init_data($conn, $table_name){
                 break;
 
             case 'resume' :
-                $sql = "INSERT INTO `resume` VALUES (null, 0, '4jo4jo', '김사조', 'example@test.com', '서울 성동구 행당동 286-16', '여', '1968-01-01', '010-1234-5678', '기본 이력서', '안녕하세요? 성실하면 김사조입니다.', 
+                $sql = "INSERT INTO `resume` VALUES (null, 0, '4jo4jo', '김사조', 'k012497@naver.com', '서울 성동구 행당동 286-16', '여', '1968-01-01', '010-1234-5678', '기본 이력서', '안녕하세요? 성실하면 김사조입니다.', 
                 null, null, null, null, null, now());";
                 break;
             
