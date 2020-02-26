@@ -40,6 +40,35 @@ if(isset($_SESSION["username"])){
             document.login_2.submit();
           }
         });
+        // ID를 alpreah_input로 가지는 곳에서 키를 누를 경우
+            $("#uid").keydown(function(key) {
+                //키의 코드가 13번일 경우 (13번은 엔터키)
+                if (key.keyCode == 13) {
+                  if($('#member_type').val()==""){
+                    alert("기업인지 회원인지 선택하라 이말이야!");
+                  }else if($('#uid').val()==""){
+                    alert("아이디를 입력해주세요!");
+                  }else if($('#upw').val()==""){
+                    alert("패스워드를 입력해주세요!");
+                  }else{
+                    document.login_2.submit();
+                  }
+                }
+            });
+            $("#upw").keydown(function(key) {
+                //키의 코드가 13번일 경우 (13번은 엔터키)
+                if (key.keyCode == 13) {
+                  if($('#member_type').val()==""){
+                    alert("기업인지 회원인지 선택하라 이말이야!");
+                  }else if($('#uid').val()==""){
+                    alert("아이디를 입력해주세요!");
+                  }else if($('#upw').val()==""){
+                    alert("패스워드를 입력해주세요!");
+                  }else{
+                    document.login_2.submit();
+                  }
+                }
+            });
       });
     </script>
 
@@ -76,7 +105,7 @@ if(isset($_SESSION["username"])){
                 <input type="text" name="uid" id="uid" class="form-control" placeholder="아이디" required autofocus style="background-color:white; height: 50px; border-bottom: 1px solid #eee">
                 <label for="inputPassword" class="sr-only">비밀번호</label>
                 <input type="password" name="upw" id="upw" class="form-control" placeholder="비밀번호" required style="background-color:white; height: 50px;"><br>
-                <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button">로 그 인</button>
+                <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button" onkeyup="enterkey();">로 그 인</button>
                 <div class="row text-center" style="width: 100%">
                   <ul>
                     <!-- naver -->
@@ -229,7 +258,7 @@ if(isset($_SESSION["username"])){
         width: 48%;
         vertical-align: top;
       }
-      
+
       .kakao a{
         width: 185px;
         height: 40px;

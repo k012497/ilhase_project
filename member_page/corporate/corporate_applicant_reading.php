@@ -4,9 +4,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 // include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
 if(isset($_SESSION['userid']))
   $id   = $_SESSION['userid'];
-  $sql="select * from corporate where id='$id'";
-  $result=mysqli_query($conn,$sql);
-  $row=mysqli_fetch_array($result);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -40,9 +38,9 @@ if(isset($_SESSION['userid']))
   	    <ul id="board_list">
   				<li style="display: inline-block;">
   					<span class="col1" style="display: inline-block;">번호</span>
-  					<span class="col2" style="display: inline-block;">제목</span>
-  					<span class="col3" style="display: inline-block;">글쓴이</span>
-  					<span class="col4" style="display: inline-block;"></span>
+  					<span class="col2" style="display: inline-block;">공고</span>
+  					<span class="col3" style="display: inline-block;">제목</span>
+  					<span class="col4" style="display: inline-block;">글쓴이</span>
   					<span class="col5" style="display: inline-block;">등록일</span>
   					<span class="col6" style="display: inline-block;"></span>
   				</li>
@@ -52,7 +50,10 @@ if(isset($_SESSION['userid']))
   	else
   		$page = 1;
 
-  	$sql = "select * from resume order by num desc";
+  	$sql = "select r.title, a.resume_title, a.regist_date,a.member_id,
+    (select name from person where a.member_id = person.id)
+    as person_name from recruitment r join apply a on a.recruit_id
+    = r.num where r.corporate_id = '$id';";
   	$result = mysqli_query($conn, $sql);
   	$total_record = mysqli_num_rows($result); // 전체 글 수
 
@@ -75,19 +76,18 @@ if(isset($_SESSION['userid']))
         // 가져올 레코드로 위치(포인터) 이동
         $row = mysqli_fetch_array($result);
         // 하나의 레코드 가져오기
-  	  $num         = $row["num"];
-  	  $id          = $row["m_id"];
-  	  $name        = $row["m_name"];
-  	  $subject     = $row["cover_letter"];
-        $regist_day  = $row["regist_date"];
+  	  $member_id   = $row["member_id"];
+  	  $title          = $row["title"];
+  	  $name        = $row["person_name"];
+  	  $subject     = $row["resume_title"];
+      $regist_day  = $row["regist_date"];
   ?>
   				<li>
   					<span class="col1"><?=$number?></span>
-  					<span class="col2"><a href="board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?></a></span>
-  					<span class="col3"><?=$name?></span>
-  					<span class="col4"></span>
+  					<span class="col2"><a href="corporate_resume_view.php?m_id=<?=$member_id?>"><?=$title?></a></span>
+  					<span class="col3"><?=$subject?></span>
+  					<span class="col4"><?=$name?></span>
   					<span class="col5"><?=$regist_day?></span>
-  					<span class="col6"></span>
   				</li>
   <?php
      	   $number--;
