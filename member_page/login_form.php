@@ -19,7 +19,6 @@ if(isset($_SESSION["username"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/sns_login.js"></script>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -126,7 +125,7 @@ if(isset($_SESSION["username"])){
                 </div>
                 <div class="login_bottom">
                   <ul>
-                    <li><a href="#">아이디/비밀번호 찾기</a></li>
+                    <li><a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/find_id_pw.php">아이디/비밀번호 찾기</a></li>
                     <li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
                     <li><a href="./total_sign.php">회원가입</a></li>
                   </ul>
@@ -136,6 +135,7 @@ if(isset($_SESSION["username"])){
             </div>
           </div>
           <script type="text/javascript">
+
             var naverLogin = new naver.LoginWithNaverId(
               {
                 clientId: "NQzYhgZ1ajZ0m1J4T9Fv",
@@ -158,10 +158,12 @@ if(isset($_SESSION["username"])){
                 var age = naverLogin.user.getAge();
                 console.log(email);
                 console.log(name);
-                console.log(profileImage);
-                console.log(birthday);
-                console.log(uniqId);
-                console.log(age);
+                // console.log(profileImage);
+                // console.log(birthday);
+                // console.log(uniqId);
+                // console.log(age);
+                naverLogin.logout();
+                location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php?userid="+email+"&username="+name+"&usermember_type=sns_log";
               } else {
                 console.log("AccessToken이 올바르지 않습니다.");
               }

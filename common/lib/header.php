@@ -26,7 +26,12 @@
           $id="";
           $username="";
           $member_type="";
-
+          if(isset($_GET['userid']))
+          $id=$_GET['userid'];
+          if(isset($_GET['username']))
+          $username=$_GET['username'];
+          if(isset($_GET['usermember_type']))
+          $member_type=$_GET['usermember_type'];
           if(isset($_SESSION['userid']))
             $id   = $_SESSION['userid'];
 

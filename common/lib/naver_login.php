@@ -20,8 +20,8 @@
 	<script>
 		var naverLogin = new naver.LoginWithNaverId(
 			{
-				clientId: "{YOUR_CLIENT_ID}",
-				callbackUrl: "{YOUR_REDIRECT_URL}",
+				clientId: "{NQzYhgZ1ajZ0m1J4T9Fv}",
+				callbackUrl: "{./naver_login.php}",
 				isPopup: false,
 				callbackHandle: true
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
@@ -45,7 +45,7 @@
 					}
 
 					window.location.replace("http://" + window.location.hostname +
-                            ( (location.port==""||location.port==undefined)?"":":" + location.port) + "./ilhase/index.php");
+                            ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/ilhase/member_page/login_form.php");
 				                                                    /* 인증이 완료된후 /sample/main.html 페이지로 이동하라는것이다. 본인 페이로 수정해야한다. */
                  } else {
 					console.log("callback 처리에 실패하였습니다.");
