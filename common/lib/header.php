@@ -96,7 +96,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/apply_history.php">지원 내역</a>
                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/favorite.php">관심 공고</a>
-                <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/notification.php">알림</a>
+                <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/notification.php">알림</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/logout.php">로그아웃</a>
             </div>
