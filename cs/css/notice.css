@@ -1,3 +1,7 @@
+.contianer .title {
+	margin: 3rem 0;
+}
+
 .notice_list_menu {
     box-sizing: border-box;
 	width: 100%;
@@ -50,7 +54,7 @@
 /* 공지사항 & 내용 & */
 
 /* list content */
-#list_item {
+.list_item {
 	margin: 0 auto;
 	width: 800px;
 	height: 40px;
@@ -247,31 +251,31 @@
 	min-height: 30rem;
 }
 
-#list_item #list_item1, #list_title1{
+.list_item .list_item1, #list_title1{
 	float: left;
 	width: 40px;
 	text-align:center;
 }
 
-#list_item #list_item2, #list_title2{
+.list_item .list_item2, #list_title2{
 	float: left;
 	width: 530px;
   	padding-left: 50px;
 }
 
-#list_item #list_item3, #list_title3{
+.list_item .list_item3, #list_title3{
 	float: left;
 	width: 120px;
 }
 
-#list_item #list_item4, #list_title4{
+.list_item .list_item4, #list_title4{
 	float:left;
 	width:75px;
   text-align: center;
   padding-right: 15px;
 }
 
-#list_item #list_item5, #list_title5{
+.list_item .list_item5, #list_title5{
 	float:left;
 	width:160px;
 	text-align:center;

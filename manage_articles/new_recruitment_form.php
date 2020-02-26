@@ -1,8 +1,30 @@
+<?php
+session_start();
+include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
+if(isset($_SESSION["userid"])){
+  $userid=$_SESSION["userid"];
+}else{
+  $userid="";
+}
+if(isset($_SESSION["username"])){
+  $username=$_SESSION["username"];
+}else{
+  $username="";
+}
+
+if(isset($_GET['num'])){
+  $num = $_GET['num'];
+} else {
+  $num = "";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>일하세</title>
+      <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
       <link rel="stylesheet" href="./css/recruiter.css">
       <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   </head>
@@ -10,7 +32,19 @@
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <form class="" action="index.html" method="post">
+
+    <?php
+        $sql    = "select * from recruitment where num='$num'";
+        $result = mysqli_query($conn, $sql);
+        $row    = mysqli_fetch_array($result);
+
+        $name = $row["recruiter_name"];
+        $phone = $row["recruiter_phone"];
+        $email = $row["recruiter_email"];
+        $homepage = $row["homepage"];
+
+        ?>
+    <form class="" action="recruit.php" method="post">
       <div id="div_main">
         <div class="title">
           <h3 id="recruiter_title">신규 공고 등록</h3>
@@ -22,22 +56,22 @@
           <div id="recruiter_first">
             <div id="div_recruiter_name">
               <p>채용 담당자 명<strong>*</strong></p>
-              <input type="text" id="recruiter_name" name="recruiter_name" placeholder="이름">
+              <input type="text" id="recruiter_name" name="recruiter_name" placeholder="이름" value="<?=$name?>">
             </div>
             <div id="div_recruiter_phone">
               <p>전화 번호<strong>*</strong></p>
               <input id="recruiter_phone"type="text" name="recruiter_phone"
-              placeholder="전화 번호">
+              placeholder="전화 번호" value="<?=$phone?>">
             </div>
           </div>
           <div id="recruiter_second">
             <div id="div_recruiter_email">
               <p>이메일</p>
-              <input type="text"id="recruiter_email" name="recruiter_email">
+              <input type="text"id="recruiter_email" name="recruiter_email" value="<?=$email?>">
             </div>
             <div id="div_recruiter_homepage">
               <p>홈페이지</p>
-              <input type="text" id="recruiter_homepage"name="recruite r_homepage">
+              <input type="text" id="recruiter_homepage"name="recruite r_homepage" value="<?=$homepage?>">
             </div>
           </div>
         </div>

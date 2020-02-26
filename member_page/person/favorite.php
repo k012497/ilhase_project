@@ -1,6 +1,15 @@
-<?php session_start();
+<?php 
+    session_start();
 
-    $user_id = $_SESSION['userid'];
+    if(isset($_SESSION['userid'])){
+        $user_id = $_SESSION['userid'];
+    } else {
+        $user_id = "";
+        echo "<script>
+            alert('잘못된 접근!');
+            history.go(-1);
+        </scipt>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -19,7 +28,7 @@
     </header>
     <div class="container">
         <div id="div_left_menu">
-          <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/person/member_side_menu.php";?>
+          <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
         </div>
         <div id="div_apply">
             <tr>

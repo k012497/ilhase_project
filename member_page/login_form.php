@@ -42,6 +42,7 @@ if(isset($_SESSION["username"])){
         });
       });
     </script>
+
 </head>
 <body>
     <header>
@@ -49,15 +50,14 @@ if(isset($_SESSION["username"])){
     </header>
     <div style="height:550px; margin-bottom:100px;">
 
-
     <div class="container" style="display:flex;
   align-items:center;top:150px;position:absolute; left:300px;">
 
     <!-- Jumbotron Header -->
     <div style="float:none; margin:0 auto">
-        <div class="card align-middle" style="width:35rem; border-radius:20px;background-color:lightgray">
-            <div class="card-title" style="margin-top:30px;">
-              <h1 class="card-title text-center" style="color:#113366;">로그인 폼</h1>
+        <div class="card align-middle">
+            <div class="card-title text-center">
+              로그인
             </div>
             <div class="card-body">
               <form class="form-signin" method="POST" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/login.php" name="login_2">
@@ -72,36 +72,34 @@ if(isset($_SESSION["username"])){
                     </div>
                   </h4>
 
-                <label for="inputEmail" class="sr-only">Your ID</label>
-                <input type="text" name="uid" id="uid" class="form-control" placeholder="Your ID" required autofocus style="background-color:white"><BR>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" name="upw" id="upw" class="form-control" placeholder="Password" required style="background-color:white"><br>
+                <label for="inputEmail" class="sr-only">아이디</label>
+                <input type="text" name="uid" id="uid" class="form-control" placeholder="아이디" required autofocus style="background-color:white; height: 50px; border-bottom: 1px solid #eee">
+                <label for="inputPassword" class="sr-only">비밀번호</label>
+                <input type="password" name="upw" id="upw" class="form-control" placeholder="비밀번호" required style="background-color:white; height: 50px;"><br>
                 <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="button">로 그 인</button>
                 <div class="row text-center" style="width: 100%">
                   <ul>
+                    <!-- naver -->
                     <li><div id="naverIdLogin" onclick="naver_login();"></div></li>
-
-                    <li>
-                      <div class="">
-                        <form name="member_form" action="../join/join_query.php" method="post">
+                    <!-- kakao -->
+                    <li><div class="kakao">
+                        <!-- <form name="member_form" action="../join/join_query.php" method="post">
                           <input type="hidden" name="mode" value="kakao">
                           <input type="hidden" name="join_id" id="id" value="">
                           <input type="hidden" name="join_name" id="name"  value="">
-                          <input type="hidden" name="email" id="email"  value="">
-                          <a href="#" type="button" onclick="kakao_login();"
-                            style="background-image:url('http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/kakao_account_login_btn.png');width:222px;height:49px;"
-                          ></a>
-                        </form>
+                          <input type="hidden" name="email" id="email"  value=""> -->
+                        <a href="#" type="button" onclick="kakao_login();"
+                          style="background-image:url('http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/kakao_account_login_btn.png');"></a>
+                        <!-- </form> -->
                       </div>
                     </li>
                   </ul>
                 </div>
-                <div class="">
+                <div class="login_bottom">
                   <ul>
-                    <li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-                    <li><a href="#" style="font-size:24px">아이디/비밀번호 찾기</a></li>
-                    <li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-                    <li><a href="./total_sign.php" style="font-size:24px">회원가입</a></li>
+                    <li><a href="#">아이디/비밀번호 찾기</a></li>
+                    <li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+                    <li><a href="./total_sign.php">회원가입</a></li>
                   </ul>
                 </div>
               </form>
@@ -114,7 +112,7 @@ if(isset($_SESSION["username"])){
                 clientId: "NQzYhgZ1ajZ0m1J4T9Fv",
                 callbackUrl: "http://localhost/ilhase/common/lib/naver_login.php",
                 isPopup: false, /* 팝업을 통한 연동처리 여부 */
-                loginButton: {color: "green", type: 3, height: 50} /* 로그인 버튼의 타입을 지정 */
+                loginButton: {color: "green", type: 3, height: 40} /* 로그인 버튼의 타입을 지정 */
               }
             );
 
@@ -139,9 +137,8 @@ if(isset($_SESSION["username"])){
                 console.log("AccessToken이 올바르지 않습니다.");
               }
             });
-          function kakao_login(){
-            Kakao.init('92f268bc75efac2d4885645ade5700e6');
-
+            function kakao_login(){
+              Kakao.init('92f268bc75efac2d4885645ade5700e6');
               Kakao.Auth.loginForm({
                  success: function(authObj) {
 
@@ -166,7 +163,7 @@ if(isset($_SESSION["username"])){
                fail: function(err) {
                }
               });
-          }
+            }
           </script>
           <div class="modal">
           </div>
@@ -186,5 +183,65 @@ if(isset($_SESSION["username"])){
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <style>
+      .card-title {
+        font-weight: bolder;
+        font-size: 2rem;
+        margin-top: 3rem;
+      }
+
+      .card {
+        background-color: #eee;
+        width: 450px;
+        border-radius: 20px;
+        border: 0;
+      }
+
+      .btn-group {
+        width: 100%;
+      }
+
+      .btn-secondary {
+        width: 50%;
+        color: #6c757d;
+        background-color: #eee;
+        /* color: #fff; */
+        /* background-color: #6c757d; */
+        border-color: #6c757d;
+      }
+
+      .btn-primary {
+        background-color: rgb(133, 198, 241);
+        border: 0;
+      }
+
+      .btn-primary:hover {
+        background-color : #5DB6DE;
+        border: 0;
+      }
+
+      .row ul {
+        width: 100%;
+        margin: 1rem 0.5rem;
+      }
+
+      .row li {
+        width: 48%;
+        vertical-align: top;
+      }
+      
+      .kakao a{
+        width: 185px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .login_bottom, .login_bottom a {
+        color: #555;
+      }
+
+
+    </style>
 </body>
 </html>

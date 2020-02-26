@@ -1,6 +1,15 @@
 <?php
+session_start();
 include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
 
+if(isset($_SESSION['usermember_type'])){
+  $member_type = $_SESSION['usermember_type'];
+} else {
+  echo "<script>
+    alert('잘못된 접근입니다.');
+    history.go(-1);
+  </script>";
+}
 
 $num=$id=$subject=$content=$day=$hit="";
 $mode="insert";
@@ -24,7 +33,7 @@ $num= $_GET['num'];
     $subject=str_replace(" ", "&nbsp;",$subject);
     $content=str_replace("\n", "<br>",$content);
     $content=str_replace(" ", "&nbsp;",$content);
-    $day=$row['regist_day'];
+    $day=$row['regist_date'];
     $hit=$row['hit'];
     if($mode == "response"){
       $subject="[re]".$subject;
@@ -40,7 +49,6 @@ $num= $_GET['num'];
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/ilhase/common/css/notice.css">
     <script type="text/javascript" src="./member_form.js"></script>
     <title>일하세</title>
 
@@ -66,13 +74,17 @@ $num= $_GET['num'];
     <header>
 
         <?php
-          if(true){
+          if(!$member_type === 'admin'){
             // 회원일 경우
             include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
           } else {
             // 관리자일 경우
-            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
-          }?>
+            include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
+        ?>
+          <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
+        <?php
+          }
+        ?>
     </header>
       <div id="content">
       <h2 class="title">1 : 1 문의 > 댓글</h2>
@@ -123,5 +135,7 @@ $num= $_GET['num'];
             <p class="m-0" id="copyrihgt">Copyright &copy; ilhase 2020</p>
         </div>
     </footer>
+    <link rel="stylesheet" href="/ilhase/common/css/notice.css">
+    <link rel="stylesheet" href="/ilhase/common/css/qna.css">
   </body>
 </html>

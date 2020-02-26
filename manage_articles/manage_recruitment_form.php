@@ -124,8 +124,6 @@ if(isset($_SESSION["username"])){
                 <?php
                 }
               }
-
-
                 ?>
                 <li id="finish_resume"><p>마감</p>
                 </li>

@@ -73,7 +73,7 @@
     function select_by_user(){
         global $conn, $user_id;
 
-        $sql = "select * from qna where id = '$user_id';";
+        $sql = "select * from qna where group_num in (select group_num from qna where id = '$user_id');";
         $result = mysqli_query($conn, $sql);
         if(!$result){
             die('select_by_user error: ' . mysqli_error($conn));
@@ -107,8 +107,8 @@
     function insert_response(){
       global $conn, $user_id;
 
-      $content = trim($_POST["content"]);
-      $subject = trim($_POST["subject"]);
+      $short_content = substr($_POST["content"], 0, 8);
+
       $subject = filter_data($_POST["subject"]);
       $content = filter_data($_POST["content"]);
 
@@ -127,6 +127,9 @@
         die('Error: ' . mysqli_error($conn));
       }
       $row=mysqli_fetch_array($result);
+
+      // 질문글 작성자
+      $writer = $row['id'];
 
       //현재 그룹넘버값을 가져와서 저장한다.
       $group_num=(int)$row['group_num'];
@@ -154,10 +157,18 @@
       if (!$result) {
         die('SELECT Error: ' . mysqli_error($conn));
       }
-      $row=mysqli_fetch_array($result);
-      $max_num=$row['max(num)'];
+      $row = mysqli_fetch_array($result);
+      $max_num = $row['max(num)'];
 
-      echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
+      // 답변 등록 알림
+      $noti_sql = "insert into notification values (null, '1:1문의 답변이 도착했습니다.', '문의하신 [$short_content...]에 대한 답변이 도착하였습니다.', now(), 0, '$writer');";
+      $noti_result = mysqli_query($conn, $noti_sql);
+      if(!$noti_result){
+          echo mysqli_error($conn);
+      }else {
+          echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
+      }
+
 
     }
 

@@ -7,10 +7,6 @@
   left: 2rem;
 }
 
-strong{
-  color: rgb(133, 198, 241);
-}
-
 #div_member label {
   width: 150px;
   margin-bottom: 10px;
@@ -118,40 +114,14 @@ tr.th_first{
   cursor: pointer;
 }
 
-/* notification */
-
-#notification{
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  padding-bottom: 15px;
-  margin: 0 auto;
-  width: 700px;
-  top: 90px;
-}
-
-#notification ul li{
-  width: 100%;
-  min-height: 50px;
-  border-bottom: 1px solid #777;
-  margin-bottom: 40px;
-}
-
-.noti_title {
-  cursor: pointer;
-}
-
-.date_received{
-  color: #777;
-  font-size: smaller;
-  position: absolute;
-  right: 0;
-}
-
 #member_address #btn_address, #div_button input {
   border: 0;
   background-color: rgb(133, 198, 241);
   color: white;
+}
+
+#div_button input {
+  background-color: #777;
 }
 
 .container {
