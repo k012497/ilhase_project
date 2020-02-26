@@ -50,7 +50,7 @@ if($sender_education===null){
 }
 if($sender_file_name===null){
     $sender_file_name="http://".$_SERVER["HTTP_HOST"]."/ilhase/common/img/user.png";
-} 
+}
 
 
 mysqli_close($conn);
@@ -68,7 +68,7 @@ try {
     $mail ->Host = "smtp.naver.com";                      // email 보낼때 사용할 서버를 지정
     $mail ->SMTPAuth = true;                                // SMTP 인증을 사용함
     $mail ->Username = "a980721a@naver.com";  // 메일 계정
-    $mail ->Password = "ses303030";                   // 메일 비밀번호
+    $mail ->Password = "ses30303030@";                   // 메일 비밀번호
     $mail ->SMTPSecure = "ssl";                             // SSL을 사용함
     $mail ->Port =465;                                        // email 보낼때 사용할 포트를 지정
     $mail ->CharSet = "utf-8";                                // 문자셋 인코딩
@@ -102,7 +102,7 @@ try {
     <div>
       <h2>간단하게 자기를 소개 해보세요!!</h2>
       <p> - ".$sender_contents."</p></br>
-    </div> 
+    </div>
      <div>
         <h2>이전에 하셨던 일이 있나요 ?</h2>
         <p> -".$sender_career."</p></br>
