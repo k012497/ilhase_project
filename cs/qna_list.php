@@ -31,7 +31,6 @@ $number = $total_record - $start;
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="./css/notice.css">
-    <link rel="stylesheet" href="./css/qna.css">
     <title>일하세</title>
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
@@ -71,16 +70,15 @@ $number = $total_record - $start;
               $space="&nbsp;&nbsp;".$space;
             }
         ?>
-            <div id="list_item">
-              <div id="list_item1"><?=$number?></div>
-              <div id="list_item2">
+            <div class="list_item">
+              <div class="list_item1"><?=$number?></div>
+              <div class="list_item2">
                   <a href="./qna_view.php?num=<?=$num?>&page=<?=$page?>&hit=<?=$hit + 1?>"><?=$space.$subject?></a>
               </div>
-              <div id="list_item3"><?=$name?></div>
-              <div id="list_item4"><?=$hit?></div>
-              <div id="list_item5"><?=$row['regist_date']?></div>
+              <div class="list_item3"><?=$name?></div>
+              <div class="list_item4"><?=$hit?></div>
+              <div class="list_item5"><?=$row['regist_date']?></div>
             </div><!--end of list_item -->
-            <div id="memo_content"><?=$memo_content?></div>
         <?php
             $number--;
          }//end of for
@@ -135,5 +133,6 @@ $number = $total_record - $start;
               <p class="m-0" id="copyrihgt">Copyright &copy; ilhase 2020</p>
           </div>
       </footer>
+    <link rel="stylesheet" href="./css/qna.css">
   </body>
 </html>

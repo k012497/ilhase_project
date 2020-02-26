@@ -1,5 +1,15 @@
 <?php
+session_start();
 include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
+
+if(isset($_SESSION['usermember_type'])){
+  $member_type = $_SESSION['usermember_type'];
+} else {
+  echo "<script>
+    alert('잘못된 접근입니다.');
+    history.go(-1);
+  </script>";
+}
 
 $num=$subject=$content=$regist_date=$hit="";
 //*****************************************************
@@ -45,17 +55,27 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/notice.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <title></title>
+    <title>일하세</title>
+    <script>
+     var test = '<?=$member_type?>';
+     console.log(test);
+    </script>
   </head>
   <body>
     <header>
-
-        <?php
+      <?php
+        if($member_type !== 'admin'){
+          // 회원일 경우
+          include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";
+        } else {
+          // 관리자일 경우
           include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
-        ?>
+      ?>
         <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
+      <?php
+        }
+      ?>
     </header>
     <div id="content">
       <h2 class="title">1 : 1 문의 > 내용</h2>
@@ -108,5 +128,7 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
         </div>
     </footer>
+    <link rel="stylesheet" href="./css/notice.css">
+    <link rel="stylesheet" href="./css/qna.css">
   </body>
 </html>
