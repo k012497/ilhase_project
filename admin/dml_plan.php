@@ -10,7 +10,7 @@
 
     if($mode === 'insert'){
         $name = $_POST['name'];
-        $description = $_POST['description'];
+        $count = $_POST['count'];
         $price = $_POST['price'];
     }
 
@@ -67,14 +67,14 @@
     }
 
     function insert_plan(){
-        global $conn, $name, $description, $price;
+        global $conn, $name, $count, $price;
 
-        $sql = "insert into recruit_plan values (null, '$name', '$description', '$price');";
+        $sql = "insert into recruit_plan values (null, '$name', '$count', '$price');";
         $result = mysqli_query($conn, $sql);
         if($result){
             $plan_data = array(
                 'name' => $name,
-                'description' => $description,
+                'count' => $count,
                 'price' => $price,
                 'sales' => 0
             );

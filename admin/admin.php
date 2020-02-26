@@ -16,8 +16,8 @@
     <!-- top -->
     <div id="admin_main_top" class="fit_height" src="" alt="">
         <div id="main_top_logo">
-            <span style="font-size: 32px;">중장년 구인구직 플랫폼</span><br />
-            <span style="font-size: 120px; font-weight:700;">일하세</span>
+            <span style="font-size: 41px;">중장년 구인구직 플랫폼</span><br />
+            <span style="font-size: 150px; font-weight:700;">일하세</span>
         </div>
     </div>
 
@@ -171,7 +171,7 @@
                     <form action="dml_plan.php?mode=insert" id="add_plan_form" method="post">
                         <label for="id">새로운 플랜 추가</label>
                         <input type="text" placeholder="이름" name="name">
-                        <input type="text" placeholder="내용" name="description">
+                        <input type="number" max="9999999" placeholder="내용" name="count">
                         <input type="number" max="9999999" placeholder="가격" name="price">
                         <input type="button" id="btn_add_plan" value="추가">
                     </form>
