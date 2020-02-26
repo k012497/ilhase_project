@@ -56,8 +56,30 @@
 
 form {
     display: inline-block;
-    width: 80%;
-    margin-bottom: 6rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#write_qna, #write_qna li {
+    width: 100%;
+    padding: 0.5rem 0.9rem;
+}
+
+#write_qna label {
+	margin: 0 1rem;
+	display: inline;
+}
+
+#input_subject {
+	width: 90%;
+	padding: 0 0.5rem;
+}
+
+#textarea_content {
+	width: 90%;
+  	height: 30rem;
+	padding: 0.5rem 1rem;
+  	resize: none;
 }
 
 .past_qna {
@@ -111,6 +133,24 @@ form {
 	min-height: 30rem;
 }
 
+.list_item {
+	margin: 0 auto;
+	width: 800px;
+	height: 40px;
+	margin-top:2px;
+	padding: 0.5rem 1rem;
+	border-bottom:solid 1px #eeeeee;
+}
+
+#qna_contents {
+	margin: 0 auto;
+	width: 89%;
+	min-height: 30rem;
+	margin-top:2px;
+	padding: 1rem;
+	border-bottom:solid 1px #eeeeee;
+}
+
 .list_item .list_item1, #list_title1{
 	float: left;
 	width: 40px;
@@ -139,4 +179,11 @@ form {
 	float:left;
 	width:160px;
 	text-align:center;
+}
+
+.qna_buttons {
+    display: block;
+    text-align: right;
+    width: 800px;
+    margin: 2rem;
 }
