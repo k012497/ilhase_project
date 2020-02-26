@@ -238,7 +238,7 @@ if(isset($_SESSION["username"])){
       }
 
       .login_bottom, .login_bottom a {
-        color: #777;
+        color: #555;
       }
 
 
