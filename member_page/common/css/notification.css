@@ -1,0 +1,46 @@
+#notification{
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    margin: 0 auto;
+    width: 700px;
+    top: 90px;
+}
+  
+#notification ul li{
+    width: 100%;
+    min-height: 50px;
+    border-bottom: 1px solid #777;
+    margin-bottom: 40px;
+}
+  
+.noti_title {
+    cursor: pointer;
+}
+  
+.date_received{
+    color: #777;
+    font-size: smaller;
+    position: absolute;
+    right: 0;
+}
+
+.noti_title {
+    font-weight: bolder;
+}
+
+.read_sign {
+    color: rgb(133, 198, 241);
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.invisible {
+    display: none;
+}
+
+.noti_content {
+    padding: 1rem 1rem 0 1rem;
+    color: #555;
+}
