@@ -1,17 +1,21 @@
 <?php
   session_start();
   include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
+
     if(isset($_GET['mode'])){
         $mode = $_GET['mode'];
     }
+
     if(isset($_POST['user_id'])){
         $user_id = $_POST['user_id'];
     } else {
       $user_id = $_SESSION['userid'];
     }
+
     if(isset($_POST['user_name'])){
         $user_name = $_POST['user_name'];
     }
+
     switch($mode){
         case 'q_insert':
             // 질문 등록
@@ -24,9 +28,11 @@
             break;
 
         case 'update':
+            update_question();
             break;
 
         case 'delete':
+            delete_question();
             break;
 
         case 'insert':
@@ -163,13 +169,79 @@
       // 답변 등록 알림
       $noti_sql = "insert into notification values (null, '1:1문의 답변이 도착했습니다.', '문의하신 [$short_content...]에 대한 답변이 도착하였습니다.', now(), 0, '$writer');";
       $noti_result = mysqli_query($conn, $noti_sql);
-      if(!$noti_result){
-          echo mysqli_error($conn);
-      }else {
-          echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
-      }
+      echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
+    //   if(!$noti_result){
+    //       echo mysqli_error($conn);
+    //   }else {
+    //   }
 
 
+    }
+
+    function update_question(){
+        global $conn;
+
+        $num = $_GET['num'];
+        $hit = $_GET['hit'];
+        $member_type = $_GET['m_type'];
+
+        $subject = $_POST['subject'];
+        $content = $_POST['content'];
+
+        $sql = "update qna set subject = '$subject', content = '$content' where num = '$num';";
+        $result = mysqli_query($conn, $sql);
+
+        if(!$result){
+            die(mysqli_error($conn));
+        }
+
+        if($member_type === 'admin'){
+            // 관리자면 1:1문의 게시판으로 
+            echo "<script>location.href='./qna_view.php?num=$num&hit=$hit';</script>";
+        } else {
+            // 회원이면 1:1문의 페이지로
+            echo "<script>location.href='http://".$_SERVER['HTTP_HOST']."/ilhase/cs/qna.php';</script>";
+        }
+    }
+
+    function delete_question(){
+        global $conn;
+
+        $num = $_GET['num'];
+        $member_type = $_GET['m_type'];
+        if(isset($_GET['page'])){
+            $page = $_GET['page'];
+        }
+
+        // 해당글이 질문글인지 답변글인지 파악
+        $sql = "select depth from qna where num = '$num';";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)){
+            $depth = $row[0];
+        }
+
+        if($depth == 0){
+            // 질문글인 경우 그룹 전체 삭제
+            $sql = "delete from qna where group_num = '$num';";
+        } else {
+            // 답변글인 경우 해당 답변만 삭제
+            $sql = "delete from qna where num = '$num';";
+        }
+        $result = mysqli_query($conn, $sql);
+
+        if(!$result){
+            die(mysqli_error($conn));
+        }
+
+        echo "<script>alert('삭제 되었습니다.');</script>";
+
+        if($member_type === 'admin'){
+            // 관리자면 1:1문의 게시판으로 
+            echo "<script>location.href='./qna_list.php?page=$page';</script>";
+        } else {
+            // 회원이면 1:1문의 페이지로
+            echo "<script>location.href='http://".$_SERVER['HTTP_HOST']."/ilhase/cs/qna.php';</script>";
+        }
     }
 
 ?>

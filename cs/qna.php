@@ -18,6 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>1:1 문의</title>
 </head>
@@ -46,7 +47,7 @@
                         <img src="https://image.flaticon.com/icons/svg/42/42877.svg" alt="user" srcset=""><br />
                         <span><?=$user_name?></span>
                     </div>
-                    <form action="dml_qna.php?mode=q_insert" method="post">
+                    <form action="dml_qna.php?mode=q_insert" method="post" style="width: 80%;">
                         <input type="hidden" name="user_id" value="<?=$user_id?>">
                         <input type="hidden" name="user_name" value="<?=$user_name?>">
                         <textarea name="content" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요."></textarea>

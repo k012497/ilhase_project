@@ -5,14 +5,14 @@ include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
 if(isset($_SESSION['usermember_type'])){
   $member_type = $_SESSION['usermember_type'];
 } else {
+  // 로그인하지 않은 경우
   echo "<script>
     alert('잘못된 접근입니다.');
-    history.go(-1);
+    location.href='http://".$_SERVER['HTTP_HOST']."/ilhase/index.php';
   </script>";
 }
 
 $num=$subject=$content=$regist_date=$hit="";
-//*****************************************************
 
 if(empty($_GET['page'])){
   $page=1;
@@ -44,8 +44,10 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
     $subject=str_replace(" ", "&nbsp;",$subject);
     $content=str_replace("\n", "<br>",$content);
     $content=str_replace(" ", "&nbsp;",$content);
-    $regist_date=$row['regist_date'];
-    $hit=$row['hit'];
+    $regist_date = $row['regist_date'];
+    $depth = $row['depth'];
+    $hit = $row['hit'];
+    $writer = $row['id'];
     mysqli_close($conn);
 }
 
@@ -55,11 +57,22 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>일하세</title>
     <script>
-     var test = '<?=$member_type?>';
-     console.log(test);
+      const member_type = '<?=$member_type?>';
+      function confirm_to_delete(){
+        const resopnse = confirm('해당 문의를 삭제하시겠습니까?');
+
+        if(!resopnse) return;
+
+        if(member_type === 'admin'){
+          location.href = "dml_qna.php?mode=delete&num=<?=$num?>&page=<?=$page?>&m_type=<?=$member_type?>";
+        } else {
+          location.href = "dml_qna.php?mode=delete&num=<?=$num?>&m_type=<?=$member_type?>";
+        }
+      }
     </script>
   </head>
   <body>
@@ -94,22 +107,37 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
         <ul class="qna_buttons">
           <li>
           <br>
-          <li>
-            <button class="list_button" onclick="location.href='qna_list.php?page=<?=$page?>'">목 록</button>
-            </li>
-              <?php
-                // 세션 값을 검사해서 관리자일 때만 수정 버튼
-                if(false){
-                  // 회원일 경우
-                } else {
-                  // 관리자일 경우
-              ?>
-            <li><button class="list_button" onclick="location.href='write_qna_form.php?mode=response&num=<?=$num?>&page=<?=$page?>'">답 변</button></li>
-            <li><button class="list_button" onclick="location.href='qna_view_delete.php?num=<?=$num?>&page=<?=$page?>'">삭 제</button></li>
-
-              <?php
+          <?php
+            // 세션 값을 검사해서 관리자일 때만 수정 버튼
+            if($member_type === 'admin'){
+              // 관리자일 경우
+              if($writer === 'admin'){
+              // 관리자가 쓴 글인 경우 수정 가능
+          ?>
+              <li><button class="list_button" onclick="location.href='write_qna_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수 정</button></li>
+          <?php
                 }
-              ?>
+              if($depth == 0){
+                // 질문일 때만 답변 달 수 있음 (답변에는 답변을 달 수 없음)
+          ?>
+              <li><button class="list_button" onclick="location.href='write_qna_form.php?mode=response&num=<?=$num?>&page=<?=$page?>'">답 변</button></li>
+          <?php
+              }
+            
+          ?>
+            <li><button class="list_button" onclick="confirm_to_delete();">삭 제</button></li>
+            <li><button class="list_button" onclick="location.href='qna_list.php?page=<?=$page?>'">목 록</button></li>
+          <?php
+            } else {
+              // 회원일 경우
+          ?>
+            <li><button class="list_button" onclick="location.href='write_qna_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수 정</button></li>
+            <li><button class="list_button" onclick="confirm_to_delete();">삭 제</button></li>
+            <li><button class="list_button" onclick="location.href='http://<?=$_SERVER['HTTP_HOST']?>/ilhase/cs/qna.php'">목 록</button></li>
+
+          <?php
+            }
+          ?>
         </ul>
  <!-- page=<?=$page?> -->
 
