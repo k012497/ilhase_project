@@ -4,6 +4,47 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 $mode=$_GET['mode'];
 
 switch ($mode) {
+  case 'applicant' :
+      $applay_start=$_GET['apply_start'];
+      $applay_list=$_GET['apply_list'];
+
+      $all_applicant_sql="select * from resume where public=1 order by num desc";
+      $result=mysqli_query($conn,$all_applicant_sql);
+      $count=mysqli_num_rows($result);
+      for($i=$applay_start;$i<$applay_start+$applay_list && $i < $count;$i++){
+        $row=mysqli_fetch_array($result);
+        $num=$row['num'];
+        $m_name=$row['m_name'];
+        $m_address=$row['m_address'];
+        $m_gender=$row['m_gender'];
+        $m_title=$row['title'];
+        $file_name=$row['file_name'];
+
+        $src='';
+        if ($file_name) {
+        $src='./img/'+$file_name;
+        }else {
+        $src='../common/img/user.png';
+        }
+        echo "   
+            <li>
+              <div id='apply_box'>
+                <a href='http://".$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/write_resume_form.php?num=".$num."'>
+                  <div id='ap_img'>
+                    <img  src='".$src."' alt='회사이미지'>
+                  </div>
+                  <span id='ap_title'>".$m_title."</span>
+                  <span id='ap_pay'>".$m_name."(".$m_gender.")</span>
+                  <span id='ap_address'>주소 : ".$m_address."</span>
+                </a>
+              </div>
+            </li>   
+        ";
+
+      }
+      
+
+  break;
   case 'auto_keyword':
       //자동검색어 keyword 들어왔을때 (산업,지역 )
       $keyword=$_GET['keyword'];

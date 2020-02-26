@@ -13,8 +13,8 @@
         </script>";   
         exit;
       }
-    
     }
+
    ?>
   <head>
     <meta charset="utf-8">
@@ -31,15 +31,20 @@
         <h1 class="title" id="search_all">
           <?php
             if($mode==='index_search'){
+              //검색해서 들어왔을 때
               echo "검색 > ".$serch_word;
-            }else{
+            }else if($mode==='applicant'){
+              //기업회원으로 로그인해서 지원자를 눌렀을 때
+              echo "> 지원자";
+            }else { 
+              //채용을 클릭했을때
               echo "<a href='./search.php?mode=recruitment'>전체</a><span>></span>";
             }
           ?>
         </h1>
         <?php
-            //검색 모드가 아닐떄  
-            if(!($mode==='index_search')){
+            //검색 모드나 지원자 모드가 아닐떄  
+            if(!($mode==='index_search') && !($mode==='applicant')){
         ?>
         <div id="job_box">
             <div class="col_box">
@@ -93,11 +98,15 @@
         </div>
         <?php
           }
+          if(!($mode==='applicant')){
         ?>
         <h2 class="title" id="sh_text"><span id="search_ico"></span>맞춤검색</h2>
         <?php
+          }
           if($mode==='index_search'){    
               echo"<p>\"".$serch_word."\"의 대한 검색결과 입니다</p>";
+          }else if($mode==='applicant'){
+              echo "<h3 id='apply_title'><span id='apply_log'></span><span id='apply_inner'>지원자 현황</span></h3>";
           }else{
         ?>
         <div id="select_box">
@@ -189,6 +198,8 @@
               var mode='<?=$mode?>';
               var search_start=0;
               var search_list=10;
+              var applay_start=0;
+              var applay_list=10;
               
               console.log(mode);
 
@@ -208,11 +219,14 @@
           var strArea=select_area.replace(/(\s*)/g,"");
           var area_text=strArea.split('>');
 
-          //index에서 검색부분으로 들어온게 아니면 
-          if(!(mode==="index_search")){
+           
+          if(mode==="recruitment"){
              //전체 페이지에서 구직 데이터 (최신순 & 전체 & 경력무관)
               append_list(industry_title,select_alignment,select_career,$.trim(selectAreainit.text()),area_text[1],user_id,mode);
-          }else{
+          }else if(mode==='applicant'){
+            //기업회원이 지원자페이지로 들어올시 
+            show_all_applicant(mode);
+          }else if(mode==="index_search"){
              //검색에서 온 데이터로 찾기
              var serch_word ='<?=$serch_word?>';
              console.log(serch_word, user_id, mode, "gggggggggggg");
@@ -231,7 +245,7 @@
                 
                 if((wh+st) == dh){
 
-                  if(!(mode==="index_search")){
+                  if(mode==="recruitment"){
                     var industryTitle=$.trim($('#search_all').text());
                     var select_area=$('#area_selectBox > p').text();
                     var select_career=$('select[name=career]').val();
@@ -248,7 +262,11 @@
                           console.log("3");
                     }//end of industriTitle 
 
-                  }else {
+                  }else if(mode==="applicant"){
+                    //기업이 지원자로 들어올시 
+                    show_all_applicant(mode);
+
+                  }else if(mode==="index_search"){
                         //검색에서 온 데이터로 찾기
                       search_result(serch_word,user_id,mode);
 
@@ -674,6 +692,31 @@
                 }
               });
               
+            }//end of search_result
+            
+   
+            //기업회원이 지원자 페이지로 들어올시 전체 지원자 데이터
+            function show_all_applicant(mode){
+
+              $.ajax({
+                url:'./dml_recruitment.php',
+                type:'get',
+                data:{
+                  'apply_start':applay_start,
+                  'apply_list':applay_list,
+                  'mode':mode
+                },
+                success:function(data){
+                  $('#ep_databox').append(data);
+                  applay_start += applay_list;
+                  $('#ep_databox li').each(function(index,item){
+                        $(item).addClass("fadein");
+                  });
+
+                }
+
+              });
+
             }
 
 

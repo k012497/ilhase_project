@@ -327,6 +327,47 @@ button:focus {
   color: red;
 }
 
+
+/**********************지원자css****************************/
+#apply_box {
+  text-align: center;
+}
+#ap_img{
+  width:100%;
+  height:auto;
+  text-align: center;
+}
+
+#ap_title {
+  font-size:1.5rem;
+}
+#apply_title #apply_log {
+  position: absolute; 
+  left:1rem;
+  bottom:0.5rem;
+  width:33px;
+  height:33px;
+  background-image:url('../img/apply.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+
+} 
+#ap_pay,#ap_address {
+  font-size:1rem;
+}
+#apply_title {
+  position: relative;
+  line-height:50px;
+  border-bottom:1px solid #333;
+  margin-bottom:30px;
+
+}
+#apply_inner {
+  padding-left:3.5rem;
+}
+
+
+
 /************************* 애니메이션 **************/
 /* 구직 내용 애니메이션  fade in */
 .fadein {
