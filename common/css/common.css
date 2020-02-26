@@ -393,14 +393,13 @@ button {
     margin-left:.2rem;
   }
 
-  #footer_info ul  li {
+  #footer_info ul li {
     padding-left:10px;
     padding-right:10px;
-    border-right:1px solid #ddd;
     font-size:15px;
   }
-  #footer_info ul  li a {
-    color:rgb(51, 51, 51);
+  #footer_info ul li a {
+    color:white;
   }
   #copyrihgt {
     text-align:center;

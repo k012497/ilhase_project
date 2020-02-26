@@ -310,6 +310,9 @@ function display_plan_list(plan, num) {
 function get_unanswerd_questions(){
     $.get('dml_chart.php', {mode : 'questions_count'}, function(data){
         animate_count_up('.qna_count', data);
+        if(data != 0){
+            $('.notification').show();
+        }
     });
 }
 
@@ -371,6 +374,8 @@ $(document).ready(function () {
 });
 
 function init() { 
+    $('.notification').hide();
+
     // manage member
     get_person_count();
     get_corporate_count();

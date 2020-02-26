@@ -85,7 +85,7 @@ $number = $total_record - $start;
         ?>
 
         <div id="page_button">
-          <div id="page_num">이전◀ &nbsp;&nbsp;&nbsp;&nbsp;
+          <div id="page_num">이전◂ &nbsp;&nbsp;&nbsp;&nbsp;
           <?php
             for ($i=1; $i <= $total_page ; $i++) {
               if($page==$i){
@@ -95,7 +95,7 @@ $number = $total_record - $start;
               }
             }
           ?>
-          &nbsp;&nbsp;&nbsp;&nbsp;▶ 다음
+          &nbsp;&nbsp;&nbsp;&nbsp;▸ 다음
           <br><br><br><br><br><br><br>
         </div><!--end of page num -->
         <div id="button">

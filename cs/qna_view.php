@@ -77,21 +77,21 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
         }
       ?>
     </header>
-    <div id="content">
-      <h2 class="title">1 : 1 문의 > 내용</h2>
+    <div class="container">
+      <h3 class="title">1 : 1 문의 > 내용</h3>
         <div id="list_top_title">
           <li>
-            <span class="col1">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              조회 : <?=$hit?>&nbsp;&nbsp;&nbsp;<b>제목 : </b><?=$subject?></span>
-            <span class="col2_view"><?=$regist_date?></span>
+            <span class="col1"><b>제목 : </b><?=$subject?></span>
+            <span class="col2_view"><?=$regist_date?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              조회 : <?=$hit?>&nbsp;&nbsp;&nbsp;</span>
           </li>
         </div><!--end of list_top_title  -->
 
-        <div id="list_item">
-          <li  class="buttons"><?=$content ?></li>
+        <div id="qna_contents">
+          <?=$content ?>
         </div>
 
-        <ul class="qna_contents">
+        <ul class="qna_buttons">
           <li>
           <br>
           <li>

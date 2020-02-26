@@ -1,8 +1,13 @@
 .navbar {
-    background: black;
-    position: static;
-  }
+  background: black;
+  position: static;
+}
 
-  #btn_top {
-    display: none;
-  }
+#btn_top {
+  display: none;
+}
+
+.nav-link, .navbar-nav .nav-item .dropdown-menu {
+  position: relative;
+  top: -1.4rem;
+}

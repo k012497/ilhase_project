@@ -2,6 +2,9 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
 
+// 수정, 등록 구분
+$mode="";
+
 if(isset($_SESSION['usermember_type'])){
   $member_type = $_SESSION['usermember_type'];
 } else {
@@ -86,23 +89,20 @@ $num= $_GET['num'];
           }
         ?>
     </header>
-      <div id="content">
-      <h2 class="title">1 : 1 문의 > 댓글</h2>
+      <div class="container">
+      <h3 class="title">1 : 1 문의 > 댓글</h3>
       <form name="write_answer" action="dml_qna.php?mode=r_insert&num=<?=$q_num?>" method="post">
-
-        <div id="list_top_title">
-          <ul  id="write_notice">
-            <li class="col1">제목 : <input id="input_subject" type="text" name="subject" value="<?=$subject?>"></li>
-          </ul>
-        </div>
-
-          <div id="list_item">
-            <li class="col2">내용 : <textarea id="textarea_content" name="content" rows="15" cols="79"></textarea></li>
-          </div>
-          <div class="write_line"></div>
-
+        <ul id="write_qna">
+            <li>
+              <label for="input_subject">제목</label>
+              <input id="input_subject" type="text" name="subject" value="<?php if($mode === "update") echo $subject;?>"></li>
+            <li>
+              <label for="textarea_content" style="vertical-align: top;">내용</label>
+              <textarea id="textarea_content" name="content"><?php if($mode === "update") echo $content;?></textarea></li></li>
+        </ul>
       </form>
-      <ul class="notice_contents">
+      
+      <ul class="qna_buttons">
         <li><button class="list_button" type="button" onclick="check_input();">완 료</button></li>
         <li>
           <button class="list_button" onclick="location.href='qna_view.php?page=<?=$page?>&num=<?=$num?>'">취 소</button></li>
@@ -112,7 +112,7 @@ $num= $_GET['num'];
     </div>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
-    <link rel="stylesheet" href="/ilhase/common/css/notice.css">
-    <link rel="stylesheet" href="/ilhase/common/css/qna.css">
+    <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/css/notice.css">
+    <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/css/qna.css">
   </body>
 </html>

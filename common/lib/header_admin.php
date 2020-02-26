@@ -52,10 +52,11 @@
       ?>
         <li class="nav-item dropdown" id="nav_user">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            관리자
+            관리자 <span class="notification">•</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">문의 메세지</a>
+                <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/qna_list.php">문의 메세지<span class="notification"> •</span></a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/logout.php">로그아웃</a>
             </div>
         </li>
@@ -71,3 +72,12 @@
 
   </div>
 </nav>
+
+<style>
+  .notification {
+      color: rgb(133, 198, 241);
+      font-weight: bolder;
+      font-size: 1.5rem;
+      line-height: 1rem;
+  }
+</style>
