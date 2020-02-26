@@ -73,7 +73,7 @@
     function select_by_user(){
         global $conn, $user_id;
 
-        $sql = "select * from qna where id = '$user_id';";
+        $sql = "select * from qna where group_num in (select group_num from qna where id = '$user_id');";
         $result = mysqli_query($conn, $sql);
         if(!$result){
             die('select_by_user error: ' . mysqli_error($conn));

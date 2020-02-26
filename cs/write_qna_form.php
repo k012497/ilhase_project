@@ -24,7 +24,7 @@ $num= $_GET['num'];
     $subject=str_replace(" ", "&nbsp;",$subject);
     $content=str_replace("\n", "<br>",$content);
     $content=str_replace(" ", "&nbsp;",$content);
-    $day=$row['regist_day'];
+    $day=$row['regist_date'];
     $hit=$row['hit'];
     if($mode == "response"){
       $subject="[re]".$subject;
