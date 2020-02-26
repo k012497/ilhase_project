@@ -5,10 +5,11 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="./css/person.css">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"> -->
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     </script>
-    <title></title>
+    <title>일하세</title>
   </head>
   <body>
     <header>
@@ -46,7 +47,7 @@
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){
         data.classList.remove('active');
-      
+
         if(idx === 4){
           data.classList.add('active');
         }

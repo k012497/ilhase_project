@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   if(empty($_SESSION['userid'])){
     echo "<script>alert('로그인 후 이용해주세요');
@@ -14,7 +14,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>일하세</title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <link rel="stylesheet" href="./css/person.css">
@@ -37,7 +38,7 @@
           <th class="th_group">지원 날짜</th>
           <th class="th_group"></th>
         </tr>
-        <?php 
+        <?php
             include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
             if(isset($_GET['mode']) && $_GET['mode'] === 'delete'){
@@ -47,7 +48,7 @@
 
               exit;
             }
-            
+
             $sql = "select a.num as a_num, r.num as r_num, r.file_name, a.resume_title, title, r.period_end, a.regist_date as date_applied from recruitment r join apply a on a.recruit_id = r.num where r.num in (select recruit_id from apply where member_id = '".$user_id."');";
             $result = mysqli_query($conn, $sql);
             $total_count = mysqli_num_rows($result);
@@ -82,7 +83,7 @@
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){
         data.classList.remove('active');
-      
+
         if(idx === 4){
           data.classList.add('active');
         }
@@ -97,7 +98,7 @@
         const tr = btn_delete.parentNode;
 
         $.get('apply_history.php?mode=delete&num=' + a_num, "", function(){
-          // tr 지우기 
+          // tr 지우기
           tr.parentNode.removeChild(tr);
         });
       }

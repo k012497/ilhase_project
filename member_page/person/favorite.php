@@ -6,7 +6,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>일하세</title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/css/search.css">
     <link rel="stylesheet" href="./css/person.css">
@@ -24,7 +25,7 @@
             <tr>
                 <div id="employment_data">
                 <ul id="ep_databox">
-            <?php 
+            <?php
                 include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
                 $sql = "select r.title, r.num, r.work_place, r.period_start, r.period_end, r.file_name from favorite f join recruitment r on f.recruit_id = r.num where f.member_id = '".$user_id."';";
@@ -70,7 +71,7 @@
         //nav active 활성화
         document.querySelectorAll('.nav-item').forEach(function(data, idx){
           data.classList.remove('active');
-        
+
           if(idx === 4){
             data.classList.add('active');
           }
@@ -145,7 +146,7 @@
         .title {
             padding: 0;
         }
-        
+
         #div_apply {
             display: inline-block;
             width: 77%;

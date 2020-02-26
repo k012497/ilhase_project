@@ -24,7 +24,8 @@ if(isset($_GET['num'])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>일하세</title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="./css/manage.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="./js/resume.js"></script>
@@ -156,9 +157,9 @@ if(isset($_GET['num'])){
             <input id="input_public" type="checkbox" name="input_public" value="<?=$public?>" checked>공개 여부
         </div>
         <div id="div_image_profile">
-          <input type="file" name="upfile">
+          <input id="imageFile" type="file" name="upfile" onchange="checkImage();" accept="image/*">
           <!-- <input type="file" id="imageFile" name="upfile" accept="image/*" onchange="checkImage();"> -->
-          <img id="img_upload" src="./img/camera.png" alt="camera">
+          <img id="img_upload" src="./data/<?=$file_copied?>" alt="image" onerror="this.src='./img/person.png'">
           <div id="profile_info">
             <input id="input_name" type="text" name="input_name" value="<?=$name?>" readonly>
             <input id="input_birth" type="text" name="input_birth" value="<?=$birth?>" readonly>

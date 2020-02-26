@@ -17,17 +17,17 @@ if(isset($_SESSION["username"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <title>일하세</title>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="./css/person.css">
-    <title>일하세</title>
+    <script src="./js/edit.js"></script>
   </head>
   <body>
-    <header>
-      <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
-    </header>
-    <div class="container">
+
+      <header>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+      </header>
     <div id="div_left_menu">
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/person/member_side_menu.php";?>
     </div>
@@ -65,7 +65,7 @@ if(isset($_SESSION["username"])){
         <label for="birth"><strong>*</strong>생년월일</label> <input type="text" id="birth" name="birth"  value="<?=$birth?>" readonly>
       </div>
       <div id="member_email">
-        <label for="email"><strong>*</strong>이메일</label> <input type="email" id="email" name="email" value="<?=$email?>" readonly>
+        <label for="email"><strong>*</strong>이메일</label> <input type="email" id="email" name="email"  value="<?=$email?>" readonly>
       </div>
       <div id="member_phone">
         <label for="phone"><strong>*</strong>핸드폰 번호</label> <input type="text" id="phone" name="phone" value="<?=$phone?>">  <p id="phoneMsg" style="display:none;">핸드폰 번호를 다시 입력해주세요.</p>
@@ -83,8 +83,5 @@ if(isset($_SESSION["username"])){
       </div>
     </form>
     </div>
-    </div>
-
-    <script src="./js/edit.js"></script>
   </body>
 </html>

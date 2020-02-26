@@ -16,7 +16,8 @@ if(isset($_SESSION["username"])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>일하세</title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="./css/manage.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   </head>
@@ -90,6 +91,7 @@ if(isset($_SESSION["username"])){
             <div id="recruit_list">
                 <ul>
               <?php
+              if ($member_type=="person") {
                 $sql="SELECT * from resume where m_id ='$userid' order by num desc";
                 $result = mysqli_query($conn,$sql);
 
@@ -105,6 +107,24 @@ if(isset($_SESSION["username"])){
                 </li>
                 <?php
                 }
+              }else{
+                $sql="SELECT * from recruitment where corporate_id ='$userid' order by num desc";
+                $result = mysqli_query($conn,$sql);
+
+                while($row=mysqli_fetch_array($result)){
+                  $num=$row['num'];
+                  $title=$row['title'];
+                  $regist_date=$row['regist_date'];
+               ?>
+                <li class="li_resume">
+                  <img src="" alt="">
+                  <p class="p_title" onclick="location.href='new_recruitment_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
+                  <img class="btn_image" name="upfile" src="../img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
+                </li>
+                <?php
+                }
+              }
+
 
                 ?>
                 <li id="finish_resume"><p>마감</p>
