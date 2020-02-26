@@ -21,7 +21,12 @@ if(isset($_SESSION["usermember_type"]))
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>일하세</title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!--fancybox css & js  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+   
 </head>
 <body>
     <header>
@@ -33,6 +38,8 @@ if(isset($_SESSION["usermember_type"]))
         }
         ?>
     </header>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <!-- Jumbotron Header -->
     <div class="jumbotron">
       <div id="slide" class="carousel slide" data-ride="carousel">
@@ -109,46 +116,63 @@ if(isset($_SESSION["usermember_type"]))
             <!--홈페이지 사용 설명-->
             <div id="intro_box" class="row">
               <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card h-100">
-                      <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg" alt="사용설명서1">
-                      <div class="card-body">
-                              <h5 class="card-title">채용</h5>
-                              <p class="card-text">채용 페이지에서 자세한 구직 탐색을 할 수 있습니다!</br>
-                              세분화된 구직활동!</br>지금부터 시작해보세요!</p>
-                      </div>
+                  <div class="card h-100 manual_box">
+                      <a data-fancybox="instruction"  data-caption="채용"  href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg">
+                        <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg" alt="사용설명서1">        
+                        <div class="card-body">
+                                <h5 class="card-title">채용</h5>
+                                <p class="card-text">채용 페이지에서 자세한 구직 탐색을 할 수 있습니다!</br>
+                                세분화된 구직활동!</br>지금부터 시작해보세요!</p>
+                        </div>
+                      </a>
+                      <div class="magnifier_img"></div>
                   </div>
               </div>
               <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card h-100">
-                      <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg" alt="">
+                  <div class="card h-100 manual_box">
+                        <a data-fancybox="instruction"  data-caption="간단한 이력서작성" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg">
+                            <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg" alt="사용설명서2">
+                        
                           <div class="card-body">
                               <h5 class="card-title">간단한 이력서 작성</h5>
                               <p class="card-text">이력서! 고민하지 마세요!</br>저희 '일하세'가 간단하게 만들어드립니다!</br>
                                 간단한 이력서로 구직신청해보세요! 
                               </p>
                           </div>
+                          </a>
+                          <div class="magnifier_img"></div>
                       </div>
                   </div>
 
               <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card h-100">
-                      <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce3.jpg" alt="">
-                          <div class="card-body">
-                              <h5 class="card-title">지원자 열람</h5>
-                              <p class="card-text"></p>
-                          </div>
-                      </div>
+                  <div class="card h-100 manual_box">
+                        <a data-fancybox="instruction"  data-caption="관심공고 등록" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce3.jpg">
+                            <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce3.jpg" alt="">
+                           
+                        <div class="card-body">
+                                <h5 class="card-title">관심공고 등록</h5>
+                                <p class="card-text">
+                                   관심있는 공고에 마음껏 담아 비교하고 지원하세요!
+                                </p>
+                        </div>
+                        </a>
+                        <div class="magnifier_img"></div>
+                    </div>
+                        
                   </div>
 
               <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card h-100">
+                  <div class="card h-100 manual_box">
+                  <a data-fancybox="instruction"  data-caption="지원자 열람" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg">
                       <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg" alt="">
                           <div class="card-body">
-                              <h5 class="card-title">4. 일하세 사용법</h5>
+                              <h5 class="card-title">생각안남ㅠㅠ</h5>
                               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
                               elit. Explicabo magni sapiente, tempore debitis beatae culpa natus
                               architecto.</p>
                           </div>
+                          </a>
+                        <div class="magnifier_img"></div>
                   </div>
               </div>
             </div>
@@ -342,7 +366,9 @@ $(function(){
       } // end of $(this).val()
 
   });//end of keyup 
-  
+
+
+   
 });
 //body누르면 자동검색창 hide
 $('body').click(function(){
@@ -366,8 +392,11 @@ $('#pick_job ul li').click(function(){
     $('input[name=search_word]').eq(1).val(str_select[1]);
 
 
-
 });
+
+
+
+
 
 </script>
 
