@@ -1,5 +1,16 @@
 <?php
+session_start();
 include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/db_connector.php";
+
+if(isset($_SESSION['usermember_type'])){
+  $member_type = $_SESSION['usermember_type'];
+} else {
+  // 로그인하지 않은 경우
+  echo "<script>
+    alert('잘못된 접근입니다.');
+    location.href='http://".$_SERVER['HTTP_HOST']."/ilhase/index.php';
+  </script>";
+}
 
 define('SCALE', 10);
 //*****************************************************
@@ -30,6 +41,7 @@ $number = $total_record - $start;
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="./css/notice.css">
     <title>일하세</title>
     <header>
@@ -91,7 +103,7 @@ $number = $total_record - $start;
               if($page==$i){
                 echo "<b>&nbsp;$i&nbsp;</b>";
               }else{
-                echo "<a href='./list.php?page=$i'>&nbsp;$i&nbsp;</a>";
+                echo "<a href='./qna_list.php?page=$i'>&nbsp;$i&nbsp;</a>";
               }
             }
           ?>
@@ -99,7 +111,7 @@ $number = $total_record - $start;
           <br><br><br><br><br><br><br>
         </div><!--end of page num -->
         <div id="button">
-          <a href="./list.php?page=<?=$page?>"> <img src="../img/list.png" alt="">&nbsp;</a>
+          <a href="./qna_list.php?page=<?=$page?>"> <img src="../img/list.png" alt="">&nbsp;</a>
           <?php //세션 아이디가 admin일 경우만 글쓰기 허용
 
           ?>

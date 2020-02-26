@@ -62,6 +62,7 @@ form {
 
 #write_qna, #write_qna li {
     width: 100%;
+    text-align: center;
     padding: 0.5rem 0.9rem;
 }
 
@@ -71,15 +72,16 @@ form {
 }
 
 #input_subject {
-	width: 90%;
-	padding: 0 0.5rem;
+	width: 800px;
+	padding: 0.5rem 1rem;
 }
 
 #textarea_content {
-	width: 90%;
+	width: 800px;
   	height: 30rem;
 	padding: 0.5rem 1rem;
-  	resize: none;
+    resize: none;
+    border: 1px solid #ddd;
 }
 
 .past_qna {
@@ -144,7 +146,7 @@ form {
 
 #qna_contents {
 	margin: 0 auto;
-	width: 89%;
+	width: 800px;
 	min-height: 30rem;
 	margin-top:2px;
 	padding: 1rem;
@@ -165,7 +167,8 @@ form {
 
 .list_item .list_item3, #list_title3{
 	float: left;
-	width: 80px;
+    width: 80px;
+    text-align: center;
 }
 
 .list_item .list_item4, #list_title4{
@@ -185,5 +188,6 @@ form {
     display: block;
     text-align: right;
     width: 800px;
-    margin: 2rem;
+    margin: 2rem auto;
+    margin-top: 0;
 }
