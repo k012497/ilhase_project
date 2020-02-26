@@ -1,6 +1,15 @@
-<?php session_start();
+<?php 
+    session_start();
 
-    $user_id = $_SESSION['userid'];
+    if(isset($_SESSION['userid'])){
+        $user_id = $_SESSION['userid'];
+    } else {
+        $user_id = "";
+        echo "<script>
+            alert('잘못된 접근!');
+            history.go(-1);
+        </scipt>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
