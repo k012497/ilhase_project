@@ -64,15 +64,6 @@
 
     <script>
         $(document).ready(function () {
-            // $.ajax({
-            //     type: "post",
-            //     url: "url",
-            //     data: "data",
-            //     dataType: "dataType",
-            //     success: function (response) {
-                    
-            //     }
-            // });
             $.post('dml_qna.php?mode=select_by_user', { user_id : '<?=$user_id?>' }, function(data){
                 console.log(data, 'test');
                 if(data){
@@ -81,6 +72,16 @@
                     $('div.past_qna').append('<p style="text-align: center; color: gray;"> 📄 문의 내역이 없습니다.</p>');
                 }
             });
+        });
+
+        //nav active 활성화
+        document.querySelectorAll('.nav-item').forEach(function(data, idx){
+          console.log(data, idx);
+          data.classList.remove('active');
+        
+          if(idx === 3){
+            data.classList.add('active');
+          }
         });
     </script>
     <link rel="stylesheet" href="./css/qna.css">

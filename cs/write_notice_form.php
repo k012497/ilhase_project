@@ -134,6 +134,7 @@ if($mode === 'update'){
           ?>
         </ul>
       </div> <!--End Of Content -->
+      <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
       <link rel="stylesheet" href="./css/notice.css">
   </body>
 </html>

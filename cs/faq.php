@@ -182,7 +182,17 @@ session_start();
             <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
         </div>
     </footer>
+    <script>
+      //nav active 활성화
+      document.querySelectorAll('.nav-item').forEach(function(data, idx){
+        console.log(data, idx);
+        data.classList.remove('active');
 
+        if(idx === 3){
+          data.classList.add('active');
+        }
+      });
+    </script>
     <link rel="stylesheet" href="./css/faq.css">
   </body>
 </html>

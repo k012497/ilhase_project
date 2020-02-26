@@ -150,11 +150,12 @@ function send_notification($title, $content){
   echo count($member_id);
 
   foreach($member_id as $id){
-    $sql = "insert into notification values (null, '$title', '$content', now(), 0, '$id')";
-    $result = mysqli_query($conn, $sql);
-    if(!$result){
-      mysqli_error($conn);
-    }
+    send_notification($title, $content, $id);
+    // $sql = "insert into notification values (null, '$title', '$content', now(), 0, '$id')";
+    // $result = mysqli_query($conn, $sql);
+    // if(!$result){
+    //   mysqli_error($conn);
+    // }
   }
 
 }

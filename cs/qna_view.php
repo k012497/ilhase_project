@@ -105,15 +105,6 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
                   // 관리자일 경우
               ?>
             <li><button class="list_button" onclick="location.href='write_qna_form.php?mode=response&num=<?=$num?>&page=<?=$page?>'">답 변</button></li>
-            <?
-              if(S_SESSION['userType'] === 'Admin') {
-                //Show
-              }
-              if(S_SESSION['userType'] === 'User') {
-                  //Hide
-
-              }
-            ?>
             <li><button class="list_button" onclick="location.href='qna_view_delete.php?num=<?=$num?>&page=<?=$page?>'">삭 제</button></li>
 
               <?php
@@ -123,11 +114,7 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
  <!-- page=<?=$page?> -->
 
     </div>
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
-        </div>
-    </footer>
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
     <link rel="stylesheet" href="./css/notice.css">
     <link rel="stylesheet" href="./css/qna.css">
   </body>
