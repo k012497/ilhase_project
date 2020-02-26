@@ -40,7 +40,6 @@ if($mode === 'update'){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/notice.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
       function check_input() {
@@ -135,5 +134,6 @@ if($mode === 'update'){
           ?>
         </ul>
       </div> <!--End Of Content -->
+      <link rel="stylesheet" href="./css/notice.css">
   </body>
 </html>
