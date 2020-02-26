@@ -79,7 +79,7 @@ if(isset($_SESSION["usermember_type"]))
           <div class="search">
             <h2 class="title" id="search_title">빠른 검색</h2>
             <form id="searchJob_box" name="search_box" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" method="get">
-                <input id="search_job" name="search_word" type="text" placeholder="ex) 서울,부산,경비,제조,청소,신입,경력...">
+                <input id="search_job" name="search_word" type="textbox" placeholder="ex) 서울,부산,경비,제조,청소,신입,경력...">
                 <input type="hidden" name="mode" value="index_search"> 
                 <input id="btn_searchJob" type="image" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="searchJob">
             </form>
@@ -108,7 +108,7 @@ if(isset($_SESSION["usermember_type"]))
                   }
                 ?>
                 </ul>
-               
+              
             </div>
           </div>
           <div id="intro_wrap" class="floatnone">
@@ -163,7 +163,7 @@ if(isset($_SESSION["usermember_type"]))
 
               <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100 manual_box">
-                  <a data-fancybox="instruction"  data-caption="지원자 열람" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg">
+                  <a data-fancybox="instruction"  data-caption="인재 열람" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg">
                       <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg" alt="">
                           <div class="card-body">
                               <h5 class="card-title">생각안남ㅠㅠ</h5>
@@ -177,60 +177,93 @@ if(isset($_SESSION["usermember_type"]))
               </div>
             </div>
           </div>
-          
-          <div id="recommend_box">
-            <!-- 지역 기반 추천 공고 -->
-            <h2 class="title"><span>주변에서 이런 사람을 찾아요</span>
-              <?php
-                $user_address_sql="select new_address from person where id='$id'";
-                $user_result=mysqli_query($conn,$user_address_sql);
-                $find_row=mysqli_fetch_array($user_result);
-                mysqli_close($conn);
+          <?php
+            if(!($member_type==="corporate")){  
+              //기업 회원이 아니면 지역 추천 공고가 구직자의 이력서가 보이게끔 함.    
+          ?>
+              <div id="recommend_box">
+                <!-- 지역 기반 추천 공고 -->
+                <h2 class="title"><span>주변에서 이런 사람을 찾아요</span>
+                  <?php
+                    $user_address_sql="select new_address from person where id='$id'";
+                    $user_result=mysqli_query($conn,$user_address_sql);
+                    $find_row=mysqli_fetch_array($user_result);
+                    mysqli_close($conn);
 
-                if($id==''){
-                  //로그인 안되면 기존 ip로 위치 
-              ?>
-              <span id="current_location">(현재 위치 :</span>
-              <span id="location_info"></span>
-              <?php
-                }else {
-              ?>
-              <span id="current_location"><?=$id?>님의 주소 : </span>
-              <span id="location_info"><?=$find_row[0]?></span>
-              <?php
-                }
-              ?>
-            </h2>
-            <div id="near_location_job" class="row" >
-            </div>
-          </div>
+                    if($id==''){
+                      //로그인 안되면 기존 ip로 위치 
+                  ?>
+                  <span id="current_location">(현재 위치 :</span>
+                  <span id="location_info"></span>
+                  <?php
+                    }else {
+                  ?>
+                  <span id="current_location"><?=$id?>님의 주소 : </span>
+                  <span id="location_info"><?=$find_row[0]?></span>
+                  <?php
+                    }
+                  ?>
+                </h2>
+                <div id="near_location_job" class="row" >
+                </div>
+              </div>
+          <?php
+            }else{
+          ?>
+            <div id="recommend_box">
+                <!-- 인재 공고 -->
+                <h2 class="title"><span>공개된 이력서를 추천해드립니다!</span></h2>
+                  <?php
+                    $jobSeeker_sql="select * from resume where public=1 limit 4";
+                    $user_result=mysqli_query($conn,$jobSeeker_sql);
+                    mysqli_close($conn);
+                    //등록된 모든 유저의 공개된 이력서가 없을떄
+                    if(!$user_result){
+                        echo "<p>등록된 모든 유저의 이력서가 없습니다</p>";
+                        
+                    } else{
+                       //등록된 모든 유저의 공개된 이력서가 있을때
+                    $count=mysqli_num_rows($user_result);
+                    for($i=0;$i<$count;$i++){
+                      $row=mysqli_fetch_array($user_result);
+                      $num=$row['num'];
+                      $m_name=$row['m_name'];
+                      $m_address=$row['m_address'];
+                      $m_gender=$row['m_gender'];
+                      $m_title=$row['title'];
+                      $file_name=$row['file_name'];
+              
+                      $src='';
+                      if ($file_name) {
+                      $src='./img/'+$file_name;
+                      }else {
+                      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/common/img/user.png';
+                      }
+                      echo " 
+                         
+                          <div id='open_resume' class='col-lg-3 col-md-6 mb-4'>
+                            <div id='open_resume_box' class='card h-100'>
+                                <img class='card-img-top' src='".$src."' alt='userimg'>
+                                <div class='card-body'>
+                                    <a id='go_recruit_details' href='http://".$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/write_resume_form.php?num=".$num."'>
+                                        <h5 id='card_title' class='card-title'>".$m_title."</h5>
+                                        <span id='ep_b_name'>".$m_name."</span>
+                                    </a>
+                                </div>
+                            </div>
+                          </div>     
+                        </div>
+                      ";
+              
+                    }//end of for()
+                  }//ensd of if(!$user_result)
+                }//end of if($member_type==="corporate") 
+ 
+                  ?>
+              </div>
     </div>
-
     <!-- Footer -->
-    <footer class="py-5" id="footer_box">
-        <div class="container">
-            <div id="footer_info">
-              <h1 class="navbar-brand" id="footer_title">일하세</h1>
-              <ul>
-                <li><a href="#">서비스 소개</a></li>
-                <li><a href="#">이용약관 및 정책</a></li>
-                <li><a href="#">관리자 모드</a></li>
-              </ul>
-              <ul>
-                <li>일하세(대표이사:김소진)</li>
-                <li>서울특별시 성동구 도선동</li>
-                <li>개인정보관리자 : 남채현</li>
-                <li>통신판매번호 : 2020-서울성동-9999</li>
-              </ul>
-              <ul>
-                <li>유료직업소개사업등록번호 : 제2020-12341234-20-5-01234호</li>
-                <li>사업자등록번호 : F123-45-678</li>
-                <li>서비스 및 기업 문의 : 02-123-4515</li>
-              </ul>
-            </div>
-            <p class="m-0" id="copyrihgt">Copyright &copy; ilhase 2020</p>
-        </div>
-    </footer>
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
     <script type="text/javascript">
      var lat = '';
      var lng = '';

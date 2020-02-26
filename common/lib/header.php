@@ -37,8 +37,8 @@
             $member_type=$_SESSION["usermember_type"];
             if($member_type=="corporate"){
            ?>
-          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php?mode=recruitment">
-            지원자</a>
+          <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php?mode=applicant">
+            인재</a>
             <?php
             }else{
             ?>

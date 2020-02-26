@@ -143,7 +143,7 @@ if(isset($_GET['num'])){
       <div id="main_resume">
         <?php
           if ($mode=="update") {
-            echo "<h3 class='title'>이력서 수정</h3>";
+            echo "<h3 class='title' id='resume_title'>이력서 수정</h3>";
           }else{
             echo "<h3 class='title'>이력서 작성</h3>";
           }

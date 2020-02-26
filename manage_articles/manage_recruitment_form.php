@@ -131,7 +131,7 @@ if(isset($_SESSION["username"])){
                 $sql="select*from person where id='$userid'";
                   $result=mysqli_query($conn,$sql);
                     if($member_type=="person") {
-                        echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`write_resume_form.php`'><img  src='./img/upload.png'><p  class='p_title'>신규 이력서 작성하기</p></li>";
+                        echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`write_resume_form.php`'><img  src='./img/upload.png'>신규 이력서 작성하기</li>";
                     }else{
                         echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`new_recruitment_form.php`' ><img  src='./img/upload.png'>신규 공고 등록하기</li>";
                     }

@@ -8,41 +8,49 @@ switch ($mode) {
       $applay_start=$_GET['apply_start'];
       $applay_list=$_GET['apply_list'];
 
-      $all_applicant_sql="select * from resume where public=1 order by num desc";
+      $all_applicant_sql="select * from resume where public= 1 order by num desc";
       $result=mysqli_query($conn,$all_applicant_sql);
-      $count=mysqli_num_rows($result);
-      for($i=$applay_start;$i<$applay_start+$applay_list && $i < $count;$i++){
-        $row=mysqli_fetch_array($result);
-        $num=$row['num'];
-        $m_name=$row['m_name'];
-        $m_address=$row['m_address'];
-        $m_gender=$row['m_gender'];
-        $m_title=$row['title'];
-        $file_name=$row['file_name'];
 
-        $src='';
-        if ($file_name) {
-        $src='./img/'+$file_name;
-        }else {
-        $src='../common/img/user.png';
+      
+      if(!$result){
+        echo  "<p>공개된 지원자의 이력서가 없습니다.</p>";    
+      }else{
+
+        $count=mysqli_num_rows($result);
+        for($i=$applay_start;$i<$applay_start+$applay_list && $i < $count;$i++){
+          $row=mysqli_fetch_array($result);
+          $num=$row['num'];
+          $m_name=$row['m_name'];
+          $m_address=$row['m_address'];
+          $m_gender=$row['m_gender'];
+          $m_title=$row['title'];
+          $file_copied=$row['file_copied'];
+          $m_id=$row['m_id'];
+          $src='';
+          if ($file_copied) {
+          $src='./img/'+$file_copied;
+          }else {
+          $src='../common/img/user.png';
+          }
+          echo "   
+              <li onclick='show_resume();'>
+                <div id='apply_box' >
+                <a href='http://".$_SERVER["HTTP_HOST"]."/ilhase/member_page/corporate/corporate_resume_view.php?num=".$num."'>
+                    <input type='hidden' name='m_id' value='".$m_id."'>
+                    <div id='ap_img'>
+                      <img  src='".$src."' alt='회사이미지'>
+                    </div>
+                    <span id='ap_title'>".$m_title."</span>
+                    <span id='ap_pay'>".$m_name."(".$m_gender.")</span>
+                    <span id='ap_address'>주소 : ".$m_address."</span>
+                  </a>
+                </div>
+              </li>   
+          ";
+
         }
-        echo "   
-            <li>
-              <div id='apply_box'>
-                <a href='http://".$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/write_resume_form.php?num=".$num."'>
-                  <div id='ap_img'>
-                    <img  src='".$src."' alt='회사이미지'>
-                  </div>
-                  <span id='ap_title'>".$m_title."</span>
-                  <span id='ap_pay'>".$m_name."(".$m_gender.")</span>
-                  <span id='ap_address'>주소 : ".$m_address."</span>
-                </a>
-              </div>
-            </li>   
-        ";
 
       }
-      
 
   break;
   case 'auto_keyword':
@@ -138,9 +146,6 @@ switch ($mode) {
     
     break;
   
-  default:
-    
-    break;
 }
 
 
@@ -150,7 +155,7 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
   // global $conn,$start,$list,$select_career,$user_id;
 
   //전체 페이지에서 전체 데이터 가져올떄 sql
-  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where require_career='$select_career' order by num desc";
+  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where require_career='$select_career' order by num desc";
 
   $filter_result=mysqli_query($conn,$filter_sql);
   $count=mysqli_num_rows($filter_result);
@@ -164,10 +169,10 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
     $work_place=$row['work_place'];
-    $file_name=$row['file_name'];
+    $file_copied=$row['file_copied'];
     $src='';
-    if ($file_name) {
-      $src='./img/'+$file_name;
+    if ($file_copied) {
+      $src='./img/'+$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }
@@ -229,7 +234,7 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
   // global $conn,$start,$list,$select_career,$select_area_contents,$user_id;
 
 
-  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
+  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
 
   $filter_result=mysqli_query($conn,$filter_sql);
   $count=mysqli_num_rows($filter_result);
@@ -244,10 +249,10 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
     $work_place=$row['work_place'];
-    $file_name=$row['file_name'];
+    $file_copied=$row['file_copied'];
     $src='';
-    if ($file_name) {
-      $src='./img/'+$file_name;
+    if ($file_copied) {
+      $src='./img/'+$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }
@@ -307,7 +312,7 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
 function all_area_select($conn,$start,$list,$select_career,$select_area_contents,$user_id,$select_gu){
   // global $conn,$start,$list,$select_career,$select_area_contents,$user_id;
 
-  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
+  $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
   $filter_result=mysqli_query($conn,$filter_sql);
   $count=mysqli_num_rows($filter_result);
 
@@ -321,10 +326,10 @@ function all_area_select($conn,$start,$list,$select_career,$select_area_contents
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
     $work_place=$row['work_place'];
-    $file_name=$row['file_name'];
+    $file_copied=$row['file_copied'];
     $src='';
-    if ($file_name) {
-      $src='./img/'+$file_name;
+    if ($file_copied) {
+      $src='./img/'+$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }
@@ -386,15 +391,15 @@ function production_data() {
   $filter_sql='';
   if ($select_area_contents==="전체") {
     //지역을 선택할떄 전체일때
-    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' order by num desc";
+    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' order by num desc";
 
   }else {
     //지역을 선택할때 각 지역의 전체를 선택할떄 (ex. 서울 전체 , 광주 전체)
     if ($select_gu===($select_area_contents." 전체") || ($select_gu===($select_area_contents."전체"))) {
-      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
+      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
     }else{
       //그외 지역 선택할떄
-      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
+      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
     }
   }
 
@@ -412,10 +417,10 @@ function production_data() {
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
     $work_place=$row['work_place'];
-    $file_name=$row['file_name'];
+    $file_copied=$row['file_copied'];
     $src='';
-    if ($file_name) {
-      $src='./img/'+$file_name;
+    if ($file_copied) {
+      $src='./img/'+$file_copied;
     }else {
 
       $src='./img/basicimg.jpg';
@@ -474,7 +479,7 @@ function production_data() {
 //인덱스에서 온 검색데이터 함수
 function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list) {
 
-  $search_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_name from corporate c join recruitment r on c.id = r.corporate_id where title like '%$serch_word%' or industry like '%$serch_word%' or".
+  $search_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where title like '%$serch_word%' or industry like '%$serch_word%' or".
   " details like '%$serch_word%' or work_place like '%$serch_word%' or c.b_name like '%$serch_word%' or recruit_type like '%$serch_word%' or require_career like '%$serch_word%' or require_edu like '%$serch_word%'";
   
 
@@ -491,10 +496,10 @@ function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list)
     $period_start=$row['period_start'];
     $period_end=$row['period_end'];
     $work_place=$row['work_place'];
-    $file_name=$row['file_name'];
+    $file_copied=$row['file_copied'];
     $src='';
-    if ($file_name) {
-      $src='./img/'+$file_name;
+    if ($file_copied) {
+      $src='./img/'+$file_copied;
     }else {
       $src='./img/basicimg.jpg';
     }

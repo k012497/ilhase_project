@@ -331,6 +331,7 @@ button:focus {
 /**********************지원자css****************************/
 #apply_box {
   text-align: center;
+  cursor: pointer;
 }
 #ap_img{
   width:100%;
@@ -359,8 +360,12 @@ button:focus {
   position: relative;
   line-height:50px;
   border-bottom:1px solid #333;
-  margin-bottom:30px;
-
+  margin-bottom:2rem;
+}
+#ex_text {
+  margin:3rem 1rem;
+  font-size:1rem;
+  
 }
 #apply_inner {
   padding-left:3.5rem;

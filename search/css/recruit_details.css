@@ -276,14 +276,14 @@ section {
   outline:none;
 }
 
-#footer_info {
+/* #footer_info {
   width:1200%!important;
 
 }
 #footer_box {
   padding-top:1rem;
   padding-bottom:1rem;
-}
+} */
 
 .open {
   -webkit-animation: appear .8s cubic-bezier(.77, 0, .175, 1) forwards;

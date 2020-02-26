@@ -18,8 +18,9 @@
    ?>
   <head>
     <meta charset="utf-8">
-    <title>일하세-채용</title>
+    <title>일하세</title>
     <link rel="stylesheet" href="./css/search.css">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   </head>
   <body>
@@ -34,8 +35,8 @@
               //검색해서 들어왔을 때
               echo "검색 > ".$serch_word;
             }else if($mode==='applicant'){
-              //기업회원으로 로그인해서 지원자를 눌렀을 때
-              echo "> 지원자";
+              //기업회원으로 로그인해서 인재를 눌렀을 때
+              echo "> 인재";
             }else { 
               //채용을 클릭했을때
               echo "<a href='./search.php?mode=recruitment'>전체</a><span>></span>";
@@ -43,7 +44,7 @@
           ?>
         </h1>
         <?php
-            //검색 모드나 지원자 모드가 아닐떄  
+            //검색 모드나 인재 모드가 아닐떄  
             if(!($mode==='index_search') && !($mode==='applicant')){
         ?>
         <div id="job_box">
@@ -106,7 +107,8 @@
           if($mode==='index_search'){    
               echo"<p>\"".$serch_word."\"의 대한 검색결과 입니다</p>";
           }else if($mode==='applicant'){
-              echo "<h3 id='apply_title'><span id='apply_log'></span><span id='apply_inner'>지원자 현황</span></h3>";
+              echo "<h3 id='apply_title'><span id='apply_log'></span><span id='apply_inner'>이력서<span id='ex_text'>구인자들 중에 공개된 이력서입니다!</span></span></h3>
+              ";
           }else{
         ?>
         <div id="select_box">
@@ -224,7 +226,8 @@
              //전체 페이지에서 구직 데이터 (최신순 & 전체 & 경력무관)
               append_list(industry_title,select_alignment,select_career,$.trim(selectAreainit.text()),area_text[1],user_id,mode);
           }else if(mode==='applicant'){
-            //기업회원이 지원자페이지로 들어올시 
+            //기업회원이 인재페이지로 들어올시
+            applay_start=0;
             show_all_applicant(mode);
           }else if(mode==="index_search"){
              //검색에서 온 데이터로 찾기
@@ -263,7 +266,7 @@
                     }//end of industriTitle 
 
                   }else if(mode==="applicant"){
-                    //기업이 지원자로 들어올시 
+                    //기업이 인재로 들어올시 
                     show_all_applicant(mode);
 
                   }else if(mode==="index_search"){
@@ -695,18 +698,18 @@
             }//end of search_result
             
    
-            //기업회원이 지원자 페이지로 들어올시 전체 지원자 데이터
+            //기업회원이 인재 페이지로 들어올시 전체 인재 데이터
             function show_all_applicant(mode){
 
               $.ajax({
-                url:'./dml_recruitment.php',
+                url:'./dml_recruitment.php?mode='+mode,
                 type:'get',
                 data:{
                   'apply_start':applay_start,
-                  'apply_list':applay_list,
-                  'mode':mode
+                  'apply_list':applay_list
                 },
                 success:function(data){
+                  console.log(data);
                   $('#ep_databox').append(data);
                   applay_start += applay_list;
                   $('#ep_databox li').each(function(index,item){
@@ -717,7 +720,14 @@
 
               });
 
-            }
+            }//end of show_all_applicant
+
+          
+            
+           
+           
+            
+
 
 
 
@@ -737,4 +747,5 @@
 
     </script>
   </body>
+  
 </html>

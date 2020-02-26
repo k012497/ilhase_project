@@ -40,6 +40,7 @@
   <head>
     <meta charset="utf-8">
     <title>일하세-상세공고</title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="./css/recruit_details.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15cd74be6a94ce8c97c9dfc47e4be577&libraries=services"></script>
@@ -124,30 +125,7 @@
             </div>
         </div>
     </section>
-    <footer id="footer_box" >
-        <div class="container">
-            <div id="footer_info">
-              <h1 class="navbar-brand" id="footer_title">일하세</h1>
-              <ul>
-                <li><a href="#">서비스 소개</a></li>
-                <li><a href="#">이용약관 및 정책</a></li>
-                <li><a href="#">관리자 모드</a></li>
-              </ul>
-              <ul>
-                <li>일하세(대표이사:김소진)</li>
-                <li>서울특별시 성동구 도선동</li>
-                <li>개인정보관리자 : 남채현</li>
-                <li>통신판매번호 : 2020-서울성동-9999</li>
-              </ul>
-              <ul>
-                <li>유료직업소개사업등록번호 : 제2020-12341234-20-5-01234호</li>
-                <li>사업자등록번호 : F123-45-678</li>
-                <li>서비스 및 기업 문의 : 02-123-4515</li>
-              </ul>
-            </div>
-            <p class="m-0" id="copyrihgt">Copyright &copy; ilhase 2020</p>
-        </div>
-    </footer>
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
     <script type="text/javascript">
 
         var overlayOn= false, //지도위에 로드뷰 오버레이가 추가된 상태를 가지고 있을 변수
@@ -374,10 +352,11 @@
                         $('#btn_email_submit').prop("disabled",false);
                         var recruit_id=<?=$pick_job_num?>;
                         $('#btn_email_submit').off('click');
-                        var isCheck = $('input:radio[name="resume"]:checked').length;
+                        
                         $('#btn_email_submit').click(function(){
-                          // var recruit_id=$('input:radio[name=resume]:checked').prev().val();                        
-                          if(isCheck < 1){
+                          // var recruit_id=$('input:radio[name=resume]:checked').prev().val();     
+                          var isCheck = $('input:radio[name="resume"]').is(':checked');                   
+                          if(isCheck === false){
                             var title=$('input:radio[name="resume"]:checked').val();
                             alert('이력서를 선택해주세요!');
                             return false;
@@ -385,7 +364,6 @@
                             applyresume($user_id,recruit_id,title);
                             console.log($user_id,recruit_id,title);
                             $('#loading').show();
-                            return true;
                           }
                          
                           
