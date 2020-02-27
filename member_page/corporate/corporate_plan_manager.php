@@ -42,6 +42,9 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     </style>
     <script type="text/javascript">
       $(function(){
+        $('#option1_0').click(function(){
+            $('input[name=options]').val();
+        });
         $('#plan_buy').click(function(){
           console.log($('input[name="options"]:checked').val());
           location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/kakaopay.php?plan="+$('input[name="options"]:checked').val()
@@ -49,6 +52,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         });
     });
     </script>
+
   </head>
   <body>
       <header>
@@ -60,21 +64,37 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     <div class="container" style="margin-left:400px;margin-top:50px;">
       <div class='row'>
       <?php
+      echo "<div class='btn-group btn-group-toggle text-center' data-toggle='buttons'>";
           for ($i=0; $i<$numrow; $i++) {
+            if($i==0){
+              $sec="checked";
+            }else{
+              $sec="";
+            }
               echo "
+              <label class='btn btn-secondary' id='option1_".$i."'>
               <div class='col-sm-2' style='background-color:lightgray;height:250px;border-radius:15px;
               margin-right:5px;margin-top:5px;'>
                 <h4>".$row[$i]['name']."</h4>
                 <h4>공고 ".$row[$i]['count']." 개</h4>
                 <h5>".$row[$i]['price']."</h5>
-                <input type='radio' name='options' value='".$row[$i]['name']."'/>
+                <input type='radio' autocomplete='off'
+                ".$sec."
+                name='options' value='".$row[$i]['name']."'/>
                 <span class='radio'></span>
                 <span class='label'>".$row[$i]['name']."</span>
               </div>
-
+              </label>
+              <script type='text/javascript'>
+              $(function(){
+              $('#option1_".$i."').click(function(){
+                  $('input[name=options]').val('".$row[$i]['name']."');
+              });
+              });
+              </script>
               ";
           }
-
+          echo "</div>";
 
        ?>
        </div>

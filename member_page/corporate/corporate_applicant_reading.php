@@ -69,22 +69,28 @@ if(isset($_SESSION['userid']))
   	$start = ($page - 1) * $scale;
 
   	$number = $total_record - $start;
-
      for ($i=$start; $i<$start+$scale && $i < $total_record; $i++)
      {
         mysqli_data_seek($result, $i);
         // 가져올 레코드로 위치(포인터) 이동
         $row = mysqli_fetch_array($result);
-        // 하나의 레코드 가져오기
+
+        // 하나의 레코드 가져오기 title m_id regist_date
   	  $member_id   = $row["member_id"];
   	  $title          = $row["title"];
   	  $name        = $row["person_name"];
   	  $subject     = $row["resume_title"];
       $regist_day  = $row["regist_date"];
+
+      $resume_num_sql = "select num from resume where title='$subject'
+      and m_id='$member_id' and regist_date='$regist_day'";
+      $result=mysqli_query($conn,$resume_num_sql);
+      $resume_num = mysqli_fetch_array($result)['num'];
+      echo $resume_num_sql.$resume_num;
   ?>
   				<li>
   					<span class="col1"><?=$number?></span>
-  					<span class="col2"><a href="corporate_resume_view.php?m_id=<?=$member_id?>"><?=$title?></a></span>
+  					<span class="col2"><a href="corporate_resume_view.php?num=<?=$resume_num?>"><?=$title?></a></span>
   					<span class="col3"><?=$subject?></span>
   					<span class="col4"><?=$name?></span>
   					<span class="col5"><?=$regist_day?></span>

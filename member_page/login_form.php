@@ -158,12 +158,14 @@ if(isset($_SESSION["username"])){
                 var age = naverLogin.user.getAge();
                 console.log(email);
                 console.log(name);
+
+                 var array = email.split("@");
                 // console.log(profileImage);
                 // console.log(birthday);
                 // console.log(uniqId);
                 // console.log(age);
                 naverLogin.logout();
-                location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php?userid="+email+"&username="+name+"&usermember_type=sns_log";
+                location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php?userid="+email+"&username="+array[0]+"&usermember_type=sns_log";
               } else {
                 console.log("AccessToken이 올바르지 않습니다.");
               }

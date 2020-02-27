@@ -1,4 +1,3 @@
-<script>
 $(function () {
   var count=0;
   var inputId = $("#id"),
@@ -13,7 +12,7 @@ $(function () {
   $('#sample4_postcode').attr('disabled', true);
   $('#sample4_roadAddress').attr('disabled', true);
   $('#sample4_jibunAddress').attr('disabled', true);
-  $(document).keyup(function(){
+  inputId.blur(function(){
     var idValue = inputId.val();
     var exp = /^[a-zA-Z0-9]{6,12}$/;
     if(idValue === ""){
@@ -24,7 +23,7 @@ $(function () {
       $('.slick-next').attr('disabled', true);
     }else{
       $.ajax({
-        url: 'http://'+'<?=$_SERVER['HTTP_HOST']?>'+'/ilhase/common/lib/member_check_id.php',
+        url: 'http://localhost/ilhase/common/lib/member_check_id.php',
         type: 'POST',
         data: {"inputId":idValue},
         success: function(data){
@@ -52,7 +51,7 @@ $(function () {
       });
     }
   }); //inputId.blur end regex
-$(document).keyup(function(){
+  pass_1.blur(function(){
     var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
 
     if(pass_1.val() === ""){
@@ -66,7 +65,7 @@ $(document).keyup(function(){
       $('.slick-next').attr('disabled', false);
     }
   });
-$(document).keyup(function(){
+  pass_2.blur(function(){
     var pass_1_value= pass_1.val(),
         pass_2_value= pass_2.val();
         if(pass_1_value===pass_2_value){
@@ -143,7 +142,7 @@ $(document).keyup(function(){
     var phone_val=document.getElementById("phone").value;
     console.log(phone_val);
     $.ajax({
-      url: 'http://'+'<?=$_SERVER['HTTP_HOST']?>'+'/ilhase/member_page/person/sign/moonja.php',
+      url: 'moonja.php',
       type: 'POST',
       dataType : "text",
       data: {phone:phone_val}
@@ -163,19 +162,17 @@ $(document).keyup(function(){
    });
 
   }); //inputId.blur end regex
-$(document).keyup(function(){
-    if($('#phone_num').val()==phone_num){
-      valueSub.html("<span style='color:red'>인증이 완료되었습니다.</span>")
+  $('#phone_num').blur(function(){
+    if($('#phone_num').val()===phone_num){
+      alert($('#phone_num').val()+"완료ㄴㄴㄴ"+phone_num);
+      valueSub.html("<span style='color:red'>인증이 완료되었습니다.</span>");
       $("#phone_injung").val(1);
       $('.slick-next').attr('disabled', false);
-    }else{
-      valueSub.html("<span style='color:red'>인증이 실패다!</span>")
-      $("#phone_injung").val(0);
-      $('.slick-next').attr('disabled', true);
+      return;
     }
   });
 });
-$(document).keyup(function(){
+$("#name").blur(function(){
   if($("#name").val()===""){
     $('.name_space').html("<span style='color:red'>성함을 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
@@ -184,14 +181,14 @@ $(document).keyup(function(){
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
+$("#phone_injung").blur(function(){
   if($("#phone_injung").val()==0){
     $('.slick-next').attr('disabled', true);
   }else{
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
+$("#email").blur(function(){
   if($("#phone_injung").val()==""){
     $('#email_sub').html("<span style='color:red'>이메일을 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
@@ -200,8 +197,8 @@ $(document).keyup(function(){
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
-  if($("#birth").val()==""||$("#gender").val()==""){
+$("#birth").blur(function(){
+  if($("#birth").val()==""&&$("#gender").val()==""){
     $('#birth_sub').html("<span style='color:red'>주민등록번호를 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
   }else{
@@ -209,7 +206,7 @@ $(document).keyup(function(){
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
+$('#sample4_postcode').blur(function(){
   if($("#sample4_postcode").val()==""){
     $('#adress_sub').html("<span style='color:red'>주민등록번호를 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
@@ -221,4 +218,3 @@ $(document).keyup(function(){
 $('.visual').slick({
   draggable: false
 });
-</script>
