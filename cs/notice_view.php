@@ -124,19 +124,28 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
               $sql = "select * from notice_comment where parent = $num order by regist_date asc";
               $result = mysqli_query($conn, $sql);
               while($row = mysqli_fetch_array($result)){
-                $num = $row['num'];
-                $name = $row['name'];
-                $id = $row['id'];
-                $content = $row['content'];
-                $regist_date = $row['regist_date'];
+                $c_num = $row['num'];
+                $c_name = $row['name'];
+                $c_id = $row['id'];
+                $c_content = $row['content'];
+                $c_regist_date = $row['regist_date'];
 
-                echo "";
+                if($_SESSION["userid"] === $c_id){
+                  // 본인이 쓴 댓글인 경우 (삭제 가능)
+                  echo '<li class="comment">
+                    <span class="comment_writer">💬'.$c_name.'('.$c_id.')</span><span class="comment_date">'.$c_regist_date.'&nbsp;&nbsp;<span class="btn_delete_comment" onclick="delete_comment(this);" data-num="'.$c_num.'">X</span></span><br/>
+                    <span class="comment_content">'.$c_content.'</span>
+                  </li>';
+                } else {
+                  echo '<li class="comment">
+                    <span class="comment_writer">💬'.$c_name.'('.$c_id.')</span><span class="comment_date">'.$c_regist_date.'</span><br/>
+                    <span class="comment_content">'.$c_content.'</span>
+                  </li>';
+                }
+
               }
             ?>
-            <li class="comment">
-              <span class="comment_writer">💬작성자(아이디)</span><span class="comment_date">2020-02-02(11:11)&nbsp;&nbsp;<span onclick="delete_comment(this);" data-num="댓글번호">X</span> </span><br/>
-              <span class="comment_content">댓글 내용입니다</span>
-            </li>
+            
           </ul>
 
           <div class="input_comment_area">
@@ -167,23 +176,22 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     </footer>
     <link rel="stylesheet" href="./css/notice.css">
     <script>
-      const comment_list = document.querySelector('#comment_list');
-
       function add_comment(){
-        const comment_content = document.querySelector('#c_content').value;
-
-        console.log(comment_content, '<?=$_SESSION['userid']?>', '<?=$_SESSION['username']?>');
+        let comment_content = document.querySelector('#c_content').value;
+        if(!comment_content){
+          alert("댓글을 입력해주세요");
+        }
 
         // 테이블에 insert
         $.ajax({
           type: "post",
           async: false,
-          url: "dml_notice.php?mode=add_comment&p_num=" + <?=$num?>,
+          url: "dml_notice.php?mode=add_comment&p_num=" + <?=$n_num?>,
           data: { content : comment_content, id: '<?=$_SESSION['userid']?>', name : '<?=$_SESSION['username']?>'},
           success: function (response) {
             // ul에 append
-            comment_list.append(response);
-
+            $('#comment_list').append(response);
+            comment_content = "";
           }
         });
       }
@@ -191,15 +199,22 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
       function delete_comment(btn_delete) {
         // data-num값 가져오기
         const comment_num = btn_delete.dataset.num;
-        $.ajax({
-          type: "get",
-          url: "dml_notice.php?num=" + comment_num,
-          data: "data",
-          dataType: "dataType",
-          success: function (response) {
-            
-          }
-        });
+        console.log(comment_num);
+
+        const response = confirm('댓글을 삭제하시겠습니까?');
+        
+        if(response){
+          $.ajax({
+            type: "get",
+            url: "dml_notice.php?mode=delete_comment&c_num=" + comment_num,
+            data: "data",
+            success: function (response) {
+              // ul에 remove
+              comment_list.removeChild(btn_delete.parentNode.parentNode);
+              alert('댓글을 삭제하였습니다.');
+            }
+          });
+        }
 
       }
     </script>

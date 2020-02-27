@@ -156,7 +156,7 @@ function send_notification($title, $content){
   echo count($member_id);
 
   foreach($member_id as $id){
-    send_notification($title, $content, $id);
+    insert_notification($title, $content, $id);
     // $sql = "insert into notification values (null, '$title', '$content', now(), 0, '$id')";
     // $result = mysqli_query($conn, $sql);
     // if(!$result){
@@ -191,26 +191,34 @@ function insert_comment(){
   $content = $_POST['content'];
   $regist_date = date("Y-m-d (H:i)");
 
-  $sql = "insert into notice_comment values(null, $parent_num, $id, $name, $content, $regist_date";
+  $sql = "insert into notice_comment values (null, $parent_num, '$id', '$name', '$content', '$regist_date');";
   $result = mysqli_query($conn, $sql);
 
   if(!$result){
-    echo mysqli_error($conn);
+    echo "INSERT comment error: ".mysqli_error($conn).$sql;
   } else {
     // insert한 댓글 번호 가져오기 
-    $sql = "select max(num) from notice_comment";
+    $sql = "select max(num) as c_num from notice_comment";
     $result = mysqli_query($conn, $sql);
-    $c_num = mysqli_fetch_array($result)['max(num)'];
+    $c_num = mysqli_fetch_array($result)['c_num'];
 
     echo '<li class="comment">
-      <span class="comment_writer">💬'.$name.'('.$id.')</span><span class="comment_date">'.$regist_date.'&nbsp;&nbsp;<span onclick="delete_comment();" data-num="'.$c_num.'">X</span> </span><br/>
+      <span class="comment_writer">💬'.$name.'('.$id.')</span><span class="comment_date">'.$regist_date.'&nbsp;&nbsp;<span class="btn_delete_comment" onclick="delete_comment(this);" data-num="'.$c_num.'">X</span> </span><br/>
       <span class="comment_content">'.$content.'</span>
     </li>';
   }
 }
 
 function delete_comment(){
-  
+  global $conn;
+
+  $c_num = $_GET['c_num'];
+
+  $sql = "delete from notice_comment where num = $c_num";
+  $result = mysqli_query($conn, $sql);
+  if(!$result){
+    echo mysqli_error($conn);
+  }
 }
 
 ?>
