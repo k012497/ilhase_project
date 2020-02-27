@@ -175,7 +175,9 @@ if(isset($_SESSION["username"])){
       <input type="hidden" name="jibunAddress" id="i9">
       <input type="hidden" name="email" id="i10">
     </form>
-      <script src="slider.js"></script>
+      <?php
+        include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/person/sign/slider.php";
+      ?>
 <!-- 메인 슬라이드 End -->
 
     </div>

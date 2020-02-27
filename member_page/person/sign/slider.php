@@ -1,3 +1,4 @@
+<script>
 $(function () {
   var count=0;
   var inputId = $("#id"),
@@ -23,7 +24,7 @@ $(function () {
       $('.slick-next').attr('disabled', true);
     }else{
       $.ajax({
-        url: 'http://localhost/ilhase/common/lib/member_check_id.php',
+        url: 'http://'+'<?=$_SERVER['HTTP_HOST']?>'+'/ilhase/common/lib/member_check_id.php',
         type: 'POST',
         data: {"inputId":idValue},
         success: function(data){
@@ -220,3 +221,4 @@ $('#sample4_postcode').blur(function(){
 $('.visual').slick({
   draggable: false
 });
+</script>
