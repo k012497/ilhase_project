@@ -177,8 +177,9 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     <link rel="stylesheet" href="./css/notice.css">
     <script>
       function add_comment(){
-        let comment_content = document.querySelector('#c_content').value;
-        if(!comment_content){
+        let comment_area = document.querySelector('#c_content');
+        // let comment_content = document.querySelector('#c_content').value;
+        if(!comment_area.value){
           alert("댓글을 입력해주세요");
         }
 
@@ -187,11 +188,12 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
           type: "post",
           async: false,
           url: "dml_notice.php?mode=add_comment&p_num=" + <?=$n_num?>,
-          data: { content : comment_content, id: '<?=$_SESSION['userid']?>', name : '<?=$_SESSION['username']?>'},
+          data: { content : comment_area.value, id: '<?=$_SESSION['userid']?>', name : '<?=$_SESSION['username']?>'},
           success: function (response) {
             // ul에 append
             $('#comment_list').append(response);
-            comment_content = "";
+            // textarea 비우기
+            comment_area.value = "";
           }
         });
       }

@@ -129,10 +129,11 @@ if($mode === 'update'){
             } else {
           ?>
               <button class="list_button" onclick="history.go(-1);">취소</button></li>
+              <li><button class="list_button" onclick="location.href='http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/cs/notice.php?page=1'">목록</button></li>
           <?php
             }
           ?>
-        </ul>
+      </ul>
       </div> <!--End Of Content -->
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
       <link rel="stylesheet" href="./css/notice.css">
