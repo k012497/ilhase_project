@@ -139,7 +139,7 @@ if(isset($_SESSION["username"])){
             var naverLogin = new naver.LoginWithNaverId(
               {
                 clientId: "NQzYhgZ1ajZ0m1J4T9Fv",
-                callbackUrl: "http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/naver_login.php",
+                callbackUrl: "http://"+"<?= $_SERVER['HTTP_HOST'];?>"+"/ilhase/common/lib/naver_login.php",
                 isPopup: false, /* 팝업을 통한 연동처리 여부 */
                 loginButton: {color: "green", type: 3, height: 40} /* 로그인 버튼의 타입을 지정 */
               }
