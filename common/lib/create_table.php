@@ -33,13 +33,14 @@ function create_table($conn, $table_name){
 
             case 'apply' :
                 $sql = "CREATE TABLE `apply` (
-                    `num` int(11) NOT NULL AUTO_INCREMENT,
-                    `resume_title` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-                    `recruit_id` int(11) NOT NULL,
-                    `member_id` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-                    `regist_date` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-                    PRIMARY KEY (`num`)
-                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                  `num` int(11) NOT NULL AUTO_INCREMENT,
+                  `resume_num` int(11) NOT NULL,
+                  `resume_title` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `recruit_id` int(11) NOT NULL,
+                  `member_id` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `regist_date` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  PRIMARY KEY (`num`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
                 
             case 'corporate' :
