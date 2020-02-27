@@ -61,7 +61,7 @@ form {
 }
 
 #write_qna, #write_qna li {
-    width: 100%;
+    width: 900px;
     text-align: center;
     padding: 0.5rem 0.9rem;
 }
@@ -190,8 +190,4 @@ form {
     width: 800px;
     margin: 2rem auto;
     margin-top: 0;
-}
-
-#page_butto {
-  margin: 0 auto;
 }
