@@ -9,8 +9,9 @@ if(isset($_SESSION['userid']))
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+	<meta charset="utf-8">
+	<link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
+    <title>일하세</title>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/css/board.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -24,26 +25,26 @@ if(isset($_SESSION['userid']))
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-  <div id="div_left_menu">
-      <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/corporate/member_side_menu.php";?>
-  </div>
-  <div class="container">
-  <section>
-  	<div id="main_img_bar">
-      </div>
-     	<div id="board_box">
-  	    <h3>
-  	    	지원자 > 목록보기
-  		</h3>
-  	    <ul id="board_list">
-  				<li style="display: inline-block;">
-  					<span class="col1" style="display: inline-block;">번호</span>
-  					<span class="col2" style="display: inline-block;">공고</span>
-  					<span class="col3" style="display: inline-block;">제목</span>
-  					<span class="col4" style="display: inline-block;">글쓴이</span>
-  					<span class="col5" style="display: inline-block;">등록일</span>
-  					<span class="col6" style="display: inline-block;"></span>
-  				</li>
+	<div class="container">
+		<div id="div_left_menu">
+			<?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/corporate/member_side_menu.php";?>
+		</div>
+		<section>
+			<div id="main_img_bar">
+			</div>
+				<div id="board_box">
+				<h3>
+					지원자 > 목록보기
+				</h3>
+				<ul id="board_list">
+						<li style="height: 50px;">
+							<span class="col1" style="display: inline-block;">번호</span>
+							<span class="col2" style="display: inline-block;">공고</span>
+							<span class="col3" style="display: inline-block;">제목</span>
+							<span class="col4" style="display: inline-block;">글쓴이</span>
+							<span class="col5" style="display: inline-block;">등록일</span>
+							<span class="col6" style="display: inline-block;"></span>
+						</li>
   <?php
   	if (isset($_GET["page"]))
   		$page = $_GET["page"];
@@ -130,7 +131,7 @@ if(isset($_SESSION['userid']))
   			</ul> <!-- page -->
   	</div> <!-- board_box -->
   </section>
-  </div>
+  </div><!-- container -->
 
   </body>
 </html>

@@ -7,6 +7,10 @@
     width: 700px;
     top: 90px;
 }
+
+#notification ul {
+    width: 100%;
+}
   
 #notification ul li{
     width: 100%;
