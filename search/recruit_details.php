@@ -30,6 +30,7 @@
     $recruiter_phone        = $row['recruiter_phone'];
     $recruiter_email        = $row['recruiter_email'];
     $recruit_type           = $row['recruit_type'];
+    $c_id = $row['corporate_id'];
 
     //선택한 공고의 num값으로 해당 아이디가 그 공고에 지원했는지 안했는지 검사
     $check_resume_sql="select * from apply where recruit_id=$pick_job_num";
@@ -80,6 +81,7 @@
                   <div id="select_resume_box">
                   </div>
                   <input type="hidden" name="user_id" value=<?=$id?>>
+                  
                   <input type="hidden" name="receiver_email" value=<?=$recruiter_email?>>
                   <input type="hidden" name="receiver_name" value=<?=$recruiter_name?>>                  
                   <input id="btn_email_submit" type="submit" value="담당자에게 보내기">                    
@@ -354,15 +356,16 @@
                         $('#btn_email_submit').off('click');
                         
                         $('#btn_email_submit').click(function(){
-                          // var recruit_id=$('input:radio[name=resume]:checked').prev().val();     
-                          var isCheck = $('input:radio[name="resume"]').is(':checked');                   
+                          console.log("1");
+                          var check_resume_num=$('input:radio[name=resume]:checked').prev().val();     
+                          var isCheck = $('input:radio[name="resume"]').is(':checked')
+                          var title=$('input:radio[name="resume"]:checked').val();                   
                           if(isCheck === false){
-                            var title=$('input:radio[name="resume"]:checked').val();
                             alert('이력서를 선택해주세요!');
                             return false;
                           }else{
-                            applyresume($user_id,recruit_id,title);
-                            console.log($user_id,recruit_id,title);
+                            applyresume($user_id,recruit_id,title,check_resume_num);
+                            console.log($user_id,recruit_id,title,check_resume_num);
                             $('#loading').show();
                           }
                          
@@ -385,7 +388,7 @@
               });
 
               //resume apply 등록
-              function applyresume(user_id,recruit_id,title){
+              function applyresume(user_id,recruit_id,title,check_resume_num){
 
                 console.log(user_id,recruit_id,title);
                 $.ajax({
@@ -394,7 +397,9 @@
                   type:'POST',
                   data:{'user_id':user_id,
                         'recruit_id':recruit_id,
-                        'title':title
+                        'title':title,
+                        'check_resume_num':check_resume_num,
+                        'receiver' : '<?=$c_id?>'
                         },
                   success:function(data){
                       console.log(data);

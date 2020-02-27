@@ -22,9 +22,11 @@ if(isset($_SESSION["username"])){
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   </head>
   <body>
+    <div id="wrap">
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
+    <section>
     <?php
     	if (!$userid )
     	{
@@ -144,5 +146,12 @@ if(isset($_SESSION["username"])){
           </div>
         </div>
       </form>
+    </section>
+      <!-- Footer -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+
+
+
+    </div>
   </body>
 </html>

@@ -17,8 +17,8 @@ try {
 
     $mail ->Host = "smtp.naver.com";                      // email 보낼때 사용할 서버를 지정
     $mail ->SMTPAuth = true;                                // SMTP 인증을 사용함
-    $mail ->Username = "a980721a@naver.com";  // 메일 계정
-    $mail ->Password = "ses30303030@";                   // 메일 비밀번호
+    $mail ->Username = "cogus633@naver.com";  // 메일 계정
+    $mail ->Password = "*skacod1786*";                   // 메일 비밀번호
     $mail ->SMTPSecure = "ssl";                             // SSL을 사용함
     $mail ->Port = 465;                                        // email 보낼때 사용할 포트를 지정
     $mail ->CharSet = "utf-8";                                // 문자셋 인코딩

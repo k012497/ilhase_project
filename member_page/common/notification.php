@@ -32,7 +32,7 @@
         <ul>
           <?php
             include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
-
+            
             function set_read($num){
               global $conn;
 

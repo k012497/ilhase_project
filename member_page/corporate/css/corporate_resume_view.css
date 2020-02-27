@@ -1,4 +1,7 @@
+section{
 
+    padding-bottom:80px;
+}
 
 #div_resume_main {
     width:1100px;
@@ -40,7 +43,8 @@
     border-radius:0.5rem;
     box-sizing:border-box;
     text-align: center;
-    
+
+
 }
 .colume {
     display:inline-block;
@@ -51,6 +55,7 @@
 #div_image_profile img{
     width:100%;
     height:100%;
+    object-fit:contain;
 }
 #div_image_profile ul {
     float: right;

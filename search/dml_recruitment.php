@@ -31,7 +31,7 @@ switch ($mode) {
           if ($file_copied) {
           $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
           }else {
-          $src='../common/img/user.png';
+          $src='https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-young-service-boy-vector-download-user-icon-vector-avatar-png-image_1991056.jpg';
           }
           echo "  
               <li onclick='show_resume();'>
