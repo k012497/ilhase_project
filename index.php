@@ -12,7 +12,6 @@ if(isset($_SESSION['username']))
 
 if(isset($_SESSION["usermember_type"]))
   $member_type=$_SESSION["usermember_type"];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +25,11 @@ if(isset($_SESSION["usermember_type"]))
     <!--fancybox css & js  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-   
+    <?php
+      if(isset($_GET['usermember_type'])){
+      echo "<script>alert(\"SNS로그인으로는 홈페이지의 서비스를 이용할 수 없습니다.\");</script>";
+      }
+     ?>
 </head>
 <body>
     <header>
@@ -80,7 +83,7 @@ if(isset($_SESSION["usermember_type"]))
             <h2 class="title" id="search_title">빠른 검색</h2>
             <form id="searchJob_box" name="search_box" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" method="get">
                 <input id="search_job" name="search_word" type="textbox" placeholder="ex) 서울,부산,경비,제조,청소,신입,경력...">
-                <input type="hidden" name="mode" value="index_search"> 
+                <input type="hidden" name="mode" value="index_search">
                 <input id="btn_searchJob" type="image" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="searchJob">
             </form>
             <div id="atuo_keword">
@@ -97,18 +100,18 @@ if(isset($_SESSION["usermember_type"]))
                   for($i=0;$i<$count;$i++){
                     $row=mysqli_fetch_array($recruitment_result);
                     $industry=$row['industry'];
-                   
+
                     $array_industry=explode("/",$industry);
                     $industry_str=end($array_industry);
-                    
+
                     echo"
                         <script>console.log('".$industry_str."');</script>
-                        <li>#".$industry_str."</li>  
+                        <li>#".$industry_str."</li>
                     ";
                   }
                 ?>
                 </ul>
-              
+
             </div>
           </div>
           <div id="intro_wrap" class="floatnone">
@@ -118,7 +121,7 @@ if(isset($_SESSION["usermember_type"]))
               <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100 manual_box">
                       <a data-fancybox="instruction"  data-caption="채용"  href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg">
-                        <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg" alt="사용설명서1">        
+                        <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg" alt="사용설명서1">
                         <div class="card-body">
                                 <h5 class="card-title">채용</h5>
                                 <p class="card-text">채용 페이지에서 자세한 구직 탐색을 할 수 있습니다!</br>
@@ -132,11 +135,11 @@ if(isset($_SESSION["usermember_type"]))
                   <div class="card h-100 manual_box">
                         <a data-fancybox="instruction"  data-caption="간단한 이력서작성" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg">
                             <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg" alt="사용설명서2">
-                        
+
                           <div class="card-body">
                               <h5 class="card-title">간단한 이력서 작성</h5>
                               <p class="card-text">이력서! 고민하지 마세요!</br>저희 '일하세'가 간단하게 만들어드립니다!</br>
-                                간단한 이력서로 구직신청해보세요! 
+                                간단한 이력서로 구직신청해보세요!
                               </p>
                           </div>
                           </a>
@@ -148,7 +151,7 @@ if(isset($_SESSION["usermember_type"]))
                   <div class="card h-100 manual_box">
                         <a data-fancybox="instruction"  data-caption="관심공고 등록" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce3.jpg">
                             <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce3.jpg" alt="">
-                           
+
                         <div class="card-body">
                                 <h5 class="card-title">관심공고 등록</h5>
                                 <p class="card-text">
@@ -158,7 +161,7 @@ if(isset($_SESSION["usermember_type"]))
                         </a>
                         <div class="magnifier_img"></div>
                     </div>
-                        
+
                   </div>
 
               <div class="col-lg-3 col-md-6 mb-4">
@@ -178,8 +181,8 @@ if(isset($_SESSION["usermember_type"]))
             </div>
           </div>
           <?php
-            if(!($member_type==="corporate")){  
-              //기업 회원이 아니면 지역 추천 공고가 구직자의 이력서가 보이게끔 함.    
+            if(!($member_type==="corporate")){
+              //기업 회원이 아니면 지역 추천 공고가 구직자의 이력서가 보이게끔 함.
           ?>
               <div id="recommend_box">
                 <!-- 지역 기반 추천 공고 -->
@@ -191,7 +194,7 @@ if(isset($_SESSION["usermember_type"]))
                     mysqli_close($conn);
 
                     if($id==''){
-                      //로그인 안되면 기존 ip로 위치 
+                      //로그인 안되면 기존 ip로 위치
                   ?>
                   <span id="current_location">(현재 위치 :</span>
                   <span id="location_info"></span>
@@ -220,7 +223,7 @@ if(isset($_SESSION["usermember_type"]))
                     //등록된 모든 유저의 공개된 이력서가 없을떄
                     if(!$user_result){
                         echo "<p>등록된 모든 유저의 이력서가 없습니다</p>";
-                        
+
                     } else{
                        //등록된 모든 유저의 공개된 이력서가 있을때
                     $count=mysqli_num_rows($user_result);
@@ -232,15 +235,15 @@ if(isset($_SESSION["usermember_type"]))
                       $m_gender=$row['m_gender'];
                       $m_title=$row['title'];
                       $file_name=$row['file_name'];
-              
+
                       $src='';
                       if ($file_name) {
                       $src='./img/'+$file_name;
                       }else {
                       $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/common/img/user.png';
                       }
-                      echo " 
-                         
+                      echo "
+
                           <div id='open_resume' class='col-lg-3 col-md-6 mb-4'>
                             <div id='open_resume_box' class='card h-100'>
                                 <img class='card-img-top' src='".$src."' alt='userimg'>
@@ -251,14 +254,14 @@ if(isset($_SESSION["usermember_type"]))
                                     </a>
                                 </div>
                             </div>
-                          </div>     
+                          </div>
                         </div>
                       ";
-              
+
                     }//end of for()
                   }//ensd of if(!$user_result)
-                }//end of if($member_type==="corporate") 
- 
+                }//end of if($member_type==="corporate")
+
                   ?>
               </div>
     </div>
@@ -272,7 +275,7 @@ if(isset($_SESSION["usermember_type"]))
      var rute="<?= $_SERVER['HTTP_HOST']?>";
      console.log(rute);
 
-      //지도 경도와 위치를 가져와서 구글 api로 지역주소 string으로 변환  
+      //지도 경도와 위치를 가져와서 구글 api로 지역주소 string으로 변환
      function getLocation() {
 
       if (navigator.geolocation) {
@@ -286,7 +289,7 @@ if(isset($_SESSION["usermember_type"]))
                     type: 'POST',
                     success: function (myJSONResult) {
                         if (myJSONResult.status == 'OK') {
-                            //현재 컴퓨터의 위도 경도로 위치값이 전달되면 
+                            //현재 컴퓨터의 위도 경도로 위치값이 전달되면
                             address =  myJSONResult.results[5].formatted_address; //주소 받아옴
                             if(user_id==''){
                               $('#location_info').text(address+")");
@@ -308,8 +311,8 @@ if(isset($_SESSION["usermember_type"]))
                                      // 받은 데이터 없을때
                                     $('#near_location_job').text(data);
                                   }
-                                  
-                                  
+
+
                                 },
                                 error:function(request,status,error){
                                     console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -343,8 +346,8 @@ if(isset($_SESSION["usermember_type"]))
                                      // 받은 데이터 없을때
                                     $('#near_location_job').text(data);
                                   }
-                                  
-                                  
+
+
                                 },
                                 error:function(request,status,error){
                                     console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -398,10 +401,10 @@ $(function(){
         });//end of ajax
       } // end of $(this).val()
 
-  });//end of keyup 
+  });//end of keyup
 
 
-   
+
 });
 //body누르면 자동검색창 hide
 $('body').click(function(){

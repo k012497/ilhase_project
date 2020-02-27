@@ -186,6 +186,7 @@ if(isset($_SESSION["username"])){
                          console.log(JSON.stringify(res.kaccount_email));
                          console.log(JSON.stringify(res.kakao_account.email));
                          console.log(JSON.stringify(res.kakao_account.is_email_verified));
+                         location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php?userid="+JSON.stringify(res.id)+"&username="+JSON.stringify(res.properties.nickname)+"&usermember_type=sns_log";
                          // document.member_form.submit();
                     },
                     fail: function(error) {
