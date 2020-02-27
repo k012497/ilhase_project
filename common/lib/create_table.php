@@ -219,6 +219,18 @@ function create_table($conn, $table_name){
                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
                 break;
 
+            case 'notice_comment':
+                $sql = "CREATE TABLE `notice_comment` (
+                  `num` int(11) NOT NULL AUTO_INCREMENT,
+                  `parent` int(11) NOT NULL,
+                  `id` varchar(15) NOT NULL,
+                  `name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                  `regist_date` varchar(20) DEFAULT NULL,
+                  PRIMARY KEY (`num`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                break;
+
             default :
                 // 필요하지 않은 테이블명일 때 생성하지 않음
                 $sql = "";
