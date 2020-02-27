@@ -16,6 +16,14 @@
     case 'delete':
       delete_notice();
       break;
+
+    case 'add_comment':
+      insert_comment();
+      break;
+    
+    case 'delete_comment':
+      delete_comment();
+      break;
   }
 
 function insert_notice(){
@@ -58,8 +66,6 @@ function update_notice(){
   $content = filter_data($_POST["content"]);
   $n_subject = mysqli_real_escape_string($conn, $subject);
   $n_content = mysqli_real_escape_string($conn, $content);
-  $regist_date = date("Y-m-d (H:i)");
-  $hit = $_POST["hit"];
 
   // 원래 파일 삭제하기
   if(isset($_POST['del_file']) && $_POST['del_file'] == '1'){
@@ -174,6 +180,37 @@ function get_all_members_id(){
   while($row = mysqli_fetch_array($result)){
     array_push($member_id, $row[0]);
   }
+}
+
+function insert_comment(){
+  global $conn;
+
+  $parent_num = $_GET['p_num'];
+  $id = $_POST['id'];
+  $name = $_POST['name'];
+  $content = $_POST['content'];
+  $regist_date = date("Y-m-d (H:i)");
+
+  $sql = "insert into notice_comment values(null, $parent_num, $id, $name, $content, $regist_date";
+  $result = mysqli_query($conn, $sql);
+
+  if(!$result){
+    echo mysqli_error($conn);
+  } else {
+    // insert한 댓글 번호 가져오기 
+    $sql = "select max(num) from notice_comment";
+    $result = mysqli_query($conn, $sql);
+    $c_num = mysqli_fetch_array($result)['max(num)'];
+
+    echo '<li class="comment">
+      <span class="comment_writer">💬'.$name.'('.$id.')</span><span class="comment_date">'.$regist_date.'&nbsp;&nbsp;<span onclick="delete_comment();" data-num="'.$c_num.'">X</span> </span><br/>
+      <span class="comment_content">'.$content.'</span>
+    </li>';
+  }
+}
+
+function delete_comment(){
+  
 }
 
 ?>

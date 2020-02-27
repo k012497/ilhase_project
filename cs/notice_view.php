@@ -20,9 +20,9 @@ if(isset($_GET['hit'])){
 if(isset($_GET["num"]) && !empty($_GET["hit"])){
   // $num = filter_data($_GET["num"]);
   // $hit = filter_data($_GET["hit"]);
-  $q_num = mysqli_real_escape_string($conn, $num);
+  $n_num = mysqli_real_escape_string($conn, $num);
 
-  $sql = "UPDATE `notice` SET `hit`=$hit WHERE `num`=$q_num;"; // 조회수 증가
+  $sql = "UPDATE `notice` SET `hit`=$hit WHERE `num`=$n_num;"; // 조회수 증가
 
   $result = mysqli_query($conn,$sql);
   if (!$result) {
@@ -64,7 +64,6 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     $image_type = "";
   }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +71,8 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
   <head>
     <meta charset="utf-8">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <title></title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
+    <title>일하세</title>
   </head>
   <body>
     <header>
@@ -96,10 +96,10 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     <div class="container">
       <h3 class="title">공지사항 > 내용</h3>
         <div id="list_top_title">
-          <li>
+
             <span class="col1"><b>제목 : </b><?=$subject?></span>
             <span class="col2_view"><?=$regist_date?></span>
-          </li>
+
         </div><!--end of list_top_title  -->
 
         <div id="notice_contents">
@@ -114,8 +114,34 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
             // 올린 파일 글 내용에 보이기
           }
           ?>
-          <li  class="buttons"><?=$content?></li>
-        </li>
+          <div><?=$content?></div>
+        </div>
+        <div class="comment_box">
+
+          <ul id="comment_list">
+            <!-- 해당 글에 등록된 코멘트 가져오기-->
+            <?php
+              $sql = "select * from notice_comment where parent = $num order by regist_date asc";
+              $result = mysqli_query($conn, $sql);
+              while($row = mysqli_fetch_array($result)){
+                $num = $row['num'];
+                $name = $row['name'];
+                $id = $row['id'];
+                $content = $row['content'];
+                $regist_date = $row['regist_date'];
+
+                echo "";
+              }
+            ?>
+            <li class="comment">
+              <span class="comment_writer">💬작성자(아이디)</span><span class="comment_date">2020-02-02(11:11)&nbsp;&nbsp;<span onclick="delete_comment(this);" data-num="댓글번호">X</span> </span><br/>
+              <span class="comment_content">댓글 내용입니다</span>
+            </li>
+          </ul>
+
+          <div class="input_comment_area">
+            <span>댓글</span><textarea id="c_content" cols="80" rows="3" maxlength="150"></textarea><button onclick="add_comment();">입력</button>
+          </div>
         </div>
 
         <ul class="notice_buttons">
@@ -140,5 +166,42 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
         </div>
     </footer>
     <link rel="stylesheet" href="./css/notice.css">
+    <script>
+      const comment_list = document.querySelector('#comment_list');
+
+      function add_comment(){
+        const comment_content = document.querySelector('#c_content').value;
+
+        console.log(comment_content, '<?=$_SESSION['userid']?>', '<?=$_SESSION['username']?>');
+
+        // 테이블에 insert
+        $.ajax({
+          type: "post",
+          async: false,
+          url: "dml_notice.php?mode=add_comment&p_num=" + <?=$num?>,
+          data: { content : comment_content, id: '<?=$_SESSION['userid']?>', name : '<?=$_SESSION['username']?>'},
+          success: function (response) {
+            // ul에 append
+            comment_list.append(response);
+
+          }
+        });
+      }
+
+      function delete_comment(btn_delete) {
+        // data-num값 가져오기
+        const comment_num = btn_delete.dataset.num;
+        $.ajax({
+          type: "get",
+          url: "dml_notice.php?num=" + comment_num,
+          data: "data",
+          dataType: "dataType",
+          success: function (response) {
+            
+          }
+        });
+
+      }
+    </script>
   </body>
 </html>
