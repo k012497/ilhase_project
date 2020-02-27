@@ -725,17 +725,17 @@ function insert_init_data($conn, $table_name){
                 break;
 
             case 'apply' :
-                $sql = "insert into `apply` values (null, 3, '개발자 이력서', '417', 'lchm123', now()),
+                $sql = "insert into `apply` values (null, 3, '개발자 이력서', '417', 'lcm123', now()),
                 (null, 4, '개발자 이력서', '417', 'nch123', now()),
                 (null, 2, '개발자 이력서', '424', 'ksj123', now()),
                 (null, 11, '개발자 이력서', '417', 'lkh123', now()),
                 (null, 12, '개발자 이력서', '424', 'lts123', now()),
-                (null, 3, '개발자 이력서', '417', 'lchm123', now()),
+                (null, 3, '개발자 이력서', '417', 'lcm123', now()),
                 (null, 4, '개발자 이력서', '417', 'nch123', now()),
                 (null, 2, '개발자 이력서', '424', 'ksj123', now()),
                 (null, 11, '개발자 이력서', '417', 'lkh123', now()),
                 (null, 12, '개발자 이력서', '424', 'lts123', now()),
-                (null, 3, '개발자 이력서', '417', 'lchm123', now()),
+                (null, 3, '개발자 이력서', '417', 'lcm123', now()),
                 (null, 4, '개발자 이력서', '417', 'nch123', now()),
                 (null, 2, '개발자 이력서', '424', 'ksj123', now()),
                 (null, 11, '개발자 이력서', '417', 'lkh123', now()),
