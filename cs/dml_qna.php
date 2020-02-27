@@ -112,8 +112,8 @@
 
     function insert_response(){
       global $conn, $user_id;
-
-      $short_content = substr($_POST["content"], 0, 8);
+      
+      $short_question = iconv_substr($_GET['question'], 0, 8); // 질문글 내용 
 
       $subject = filter_data($_POST["subject"]);
       $content = filter_data($_POST["content"]);
@@ -167,14 +167,13 @@
       $max_num = $row['max(num)'];
 
       // 답변 등록 알림
-      $noti_sql = "insert into notification values (null, '1:1문의 답변이 도착했습니다.', '문의하신 [$short_content...]에 대한 답변이 도착하였습니다.', now(), 0, '$writer');";
-      $noti_result = mysqli_query($conn, $noti_sql);
-      echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
-    //   if(!$noti_result){
-    //       echo mysqli_error($conn);
-    //   }else {
-    //   }
-
+      $noti_subject = '1:1문의 답변이 도착했습니다.';
+      $noti_content = '문의하신 ['.$short_question.'...]에 대한 답변이 도착하였습니다.';
+      $receiver = $writer;
+      insert_notification($noti_subject, $noti_content, $receiver);
+      echo $_GET["question"];
+      echo "//".$short_question;
+    //   echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
 
     }
 

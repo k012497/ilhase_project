@@ -30,6 +30,8 @@
   }
   $row=mysqli_fetch_array($result);
 
+  $origin_content = $row['content'];
+
   $subject= htmlspecialchars($row['subject']);
   $content= htmlspecialchars($row['content']);
   $subject=str_replace("\n", "<br>",$subject);
@@ -40,8 +42,8 @@
   $hit=$row['hit'];
   if($mode == "response"){
     $subject="[re]".$subject;
-    $content="re>".$content;
-    $content=str_replace("<br>", "<br>▶",$content);
+    // $content="re>".$content;
+    // $content=str_replace("<br>", "<br>▶",$content);
     $disabled="disabled";
   }
   mysqli_close($conn);
@@ -53,7 +55,6 @@
   <head>
     <meta charset="utf-8">
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
-    <script type="text/javascript" src="./member_form.js"></script>
     <title>일하세</title>
 
     <script type="text/javascript">
@@ -71,8 +72,8 @@
               return;
           }
           switch(mode){
-            case 'insert':
-              document.write_qna.action = "dml_qna.php?mode=r_insert&num=<?=$q_num?>";
+            case 'response':
+              document.write_qna.action = "dml_qna.php?mode=r_insert&num=<?=$q_num?>&question=<?=$origin_content?>";
               break;
 
             case 'update':

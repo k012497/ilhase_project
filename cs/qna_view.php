@@ -50,7 +50,6 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
     $writer = $row['id'];
     mysqli_close($conn);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +62,7 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
     <script>
       const member_type = '<?=$member_type?>';
       function confirm_to_delete(){
-        const resopnse = confirm('해당 문의를 삭제하시겠습니까?');
+        const resopnse = confirm('해당 글을 삭제하시겠습니까?');
 
         if(!resopnse) return;
 
