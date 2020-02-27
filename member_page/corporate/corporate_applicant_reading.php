@@ -50,7 +50,7 @@ if(isset($_SESSION['userid']))
   	else
   		$page = 1;
 
-  	$sql = "select r.title, a.resume_title, a.regist_date,a.member_id,
+  	$sql = "select r.title, a.resume_title, a.regist_date,a.member_id,a.num,
     (select name from person where a.member_id = person.id)
     as person_name from recruitment r join apply a on a.recruit_id
     = r.num where r.corporate_id = '$id';";
@@ -81,16 +81,11 @@ if(isset($_SESSION['userid']))
   	  $name        = $row["person_name"];
   	  $subject     = $row["resume_title"];
       $regist_day  = $row["regist_date"];
-
-      $resume_num_sql = "select num from resume where title='$subject'
-      and m_id='$member_id' and regist_date='$regist_day'";
-      $result=mysqli_query($conn,$resume_num_sql);
-      $resume_num = mysqli_fetch_array($result)['num'];
-      echo $resume_num_sql.$resume_num;
+      $num=$row["num"];
   ?>
   				<li>
   					<span class="col1"><?=$number?></span>
-  					<span class="col2"><a href="corporate_resume_view.php?num=<?=$resume_num?>"><?=$title?></a></span>
+  					<span class="col2"><a href="corporate_resume_view.php?num=<?=$num?>"><?=$title?></a></span>
   					<span class="col3"><?=$subject?></span>
   					<span class="col4"><?=$name?></span>
   					<span class="col5"><?=$regist_day?></span>
