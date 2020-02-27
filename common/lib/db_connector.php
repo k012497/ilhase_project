@@ -39,4 +39,14 @@
 
         return $data;
     }
+
+    function insert_notification($title, $content, $id){
+        global $conn;
+
+        $sql = "insert into notification values (null, '$title', '$content', now(), 0, '$id')";
+        $result = mysqli_query($conn, $sql);
+        if(!$result){
+          mysqli_error($conn);
+        }
+    }
 ?>
