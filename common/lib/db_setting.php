@@ -17,6 +17,7 @@
     create_table($conn, 'recruit_plan');
     create_table($conn, 'purchase');
     create_table($conn, 'resume');
+    create_table($conn, 'notice_comment');
 
     insert_init_data($conn, 'admin');
     insert_init_data($conn, 'person');
