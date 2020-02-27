@@ -1,4 +1,6 @@
 <?php
+include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
+
 if (isset($_POST["inputId"])) {
   $id = $_POST["inputId"];
 }else{
@@ -6,9 +8,9 @@ if (isset($_POST["inputId"])) {
   return false;
 }
 
-      $con = mysqli_connect("localhost", "root", "123456", "ilhase");
+      // $con = mysqli_connect("localhost", "root", "123456", "ilhase");
       $sql = "select * from person where id='".$id."'";
-      $result = mysqli_query($con, $sql);
+      $result = mysqli_query($conn, $sql);
       $recode_array=mysqli_fetch_array($result);
       $num_record = mysqli_num_rows($result);
       if ($num_record){
@@ -16,5 +18,5 @@ if (isset($_POST["inputId"])) {
       }else{
         echo "0";
       }
-      mysqli_close($con);
+      mysqli_close($conn);
 ?>
