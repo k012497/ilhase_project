@@ -97,8 +97,15 @@ $number = $total_record - $start;
         ?>
 
         <div id="page_button">
-          <div id="page_num">이전◂ &nbsp;&nbsp;&nbsp;&nbsp;
           <?php
+            if ($total_page>=2 && $page >= 2) {
+          		$new_page = $page-1;
+          		echo "<li><a href='qna_list.php?page=$new_page'>◀ 이전&nbsp;&nbsp;&nbsp;</a> </li>";
+          	}
+          	else {
+              echo "<li>&nbsp;</li>";
+            }
+
             for ($i=1; $i <= $total_page ; $i++) {
               if($page==$i){
                 echo "<b>&nbsp;$i&nbsp;</b>";
@@ -106,16 +113,16 @@ $number = $total_record - $start;
                 echo "<a href='./qna_list.php?page=$i'>&nbsp;$i&nbsp;</a>";
               }
             }
-          ?>
-          &nbsp;&nbsp;&nbsp;&nbsp;▸ 다음
-          <br><br><br><br><br><br><br>
-        </div><!--end of page num -->
-        <div id="button">
-          <a href="./qna_list.php?page=<?=$page?>"> <img src="../img/list.png" alt="">&nbsp;</a>
-          <?php //세션 아이디가 admin일 경우만 글쓰기 허용
+            if ($total_page>=2 && $page != $total_page) {
+            $new_page = $page+1;
+              echo "<li> <a href='qna_list.php?page=$new_page'>&nbsp;&nbsp;&nbsp;다음 ▶</a> </li>";
+            }
+            else {
+              echo "<li>&nbsp;</li>";
+            }
+           ?>
 
-          ?>
-        </div><!--end of button -->
+        </div><!--end of page num -->
       </div><!--end of page button -->
       </div><!--end of list content -->
 
