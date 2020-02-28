@@ -263,47 +263,48 @@ button:focus {
 
 #employment_data ul li {
   position:relative;
-  padding: 0.8rem 0.8rem;
+  padding: 0 0;
   border: 1px solid #BFBFBF;
   border-radius: 0.23rem;
   font-size: 0.8rem;
 }
+#employment_data ul li .recuit_text_box {
+  padding:0.8rem 0.8rem;
+}
 #employment_data ul li .interest_insert {
   position:absolute;
   display:block;
-  right:0;
-  top:0;
+  right:0.5rem;
+  top:0.5rem;
   padding:1.2rem 1.2rem;
-}
-.interest_insert {
+  width:60px;
+  height:10px;
+  background-color:rgba(0, 0, 0, 0.12);
+  z-index:9999;
+  border-radius:0.3rem;
   cursor: pointer;
-  display: block;
 }
-.interest_insert p {
-  float:left;
-  line-height:15px;
-  font-size:0.85rem;
 
-  color:#000;
-    z-index:99999;
-}
 .fav_count {
   line-height:15px;
   margin-bottom:1rem;
+  position: absolute;
+  right:10px;
+  top:5px;
 }
-#employment_data .interest_insert span {
-  float:right;
+
+.heart_img{
+  background-image:url('../img/heart_none_click.png');
+  background-repeat:no-repeat;
+  background-size:contain;
+  position: absolute;
+  right:30px;
+  top:6px;
   width:15px;
   height:15px;
   padding-top:0;
   margin:0 0 0 0.5rem;
   vertical-align:middle;
-
-}
-.heart_img{
-  background-image:url('../img/heart_none_click.png');
-  background-repeat:no-repeat;
-  background-size:contain;
 }
 .click_heart{
   background-image:url('../img/heart_click.png');

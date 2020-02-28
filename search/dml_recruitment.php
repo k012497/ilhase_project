@@ -192,18 +192,19 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
                 <li>
                   <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                     <img src='".$src."' alt='회사이미지'>
-                    <span id='ep_title'>".$title."(".$b_name.")</span>
-                    <span id='ep_pay'>".$pay."</span>
-                    <span id='work_place'>근무지 : ".$work_place."</span>
-                    <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                    <div class='recuit_text_box'>
+                      <span id='ep_title'>".$title."(".$b_name.")</span>
+                      <span id='ep_pay'>".$pay."</span>
+                      <span id='work_place'>근무지 : ".$work_place."</span>
+                      <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                    </div>                  
                   </a>
                   <div class='interest_insert'>
-                      <p>관심 공고등록</p>
-                      <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                      <span class='heart_img click_heart'></span>
+                      <span class='fav_count'>(".$count_fav[0].")</span>
                       <input type='hidden' name='pick_job' value='$num'>
                   </div>
                 </li>
-                <script>console.log('관심');</script>
         ";
       } else if ( $row[0] == 0 ) {
         // 관심공고로 지정하지 않은 경우
@@ -211,14 +212,16 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
               <li>
                 <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                   <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."(".$b_name.")</span>
-                  <span id='ep_pay'>".$pay."</span>
-                  <span id='work_place'>근무지 : ".$work_place."</span>
-                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                  <div class='recuit_text_box'>
+                    <span id='ep_title'>".$title."(".$b_name.")</span>
+                    <span id='ep_pay'>".$pay."</span>
+                    <span id='work_place'>근무지 : ".$work_place."</span>
+                    <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                  </div>           
                 </a>
                 <div class='interest_insert'>
-                    <p>관심 공고등록</p>
-                    <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                    <span class='heart_img'></span>
+                    <span class='fav_count'>(".$count_fav[0].")</span>
                     <input type='hidden' name='pick_job' value='$num'>
                 </div>
 
@@ -275,18 +278,18 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
+                <div class='recuit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
                 <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </div>  
               </a>
               <div class='interest_insert'>
-                  <p>관심 공고등록</p>
                   <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
                   <input type='hidden' name='pick_job' value='$num'>
               </div>
             </li>
-            <script>console.log('관심');</script>
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
@@ -294,13 +297,14 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
+                <div class='recuit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
                 <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </div>  
               </a>
               <div class='interest_insert'>
-                  <p>관심 공고등록</p>
                   <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
                   <input type='hidden' name='pick_job' value='$num'>
               </div>
@@ -356,18 +360,19 @@ function all_area_select($conn,$start,$list,$select_career,$select_area_contents
             <li>
             <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
               <img src='".$src."' alt='회사이미지'>
+              <div class='recuit_text_box'>
               <span id='ep_title'>".$title."(".$b_name.")</span>
               <span id='ep_pay'>".$pay."</span>
               <span id='work_place'>근무지 : ".$work_place."</span>
               <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+            </div>  
             </a>
             <div class='interest_insert'>
-                <p>관심 공고등록</p>
                 <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
                 <input type='hidden' name='pick_job' value='$num'>
             </div>
           </li>
-          <script>console.log('관심');</script>
+
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
@@ -375,13 +380,14 @@ function all_area_select($conn,$start,$list,$select_career,$select_area_contents
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
+                <div class='recuit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
                 <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </div>  
               </a>
               <div class='interest_insert'>
-                  <p>관심 공고등록</p>
                   <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
                   <input type='hidden' name='pick_job' value='$num'>
               </div>
@@ -404,15 +410,15 @@ function production_data() {
   $filter_sql='';
   if ($select_area_contents==="전체") {
     //지역을 선택할떄 전체일때
-    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' order by num desc";
+    $filter_sql="select r.num, c.b_name, r.industry, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='무관' order by num desc";
 
   }else {
     //지역을 선택할때 각 지역의 전체를 선택할떄 (ex. 서울 전체 , 광주 전체)
     if ($select_gu===($select_area_contents." 전체") || ($select_gu===($select_area_contents."전체"))) {
-      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
+      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
     }else{
       //그외 지역 선택할떄
-      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where industry like '%$select_industryDtaile%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
+      $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
     }
   }
 
@@ -452,18 +458,19 @@ function production_data() {
             <li>
             <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
               <img src='".$src."' alt='회사이미지'>
-              <span id='ep_title'>".$title."(".$b_name.")</span>
-              <span id='ep_pay'>".$pay."</span>
-              <span id='work_place'>근무지 : ".$work_place."</span>
-              <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              <div class='recuit_text_box'>
+                    <span id='ep_title'>".$title."(".$b_name.")</span>
+                    <span id='ep_pay'>".$pay."</span>
+                    <span id='work_place'>근무지 : ".$work_place."</span>
+                    <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+                  </div>  
             </a>
             <div class='interest_insert'>
-                <p>관심 공고등록</p>
                 <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
                 <input type='hidden' name='pick_job' value='$num'>
             </div>
           </li>
-          <script>console.log('관심');</script>
+  
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
@@ -471,13 +478,14 @@ function production_data() {
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
+                <div class='recuit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
                 <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </div>  
               </a>
               <div class='interest_insert'>
-                  <p>관심 공고등록</p>
                   <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
                   <input type='hidden' name='pick_job' value='$num'>
               </div>
@@ -534,18 +542,19 @@ function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list)
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
+                <div class='recuit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
                 <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </div>  
               </a>
               <div class='interest_insert'>
-                  <p>관심 공고등록</p>
                   <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
                   <input type='hidden' name='pick_job' value='$num'>
               </div>
             </li>
-            <script>console.log('관심');</script>
+           
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
@@ -553,13 +562,14 @@ function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list)
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
+                <div class='recuit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
                 <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </div>  
               </a>
               <div class='interest_insert'>
-                  <p>관심 공고등록</p>
                   <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
                   <input type='hidden' name='pick_job' value='$num'>
               </div>

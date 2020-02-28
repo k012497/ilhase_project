@@ -185,9 +185,9 @@
               industry_list=$('#industy_list'),
               ep_databox=$('#ep_databox'),
               start=0,
-              list=5,
+              list=8,
               idu_start=0,
-              idu_list=10,
+              idu_list=8,
               select_industy='',
               industy_data='',
               select_alignment=$('select[name=alignment]').val(),
@@ -199,9 +199,9 @@
               var user_id='<?=$id?>';
               var mode='<?=$mode?>';
               var search_start=0;
-              var search_list=10;
+              var search_list=8;
               var applay_start=0;
-              var applay_list=5;
+              var applay_list=8;
               
               console.log(mode);
 
@@ -316,7 +316,8 @@
                   });
 
             }); // end of click (.col_box button)
-
+            
+            $('#industry_list').off('change');
             // 세부 산업셀렉트박스 선택했을 때 체인지 이벤트
             $('#industy_list').on("change",function(){
               var title=$('.title#search_all');
@@ -330,12 +331,12 @@
               idu_start=0;
               industry_append_list($.trim(title.text()), select_alignment,select_career,area_text[0],area_text[1],change_industryList,user_id,'recruitment');
             });
-
-
+    
+              $('#career_list').off('change');
             //경력셀렉트 선택했을 떄 체인지 이벤트
               $('#career_list').on("change",function(){
                   var title=$('.title#search_all'),
-                      select_alignment=$('select[name=alignment]').val(),
+                      select_alignment=$(this).val(),
                       select_area=$('#area_selectBox > p').text();
                   var strArea=select_area.replace(/(\s*)/g,"");
                   var area_text=strArea.split('>');
@@ -383,7 +384,8 @@
                  }
                });
             });
-
+            
+            $('#btn_si_gun_gu').off('click');
             //지역 셀렉트 박스안에 선택버튼  클릭시 이벤트
             $('#btn_si_gun_gu').click(function(){
                       area_list.removeClass('area_active');
