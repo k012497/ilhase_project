@@ -11,6 +11,12 @@ if(isset($_SESSION["username"])){
 }else{
   $username="";
 }
+
+if(isset($_GET['num'])){
+  $num = $_GET['num'];
+} else {
+  $num = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -119,7 +125,7 @@ if(isset($_SESSION["username"])){
                 <li class="li_resume">
                   <img src="" alt="">
                   <p class="p_title" onclick="location.href='new_recruitment_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
-                  <img class="btn_image" name="upfile" src="../img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
+                  <img class="btn_image" name="upfile" src="../img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'">
                 </li>
                 <?php
                 }
