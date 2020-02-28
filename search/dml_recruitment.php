@@ -5,6 +5,7 @@ $mode=$_GET['mode'];
 
 switch ($mode) {
   case 'applicant' :
+      //인재페이지에서 공개된 지원자의 이력서 가져오기
       $applay_start=$_GET['apply_start'];
       $applay_list=$_GET['apply_list'];
 
@@ -181,9 +182,12 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
     // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
     $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
     $fav_result=mysqli_query($conn,$fav_sql);
+    $count_fav_sql="select count(*) from favorite where recruit_id=".$num;
+    $count_fav_result=mysqli_query($conn,$count_fav_sql);
+    $count_fav=mysqli_fetch_array($count_fav_result);
     if($row = mysqli_fetch_array($fav_result)){
       if($row[0] > 0){
-        // 관심공고로 지정한 경우
+        // 관심공고로 지정한 경우 하트이미지 class 추가
         echo "
                 <li>
                   <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
@@ -193,9 +197,9 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
                     <span id='work_place'>근무지 : ".$work_place."</span>
                     <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
                   </a>
-                  <div id='interest_insert'>
+                  <div class='interest_insert'>
                       <p>관심 공고등록</p>
-                      <span class='heart_img click_heart'></span>
+                      <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
                       <input type='hidden' name='pick_job' value='$num'>
                   </div>
                 </li>
@@ -212,9 +216,9 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
                   <span id='work_place'>근무지 : ".$work_place."</span>
                   <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
                 </a>
-                <div id='interest_insert'>
+                <div class='interest_insert'>
                     <p>관심 공고등록</p>
-                    <span class='heart_img'></span>
+                    <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
                     <input type='hidden' name='pick_job' value='$num'>
                 </div>
 
@@ -261,43 +265,47 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
     // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
     $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
     $fav_result=mysqli_query($conn,$fav_sql);
+    $count_fav_sql="select count(*) from favorite where recruit_id=".$num;
+    $count_fav_result=mysqli_query($conn,$count_fav_sql);
+    $count_fav=mysqli_fetch_array($count_fav_result);
     if($row = mysqli_fetch_array($fav_result)){
       if($row[0] > 0){
         // 관심공고로 지정한 경우
         echo "
               <li>
-                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                  <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."(".$b_name.")</span>
-                  <span id='ep_pay'>".$pay."</span>
-                  <span id='work_place'>근무지 : ".$work_place."</span>
-                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                </a>
-                <div id='interest_insert'>
-                    <p>관심 공고등록</p>
-                    <span class='heart_img click_heart'></span>
-                    <input type='hidden' name='pick_job' value='$num'>
-                </div>
-              </li>
-              <script>console.log('관심');</script>
+              <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                <img src='".$src."' alt='회사이미지'>
+                <span id='ep_title'>".$title."(".$b_name.")</span>
+                <span id='ep_pay'>".$pay."</span>
+                <span id='work_place'>근무지 : ".$work_place."</span>
+                <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </a>
+              <div class='interest_insert'>
+                  <p>관심 공고등록</p>
+                  <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                  <input type='hidden' name='pick_job' value='$num'>
+              </div>
+            </li>
+            <script>console.log('관심');</script>
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
         echo "
               <li>
-                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                  <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."(".$b_name.")</span>
-                  <span id='ep_pay'>".$pay."</span>
-                  <span id='work_place'>근무지 : ".$work_place."</span>
-                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                </a>
-                <div id='interest_insert'>
-                    <p>관심 공고등록</p>
-                    <span class='heart_img'></span>
-                    <input type='hidden' name='pick_job' value='$num'>
-                </div>
-              </li>
+              <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                <img src='".$src."' alt='회사이미지'>
+                <span id='ep_title'>".$title."(".$b_name.")</span>
+                <span id='ep_pay'>".$pay."</span>
+                <span id='work_place'>근무지 : ".$work_place."</span>
+                <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </a>
+              <div class='interest_insert'>
+                  <p>관심 공고등록</p>
+                  <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                  <input type='hidden' name='pick_job' value='$num'>
+              </div>
+
+            </li>
         ";
       }
     } else {
@@ -338,43 +346,47 @@ function all_area_select($conn,$start,$list,$select_career,$select_area_contents
     // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
     $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
     $fav_result=mysqli_query($conn,$fav_sql);
+    $count_fav_sql="select count(*) from favorite where recruit_id=".$num;
+    $count_fav_result=mysqli_query($conn,$count_fav_sql);
+    $count_fav=mysqli_fetch_array($count_fav_result);
     if($row = mysqli_fetch_array($fav_result)){
       if($row[0] > 0){
         // 관심공고로 지정한 경우
         echo "
-                <li>
-                  <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                    <img src='".$src."' alt='회사이미지'>
-                    <span id='ep_title'>".$title."(".$b_name.")</span>
-                    <span id='ep_pay'>".$pay."</span>
-                    <span id='work_place'>근무지 : ".$work_place."</span>
-                    <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                  </a>
-                  <div id='interest_insert'>
-                      <p>관심 공고등록</p>
-                      <span class='heart_img click_heart'></span>
-                      <input type='hidden' name='pick_job' value='$num'>
-                  </div>
-                </li>
-                <script>console.log('관심');</script>
+            <li>
+            <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+              <img src='".$src."' alt='회사이미지'>
+              <span id='ep_title'>".$title."(".$b_name.")</span>
+              <span id='ep_pay'>".$pay."</span>
+              <span id='work_place'>근무지 : ".$work_place."</span>
+              <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+            </a>
+            <div class='interest_insert'>
+                <p>관심 공고등록</p>
+                <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                <input type='hidden' name='pick_job' value='$num'>
+            </div>
+          </li>
+          <script>console.log('관심');</script>
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
         echo "
               <li>
-                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                  <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."(".$b_name.")</span>
-                  <span id='ep_pay'>".$pay."</span>
-                  <span id='work_place'>근무지 : ".$work_place."</span>
-                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                </a>
-                <div id='interest_insert'>
-                    <p>관심 공고등록</p>
-                    <span class='heart_img'></span>
-                    <input type='hidden' name='pick_job' value='$num'>
-                </div>
-              </li>
+              <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                <img src='".$src."' alt='회사이미지'>
+                <span id='ep_title'>".$title."(".$b_name.")</span>
+                <span id='ep_pay'>".$pay."</span>
+                <span id='work_place'>근무지 : ".$work_place."</span>
+                <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </a>
+              <div class='interest_insert'>
+                  <p>관심 공고등록</p>
+                  <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                  <input type='hidden' name='pick_job' value='$num'>
+              </div>
+
+            </li>
         ";
       }
     } else {
@@ -430,43 +442,47 @@ function production_data() {
     // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
     $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
     $fav_result=mysqli_query($conn,$fav_sql);
+    $count_fav_sql="select count(*) from favorite where recruit_id=".$num;
+    $count_fav_result=mysqli_query($conn,$count_fav_sql);
+    $count_fav=mysqli_fetch_array($count_fav_result);
     if($row = mysqli_fetch_array($fav_result)){
       if($row[0] > 0){
         // 관심공고로 지정한 경우
         echo "
-              <li>
-                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                  <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."(".$b_name.")</span>
-                  <span id='ep_pay'>".$pay."</span>
-                  <span id='work_place'>근무지 : ".$work_place."</span>
-                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                </a>
-                <div id='interest_insert'>
-                    <p>관심 공고등록</p>
-                    <span class='heart_img click_heart'></span>
-                    <input type='hidden' name='pick_job' value='$num'>
-                </div>
-              </li>
-              <script>console.log('관심');</script>
+            <li>
+            <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+              <img src='".$src."' alt='회사이미지'>
+              <span id='ep_title'>".$title."(".$b_name.")</span>
+              <span id='ep_pay'>".$pay."</span>
+              <span id='work_place'>근무지 : ".$work_place."</span>
+              <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+            </a>
+            <div class='interest_insert'>
+                <p>관심 공고등록</p>
+                <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                <input type='hidden' name='pick_job' value='$num'>
+            </div>
+          </li>
+          <script>console.log('관심');</script>
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
         echo "
               <li>
-                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                  <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."(".$b_name.")</span>
-                  <span id='ep_pay'>".$pay."</span>
-                  <span id='work_place'>근무지 : ".$work_place."</span>
-                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                </a>
-                <div id='interest_insert'>
-                    <p>관심 공고등록</p>
-                    <span class='heart_img'></span>
-                    <input type='hidden' name='pick_job' value='$num'>
-                </div>
-              </li>
+              <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                <img src='".$src."' alt='회사이미지'>
+                <span id='ep_title'>".$title."(".$b_name.")</span>
+                <span id='ep_pay'>".$pay."</span>
+                <span id='work_place'>근무지 : ".$work_place."</span>
+                <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </a>
+              <div class='interest_insert'>
+                  <p>관심 공고등록</p>
+                  <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                  <input type='hidden' name='pick_job' value='$num'>
+              </div>
+
+      </li>
         ";
       }
     } else {
@@ -508,43 +524,47 @@ function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list)
     // 로그인한 사용자가 해당 공고를 관심공고로 지정 했는지 점검
     $fav_sql="select count(*) from favorite where recruit_id=$num and member_id='$user_id'";
     $fav_result=mysqli_query($conn,$fav_sql);
+    $count_fav_sql="select count(*) from favorite where recruit_id=".$num;
+    $count_fav_result=mysqli_query($conn,$count_fav_sql);
+    $count_fav=mysqli_fetch_array($count_fav_result);
     if($row = mysqli_fetch_array($fav_result)){
       if($row[0] > 0){
         // 관심공고로 지정한 경우
         echo "
-                <li>
-                  <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                    <img src='".$src."' alt='회사이미지'>
-                    <span id='ep_title'>".$title."(".$b_name.")</span>
-                    <span id='ep_pay'>".$pay."</span>
-                    <span id='work_place'>근무지 : ".$work_place."</span>
-                    <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                  </a>
-                  <div id='interest_insert'>
-                      <p>관심 공고등록</p>
-                      <span class='heart_img click_heart'></span>
-                      <input type='hidden' name='pick_job' value='$num'>
-                  </div>
-                </li>
-                <script>console.log('관심');</script>
+              <li>
+              <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                <img src='".$src."' alt='회사이미지'>
+                <span id='ep_title'>".$title."(".$b_name.")</span>
+                <span id='ep_pay'>".$pay."</span>
+                <span id='work_place'>근무지 : ".$work_place."</span>
+                <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </a>
+              <div class='interest_insert'>
+                  <p>관심 공고등록</p>
+                  <span class='heart_img click_heart'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                  <input type='hidden' name='pick_job' value='$num'>
+              </div>
+            </li>
+            <script>console.log('관심');</script>
         ";
       } else if ( $row[0] == 0) {
         // 관심공고로 지정하지 않은 경우
         echo "
               <li>
-                <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
-                  <img src='".$src."' alt='회사이미지'>
-                  <span id='ep_title'>".$title."(".$b_name.")</span>
-                  <span id='ep_pay'>".$pay."</span>
-                  <span id='work_place'>근무지 : ".$work_place."</span>
-                  <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
-                </a>
-                <div id='interest_insert'>
-                    <p>관심 공고등록</p>
-                    <span class='heart_img'></span>
-                    <input type='hidden' name='pick_job' value='$num'>
-                </div>
-              </li>
+              <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
+                <img src='".$src."' alt='회사이미지'>
+                <span id='ep_title'>".$title."(".$b_name.")</span>
+                <span id='ep_pay'>".$pay."</span>
+                <span id='work_place'>근무지 : ".$work_place."</span>
+                <span id='ep_period'>접수기간 : ".$period_start." ~ ".$period_end."</span>
+              </a>
+              <div class='interest_insert'>
+                  <p>관심 공고등록</p>
+                  <span class='heart_img'></span><span class='fav_count'>(".$count_fav[0].")</span>
+                  <input type='hidden' name='pick_job' value='$num'>
+              </div>
+
+            </li>
         ";
       }
     } else {

@@ -215,7 +215,9 @@ if(isset($_SESSION["usermember_type"]))
           ?>
             <div id="recommend_box">
                 <!-- 인재 공고 -->
-                <h2 class="title"><span>공개된 이력서를 추천해드립니다!</span></h2>
+                <h2 class="title"><span>공개된 이력
+                <div id="near_location_job" class="row" >
+                
                   <?php
                     $jobSeeker_sql="select * from resume where public=1 limit 4";
                     $user_result=mysqli_query($conn,$jobSeeker_sql);
@@ -234,28 +236,27 @@ if(isset($_SESSION["usermember_type"]))
                       $m_address=$row['m_address'];
                       $m_gender=$row['m_gender'];
                       $m_title=$row['title'];
-                      $file_name=$row['file_name'];
+                      $file_copied=$row['file_copied'];
 
                       $src='';
-                      if ($file_name) {
-                      $src='./img/'+$file_name;
+                      if ($file_copied) {
+                      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
                       }else {
-                      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/common/img/user.png';
+                      $src='https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-young-service-boy-vector-download-user-icon-vector-avatar-png-image_1991056.jpg';
                       }
                       echo "
 
-                          <div id='open_resume' class='col-lg-3 col-md-6 mb-4'>
-                            <div id='open_resume_box' class='card h-100'>
-                                <img class='card-img-top' src='".$src."' alt='userimg'>
-                                <div class='card-body'>
-                                    <a id='go_recruit_details' href='http://".$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/write_resume_form.php?num=".$num."'>
-                                        <h5 id='card_title' class='card-title'>".$m_title."</h5>
-                                        <span id='ep_b_name'>".$m_name."</span>
-                                    </a>
-                                </div>
-                            </div>
+                          <div class='col-lg-3 col-md-6 mb-4'>
+                              <div class='card h-100'>
+                                  <img class='card-img-top' src='".$src."' alt='userimg'>
+                                  <div class='card-body'>
+                                      <a id='go_recruit_details' href='http://".$_SERVER["HTTP_HOST"]."/ilhase/member_page/corporate/corporate_resume_view.php?num=".$num."'>
+                                          <h5 id='card_title' class='card-title'>".$m_title."</h5>
+                                          <span id='ep_b_name'>".$m_name."</span>
+                                      </a>
+                                  </div>
+                              </div>
                           </div>
-                        </div>
                       ";
 
                     }//end of for()
@@ -264,6 +265,7 @@ if(isset($_SESSION["usermember_type"]))
 
                   ?>
               </div>
+          </div>
     </div>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
@@ -273,6 +275,7 @@ if(isset($_SESSION["usermember_type"]))
      var user_id="<?=$id?>";
      var address='';
      var rute="<?= $_SERVER['HTTP_HOST']?>";
+     var member_type="<?=$member_type?>";
      console.log(rute);
 
       //지도 경도와 위치를 가져와서 구글 api로 지역주소 string으로 변환
@@ -370,7 +373,11 @@ if(isset($_SESSION["usermember_type"]))
     }
 
 }
-getLocation(); //위치 공고 함수 실행
+if(!(member_type==="corporate")){
+  //기업이 아니면 위치 공고 함수 실행
+  getLocation(); //위치 공고 함수 실행
+}
+
 
 $(function(){
   //자동검색어
