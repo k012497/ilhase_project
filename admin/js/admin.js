@@ -116,7 +116,7 @@ function set_person_input_data(){
 }
 
 function set_apply_history_data(history_obj){
-    console.log('set_apply_history_data', history_obj);
+    // console.log('set_apply_history_data', history_obj);
     // 개인 회원의 지원 내역을 li 태그에 담아서 ul의 자식으로 추가
     const apply_list = document.querySelector('.apply_history_list');
     apply_list.innerHTML = "";
@@ -239,7 +239,6 @@ function get_plan_list(){
         }
     });
 }
-
 
 function set_plan_list(plan_obj){
     plan_list_max_num = plan_obj.length + 1;
@@ -372,6 +371,28 @@ $(document).ready(function () {
         $('html, body').animate({
             scrollTop: scrollPosition - 71
         }, 500);
+    });
+
+    $(window).scroll(function(){
+        const scroll_top = $(this).scrollTop(); //스크롤바의 상단위치
+        const scroll_height = $(window).height(); //스크롤바를 갖는 window의 높이
+        const scroll_position = scroll_top + scroll_height;
+
+        // console.log(scroll_position, scroll_top, scroll_height);
+        if(scroll_position >= 905 && scroll_position <= 912){
+            console.log('회원관리');
+            get_person_count();
+            get_corporate_count();
+            get_recruitment_count();
+        } else if(scroll_position >= 1990 && scroll_position <= 1997) {
+            console.log('상품관리');
+            get_sales();
+            get_revenue();
+        } else if(scroll_position >= 3125 && scroll_position <= 3132){
+            console.log('고객센터');
+            get_unanswerd_questions();
+        }
+
     });
 
     // 크기에 따른 높이 설정
