@@ -24,7 +24,7 @@ try {
     $mail ->CharSet = "utf-8";                                // 문자셋 인코딩
 
     // 보내는 메일
-    $mail -> setFrom("a980721a@naver.com", "일하세");
+    $mail -> setFrom("cogus633@naver.com", "일하세");
 
     // 받는 메일
     // $mail -> addAddress("애플ID@me.com", "receive01");

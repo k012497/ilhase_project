@@ -33,10 +33,16 @@ if(isset($_SESSION["username"])){
           email_check=0,
           b_license_num_check=0;
       var email_check_num="";
-      $('#email_check_num').blur(function(){
-        if($('#email_check_num').val()== String(email_check_num)){
+      $(document).keyup(function(){
+        if($('#email_check_num').val()==""){
+          $('#email_sub').html("<span style='color:red'></span>");
+          email_check=0;
+        }else if($('#email_check_num').val()== String(email_check_num)){
           $('#email_sub').html("<span style='color:red'>인증되었습니다.</span>");
           email_check=1;
+        }else if($('#email_check_num').val()==""){
+          $('#email_sub').html("<span style='color:red'></span>");
+          email_check=0;
         }else{
           $('#email_sub').html("<span style='color:red'>번호가 틀렸습니다..</span>");
           email_check=0;
@@ -94,7 +100,7 @@ if(isset($_SESSION["username"])){
           console.log("complete");
         });
       });
-      $('#pass_2').blur(function(){
+      $(document).keyup(function(){
         var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
         var pass_1=$('#pass_1').val(),
             pass_2=$('#pass_2').val();
@@ -112,7 +118,7 @@ if(isset($_SESSION["username"])){
           pass_check=0;
         }
       });
-      $('#id').blur(function(){
+      $(document).keyup(function(){
         var idValue=$('#id').val();
         var exp = /^[a-zA-Z0-9]{6,12}$/;
         if(idValue === ""){
