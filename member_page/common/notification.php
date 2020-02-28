@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   if(empty($_SESSION['userid'])){
     echo "<script>
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/css/common.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/css/notification.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/css/person.css">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>일하세</title>
   </head>
@@ -52,8 +53,8 @@
               echo "<script>alert('$num');</script>";
               set_read($num);
             }
-            
-            // 14일 지난 알림은 자동 삭제 
+
+            // 14일 지난 알림은 자동 삭제
             $sql = "delete from notification where regist_date <= date_sub(now(), interval 14 DAY);";
             mysqli_query($conn, $sql);
 
@@ -71,14 +72,14 @@
                 $regist_date = $row['regist_date'];
                 $read = $row['read'];
                 $n_num = $row['num'];
-  
+
                 if($read == 1){
                   // 읽었을 경우
                   $read_sign = '';
                 } else {
                   $read_sign = '•';
                 }
-                
+
                 echo '<li>
                   <span class="noti_title" onclick="toggle_content(this);">'.$title.' <span class="read_sign">'.$read_sign.'</span></span>
                   <span class="date_received">'.$regist_date.'</span>
@@ -88,7 +89,7 @@
               }
             }
           ?>
-          
+
         </ul>
       </div><!-- noti message -->
     </div><!-- container -->
@@ -98,7 +99,7 @@
         const p_content = title.nextElementSibling.nextElementSibling;
         const read_sign = title.firstElementChild;
         const num = p_content.nextElementSibling.innerHTML;
-        
+
         // p태그 토글
         p_content.classList.toggle('invisible');
         console.log(num + "번 알림");
@@ -112,7 +113,7 @@
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){
         data.classList.remove('active');
-      
+
         if(idx === 4){
           data.classList.add('active');
         }

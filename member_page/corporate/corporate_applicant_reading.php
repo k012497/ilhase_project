@@ -9,8 +9,9 @@ if(isset($_SESSION['userid']))
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+	<meta charset="utf-8">
+	<link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
+    <title>일하세</title>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/css/board.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -18,39 +19,35 @@ if(isset($_SESSION['userid']))
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
-
   </head>
   <body>
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-  <div id="div_left_menu">
-      <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/corporate/member_side_menu.php";?>
-  </div>
-  <div class="container">
-  <section>
-  	<div id="main_img_bar">
-      </div>
-     	<div id="board_box">
-  	    <h3>
-  	    	지원자 > 목록보기
-  		</h3>
-  	    <ul id="board_list">
-  				<li style="display: inline-block;">
-  					<span class="col1" style="display: inline-block;">번호</span>
-  					<span class="col2" style="display: inline-block;">공고</span>
-  					<span class="col3" style="display: inline-block;">제목</span>
-  					<span class="col4" style="display: inline-block;">글쓴이</span>
-  					<span class="col5" style="display: inline-block;">등록일</span>
-  					<span class="col6" style="display: inline-block;"></span>
-  				</li>
+	<div class="container">
+		<div id="div_left_menu">
+			<?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
+		</div>
+				<div id="board_box">
+				<h3>
+					지원자 > 목록보기
+				</h3>
+				<ul id="board_list">
+					<li style="height: 50px;">
+						<span class="col1" style="display: inline-block;">번호</span>
+						<span class="col2" style="display: inline-block;">공고</span>
+						<span class="col3" style="display: inline-block;">제목</span>
+						<span class="col4" style="display: inline-block;">글쓴이</span>
+						<span class="col5" style="display: inline-block;">등록일</span>
+						<span class="col6" style="display: inline-block;"></span>
+					</li>
   <?php
   	if (isset($_GET["page"]))
   		$page = $_GET["page"];
   	else
   		$page = 1;
 
-  	$sql = "select r.title, a.resume_title, a.regist_date,a.member_id,
+  	$sql = "select r.title, a.resume_title, a.regist_date,a.member_id,a.resume_num,
     (select name from person where a.member_id = person.id)
     as person_name from recruitment r join apply a on a.recruit_id
     = r.num where r.corporate_id = '$id';";
@@ -81,12 +78,7 @@ if(isset($_SESSION['userid']))
   	  $name        = $row["person_name"];
   	  $subject     = $row["resume_title"];
       $regist_day  = $row["regist_date"];
-
-      $resume_num_sql = "select num from resume where title='$subject'
-      and m_id='$member_id' and regist_date='$regist_day'";
-      $result=mysqli_query($conn,$resume_num_sql);
-      $resume_num = mysqli_fetch_array($result)['num'];
-      echo $resume_num_sql.$resume_num;
+      $resume_num=$row["resume_num"];
   ?>
   				<li>
   					<span class="col1"><?=$number?></span>
@@ -134,8 +126,23 @@ if(isset($_SESSION['userid']))
   ?>
   			</ul> <!-- page -->
   	</div> <!-- board_box -->
-  </section>
-  </div>
 
+  </div><!-- container -->
+
+	<script>
+	  //nav active 활성화
+	  document.querySelectorAll('.nav-item').forEach(function(data, idx){
+          data.classList.remove('active');
+
+          if(idx === 4){
+            data.classList.add('active');
+          }
+        });
+
+        // 사이드 메뉴 표시
+        const current_menu = document.querySelectorAll('.side_menu_item')[1];
+        current_menu.style.backgroundColor = 'rgb(133, 198, 241)';
+		current_menu.style.color = 'white';
+	</script>
   </body>
 </html>

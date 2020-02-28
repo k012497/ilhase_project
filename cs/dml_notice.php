@@ -150,18 +150,12 @@ function delete_notice(){
 }
 
 function send_notification($title, $content){
-  global $conn, $member_id;
+  global $member_id;
 
   get_all_members_id();
-  echo count($member_id);
 
   foreach($member_id as $id){
     insert_notification($title, $content, $id);
-    // $sql = "insert into notification values (null, '$title', '$content', now(), 0, '$id')";
-    // $result = mysqli_query($conn, $sql);
-    // if(!$result){
-    //   mysqli_error($conn);
-    // }
   }
 
 }

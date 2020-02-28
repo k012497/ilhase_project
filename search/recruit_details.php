@@ -23,6 +23,8 @@
     $pay            = $row['pay'];
     $work_place     = $row['work_place'];
     $details        = $row['details'];
+    $industry       = $row['industry'];
+    $industry_txt=explode(" ",$industry);
     $content = str_replace(" ", "&nbsp;", $details);
     $content = str_replace("\n", "<br> ", $details);
     $personnel        = $row['personnel'];
@@ -30,16 +32,17 @@
     $recruiter_phone        = $row['recruiter_phone'];
     $recruiter_email        = $row['recruiter_email'];
     $recruit_type           = $row['recruit_type'];
+    $c_id = $row['corporate_id'];
 
     //선택한 공고의 num값으로 해당 아이디가 그 공고에 지원했는지 안했는지 검사
     $check_resume_sql="select * from apply where recruit_id=$pick_job_num";
     $check_result=mysqli_query($conn,$check_resume_sql);
     $check_row=mysqli_fetch_array($check_result);
-    mysqli_close($conn);
+
    ?>
   <head>
     <meta charset="utf-8">
-    <title>일하세-상세공고</title>
+    <title>일하세</title>
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="./css/recruit_details.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -55,9 +58,48 @@
               <img src="<?=$src?>" alt="회사이미지">
             </div>
             <h1 id="announcement_title">
-              <?=$title?>
+              <span id="main_title"><?=$title?></span>
               <span id="sub_title">(<?=$b_name?>)</span>
-              <span id="period"><?=$period_start?> ~ <?=$period_end?>
+ 
+              <?php
+
+                  
+
+                  if($id===''){
+                    //아이디가 없을때
+                    echo "
+                    <div id='recruit_fav_box'>
+                    <p><span id='heart'>♡</span> 관심공고 등록</p>
+                    </div>
+                      ";
+                  }else{
+                    //아이디가 있을때
+                    $fav_sql="select count(*) from favorite where recruit_id=$pick_job_num and member_id='$id'";
+                    $fav_result=mysqli_query($conn,$fav_sql);
+                    if($row = mysqli_fetch_array($fav_result)){
+                      if($row[0] > 0){
+                        // 관심공고로 지정한 경우 하트이미지 class 추가
+                        echo "
+                              <div id='recruit_fav_box' class='pick' style=' background:linear-gradient(to right, #DA4453, #89216B); color:#fff; ' >
+                              <p><span id='heart'  >♥</span> 관심공고</p>
+                              </div>
+                        ";
+                      } else if ( $row[0] == 0 ) {
+                        // 관심공고로 지정하지 않은 경우
+                        echo "
+                            <div id='recruit_fav_box'>
+                            <p><span id='heart'>♡</span> 관심공고</p>
+                            </div>
+                        ";
+                      }
+                    } else {
+                      echo mysqli_error($conn);
+                    }//
+
+
+                  }
+              ?>
+             
               <?php
                 if($check_row){
                   echo"
@@ -68,8 +110,10 @@
               <button id="btn_apply"  name="button">지원하기</button>
               <?php 
                 }
+
+                mysqli_close($conn);
               ?>            
-            </span>
+              <span id="period"><?=$period_start?> ~ <?=$period_end?>
             </h1> 
             <div id="email_apply">
                 <div id="loading">
@@ -80,6 +124,7 @@
                   <div id="select_resume_box">
                   </div>
                   <input type="hidden" name="user_id" value=<?=$id?>>
+                  
                   <input type="hidden" name="receiver_email" value=<?=$recruiter_email?>>
                   <input type="hidden" name="receiver_name" value=<?=$recruiter_name?>>                  
                   <input id="btn_email_submit" type="submit" value="담당자에게 보내기">                    
@@ -108,6 +153,7 @@
             <div id="employment_info">
               <h2 class="info_title"> > 구인정보</h2>
               <ul>
+                <li><span class="colum">지원분야</span><span class="colum3"><?=$industry_txt[1]?></span></li>
                 <li><span class="colum">지원자격</span><span class="colum3">학력 : (<?=$require_edu?>) / 경력 (<?=$require_career?>)</span></li>
                 <li><span class="colum">근무조건</span><span class="colum3">급여 : <?=$recruit_type?>(<?=$pay?>) / 근무지역 (<?=$work_place?>)</span></li>
               </ul>
@@ -133,6 +179,8 @@
             mapWrapper=document.getElementById('mapWrapper'), //지도를 감싸고 있는 div
             mapContainer=document.getElementById('map'), //지도를 표시할 div
             rvContainer = document.getElementById('roadview');//로드뷰를 표시할 div
+            var user_id='<?=$id?>';
+            var pick_job_num='<?=$pick_job_num?>';
             var address = '<?=$address?>'; // 서버에서 받아온 회사의 주소
             var b_name = '<?=$b_name?>'; // 서버에서 받아온 회사의 이름
             var mapCenter = new kakao.maps.LatLng(33.45042 , 126.57091), // 지도의 중심좌표
@@ -354,15 +402,16 @@
                         $('#btn_email_submit').off('click');
                         
                         $('#btn_email_submit').click(function(){
-                          // var recruit_id=$('input:radio[name=resume]:checked').prev().val();     
-                          var isCheck = $('input:radio[name="resume"]').is(':checked');                   
+                          console.log("1");
+                          var check_resume_num=$('input:radio[name=resume]:checked').prev().val();     
+                          var isCheck = $('input:radio[name="resume"]').is(':checked')
+                          var title=$('input:radio[name="resume"]:checked').val();                   
                           if(isCheck === false){
-                            var title=$('input:radio[name="resume"]:checked').val();
                             alert('이력서를 선택해주세요!');
                             return false;
                           }else{
-                            applyresume($user_id,recruit_id,title);
-                            console.log($user_id,recruit_id,title);
+                            applyresume($user_id,recruit_id,title,check_resume_num);
+                            console.log($user_id,recruit_id,title,check_resume_num);
                             $('#loading').show();
                           }
                          
@@ -385,7 +434,7 @@
               });
 
               //resume apply 등록
-              function applyresume(user_id,recruit_id,title){
+              function applyresume(user_id,recruit_id,title,check_resume_num){
 
                 console.log(user_id,recruit_id,title);
                 $.ajax({
@@ -394,7 +443,9 @@
                   type:'POST',
                   data:{'user_id':user_id,
                         'recruit_id':recruit_id,
-                        'title':title
+                        'title':title,
+                        'check_resume_num':check_resume_num,
+                        'receiver' : '<?=$c_id?>'
                         },
                   success:function(data){
                       console.log(data);
@@ -404,10 +455,78 @@
 
 
               }
-             
               
 
-      });
+              
+              
+              $('#recruit_fav_box').off('click');
+              $('#recruit_fav_box').click(function(){
+                  if(user_id===''){
+                    alert('로그인을 해주세요!');
+                    return;
+                  }
+
+                  if($('#recruit_fav_box').hasClass('pick')){
+                    
+                    favorite_job_remove(user_id,pick_job_num);
+
+                  }else {
+                    $('#recruit_fav_box').addClass('pick');
+                    favorite_job_add(user_id,pick_job_num);
+                  }
+
+              });
+
+
+                //관심공고 등록
+            function favorite_job_add(id,pick_job_num){
+
+                    $.ajax({
+                      url:'./dml_favorite.php?mode=add',
+                      type:'POST',
+                      data:{"user_id":id,"pick_job_num":pick_job_num},
+                      success:function(data){
+                            $('#recruit_fav_box #heart').text('♥');
+                            $('#recruit_fav_box').css({
+                              'background' : 'linear-gradient(to right, #DA4453, #89216B)',
+                              'color' : '#fff'
+                            });
+                            alert('관심공고에 등록되었습니다!');
+                          
+                      },
+                      error:function(request,status,error){
+                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                      }
+                    });
+
+            }
+
+
+                //관심공고 삭제
+            function favorite_job_remove(id,pick_job_num){
+                    console.log('favorite_job_remove?');
+                    $.ajax({
+                      url:'./dml_favorite.php?mode=remove',
+                      type:'POST',
+                      data:{"user_id":id,"pick_job_num":pick_job_num},
+                      success:function(data){
+                        $('#recruit_fav_box').removeClass('pick');
+                        $('#recruit_fav_box').css({
+                            'background' : '#ddd',
+                            'color' : '#333'
+                        });
+                        $('#recruit_fav_box #heart').text('♡');
+                            alert('관심공고에 삭제되었습니다!');
+                            
+                      },
+                      error:function(request,status,error){
+                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                      }
+                    });
+
+                    }
+
+              });
      
 
     </script>

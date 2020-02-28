@@ -171,9 +171,7 @@
       $noti_content = '문의하신 ['.$short_question.'...]에 대한 답변이 도착하였습니다.';
       $receiver = $writer;
       insert_notification($noti_subject, $noti_content, $receiver);
-      echo $_GET["question"];
-      echo "//".$short_question;
-    //   echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
+      echo "<script>location.href='./qna_view.php?num=$max_num&hit=$hit';</script>";
 
     }
 

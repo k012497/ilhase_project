@@ -6,7 +6,10 @@
     padding: 0;
     font-family: 'Noto Sans KR', sans-serif;
 }
-
+/* html, body {
+  width:100%;
+  min-height:100%;
+} */
 ul, li {
     display: inline-block;
     list-style: none;
@@ -26,6 +29,7 @@ select {
     background-color: white;
     padding: 0.2rem 1rem;
 }
+
 
 .text_border {
 	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
@@ -70,12 +74,12 @@ select {
   top:60px;
   left:220px;
   z-index:10;
-  width:580px;
+  width:60%;
   display:none;
 
 }
 #atuo_keword ul {
-  width:580px;
+  width:100%;
   height:150px;
   border:1px solid #ddd;
   border-radius:0.5rem;
@@ -128,6 +132,7 @@ button {
 #open_resume_box {
   padding:1rem;
 }
+
 
 /* ------------------------------- media query ------------------------------- */
 /* 웹 브라우저 중심으로 배치 */
@@ -241,7 +246,7 @@ button {
   /* 부트스트렙 슬라이드 */
 
   .carousel-inner {
-    min-height:500px;
+    height:100%;
   }
 
   /* 내가 수정 추가 */
@@ -342,9 +347,9 @@ button {
   #pick_job ul li {
     padding-top:0em;
     padding-left:0em;
-    width:21.5%;
     text-align:center;
     cursor: pointer;
+    margin:0 2rem;
     
   }
 
@@ -422,7 +427,8 @@ button {
     border-radius:0.34rem;
     padding:0 6.5em;
   }
- 
+
+}
 /* 해상도 1600 이하 */
 @media (max-width:1600px) {
 
@@ -434,6 +440,10 @@ button {
     font-size:1.2rem;
     border-radius:0.34rem;
     padding:0 4.3em;
+  }
+  #atuo_keword{
+    width:60%;
+  
   }
   
 }
@@ -467,18 +477,21 @@ button {
       line-height:50px;
     }
     #pick_job {
-      width:600px;
+      width:65%;
     }
     #pick_job ul {
-      width:600px;
+      width:100%;
     }
     #pick_job ul li {
-
-      width:23%;
+      margin:0 1.8rem;
+      text-align:left;
     }
     #btn_searchJob {
       right:1.1rem;
       top:1rem; 
+    }
+    #atuo_keword{
+      left:180px;
     }
 }
 /*해상도 1080 이하 */
@@ -496,15 +509,15 @@ button {
     line-height:50px;
   }
    #pick_job {
-      width:520px;
+      width:58%;
       font-size:0.8rem;
 
     }
     #pick_job ul {
-      width:520px;
+      width:100%;
     }
     #pick_job ul li {
-      width:23%;
+      margin:0 0;
     }
     #btn_searchJob {
       right:0.8rem;
@@ -528,15 +541,15 @@ button {
     line-height:50px;
   }
   #pick_job {
-    width:490px;
+    width:60%;
     font-size:0.9rem;
 
   }
   #pick_job ul {
-    width:490px;
+    width:100%;
   }
   #pick_job ul li {
-    width:24%;
+    margin:0 1rem;
   }
   #btn_searchJob {
     width:25px;
@@ -544,8 +557,10 @@ button {
     right:1rem;
     top:1rem; 
   }
-
-
+  #atuo_keword{
+    left:160px;
+  }
+  
 }
 
 /* 해상도 800이하 */
@@ -589,12 +604,13 @@ button {
     left:0; transform:translateX(0%);
     width:100%;
     height:40px;
-    padding:0;
+    padding:1rem 0;
     margin:0 0em;
-    border-radius:0.3rem;
-    background-color:#eee;
+    border-radius:0.5rem;
+    background-color:#fff;
     border:1px solid #ddd;
     overflow:hidden;
+    font-size:0.8rem;
   }
   #search_job {
     width:90%;
@@ -629,12 +645,12 @@ button {
     width:100%;
     margin-left:0em;
     margin-right:0em;
-    padding-left:3em;
+    padding-left:0em;
   }
   #pick_job ul li {
     padding-top:0em;
     padding-left:0em;
-    width:23%;
+    margin:0 1.7rem;
     font-size:0.8em;
     text-align:left;
   }
@@ -646,6 +662,13 @@ button {
     width:100%;
     margin:0;
   }
+  #atuo_keword{
+    top:100px;
+    left:0px;
+    width:100%;
+  
+  }
+
 
 }
 /* 해상도 667이하 */
@@ -671,6 +694,19 @@ button {
     text-align:center;
 
   }
+  #pick_job ul {
+    width:100%;
+    margin-left:0em;
+    margin-right:0em;
+    padding-left:0em;
+  }
+  #pick_job ul li {
+    padding-top:0em;
+    padding-left:0em;
+    margin:0 1.5rem;
+    font-size:0.8em;
+    text-align:left;
+  }
   #search_title {
     position:inherit;
     line-height:60px;
@@ -682,10 +718,9 @@ button {
     left:0; transform:translateX(0%);
     width:100%;
     height:40px;
-    padding:0;
+    padding:0.3rem 0;
     margin:0 0em;
-    border-radius:0.1rem;
-    background-color:#eee;
+    border-radius:0.3rem;
     border:1px solid #ddd;
     overflow:hidden;
   }
@@ -729,6 +764,12 @@ button {
       margin-bottom:0px;
 
   }
+  #pick_job ul {
+    padding-left:0em;
+  }
+  #pick_job ul li{
+    margin:0 0.5rem
+  }
   .caption_slide {
       display:none;
   }
@@ -764,7 +805,7 @@ button {
   }
   #pick_job ul {
     width:100%;
-    margin-left:1.5em;
+    margin-left:0em;
     margin-right:0em;
     padding-left:0em;
     font-size:0.8em;
@@ -773,7 +814,6 @@ button {
     display:inline-block;
     padding-top:0em;
     padding-left:0em;
-    width:60px;
     text-align:left;
   }
   #pick_job ul li:last-child{
@@ -832,8 +872,8 @@ button {
     padding:0;
     margin:0 0em;
     font-size:0.6rem;
-    border-radius:0.1rem;
-    background-color:#eee;
+    border-radius:0.3rem;
+    background-color:#fff;
     border:1px solid #ddd;
     overflow:hidden;
   }
@@ -843,6 +883,9 @@ button {
     border:none;
     padding-left:1em;
     font-size:1.2em;
+  }
+  .container .title {
+    font-size:1.1rem;
   }
   #btn_searchJob {
     display:inline-block;
@@ -859,14 +902,14 @@ button {
     position:relative;
     float:left;
     width:100%;
-    font-size:0.7rem;
+    font-size:0.5rem;
     box-sizing:border-box;
-    margin:1.5em 0em;
+    margin:0em 0em;
   }
   #pick_job ul {
     width:100%;
     margin-left:0em;
-    margin-right:5em;
+    margin-right:0em;
     padding-left:0em;
     font-size:0.8em;
   }
@@ -874,12 +917,10 @@ button {
     display:inline-block;
     padding-top:0em;
     padding-left:0em;
-    width:60px;
     text-align:left;
+    margin:0.3rem 0.2rem;
   }
-  #pick_job ul li:last-child{
-    width:85px;
-  }
+ 
   #tb_text {
     display:block;
     text-align:center;
@@ -890,4 +931,3 @@ button {
   }
 
   }
-}

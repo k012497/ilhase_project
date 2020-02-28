@@ -18,8 +18,10 @@ aside{
 #div_left_menu{
   width: 200px;
   display: inline-block;
-  float: left;
+  height: 100%;
+  vertical-align: top;
 }
+
 #div_left_menu ul li{
   list-style: none;
   background-color: lightgray;
@@ -39,4 +41,12 @@ aside{
   font-weight: bold;
   font-size: 15px;
   background-color: transparent;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+  font-weight: 500;
+}
+
+button {
+  cursor: pointer;
 }

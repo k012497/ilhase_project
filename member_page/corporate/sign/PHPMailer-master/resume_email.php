@@ -37,7 +37,16 @@ $sender_contents=$row['cover_letter'];
 $sender_career=$row['career'];
 $sender_license=$row['license'];
 $sender_education=$row['education'];
-$sender_file_name=$row['file_name'];
+$file_copied=$row['file_copied'];
+
+
+$src='';
+if($file_copied){
+  $src='http://'.$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/data/".$file_copied;
+}else {
+  $src='https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-young-service-boy-vector-download-user-icon-vector-avatar-png-image_1991056.jpg';
+}
+
 
 if($sender_career===null){
     $sender_career="무";
@@ -48,9 +57,9 @@ if($sender_license===null){
 if($sender_education===null){
     $sender_education="무";
 }
-if($sender_file_name===null){
-    $sender_file_name="http://".$_SERVER["HTTP_HOST"]."/ilhase/common/img/user.png";
-}
+// if($sender_file_name===null){
+//     $sender_file_name="http://".$_SERVER["HTTP_HOST"]."/ilhase/common/img/user.png";
+// }
 
 
 mysqli_close($conn);
@@ -67,14 +76,14 @@ try {
 
     $mail ->Host = "smtp.naver.com";                      // email 보낼때 사용할 서버를 지정
     $mail ->SMTPAuth = true;                                // SMTP 인증을 사용함
-    $mail ->Username = "a980721a@naver.com";  // 메일 계정
-    $mail ->Password = "ses30303030@";                   // 메일 비밀번호
+    $mail ->Username = "cogus633@naver.com";  // 메일 계정
+    $mail ->Password = "*skacod1786*";                   // 메일 비밀번호
     $mail ->SMTPSecure = "ssl";                             // SSL을 사용함
-    $mail ->Port =465;                                        // email 보낼때 사용할 포트를 지정
+    $mail ->Port = 465;                                        // email 보낼때 사용할 포트를 지정
     $mail ->CharSet = "utf-8";                                // 문자셋 인코딩
 
     // 보내는 메일
-    $mail -> setFrom("a980721a@naver.com",$sender_name);
+    $mail -> setFrom("cogus633@naver.com",$sender_name);
 
     // 받는 메일
     // $mail -> addAddress("애플ID@me.com", "receive01");
@@ -88,7 +97,7 @@ try {
     $mail ->Subject = $sender_name."님 의 이력서입니다";                  // 메일 제목
     $mail ->Body = "
 
-    <img id='img_upload' src='".$sender_file_name."' alt='camera'>
+    <img id='img_upload' src='".$src."' alt='camera'>
     <div>
       <h1><이력서></h1>
       <ul>

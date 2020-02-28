@@ -10,12 +10,16 @@ let plan_list_max_num = 0;
 let comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
 
 function animate_count_up(target, data){
-    $(target).animateNumber(
-        {
+    $(target).animateNumber({
+            number: 0,
+        }, {
+            duration: 0
+        }
+    );
+    $(target).animateNumber({
             number: data,
             numberStep: comma_separator_number_step
-        },
-        {
+        }, {
             easing: 'swing',
             duration: 1000
         }
@@ -83,7 +87,6 @@ function get_member_data(){
             } else {
                 member_obj = JSON.parse(data);
                 get_apply_data(member_obj.id);
-                
             }
             
         },
@@ -113,7 +116,7 @@ function set_person_input_data(){
 }
 
 function set_apply_history_data(history_obj){
-    console.log('set_apply_history_data', history_obj);
+    // console.log('set_apply_history_data', history_obj);
     // 개인 회원의 지원 내역을 li 태그에 담아서 ul의 자식으로 추가
     const apply_list = document.querySelector('.apply_history_list');
     apply_list.innerHTML = "";
@@ -237,7 +240,6 @@ function get_plan_list(){
     });
 }
 
-
 function set_plan_list(plan_obj){
     plan_list_max_num = plan_obj.length + 1;
     // 데이터를 담은 li를 (plan_obj.length)개 만들어 붙이기
@@ -317,6 +319,9 @@ function get_unanswerd_questions(){
 }
 
 $(document).ready(function () {
+    const add_plan_form = $("#add_plan_form");
+    const target_animated =  $(".target");
+
     // btn_add_plan 누를 때
     $("#btn_add_plan").click(function(){
         var form_data = $("#add_plan_form").serialize();
@@ -329,6 +334,9 @@ $(document).ready(function () {
                 var plan_obj = JSON.parse(data);
                 display_plan_list(plan_obj, plan_list_max_num);
                 plan_list_max_num++;
+                add_plan_form.each(function(){
+                    this.reset();
+                });
             }, // success 
             error : function(xhr, status) {
                 alert(xhr + " : " + status);
@@ -338,14 +346,53 @@ $(document).ready(function () {
 
     // 스크롤 이동
     $(".nav-link, #btn_top").click(function() {
-        var scrollPosition = $($(this).attr("data-target")).offset().top;
-        console.log("clicked!", scrollPosition);
-        get_person_count();
-        get_corporate_count();
+        const target = $(this).attr("data-target");
+        var scrollPosition = $(target).offset().top;
+        console.log("clicked!", scrollPosition, target);
+
+        switch(target){
+            case '#manage_member':
+                // animate
+                get_person_count();
+                get_corporate_count();
+                get_recruitment_count();
+                break;
+            case '#manage_product':
+                // animate
+                get_sales();
+                get_revenue();
+                break;
+            case '#customer_support':
+                // animate
+                get_unanswerd_questions();
+                break;
+        }
 
         $('html, body').animate({
             scrollTop: scrollPosition - 71
         }, 500);
+    });
+
+    $(window).scroll(function(){
+        const scroll_top = $(this).scrollTop(); //스크롤바의 상단위치
+        const scroll_height = $(window).height(); //스크롤바를 갖는 window의 높이
+        const scroll_position = scroll_top + scroll_height;
+
+        // console.log(scroll_position, scroll_top, scroll_height);
+        if(scroll_position >= 905 && scroll_position <= 912){
+            console.log('회원관리');
+            get_person_count();
+            get_corporate_count();
+            get_recruitment_count();
+        } else if(scroll_position >= 1990 && scroll_position <= 1997) {
+            console.log('상품관리');
+            get_sales();
+            get_revenue();
+        } else if(scroll_position >= 3125 && scroll_position <= 3132){
+            console.log('고객센터');
+            get_unanswerd_questions();
+        }
+
     });
 
     // 크기에 따른 높이 설정

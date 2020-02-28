@@ -18,6 +18,7 @@ if(isset($_SESSION["username"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <!-- font -->
@@ -33,10 +34,16 @@ if(isset($_SESSION["username"])){
           email_check=0,
           b_license_num_check=0;
       var email_check_num="";
-      $('#email_check_num').blur(function(){
-        if($('#email_check_num').val()== String(email_check_num)){
+      $(document).keyup(function(){
+        if($('#email_check_num').val()==""){
+          $('#email_sub').html("<span style='color:red'></span>");
+          email_check=0;
+        }else if($('#email_check_num').val()== String(email_check_num)){
           $('#email_sub').html("<span style='color:red'>인증되었습니다.</span>");
           email_check=1;
+        }else if($('#email_check_num').val()==""){
+          $('#email_sub').html("<span style='color:red'></span>");
+          email_check=0;
         }else{
           $('#email_sub').html("<span style='color:red'>번호가 틀렸습니다..</span>");
           email_check=0;
@@ -94,7 +101,7 @@ if(isset($_SESSION["username"])){
           console.log("complete");
         });
       });
-      $('#pass_2').blur(function(){
+      $(document).keyup(function(){
         var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
         var pass_1=$('#pass_1').val(),
             pass_2=$('#pass_2').val();
@@ -112,7 +119,20 @@ if(isset($_SESSION["username"])){
           pass_check=0;
         }
       });
-      $('#id').blur(function(){
+
+      $(document).keyup(function(){
+        var ceo=$('#ceo').val();
+        var ckname = /^[가-힣]{2,5}$/;
+        if(ceo === ""){
+          $('#id_h5_1').html("<span style='color:red'>이름입력요망</span>");
+        }else if(!ckname.test(ceo)){
+          $('#id_h5_1').html("<span style='color:red'>형식안맞어/^[가-힣]{2,5}$/</span>");
+          id_check=0;
+        }else{
+          $('#id_h5_1').html("<span style='color:red'>이름입력완료</span>");
+        }
+      });
+      $(document).keyup(function(){
         var idValue=$('#id').val();
         var exp = /^[a-zA-Z0-9]{6,12}$/;
         if(idValue === ""){
@@ -200,12 +220,16 @@ if(isset($_SESSION["username"])){
       <h5><span style="color:red">*</span>아이디</h3>
       <input type="text" class="form-control" placeholder="아이디를 입력해주세요" id="id"
       name="id">
-      <h4 id="id_h5"></h4>
     </td>
     <td>
       <h5><span style="color:red">*</span>회사명</h3>
       <input type="text" class="form-control" placeholder="회사명을 입력해주세요"
       name="b_name" id="b_name"></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span id="id_h5"></span>
+    </td>
   </tr>
   <tr>
     <td>
@@ -214,8 +238,13 @@ if(isset($_SESSION["username"])){
       id="pass_1"  style="ime-mode:disabled;"></td>
     <td>
       <h5><span style="color:red">*</span>비밀번호 확인</h3>
-      <input type="password" class="form-control" placeholder="비밀번호를 다시 입력해주세요" id="pass_2" name="pass"  style="ime-mode:disabled;">
-      <h5 id="pass_sub"></h5>
+      <input type="password" class="form-control" placeholder="비밀번호를 다시 입력해주세요" id="pass_2" name="pass"  style="ime-mode:disabled;"><br>
+
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span id="pass_sub"></span>
     </td>
   </tr>
   <tr>
@@ -243,6 +272,11 @@ if(isset($_SESSION["username"])){
     <td>
       <h5><span style="color:red">*</span>대표자 명</h3>
       <input type="text" class="form-control" placeholder="대표자 명을 입력해주세요" name="ceo" id="ceo"></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span id="id_h5_1"></span>
+    </td>
   </tr>
   <tr>
     <td colspan="2">

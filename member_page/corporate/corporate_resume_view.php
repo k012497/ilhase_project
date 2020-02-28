@@ -4,6 +4,14 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
 $num=$_GET['num'];
 
+if($num===null){
+  echo "<script>
+      alert('해당 이력서가 구직자에의해 삭제되어 더이상 볼 수 없습니다. 이메일에서 이력서를 확인해주세요!');
+      history.go(-1);
+  </script>";
+  exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +64,7 @@ $num=$_GET['num'];
           if($file_copied){
             $src='http://'.$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/data/".$file_copied;
           }else {
-            $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/img/person.png';
+            $src='https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-young-service-boy-vector-download-user-icon-vector-avatar-png-image_1991056.jpg';
           }
 
 
