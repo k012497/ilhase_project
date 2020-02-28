@@ -26,9 +26,9 @@
   }else{
      ?>
      <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_edit_form.php"><li class="side_menu_item">내 정보수정</li></a>
-     <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_applicant_reading.php"><li class="side_menu_item">지원내역</li></a>
-     <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_plan_manager.php"><li class="side_menu_item">관심공고</li></a>
-     <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase\member_page\common\notification.php"><li class="side_menu_item">알림</li></a>
+     <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_applicant_reading.php"><li class="side_menu_item">지원자 열람</li></a>
+     <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_plan_manager.php"><li class="side_menu_item">플랜 관리</li></a>
+     <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/notification.php"><li class="side_menu_item">알림</li></a>
      <?php
    }
       ?>

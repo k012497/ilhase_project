@@ -19,7 +19,6 @@ if(isset($_SESSION['userid']))
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
-
   </head>
   <body>
     <header>
@@ -27,24 +26,21 @@ if(isset($_SESSION['userid']))
     </header>
 	<div class="container">
 		<div id="div_left_menu">
-			<?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/corporate/member_side_menu.php";?>
+			<?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
 		</div>
-		<section>
-			<div id="main_img_bar">
-			</div>
 				<div id="board_box">
 				<h3>
 					지원자 > 목록보기
 				</h3>
 				<ul id="board_list">
-						<li style="height: 50px;">
-							<span class="col1" style="display: inline-block;">번호</span>
-							<span class="col2" style="display: inline-block;">공고</span>
-							<span class="col3" style="display: inline-block;">제목</span>
-							<span class="col4" style="display: inline-block;">글쓴이</span>
-							<span class="col5" style="display: inline-block;">등록일</span>
-							<span class="col6" style="display: inline-block;"></span>
-						</li>
+					<li style="height: 50px;">
+						<span class="col1" style="display: inline-block;">번호</span>
+						<span class="col2" style="display: inline-block;">공고</span>
+						<span class="col3" style="display: inline-block;">제목</span>
+						<span class="col4" style="display: inline-block;">글쓴이</span>
+						<span class="col5" style="display: inline-block;">등록일</span>
+						<span class="col6" style="display: inline-block;"></span>
+					</li>
   <?php
   	if (isset($_GET["page"]))
   		$page = $_GET["page"];
@@ -130,8 +126,23 @@ if(isset($_SESSION['userid']))
   ?>
   			</ul> <!-- page -->
   	</div> <!-- board_box -->
-  </section>
+
   </div><!-- container -->
 
+	<script>
+	  //nav active 활성화
+	  document.querySelectorAll('.nav-item').forEach(function(data, idx){
+          data.classList.remove('active');
+
+          if(idx === 4){
+            data.classList.add('active');
+          }
+        });
+
+        // 사이드 메뉴 표시
+        const current_menu = document.querySelectorAll('.side_menu_item')[1];
+        current_menu.style.backgroundColor = 'rgb(133, 198, 241)';
+		current_menu.style.color = 'white';
+	</script>
   </body>
 </html>

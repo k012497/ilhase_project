@@ -188,8 +188,9 @@ if(isset($_SESSION['userid']))
       </header>
       <div class="container">
         <div id="div_left_menu">
-          <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/corporate/member_side_menu.php";?>
+          <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
         </div>
+        <div class="content-right">
         <table class="table table-sm">
             <tbody>
                 <tr>
@@ -309,9 +310,14 @@ if(isset($_SESSION['userid']))
                     </form>
                 </tbody>
             </table>
+        </div>
       </div>
     <!-- container -->
     <style>
+      .content-right {
+        width: 700px;
+        display: inline-block;
+      }
       .table {
         width: 750px;
         position: relative;
@@ -358,5 +364,20 @@ if(isset($_SESSION['userid']))
       }
 
     </style>
+    <script>
+	  //nav active 활성화
+	  document.querySelectorAll('.nav-item').forEach(function(data, idx){
+          data.classList.remove('active');
+
+          if(idx === 4){
+            data.classList.add('active');
+          }
+        });
+
+        // 사이드 메뉴 표시
+        const current_menu = document.querySelectorAll('.side_menu_item')[0];
+        current_menu.style.backgroundColor = 'rgb(133, 198, 241)';
+		current_menu.style.color = 'white';
+	</script>
   </body>
 </html>
