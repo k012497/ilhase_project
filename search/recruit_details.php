@@ -171,7 +171,11 @@
             </div>
         </div>
     </section>
+    <!-- footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+    <!-- 확대/축소 버튼 -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
+    
     <script type="text/javascript">
 
         var overlayOn= false, //지도위에 로드뷰 오버레이가 추가된 상태를 가지고 있을 변수

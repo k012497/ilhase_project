@@ -6,10 +6,11 @@
     padding: 0;
     font-family: 'Noto Sans KR', sans-serif;
 }
-/* html, body {
+html, body {
   width:100%;
-  min-height:100%;
-} */
+  height:100%;
+}
+
 ul, li {
     display: inline-block;
     list-style: none;
@@ -133,6 +134,41 @@ button {
   padding:1rem;
 }
 
+#zoom_box {
+  position: absolute;
+  right:20px;
+  top:620px;
+  text-align:center;
+  z-index:9999;
+  background-color:rgba(37,139,245);
+  border-radius:0.3rem;
+  height:150px;
+  width:80px;
+  
+}
+
+#btn_reset {
+    
+    cursor: pointer;
+    color:#fff;
+    display:block;
+}
+#zoom_box img {
+  display:block;
+  width:28px;
+  height:28px;
+  cursor: pointer;
+  line-height:60px;
+
+
+}
+#zoom_box #btn_zoomIn {
+  margin:10px 0;
+}
+#zoom_box #btn_zoomOut {
+  margin:10px 0;
+}
+
 
 /* ------------------------------- media query ------------------------------- */
 /* 웹 브라우저 중심으로 배치 */
@@ -183,6 +219,7 @@ button {
       border-color:#fff;
       box-shadow:none;
       background-color:transparent;
+ 
   }
   /* 내가 추가 */
   #btn_submit {
@@ -252,7 +289,7 @@ button {
   /* 내가 수정 추가 */
   .caption_slide {
     position:absolute;
-    left:15.5%;
+    left:15%;
     bottom:15%;
   }
   #btn_go {
@@ -260,7 +297,7 @@ button {
     border-radius:0.34rem;
     display:block;
     padding:0 9.5em;
-    line-height:80px;
+    line-height:70px;
     font-weight:bold;
     letter-spacing:1px;
     color:#007bff;

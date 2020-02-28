@@ -269,6 +269,8 @@ if(isset($_SESSION["usermember_type"]))
     </div>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+    <!-- 확대/축소 버튼 -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
     <script type="text/javascript">
      var lat = '';
      var lng = '';
