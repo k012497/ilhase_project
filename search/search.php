@@ -185,7 +185,7 @@
               industry_list=$('#industy_list'),
               ep_databox=$('#ep_databox'),
               start=0,
-              list=10,
+              list=5,
               idu_start=0,
               idu_list=10,
               select_industy='',
@@ -239,14 +239,13 @@
         
           //스크롤 할시 구직 데이터 가져오기
           $(window).scroll(function(){
-            console.log("1");
             var dh=$(document).height(),
                 wh=$(window).height(),
                 st=$(window).scrollTop(),
                 st=Math.ceil(st);
                 // console.log("dh:"+dh+" | wh:"+wh+" | st:"+st);
                 
-                if((wh+st) == dh){
+                if((wh+st) >= dh){
 
                   if(mode==="recruitment"){
                     var industryTitle=$.trim($('#search_all').text());
@@ -258,11 +257,10 @@
                       console.log(industryTitle);
                       append_list(industryTitle,select_alignment,select_career,area_text[0],area_text[1],user_id,mode);
                     } else {
-                          console.log("2");
+  
                           var select_industrydaile=$('#industy_list option:selected').val();
                           console.log(industryTitle+select_industrydaile);
                           industry_append_list(industryTitle,select_alignment,select_career,area_text[0],area_text[1],select_industrydaile,user_id,mode);
-                          console.log("3");
                     }//end of industriTitle 
 
                   }else if(mode==="applicant"){
@@ -489,26 +487,25 @@
                     });
 
                     // 기존 이벤트 제거
-                    $('#interest_insert p').off('click');
+                    $('.interest_insert').off('click');
                     //관심공고 누를떄(하트누를떄)
-                    $('#interest_insert p').click(function(e){
+                    $('.interest_insert').click(function(e){
                       console.log("cliclick", e);
-                      var pick_job_num=$(this).nextAll('input[type=hidden]').val();
+                      var pick_job_num=$(this).find('input[name=pick_job]').val();
                       if (user_id=='') {
                         alert('로그인 해주세요!');
                         return;
                       }
-                      if($(this).next().hasClass('click_heart')){
+                      if($(this).find('.heart_img').hasClass('click_heart')){
                         console.log('has class?');
-                        favorite_job_remove(user_id,pick_job_num);
-                        $(this).next().removeClass('click_heart');
+                        favorite_job_remove(user_id,pick_job_num,$(this));
+                        $(this).find('.heart_img').removeClass('click_heart');
                       }else{
-                        favorite_job_add(user_id,pick_job_num);
-                        $(this).next().addClass('click_heart');
+                        favorite_job_add(user_id,pick_job_num,$(this));
+                        $(this).find('.heart_img').addClass('click_heart');
                       }
                     });
 
-                    return;
                   } else {
                     
                     if($('#ep_databox li').length===0){
@@ -596,15 +593,18 @@
             };
 
             //관심공고 등록
-            function favorite_job_add(id,pick_job_num){
+            function favorite_job_add(id,pick_job_num,pick){
 
               $.ajax({
                 url:'./dml_favorite.php?mode=add',
                 type:'POST',
                 data:{"user_id":id,"pick_job_num":pick_job_num},
                 success:function(data){
-                      console.log(data);
+                      console.log(pick);
                       alert('관심공고에 등록되었습니다!');
+                      pick.find('.fav_count').text("("+data+")");
+                    
+                      
 
                 },
                 error:function(request,status,error){
@@ -613,18 +613,20 @@
               });
 
             }
+  
 
             //관심공고 삭제
-            function favorite_job_remove(id,pick_job_num){
+            function favorite_job_remove(id,pick_job_num,pick){
               console.log('favorite_job_remove?');
               $.ajax({
                 url:'./dml_favorite.php?mode=remove',
                 type:'POST',
                 data:{"user_id":id,"pick_job_num":pick_job_num},
-                success:function(){
-                      console.log('success!');
+                success:function(data){
+                       console.log(data);
                       alert('관심공고에 삭제되었습니다!');
-
+                      pick.find('.fav_count').text("("+data+")");
+                      
                 },
                 error:function(request,status,error){
                   console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -658,23 +660,22 @@
                     });
 
                     // 기존 이벤트 제거
-                    $('#interest_insert p').off('click');
-
+                    $('.interest_insert').off('click');
                     //관심공고 누를떄(하트누를떄)
-                    $('#interest_insert p').click(function(e){
-                      console.log("cliclick", e);
-                      var pick_job_num=$(this).nextAll('input[type=hidden]').val();
+                    $('.interest_insert').click(function(e){
+                      console.log("click", e);
+                      var pick_job_num=$(this).find('input[name=pick_job]').val();
                       if (user_id=='') {
                         alert('로그인 해주세요!');
                         return;
                       }
-                      if($(this).next().hasClass('click_heart')){
+                      if($(this).find('.heart_img').hasClass('click_heart')){
                         console.log('has class?');
-                        favorite_job_remove(user_id,pick_job_num);
-                        $(this).next().removeClass('click_heart');
+                        favorite_job_remove(user_id,pick_job_num,$(this));
+                        $(this).find('.heart_img').removeClass('click_heart');
                       }else{
-                        favorite_job_add(user_id,pick_job_num);
-                        $(this).next().addClass('click_heart');
+                        favorite_job_add(user_id,pick_job_num,$(this));
+                        $(this).find('.heart_img').addClass('click_heart');
                       }
                     });
 

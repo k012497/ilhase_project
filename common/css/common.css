@@ -6,10 +6,10 @@
     padding: 0;
     font-family: 'Noto Sans KR', sans-serif;
 }
-html, body {
+/* html, body {
   width:100%;
   min-height:100%;
-}
+} */
 ul, li {
     display: inline-block;
     list-style: none;
@@ -132,6 +132,7 @@ button {
 #open_resume_box {
   padding:1rem;
 }
+
 
 /* ------------------------------- media query ------------------------------- */
 /* 웹 브라우저 중심으로 배치 */

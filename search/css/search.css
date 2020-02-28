@@ -268,23 +268,30 @@ button:focus {
   border-radius: 0.23rem;
   font-size: 0.8rem;
 }
-#employment_data ul li #interest_insert {
+#employment_data ul li .interest_insert {
   position:absolute;
   display:block;
   right:0;
   top:0;
   padding:1.2rem 1.2rem;
 }
-#interest_insert p {
+.interest_insert {
+  cursor: pointer;
+  display: block;
+}
+.interest_insert p {
   float:left;
   line-height:15px;
   font-size:0.85rem;
-  cursor:pointer;
+
   color:#000;
     z-index:99999;
 }
-
-#employment_data #interest_insert span {
+.fav_count {
+  line-height:15px;
+  margin-bottom:1rem;
+}
+#employment_data .interest_insert span {
   float:right;
   width:15px;
   height:15px;
