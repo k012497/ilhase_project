@@ -118,6 +118,19 @@ if(isset($_SESSION["username"])){
           pass_check=0;
         }
       });
+
+      $(document).keyup(function(){
+        var ceo=$('#ceo').val();
+        var ckname = /^[가-힣]{2,5}$/;
+        if(ceo === ""){
+          $('#id_h5_1').html("<span style='color:red'>이름입력요망</span>");
+        }else if(!ckname.test(ceo)){
+          $('#id_h5_1').html("<span style='color:red'>형식안맞어/^[가-힣]{2,5}$/</span>");
+          id_check=0;
+        }else{
+          $('#id_h5_1').html("<span style='color:red'>이름입력완료</span>");
+        }
+      });
       $(document).keyup(function(){
         var idValue=$('#id').val();
         var exp = /^[a-zA-Z0-9]{6,12}$/;
@@ -206,12 +219,16 @@ if(isset($_SESSION["username"])){
       <h5><span style="color:red">*</span>아이디</h3>
       <input type="text" class="form-control" placeholder="아이디를 입력해주세요" id="id"
       name="id">
-      <h4 id="id_h5"></h4>
     </td>
     <td>
       <h5><span style="color:red">*</span>회사명</h3>
       <input type="text" class="form-control" placeholder="회사명을 입력해주세요"
       name="b_name" id="b_name"></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span id="id_h5"></span>
+    </td>
   </tr>
   <tr>
     <td>
@@ -220,8 +237,13 @@ if(isset($_SESSION["username"])){
       id="pass_1"  style="ime-mode:disabled;"></td>
     <td>
       <h5><span style="color:red">*</span>비밀번호 확인</h3>
-      <input type="password" class="form-control" placeholder="비밀번호를 다시 입력해주세요" id="pass_2" name="pass"  style="ime-mode:disabled;">
-      <h5 id="pass_sub"></h5>
+      <input type="password" class="form-control" placeholder="비밀번호를 다시 입력해주세요" id="pass_2" name="pass"  style="ime-mode:disabled;"><br>
+
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span id="pass_sub"></span>
     </td>
   </tr>
   <tr>
@@ -249,6 +271,11 @@ if(isset($_SESSION["username"])){
     <td>
       <h5><span style="color:red">*</span>대표자 명</h3>
       <input type="text" class="form-control" placeholder="대표자 명을 입력해주세요" name="ceo" id="ceo"></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span id="id_h5_1"></span>
+    </td>
   </tr>
   <tr>
     <td colspan="2">
