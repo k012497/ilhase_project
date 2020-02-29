@@ -4,13 +4,19 @@ $id =$_POST['id'];
 $num =$_POST['num'];
 $name =$_POST['name'];
 $price =$_POST['price'];
+if(isset($_POST['p_type'])){
+  $p_type ="무통장입금";
+}else{
+  $p_type="카카오페이";
+}
+
 echo "$price";
 $sql="select * from recruit_plan where price=".$price.";";
 $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_array($result);
 date_default_timezone_set("Asia/Seoul");
  $date=date("Y-m-d H:i:s");
-$sql="insert into purchase values(null,'".$date."','".$id."',".$num.",'".$name."',".$row['count'].",".$price.",'카카오페이')";
+$sql="insert into purchase values(null,'".$date."','".$id."',".$num.",'".$name."',".$row['count'].",".$price.",'".$p_type."')";
 mysqli_query($conn,$sql);
 echo $sql;
  ?>
