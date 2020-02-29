@@ -41,10 +41,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
       #manage_plan {
         position: relative;
-        top: 90px;
-      }
-
-      #manage_plan {
+        top: 20px;
         width: 700px;
         display: inline-block;
       }
@@ -91,8 +88,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
       .plan_count {
         font-weight: 500;
-        font-style: italic;
-
       }
 
       .check_mark {
@@ -104,22 +99,23 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         display: none;
       }
 
-      th.plan_name {
-        border-right: 2px solid #777;
+      span.plan_name {
+        border: 1px solid #777;
         border-radius: 15px 0px 0px 15px; 
-        width: 200px;
+        /* width: 200px; */
         text-align: center;
-        height: 70px;
-        padding: 0 1rem;
+        /* height: 70px; */
+        padding: 0.5rem;
       }
 
-      th.plan_count {
+      span.plan_count {
+        border: 1px solid #777;
         border-radius: 0px 15px 15px 0px;
-        width: 200px; 
+        /* width: 200px;  */
         text-align: center;
-        height: 70px;
+        /* height: 70px; */
+        padding: 0.5rem;
       }
-      
     </style>
     <script type="text/javascript">
         $(function(){
@@ -159,7 +155,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
       </div>
       <div id="manage_plan">
         <!-- 플랜 구매 -->
-        <h3 class="title">구인 플랜 구매</h3>
+        <h3 class="subtitle">📌 구인 플랜 구매</h3>
         <form class="row justify-content-center" id="plan_list">
           <?php
             // echo "<div class='btn-group btn-group-toggle text-center' data-toggle='buttons'>";
@@ -184,40 +180,71 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                 ";
               }
           ?>
-        <input type="submit" class="btn btn-primary btn-block" id="purchase_plan" value="구매하기">
+          <input type="submit" class="btn btn-primary btn-block" id="purchase_plan" value="구매하기">
         </form>
         
-        <!-- 이용중인 플랜 -->
-        <h3 class="title">이용중인 플랜</h3>
-        <div class="row" id="buy_plan">
-          <?php
-            for($i=0;$i<$numrow_purchase; $i++){
-              echo "
-              <div class='col-sm-4'style='height:70px;border-radius:15px;margin:5px;'>
-                <table >
-                  <tr>
-                    <th class='plan_name'>
-                    ".$row_purchase[$i]['plan_name']."</th>
-                    <th class='plan_count'>
-                    ".$row_purchase[$i]['available_count']."회
-                    </th>
-                  </tr>
-                </table>
-              </div>
-              ";
-            }
-          ?>
-        </div>
 
-      
+        <!-- 이용중인 플랜 -->
+    <h3 class="subtitle">이용중인 플랜</h3>
+      <div class="row" id="buy_plan">
+        <?php
+          for($i=0;$i<$numrow_purchase; $i++){
+            echo "
+            <div class='col-sm-4'style='height:70px;border-radius:15px;margin:5px;'>
+              <table >
+                <tr>
+                  <th style='border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;'>
+                  ".$row_purchase[$i]['plan_name']."</th>
+                  <th style='border-radius: 0px 15px 15px 0px; width:150px; border:0px;text-align:center;height:70px;'>
+                  ".$row_purchase[$i]['available_count']."회
+                  </th>
+                </tr>
+              </table>
+            </div>
+            ";
+          }
+         ?>
+    </div>
+
+    <div id="text_div_3">
+      <h3 class="subtitle">구매 내역 <span class="xi-credit-card"></span> </h3>
+    </div>
+    <div id="purchase_history">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">구매일자</th>
+            <th scope="col">구매 플랜</th>
+            <th scope="col">결제 수단</th>
+            <th scope="col">구매가격</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          for($i=0; $i<$numrow_purchase; $i++){
+            echo "
+            <tr>
+            <td>".$row_purchase[$i]['date']."</td>
+            <td>".$row_purchase[$i]['plan_name']."</td>
+            <td>".$row_purchase[$i]['method']."</td>
+            <td>".$row_purchase[$i]['price']."</td>
+            </tr>
+            ";
+          }
+          ?>
+        </tbody>
+      </table>
+    </div>
 
       </div><!-- manage plan -->
     </div><!-- container -->
 
     <style>
-      .container .title {
+      .container .subtitle {
+        font-size: 20px;
+        font-weight: 600;
         margin-top: 5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
       }
 
       .container .title:first-child {
@@ -228,12 +255,17 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         background-color: rgb(133, 198, 241);
         width: 130px;
         padding: 0.5rem;
-        margin: 1rem auto;
+        margin: 2rem auto;
         border: 0;
       }
 
       .btn-primary:hover {
         background-color: #5DB6DE;
+      }
+
+      #available_plan .col-sm-4 {
+        height:70px; 
+        border-radius:15px;
       }
     </style>
     <script>
