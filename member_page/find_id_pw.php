@@ -37,7 +37,7 @@
           var ph_1=$('#ph_1').val();
           if(obtion=="person"){
             $.ajax({
-              url: 'http://localhost/ilhase/member_page/find_id_pw_action.php',
+              url: 'http://<?=$_SERVER['HTTP_HOST']?>/ilhase/member_page/find_id_pw_action.php',
               type: 'POST',
               data: {"name":name_1,
                      "ph":ph_1,

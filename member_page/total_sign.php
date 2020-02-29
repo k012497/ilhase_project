@@ -26,39 +26,63 @@ if(isset($_SESSION["username"])){
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"> </script>
     <title>일하세</title>
+    <style>
+      .sign_up_box {
+        position: relative;
+        top: 23%; 
+        width:35rem; 
+        border-radius:20px;
+        background-color:#ffffff; 
+        margin: 0 auto;
+      }
+
+      .sign_up_box h3 {
+        margin: 1rem;
+      }
+
+      #person, #corporate {
+        width: 48%;
+        display: inline-block;
+        background-color: rgb(133, 198, 241);
+      }
+
+      #person {
+        margin-right: 0.5rem;
+      }
+
+      .container {
+        height: 550px;
+      }
+
+      .btn {
+        color: white;
+      }
+    </style>
 </head>
 <body>
     <header>
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+      <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div style="height:550px">
 
+    <div class="container">
 
-    <div class="container" style="display:flex;
-  align-items:center;top:150px;position:absolute;left:300px;">
-
-    <!-- Jumbotron Header -->
-    <div style="float:none; margin:0 auto">
-        <div class="card align-middle" style="width:35rem; border-radius:20px;background-color:#ffffff">
-            <div class="card-title" style="margin-top:30px;">
-              <h3 class="card-title text-center" style="color:#113366;">회원가입</h3>
-            </div>
-            <div class="card-body">
-              <form class="form-signin" method="POST" action="login.php">
-                <h4 class="form-signin-heading">회원 유형 선택</h4>
-                <label for="person" class="sr-only">person</label>
-                <a href="./person/sign/person_sign_form.php" type="button" name="person" id="person" class="btn btn-lg btn-success btn-block">개인 회원 가입</a><BR>
-                <label for="corporate" class="sr-only">corporate</label>
-                <a href="./corporate/sign/coporate_sign.php" type="button" name="corporate" id="corporate" class="btn btn-lg btn-danger btn-block">기업 회원 가입</a><br>
-              </form>
-            </div>
-          </div>
-          <div class="modal">
+    <div class="sign_up_box" style="float:none; margin:0 auto">
+      <h3 class="card-title text-center">회원가입</h3>
+      <div class="card align-middle">
+          <h3 class="text-center" style="margin-top: 2rem; font-size: 22px;">회원 유형 선택</h3>
+          <div class="card-body">
+            <form class="form-signin" method="POST" action="login.php">
+              <label for="person" class="sr-only">person</label>
+              <a href="./person/sign/person_sign_form.php" type="button" name="person" id="person" class="btn btn-lg btn-block">개인 회원 가입</a>
+              <label for="corporate" class="sr-only">corporate</label>
+              <a href="./corporate/sign/coporate_sign.php" type="button" name="corporate" id="corporate" class="btn btn-lg btn-block">기업 회원 가입</a><br>
+            </form>
           </div>
         </div>
-
-</div>
-    </div>
+        <div class="modal">
+        </div>
+      </div>
+    </div> 
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
 
