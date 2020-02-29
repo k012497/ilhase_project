@@ -32,7 +32,7 @@ if(isset($_GET['num'])){
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <section>
+    <div class="container">
     <?php
     	if (!$userid )
     	{
@@ -45,7 +45,6 @@ if(isset($_GET['num'])){
     	}
     ?>
       <form class="form_manage" action="resume_download.php" method="post" enctype="multipart/form-data">
-        <div id="div_main">
           <div id="div_recruit_sample">
             <h3 class="title" id="recruit_title">
                 <?php
@@ -108,10 +107,10 @@ if(isset($_GET['num'])){
                   $title=$row['title'];
                   $regist_date=$row['regist_date'];
                ?>
-                <li class="li_resume">
+                <li class="li_resume" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'">
                   <img src="" alt="">
-                  <p class="p_title" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
-                  <img class="btn_image" name="upfile" src="../img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
+                  <p class="p_title"><span class="resume_title"><?=$title?></span><br/><?=$regist_date?></p>
+                  <img class="btn_image" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
                 </li>
                 <?php
                 }
@@ -150,14 +149,23 @@ if(isset($_GET['num'])){
               </ul>
             </div>
           </div>
-        </div>
       </form>
-    </section>
-      <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
-
-
-
     </div>
+    
+    <!-- Footer -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+    </div>
+
+    <script>
+      //nav active 활성화
+      document.querySelectorAll('.nav-item').forEach(function(data, idx){
+        console.log(data, idx);
+        data.classList.remove('active');
+
+        if(idx === 2){
+          data.classList.add('active');
+        }
+      });
+    </script>
   </body>
 </html>
