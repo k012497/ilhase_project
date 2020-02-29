@@ -347,30 +347,32 @@ $(document).ready(function () {
     // 스크롤 이동
     $(".nav-link, #btn_top").click(function() {
         const target = $(this).attr("data-target");
-        var scrollPosition = $(target).offset().top;
-        console.log("clicked!", scrollPosition, target);
-
-        switch(target){
-            case '#manage_member':
-                // animate
-                get_person_count();
-                get_corporate_count();
-                get_recruitment_count();
-                break;
-            case '#manage_product':
-                // animate
-                get_sales();
-                get_revenue();
-                break;
-            case '#customer_support':
-                // animate
-                get_unanswerd_questions();
-                break;
+        if(target){
+            var scrollPosition = $(target).offset().top;
+            console.log("clicked!", scrollPosition, target);
+    
+            switch(target){
+                case '#manage_member':
+                    // animate
+                    get_person_count();
+                    get_corporate_count();
+                    get_recruitment_count();
+                    break;
+                case '#manage_product':
+                    // animate
+                    get_sales();
+                    get_revenue();
+                    break;
+                case '#customer_support':
+                    // animate
+                    get_unanswerd_questions();
+                    break;
+            }
+    
+            $('html, body').animate({
+                scrollTop: scrollPosition - 71
+            }, 500);
         }
-
-        $('html, body').animate({
-            scrollTop: scrollPosition - 71
-        }, 500);
     });
 
     $(window).scroll(function(){
