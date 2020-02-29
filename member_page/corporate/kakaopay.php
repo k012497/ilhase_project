@@ -1,9 +1,9 @@
 <?php
 session_start();
-$plan=$_GET['plan'];
+$num=$_GET['num'];
 $id=$_GET['id'];
 include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
-  $sql="select * from recruit_plan where name='$plan'";
+  $sql="select * from recruit_plan where num='$num'";
   $result_recruit_plan=mysqli_query($conn,$sql);
   $row_recruit_plan=mysqli_fetch_array($result_recruit_plan);
   $sql="select * from corporate where id='".$id."'";
