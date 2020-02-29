@@ -62,6 +62,9 @@
             
         </div>
     </div>
+    <div>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+    </div>
 
     <script>
         $(document).ready(function () {

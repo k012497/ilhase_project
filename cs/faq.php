@@ -9,6 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>일하세</title>
 
@@ -103,7 +104,7 @@ session_start();
           <input type="radio" name="question" id="answer02">
           <label class="person_questions" for="answer02">개인 회원가입을 하면 어떤 서비스를 이용할 수 있나요? <img src="../img/arrow.png" alt=""> </label>
           <div class="text">
-            <p>개인 회원은 이력서 탭에서 이력서를 추가, 수정, 삭제할 수 있습니다.<br />이 이력서들을 바탕으로 지원하고싶은 공고에 지원할 수 있습니다.<br />지원을 하지 않더라도 관심공고에 등록하여 원하는 채용 공고를 스크랩하여 원하는 공고만 모아볼 수 있습니다. <br />또한 1:1 문의를 이용할 수 있습니다.</p>
+            <p>개인 회원은 이력서 탭에서 이력서를 추가, 수정, 삭제할 수 있습니다.<br />이 이력서들을 바탕으로 지원하고 싶은 공고에 지원할 수 있습니다.<br />또한 관심 공고에 등록하여 원하는 채용 공고를 스크랩하여 원하는 공고만 모아볼 수 있습니다. <br />물론 고객센터도 로그인 후 이용하실 수 있습니다.</p>
           </div>
         </li>
         <li class="person_questions">
@@ -177,11 +178,8 @@ session_start();
     </div>
 
     <!-- footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
-        </div>
-    </footer>
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+
     <script>
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){

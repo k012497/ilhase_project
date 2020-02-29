@@ -120,11 +120,10 @@ $number = $total_record - $start;
       </div><!--end of list content -->
 
       </div><!--end of content -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
-        </div>
-    </footer>
+    
+    <!-- footer -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+
     <link rel="stylesheet" href="./css/notice.css">
     <script>
       //nav active 활성화
