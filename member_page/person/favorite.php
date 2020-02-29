@@ -32,7 +32,7 @@
         </div>
         <div id="div_apply">
             <tr>
-                <div id="employment_data">
+            <div id="employment_data">
                 <ul id="ep_databox">
             <?php
                 include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
@@ -60,12 +60,13 @@
                     echo '<li>
                         <a href="../../search/recruit_details.php?pick_job_num='.$num.'&img='.$real_file_name.'&title='.$title.'">
                         <img src="'.$src_path.'" alt="회사이미지">
-                        <span id="ep_title">'.$title.'</span>
-                        <span id="work_place">근무지 : '.$work_place.'</span>
-                        <span id="ep_period">접수기간 : '.$period_start.' ~ '.$period_end.'</span>
+                        <div class="recruit_text_box">
+                            <span id="ep_title">'.$title.'</span>
+                            <span id="work_place">근무지 : '.$work_place.'</span>
+                            <span id="ep_period">접수기간 : '.$period_start.' ~ '.$period_end.'</span>
+                        </div>
                         </a>
                         <div id="interest_insert">
-                            <p>관심 공고등록</p>
                             <span class="heart_img click_heart"></span>
                             <input type="hidden" name="pick_job" value="$num">
                         </div>
