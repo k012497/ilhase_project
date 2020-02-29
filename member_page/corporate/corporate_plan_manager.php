@@ -101,7 +101,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
       span.plan_name {
         border: 1px solid #777;
-        border-radius: 15px 0px 0px 15px; 
+        border-radius: 15px 0px 0px 15px;
         /* width: 200px; */
         text-align: center;
         /* height: 70px; */
@@ -141,7 +141,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
           console.log(radio.checked);
 
           check_sign.style.display = "inline";
-          
+
         }
     </script>
   </head>
@@ -156,7 +156,9 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
       <div id="manage_plan">
         <!-- 플랜 구매 -->
         <h3 class="subtitle">📌 구인 플랜 구매</h3>
-        <form class="row justify-content-center" id="plan_list">
+        <form class="row justify-content-center" id="plan_list"
+        action="purchase_form.php">
+        <input type="hidden" name="id" value="<?=$_SESSION['userid']?>">
           <?php
             // echo "<div class='btn-group btn-group-toggle text-center' data-toggle='buttons'>";
             for ($i=0; $i < $numrow; $i++) {
@@ -182,7 +184,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
           ?>
           <input type="submit" class="btn btn-primary btn-block" id="purchase_plan" value="구매하기">
         </form>
-        
+
 
         <!-- 이용중인 플랜 -->
     <h3 class="subtitle">이용중인 플랜</h3>
@@ -264,7 +266,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
       }
 
       #available_plan .col-sm-4 {
-        height:70px; 
+        height:70px;
         border-radius:15px;
       }
     </style>
