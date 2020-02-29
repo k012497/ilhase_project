@@ -120,9 +120,10 @@ if(isset($_SESSION["username"])){
                 </div>
                 <div class="login_bottom">
                   <ul>
+                    <!-- href="./total_sign.php" -->
                     <li><a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/find_id_pw.php">아이디/비밀번호 찾기</a></li>
                     <li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-                    <li><a href="./total_sign.php">회원가입</a></li>
+                    <li><a data-target="#layerpop" data-toggle="modal">회원가입</a></li>
                   </ul>
                 </div>
               </form>
@@ -276,5 +277,34 @@ if(isset($_SESSION["username"])){
 
 
     </style>
+    <div class="modal fade" id="layerpop" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- header -->
+      <div class="modal-header">
+        <!-- header title -->
+        <h4 class="modal-title">회원가입</h4>
+        <!-- 닫기(x) 버튼 -->
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+
+        <label for="person" class="sr-only">person</label>
+        <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/sign/person_sign_form.php" type="button" name="person" id="person" class="btn btn-lg btn-block"
+        style="background-color:#BCF5A9">개인 회원 가입</a>
+        <label for="corporate" class="sr-only">corporate</label>
+        <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/sign/coporate_sign.php" type="button" name="corporate" id="corporate" class="btn btn-lg btn-block"
+        style="background-color:#81F7F3">기업 회원 가입</a><br>
+
+      </div>
+      <!-- Footer -->
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

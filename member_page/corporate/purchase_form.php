@@ -49,25 +49,11 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         $('.hid').css('display','inline-table');
 
       });
-      $(document).keyup(function(){
-        if($('#bank_num').val()==""||$('#bank').val()==""){
-        $('#purchase').html("<span style='color:red'>입력해주세요.</span>");
-        num=0;
-        }
-        else{
-        $('#purchase').html("<span style='color:red'>확인되었습니다.</span>");
-        num=1;
-      }
-      });
       $('#plan_purchest_button').click(function(){
         var purchase_plan=$('input[name="purchase_method"]:checked').val();
-          var p_typeValue=$("#pc option:selected").val()
+        var p_typeValue=$("#pc option:selected").val()
 
         if(purchase_plan=="무통장"){
-          if(num==0){
-          alert("정보를 입력해주세요");
-          return;
-          }
           if($("#pc option:selected").val()=="-입금계좌를 선택해 주세요-"){
             alert("입금계좌를 선택해 주세요");
             return;
@@ -118,33 +104,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                           name="coperate_update_submit"
                           action="corperate_update.php?id='<?php echo $row['id']; ?>'&jc='<?php echo $row['job_category'] ?>&b_license_num=<?php echo $row['b_license_num'] ?>'"
                           method="post">
-
-                          <h6><span style="color:red">*</span>은행</h6>
-                          <input type="text" class="form-control" placeholder="은행을 입력해주세요" id="bank" name="bank">
-                          <h6 id="id_h5"></h6>
                       </td>
-                      <td>
-                          <h6><span style="color:red">*</span>계좌번호</h6>
-                          <input type="number" class="form-control" placeholder="(-)을제외한 계좌번호를 입력해주세요" name="bank_num"
-                              id="bank_num"></td>
-                  </tr>
-
-                  <tr class="hid">
-                    <td colspan="2" class="hid">
-                      <h5><span style="color:red">*</span>무통장 </h3>
-                        <select class="form-control"name="pc" id="pc">
-                        <option>-입금계좌를 선택해 주세요-</option>
-                        <option>농협 123-10-1234567</option>
-                        <option>신한 12-2424-23232</option>
-                        <option>국민 13-123-1313-31</option>
-                        <option>하나 123-10-1234567</option>
-                        <option>우리 12-2424-23232</option>
-                        <option>외환 13-123-1313-31</option>
-                        <option>기업 123-10-1234567</option>
-                        <option>신한 12-2424-23232</option>
-                        <option>우체국 13-123-1313-31</option>
-                        <option>수협 123-10-1234567</option>
-                      </select>
                   </tr>
                   <tr>
                     <td colspan="2" class="hid">
@@ -172,6 +132,23 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                               id="kakaopay"
                               style="ime-mode:disabled;">
                       </td>
+                  </tr>
+                  <tr class="hid">
+                    <td colspan="2" class="hid">
+                      <h5><span style="color:red">*</span>무통장 </h3>
+                        <select class="form-control"name="pc" id="pc">
+                        <option>-입금계좌를 선택해 주세요-</option>
+                        <option>농협 123-10-1234567</option>
+                        <option>신한 12-2424-23232</option>
+                        <option>국민 13-123-1313-31</option>
+                        <option>하나 123-10-1234567</option>
+                        <option>우리 12-2424-23232</option>
+                        <option>외환 13-123-1313-31</option>
+                        <option>기업 123-10-1234567</option>
+                        <option>신한 12-2424-23232</option>
+                        <option>우체국 13-123-1313-31</option>
+                        <option>수협 123-10-1234567</option>
+                      </select>
                   </tr>
                       <tr>
                           <td colspan="2">
