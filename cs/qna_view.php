@@ -58,6 +58,18 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
     <meta charset="utf-8">
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+      function get_unanswerd_questions(){
+      $.get('../admin/dml_chart.php', {mode : 'questions_count'}, function(data){
+          if(data != 0){
+              $('.notification').show();
+          } else {
+            $('.notification').hide();
+            console.log("get", data);
+          }
+        });
+      } 
+    </script>
     <title>일하세</title>
     <script>
       const member_type = '<?=$member_type?>';
@@ -74,7 +86,13 @@ if(isset($_GET["num"])&&!empty($_GET["num"])){
       }
     </script>
   </head>
-  <body>
+  <body
+    <?php
+      if($member_type === 'admin'){
+        echo "onload='get_unanswerd_questions();'";
+      }
+    ?>
+  >
     <header>
       <?php
         if($member_type !== 'admin'){

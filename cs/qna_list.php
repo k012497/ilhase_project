@@ -44,12 +44,24 @@ $number = $total_record - $start;
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="./css/notice.css">
     <title>일하세</title>
+    <script>
+      function get_unanswerd_questions(){
+      $.get('../admin/dml_chart.php', {mode : 'questions_count'}, function(data){
+          if(data != 0){
+            $('.notification').show();
+          } else {
+            $('.notification').hide();
+            console.log("get", data);
+          }
+        });
+      } 
+    </script>
+  </head>
+  <body onload="get_unanswerd_questions();">
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
         <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
     </header>
-  </head>
-  <body>
       <div class="container">
         <h2 class="title">1 : 1 문의</h2><br>
          <div id="list_top_title">
