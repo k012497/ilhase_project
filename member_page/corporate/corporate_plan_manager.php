@@ -195,10 +195,10 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
             echo "
             <div class='col-sm-4'style='height:70px;border-radius:15px;margin:5px;'>
               <table >
-                <tr>
+                <tr style='background-color: #eee;'>
                   <th style='border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;'>
                   ".$row_purchase[$i]['plan_name']."</th>
-                  <th style='border-radius: 0px 15px 15px 0px; width:150px; border:0px;text-align:center;height:70px;'>
+                  <th style='border-radius: 0px 15px 15px 0px; width:100px; border:0px;text-align:center;height:70px;'>
                   ".$row_purchase[$i]['available_count']."회
                   </th>
                 </tr>

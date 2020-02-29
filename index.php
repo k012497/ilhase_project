@@ -82,7 +82,7 @@ if(isset($_SESSION["usermember_type"]))
           <div class="search">
             <h2 class="title" id="search_title">빠른 검색</h2>
             <form id="searchJob_box" name="search_box" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/search/search.php" method="get">
-                <input id="search_job" name="search_word" type="textbox" placeholder="ex) 서울,부산,경비,제조,청소,신입,경력...">
+                <input id="search_job" name="search_word" type="textbox" placeholder="ex) 서울, 부산, 경비, 제조, 청소, 경력···">
                 <input type="hidden" name="mode" value="index_search">
                 <input id="btn_searchJob" type="image" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/search.png" alt="searchJob">
             </form>
@@ -123,9 +123,8 @@ if(isset($_SESSION["usermember_type"]))
                       <a data-fancybox="instruction"  data-caption="채용"  href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg">
                         <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce1.jpg" alt="사용설명서1">
                         <div class="card-body">
-                                <h5 class="card-title">채용</h5>
-                                <p class="card-text">채용 페이지에서 자세한 구직 탐색을 할 수 있습니다!</br>
-                                세분화된 구직활동!</br>지금부터 시작해보세요!</p>
+                                <h5 class="card-title">간편 검색</h5>
+                                <p class="card-text">원하는 지역, 산업 등을 선택하여 즉시 지원까지! '채용'탭에서 세분화된 검색을 시작해보세요.</p>
                         </div>
                       </a>
                       <div class="magnifier_img"></div>
@@ -133,13 +132,12 @@ if(isset($_SESSION["usermember_type"]))
               </div>
               <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100 manual_box">
-                        <a data-fancybox="instruction"  data-caption="간단한 이력서작성" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg">
+                        <a data-fancybox="instruction" data-caption="간단한 이력서작성" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg">
                             <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce2.jpg" alt="사용설명서2">
 
                           <div class="card-body">
-                              <h5 class="card-title">간단한 이력서 작성</h5>
-                              <p class="card-text">이력서! 고민하지 마세요!</br>저희 '일하세'가 간단하게 만들어드립니다!</br>
-                                간단한 이력서로 구직신청해보세요!
+                              <h5 class="card-title">간단 이력서 작성</h5>
+                              <p class="card-text">복잡한 양식의 이력서가 어려우셨나요? 일하세의 간단 이력서만 차근차근 따라오세요.
                               </p>
                           </div>
                           </a>
@@ -153,10 +151,8 @@ if(isset($_SESSION["usermember_type"]))
                             <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce3.jpg" alt="">
 
                         <div class="card-body">
-                                <h5 class="card-title">관심공고 등록</h5>
-                                <p class="card-text">
-                                   관심있는 공고에 마음껏 담아 비교하고 지원하세요!
-                                </p>
+                                <h5 class="card-title">관심 공고 등록</h5>
+                                <p class="card-text">마음에 드시는 공고가 있나요? 하트를 눌러 관심 공고에 추가하고, 마음껏 비교하고 지원하세요!</p>
                         </div>
                         </a>
                         <div class="magnifier_img"></div>
@@ -169,10 +165,8 @@ if(isset($_SESSION["usermember_type"]))
                   <a data-fancybox="instruction"  data-caption="인재 열람" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg">
                       <img class="card-img-top" src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/introduce4.jpg" alt="">
                           <div class="card-body">
-                              <h5 class="card-title">생각안남ㅠㅠ</h5>
-                              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
-                              elit. Explicabo magni sapiente, tempore debitis beatae culpa natus
-                              architecto.</p>
+                              <h5 class="card-title">한 눈에 관리</h5>
+                              <p class="card-text">우측 상단의 이름을 눌러 나의 정보, 지원 내역, 관심 공고, 알림을 관리하실 수 있습니다.</p>
                           </div>
                           </a>
                         <div class="magnifier_img"></div>

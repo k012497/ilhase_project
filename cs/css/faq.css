@@ -43,6 +43,8 @@ input[id*="answer"] + label {
   padding: 20px;
   width: 100%;
   border-bottom: 1.5px solid #777;
+  font-size: 17px;
+  font-weight: 500;
   color: #333;
   width: 500px;
   cursor: pointer;
@@ -93,6 +95,7 @@ input[id*="answer"] + label + div p {
   display: inline-block;
   padding: 2rem;
   margin: 0;
+  font-size: 15px;
 }
 
 .person_questions {
@@ -109,4 +112,8 @@ input[id*="answer"] + label + div p {
 
 .common {
   display: block;
+}
+
+.question_list ul {
+  margin-bottom: 3rem;
 }
