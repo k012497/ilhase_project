@@ -77,17 +77,11 @@ if(isset($_SESSION["username"])){
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div style="height:550px; margin-bottom:100px;">
+    <div style="height:650px;">
+      <div class="container" style="margin: 0 auto; height: 100%;">
 
-    <div class="container" style="display:flex;
-  align-items:center;top:150px;position:absolute; left:300px;">
-
-    <!-- Jumbotron Header -->
-    <div style="float:none; margin:0 auto">
-        <div class="card align-middle">
-            <div class="card-title text-center">
-              로그인
-            </div>
+      <div class="card align-middle">
+        <div class="card-title text-center">로그인</div>
             <div class="card-body">
               <form class="form-signin" method="POST" action="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/login.php" name="login_2">
                 <h4 class="form-signin-heading">
@@ -202,19 +196,11 @@ if(isset($_SESSION["username"])){
           </script>
           <div class="modal">
           </div>
-            <!-- Optional JavaScript -->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            </div>
-
-</div>
-    </div>
-    <!-- Footer -->
-    <iframe src="http://nid.naver.com/nidlogin.logout" style="display:none;"></iframe>
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; ilhase 2020</p>
         </div>
-    </footer>
+      </div>
+    <iframe src="http://nid.naver.com/nidlogin.logout" style="display:none;"></iframe>
+    <!-- Footer -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -222,12 +208,10 @@ if(isset($_SESSION["username"])){
     <script>
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){
-              data.classList.remove('active');
+          data.classList.remove('active');
+      });
 
-              if(idx === 4){
-                data.classList.add('active');
-              }
-            });
+      document.querySelector('.nav_login').classList.add('active');
     </script>
     <style>
       .card-title {
@@ -241,6 +225,9 @@ if(isset($_SESSION["username"])){
         width: 450px;
         border-radius: 20px;
         border: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 15%;
       }
 
       .btn-group {
