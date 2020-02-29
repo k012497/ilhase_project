@@ -192,7 +192,7 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
                 <li>
                   <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                     <img src='".$src."' alt='회사이미지'>
-                    <div class='recuit_text_box'>
+                    <div class='recruit_text_box'>
                       <span id='ep_title'>".$title."(".$b_name.")</span>
                       <span id='ep_pay'>".$pay."</span>
                       <span id='work_place'>근무지 : ".$work_place."</span>
@@ -212,7 +212,7 @@ function all_data($conn,$start,$list,$select_career,$user_id) {
               <li>
                 <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                   <img src='".$src."' alt='회사이미지'>
-                  <div class='recuit_text_box'>
+                  <div class='recruit_text_box'>
                     <span id='ep_title'>".$title."(".$b_name.")</span>
                     <span id='ep_pay'>".$pay."</span>
                     <span id='work_place'>근무지 : ".$work_place."</span>
@@ -278,7 +278,7 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
-                <div class='recuit_text_box'>
+                <div class='recruit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
@@ -297,7 +297,7 @@ function all_industry_select_data($conn,$start,$list,$select_career,$select_area
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
-                <div class='recuit_text_box'>
+                <div class='recruit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
@@ -360,7 +360,7 @@ function all_area_select($conn,$start,$list,$select_career,$select_area_contents
             <li>
             <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
               <img src='".$src."' alt='회사이미지'>
-              <div class='recuit_text_box'>
+              <div class='recruit_text_box'>
               <span id='ep_title'>".$title."(".$b_name.")</span>
               <span id='ep_pay'>".$pay."</span>
               <span id='work_place'>근무지 : ".$work_place."</span>
@@ -380,7 +380,7 @@ function all_area_select($conn,$start,$list,$select_career,$select_area_contents
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
-                <div class='recuit_text_box'>
+                <div class='recruit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
@@ -458,7 +458,7 @@ function production_data() {
             <li>
             <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
               <img src='".$src."' alt='회사이미지'>
-              <div class='recuit_text_box'>
+              <div class='recruit_text_box'>
                     <span id='ep_title'>".$title."(".$b_name.")</span>
                     <span id='ep_pay'>".$pay."</span>
                     <span id='work_place'>근무지 : ".$work_place."</span>
@@ -478,7 +478,7 @@ function production_data() {
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
-                <div class='recuit_text_box'>
+                <div class='recruit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
@@ -542,7 +542,7 @@ function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list)
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
-                <div class='recuit_text_box'>
+                <div class='recruit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
@@ -562,7 +562,7 @@ function search_find_data($conn,$serch_word,$user_id,$search_start,$search_list)
               <li>
               <a href='./recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                 <img src='".$src."' alt='회사이미지'>
-                <div class='recuit_text_box'>
+                <div class='recruit_text_box'>
                 <span id='ep_title'>".$title."(".$b_name.")</span>
                 <span id='ep_pay'>".$pay."</span>
                 <span id='work_place'>근무지 : ".$work_place."</span>
