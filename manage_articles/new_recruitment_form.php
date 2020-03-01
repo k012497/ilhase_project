@@ -319,7 +319,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       </div>
       <div id="div_image_upload">
         <p>사진 업로드</p>
-        <input id="imageFile" type="file" name="upfile" accept="image/*"><img src="../img/plus.png" alt="">
+        <input id="imageFile" type="file" name="upfile" accept="image/*"><img src="../img/plus.png" alt=""> <label for="imageFile" id="label_file"><?=$file_name?></label>
       </div>
       </div>
       <div id="div_btn_regist">
@@ -363,6 +363,18 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
         }
       }
       require_value();
+
+      $(document).ready(function() {
+          $('input[type=file]').on('change',function(event) {
+            if(window.FileReader){
+              var label=$(this).val().split('/').pop().split('\\').pop();
+            }else{
+
+              var label=$(this).val().split('/').pop().split('\\').pop();
+            }
+            $(this).siblings('#label_file').text(label);
+          });
+      });
 
     </script>
   </body>

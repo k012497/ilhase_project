@@ -107,6 +107,7 @@ if(isset($_GET['num'])){
                   $title=$row['title'];
                   $regist_date=$row['regist_date'];
                ?>
+
                 <li class="li_resume" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'">
                   <img src="" alt="">
                   <p class="p_title"><span class="resume_title"><?=$title?></span><br/><?=$regist_date?></p>
@@ -124,9 +125,9 @@ if(isset($_GET['num'])){
                   $regist_date=$row['regist_date'];
                ?>
                 <li class="li_resume">
-                  <img src="" alt="">
+                  <img src="./img/basicimg.jpg" alt="">
                   <p class="p_title" onclick="location.href='new_recruitment_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
-                  <img class="btn_image" name="upfile" src="../img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'">
+                  <img class="btn_image" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'">
                 </li>
                 <?php
                 }
@@ -151,7 +152,7 @@ if(isset($_GET['num'])){
           </div>
       </form>
     </div>
-    
+
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
     </div>
