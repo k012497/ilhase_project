@@ -65,6 +65,7 @@ if($mode === 'update'){
           document.write_notice.submit();
        }
     </script>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <title>일하세</title>
   </head>
 
