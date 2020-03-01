@@ -73,7 +73,7 @@ section {
 }
 
 .li_resume{
-  width:30%;
+  width: 340px;
   height: 100px;
   text-decoration: none;
   border-radius: 10px;
@@ -85,7 +85,7 @@ section {
 }
 
 #li_write_resume{
-  width: 30%;
+  width: 330px;
   height: 100px;
   text-decoration: none;
   border-radius: 10px;
@@ -140,6 +140,7 @@ section {
   width: 95px;
   height: 98px;
   float: left;
+  margin-right: 1rem;
 }
 
 .li_resume .p_title{
@@ -152,7 +153,8 @@ section {
   font-weight: 600;
 }
 
-.li_resume .btn_image{
+#btn_close{
+  z-index: 999;
   width: 17px;
   height: 17px;
   float: right;
@@ -191,7 +193,7 @@ section {
 }
 #form_resume {
   width:1100px;
-  margin:0 auto;
+  margin:0 auto 5rem auto;
 }
 /* 남채현 추가 2.26*/
 #resume_title {
@@ -203,6 +205,8 @@ section {
 }
 #main_resume h3{
   border-bottom:1px solid #333;
+  font-size: 24px;
+  font-weight: 600;
 }
 #div_resume_main{
   box-sizing: border-box;
