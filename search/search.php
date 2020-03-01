@@ -402,7 +402,7 @@
             var area_list=$('#area_tb li');
             //지역 selsect박스 안에 지역 데이터 구현
             
-            $('#area_tb li').off('click').click(function(){
+            $('#area_tb li').click(function(){
               area=$(this).text();
               console.log(area);
               isSelectArea=true;
