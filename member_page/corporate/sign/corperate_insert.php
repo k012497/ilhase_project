@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connnector.php";
+    include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
     $id   = $_POST['id'];
     $pass = $_POST['pass'];
@@ -20,8 +20,9 @@
     mysqli_close($conn);
 
     echo "
-	      <script>
-	          location.href = 'http://".$_SERVER['HTTP_HOST']."/ilhase/member_page/login_form.php';
-	      </script>
+        <script>
+            alert('가입이 완료되었습니다.');
+            location.href = 'http://".$_SERVER['HTTP_HOST']."/ilhase/member_page/login_form.php';
+        </script>
 	  ";
 ?>

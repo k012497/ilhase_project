@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_setting.php";
+
 if(isset($_SESSION["userid"])){
   $userid=$_SESSION["userid"];
 }else{
@@ -38,7 +38,7 @@ if(isset($_SESSION["username"])){
           $('#email_sub').html("<span style='color:red'></span>");
           email_check=0;
         }else if($('#email_check_num').val()== String(email_check_num)){
-          $('#email_sub').html("<span style='color:red'>인증되었습니다.</span>");
+          $('#email_sub').html("<span style='color:#777'>인증되었습니다.</span>");
           email_check=1;
         }else if($('#email_check_num').val()==""){
           $('#email_sub').html("<span style='color:red'></span>");
@@ -100,7 +100,7 @@ if(isset($_SESSION["username"])){
           console.log("complete");
         });
       });
-      $('#pass_1').keyup(function(){
+      $('#pass_1, #pass_2').keyup(function(){
         var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
         var pass_1=$('#pass_1').val(),
             pass_2=$('#pass_2').val();
@@ -111,10 +111,10 @@ if(isset($_SESSION["username"])){
           $('#pass_sub').html("<span style='color:red'>영어, 숫자, 특수문자를 포함한 6-15글자만 가능합니다.</span>");
           $('.slick-next').attr('disabled', true);
         }else if(pass_1==pass_2){
-          $('#pass_sub').html("<span style='color:red'>비밀번호가 일치합니다.</span>");
+          $('#pass_sub').html("");
           pass_check=1;
         }else{
-          $('#pass_sub').html("");
+          $('#pass_sub').html("<span style='color:red'>비밀번호가 불일치합니다.</span>");
           pass_check=0;
         }
       });
@@ -219,7 +219,7 @@ if(isset($_SESSION["username"])){
                 <tr>
                     <td>
                         <form
-                            name="coperate_update_submit"
+                            name="coperate_insert_submit"
                             action="corperate_insert.php"
                             method="post">
 
@@ -294,7 +294,7 @@ if(isset($_SESSION["username"])){
                                     id="b_license_num"
                                     name="b_license_num">
                                 <input type="button" class="form-control" value="조회" id="b_license_num_button">
-                                <h4 id="b_license_num_h4"></h4>
+                                <h6 id="b_license_num_h4"></h6>
                             </td>
                         </tr>
                         <tr>
@@ -379,7 +379,7 @@ if(isset($_SESSION["username"])){
         color: white;
       }
 
-      #corporate_update_button {
+      #corporate_insert_button {
         margin-top: 3rem;
         background-color: rgb(133, 198, 241);
         border: 0;

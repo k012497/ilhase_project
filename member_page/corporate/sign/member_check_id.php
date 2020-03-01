@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connnector.php";
+    include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
     if (isset($_POST["inputId"])) {
       $id = $_POST["inputId"];
