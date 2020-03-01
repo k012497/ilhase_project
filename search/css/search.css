@@ -1,5 +1,12 @@
 /* search css */
 /* 작성자: 남채현 */
+#search_all, #sh_text {
+  margin: 3rem 0 1rem 0;
+  font-size: 24px;
+  font-weight: 700;
+  user-select: none;
+}
+
 select:focus {
   outline: 0;
 }
@@ -132,7 +139,7 @@ button:focus {
   display: none;
   position: fixed;
   /* Stay in place */
-  z-index: 10;
+  z-index: 9999;
   /* Sit on top */
   left: 0;
   top: 0;

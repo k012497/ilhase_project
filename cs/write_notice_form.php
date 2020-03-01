@@ -73,7 +73,7 @@ if($mode === 'update'){
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
         <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">
     </header>
-     
+
     <div class="container">
         <h3 class="title">
           <?php
