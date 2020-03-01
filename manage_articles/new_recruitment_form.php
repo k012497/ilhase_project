@@ -319,7 +319,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       </div>
       <div id="div_image_upload">
         <p>사진 업로드</p>
-        <input id="imageFile" type="file" name="upfile" accept="image/*"><img src="../img/plus.png" alt=""> <label for="imageFile" id="label_file"><?=$file_name?></label>
+        <input id="imageFile" type="file" name="upfile" accept="image/*"><img src="./img/plus.png" alt=""> <label for="imageFile" id="label_file"><?=$file_name?></label>
       </div>
       </div>
       <div id="div_btn_regist">

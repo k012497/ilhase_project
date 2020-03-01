@@ -137,7 +137,7 @@ section {
 }
 
 .li_resume img{
-  width: 100px;
+  width: 95px;
   height: 98px;
   float: left;
 }
@@ -243,7 +243,7 @@ section {
   padding:0.5rem 0.5rem;
   border:1px solid #ddd;
   box-sizing:border-box;
-  
+
 }
 #imageFile{
   display:none;
@@ -416,4 +416,3 @@ section {
 #btn_cancel,#btn_update,#btn_insert:focus{
   outline:none;
 }
-
