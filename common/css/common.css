@@ -148,25 +148,22 @@ button {
 
 #zoom_box {
   position: absolute;
-  right:20px;
-  top:620px;
+  left:20px;
   text-align:center;
   z-index:9999;
   background-color:rgba(37,139,245);
   border-radius:0.3rem;
-  height:150px;
-  width:80px;
-  
+  height:60px;
+  width:200px;
 }
 
 #btn_reset {    
     cursor: pointer;
     color:#fff;
-    display:block;
+    margin: 1rem;
 }
 
 #zoom_box img {
-  display:block;
   width:28px;
   height:28px;
   cursor: pointer;
@@ -501,20 +498,20 @@ button {
 }
 /* 해상도 1600 이하 */
 @media (max-width:1600px) {
+    .caption_slide {
+      position:absolute;
+      bottom:4rem;
+    }
 
-  .caption_slide {
-    position:absolute;
-    bottom:4rem;
-  }
-  #btn_go {
-    font-size:1.2rem;
-    border-radius:0.34rem;
-    padding:0 4.3em;
-  }
-  #atuo_keword{
-    width:60%;
-  
-  }
+    #btn_go {
+      font-size:1.2rem;
+      border-radius:0.34rem;
+      padding:0 4.3em;
+    }
+
+    #atuo_keword{
+      width:60%;
+    }
   
 }
 
@@ -818,6 +815,7 @@ button {
     outline:none;
   }
 
+  
 
 }
 /* 해상도 576이하 */
@@ -851,6 +849,24 @@ button {
   }
   .carousel-inner {
     min-height:150px;
+  }
+
+  #zoom_box {
+    height:45px;
+    width: 70px;
+  }
+
+  #btn_zoomOut {
+    padding-right: 0.5rem;
+  }
+
+  #zoom_box img {
+    width: 18px;
+    height: 18px;
+  }
+
+  #zoom_box #btn_reset {
+    display: none;
   }
 
 }
