@@ -54,10 +54,6 @@
               set_read($num);
             }
 
-            // 14일 지난 알림은 자동 삭제
-            $sql = "delete from notification where regist_date <= date_sub(now(), interval 14 DAY);";
-            mysqli_query($conn, $sql);
-
             // 로그인한 사용자의 알림 가져오기
             $sql= "select * from notification where member_id = '".$user_id."' order by regist_date desc;";
 
