@@ -23,9 +23,9 @@ $(document).ready(function() {
 
     $("#text_job").val(temp + job +", " +date+", " +years+" \n");
 
-    input_job.val();
-    input_date.val();
-    input_years.val();
+    input_job.val("");
+    input_date.val("");
+    input_years.val("");
   });
 
   $("#btn_license").click(function(event) {
@@ -37,8 +37,8 @@ $(document).ready(function() {
 
     $("#text_license").val(temp + license +", " +license_date +" \n");
 
-    input_license.val();
-    input_license_date.val();
+    input_license.val("");
+    input_license_date.val("");
   });
 
   $("#btn_major").click(function(event) {
@@ -51,9 +51,9 @@ $(document).ready(function() {
 
     $("#text_school").val(temp + school +", " +graduation+", "+ major +" \n");
 
-    input_school.val();
-    input_graduation.val();
-    input_major.val();
+    input_school.val("");
+    input_graduation.val("");
+    input_major.val("");
   });
 
   $("#btn_insert").click(function() {
