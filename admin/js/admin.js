@@ -415,7 +415,6 @@ $(document).ready(function () {
 });
 
 function init() { 
-    $('.notification').hide();
 
     // manage member
     get_person_count();
