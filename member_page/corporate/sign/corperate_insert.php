@@ -1,4 +1,6 @@
 <?php
+    include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connnector.php";
+
     $id   = $_POST['id'];
     $pass = $_POST['pass'];
     $name = $_POST["b_name"];
@@ -7,17 +9,15 @@
     $jc = $_POST["jc"];
     $b_license_num = $_POST["b_license_num"];
     $email  = $_POST["email"];
-    // date_default_timezone_set("Asia/Seoul");
-    // $regist_day = date("Y-m-d (H:i)");  // 현재의 '년-월-일-시-분'을 저장
-
-
-    $con = mysqli_connect("localhost", "root", "123456", "ilhase");
 
 	$sql = "insert into corporate";
 	$sql .= " values('{$id}', '{$pass}', '{$name}', '{$jc}', '{$ceo}', {$b_license_num}, '{$address}','{$email}', 3)";
+    mysqli_query($conn, $sql);  // $sql 에 저장된 명령 실행
+    
+    $sql = "insert into purchase values (null, now(), '$id', 0, '무료 체험', 3, 0, '-');";
+    mysqli_query($conn, $sql);
 
-	mysqli_query($con, $sql);  // $sql 에 저장된 명령 실행
-    mysqli_close($con);
+    mysqli_close($conn);
 
     echo "
 	      <script>
