@@ -40,7 +40,7 @@
     </header>
     <section>
       <div class="wrap">
-        <h1 class="title" id="search_all">
+        <h3 class="title" id="search_all">
           <?php
             if($mode==='index_search'){
               //검색해서 들어왔을 때
@@ -53,7 +53,7 @@
               echo "<a href='./search.php?mode=recruitment'>전체</a><span>></span>";
             }
           ?>
-        </h1>
+        </h3>
         <?php
             //검색 모드나 인재 모드가 아닐떄  
             if(!($mode==='index_search') && !($mode==='applicant')){
@@ -112,7 +112,7 @@
           }
           if(!($mode==='applicant')){
         ?>
-        <h2 class="title" id="sh_text"><span id="search_ico"></span>맞춤검색</h2>
+        <h3 class="title" id="sh_text"><span id="search_ico"></span>맞춤검색</h3>
         <?php
           }
           if($mode==='index_search'){    
