@@ -145,7 +145,7 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
 
               }
             ?>
-            
+
           </ul>
 
           <div class="input_comment_area">
@@ -204,7 +204,7 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
         console.log(comment_num);
 
         const response = confirm('댓글을 삭제하시겠습니까?');
-        
+
         if(response){
           $.ajax({
             type: "get",

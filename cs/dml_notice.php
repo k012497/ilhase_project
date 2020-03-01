@@ -3,7 +3,7 @@
 
   $mode = $_GET['mode'];
   $member_id = array();
-  
+
   switch ($mode){
     case 'insert':
       insert_notice();
@@ -20,7 +20,7 @@
     case 'add_comment':
       insert_comment();
       break;
-    
+
     case 'delete_comment':
       delete_comment();
       break;
@@ -52,7 +52,7 @@ function insert_notice(){
     </script>";
 
     // reset($member_id);
-    
+
   }
 }
 
@@ -74,7 +74,7 @@ function update_notice(){
 
     if (!$result) {
       die('Error: ' . mysqli_error($conn));
-    } 
+    }
 
     $row = mysqli_fetch_array($result);
     $file_copied = $row['file_copied'];
@@ -129,6 +129,13 @@ function delete_notice(){
     die('Error: ' . mysqli_error($conn));
   }
 
+  // ---------------------------------------------------------------------------------------------------------------
+  $sql = "delete from notice_comment where parent = '$num';";
+  $result = mysqli_query($conn, $sql);
+  if(!$result){
+    die('Error: ' . mysqli_error($conn));
+  }
+
   $row = mysqli_fetch_array($result);
   $copied_name = $row["file_copied"];
 
@@ -162,7 +169,7 @@ function send_notification($title, $content){
 
 function get_all_members_id(){
   global $conn, $member_id;
-  
+
   $sql = "select id from person";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_array($result)){
@@ -191,7 +198,7 @@ function insert_comment(){
   if(!$result){
     echo "INSERT comment error: ".mysqli_error($conn).$sql;
   } else {
-    // insert한 댓글 번호 가져오기 
+    // insert한 댓글 번호 가져오기
     $sql = "select max(num) as c_num from notice_comment";
     $result = mysqli_query($conn, $sql);
     $c_num = mysqli_fetch_array($result)['c_num'];
