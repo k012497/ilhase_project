@@ -136,23 +136,20 @@
   </div>
 </nav>
 <script>
-  var user_id='<?=$id?>';
-  var member_type='<?=$member_type?>';
-
+   var user_id='<?=$id?>';
   $(function() {
-    if(member_type === 'person'){
-      $.post('http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/dml_message_alarm.php?mode=check_period', {'user_id' : user_id}, function(data){
-      });
-    }
 
-    // 실시간 알림 메시지 구현
+   
+    //실시간 알람메시지 구현
     setInterval(function(){
+
       $.ajax({
+
         url:'http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/dml_message_alarm.php',
         type:'post',
-        data:{'user_id':user_id, 'member_type' : member_type},
+        data:{'user_id':user_id},
         success:function(data){
-          if(data){
+          if(data==="true"){
               $('.message_alarm').css({'display':'inline-block'});
 
           }else {
@@ -160,7 +157,10 @@
           }
         }
       });
-    }, 3);
+
+    }, 30);
+
+
   });
 
 </script>
