@@ -170,7 +170,6 @@ function open_info_modal(member_obj, history_obj){
             input[4].value = member_obj.b_license_num;
             input[5].value = member_obj.address;
             input[6].value = member_obj.email;
-            input[7].value = member_obj.available_service;
 
             corporate_modal.style.display = 'block';
             break;
@@ -320,7 +319,6 @@ function get_unanswerd_questions(){
 
 $(document).ready(function () {
     const add_plan_form = $("#add_plan_form");
-    const target_animated =  $(".target");
 
     // btn_add_plan 누를 때
     $("#btn_add_plan").click(function(){
@@ -380,18 +378,17 @@ $(document).ready(function () {
         const scroll_height = $(window).height(); //스크롤바를 갖는 window의 높이
         const scroll_position = scroll_top + scroll_height;
 
-        // console.log(scroll_position, scroll_top, scroll_height);
         if(scroll_position >= 905 && scroll_position <= 912){
-            console.log('회원관리');
+            // console.log('회원관리');
             get_person_count();
             get_corporate_count();
             get_recruitment_count();
         } else if(scroll_position >= 1990 && scroll_position <= 1997) {
-            console.log('상품관리');
+            // console.log('상품관리');
             get_sales();
             get_revenue();
         } else if(scroll_position >= 3125 && scroll_position <= 3132){
-            console.log('고객센터');
+            // console.log('고객센터');
             get_unanswerd_questions();
         }
 
@@ -405,16 +402,11 @@ $(document).ready(function () {
 
     // 창크기 변화 감지
     $(window).resize(function() {
-        console.log();
-        // $('#admin_main_top').css({
-        //     'width' : '100%',
-        //     'background-size': '100%'
-        // });
         fit_height.css({
         'min-height' : window.innerHeight,
         });
 
-        console.log(window.outerHeight, window.innerHeight, window.outerWidth, window.outerWidth);
+        // console.log(window.outerHeight, window.innerHeight, window.outerWidth, window.outerWidth);
     });
 
     $("body").animate({
