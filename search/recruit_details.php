@@ -42,7 +42,7 @@
    ?>
   <head>
     <meta charset="utf-8">
-    <title>일하세</title>
+    <title>채용 - <?=$title?></title>
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="./css/recruit_details.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -175,7 +175,6 @@
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
     <!-- 확대/축소 버튼 -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
-    
     <script type="text/javascript">
 
         var overlayOn= false, //지도위에 로드뷰 오버레이가 추가된 상태를 가지고 있을 변수

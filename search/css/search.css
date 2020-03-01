@@ -132,7 +132,7 @@ button:focus {
   display: none;
   position: fixed;
   /* Stay in place */
-  z-index: 10;
+  z-index: 9999;
   /* Sit on top */
   left: 0;
   top: 0;

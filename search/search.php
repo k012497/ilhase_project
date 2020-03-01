@@ -18,7 +18,18 @@
    ?>
   <head>
     <meta charset="utf-8">
-    <title>일하세</title>
+    <?php
+      if($mode==="recruitment"){
+
+        echo "<title>일하세 - 채용</title>";
+
+      }else if($mode==="index_search" || $mode==="auto_keyword"){
+        echo "<title>일하세 - 검색</title>";
+      }else if($mode==="applicant"){
+        echo "<title>일하세 - 인재</title>";
+      }
+    
+    ?>
     <link rel="stylesheet" href="./css/search.css">
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -112,7 +123,7 @@
           }else{
         ?>
         <div id="select_box">
-          <select name="alignment">
+          <select name="alignment" id="alignment">
             <option value="최신순" selected >최신순</option>
             <option value="인기순">인기순</option>
           </select>
@@ -166,8 +177,7 @@
             </div>
             <span id="area_close">close</span>
         </div>
-      </div>
-      
+      </div>  
     </section>
     <!-- 확대/축소 버튼 -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
@@ -223,6 +233,7 @@
            
           if(mode==="recruitment"){
              //전체 페이지에서 구직 데이터 (최신순 & 전체 & 경력무관)
+              start=0;
               append_list(industry_title,select_alignment,select_career,$.trim(selectAreainit.text()),area_text[1],user_id,mode);
           }else if(mode==='applicant'){
             //기업회원이 인재페이지로 들어올시
@@ -244,13 +255,14 @@
                 st=Math.ceil(st);
                 // console.log("dh:"+dh+" | wh:"+wh+" | st:"+st);
                 
-                if((wh+st) >= dh){
+                if((wh+st) == dh){
 
                   if(mode==="recruitment"){
                     var industryTitle=$.trim($('#search_all').text());
                     var select_area=$('#area_selectBox > p').text();
                     var select_career=$('select[name=career]').val();
                     var strArea=select_area.replace(/(\s*)/g,"");
+                    var select_alignment=$('select[name=alignment]').val()
                     var area_text=strArea.split('>'); 
                     if (industryTitle === "전체>") {
                       console.log(industryTitle);
@@ -275,7 +287,8 @@
              });
 
           //산업종류 선택시
-          $('.col_box button').click(function(){
+              
+          $('.col_box button').off('click').click(function(){
               select_industy=$.trim($(this).text());
               industry_list.show();
               industry_list.empty();
@@ -315,29 +328,60 @@
                   });
 
             }); // end of click (.col_box button)
+
+
+            //최신순/ 인기순 선택했을때 
+            $('#alignment').off('change').on("change",function(){
+              var industryTitle=$.trim($('#search_all').text());
+              var change_alignment=$(this).val();
+              var select_career=$('select[name=career]').val();
+              var select_area=$('#area_selectBox > p').text();
+              var strArea=select_area.replace(/(\s*)/g,"");
+              var area_text=strArea.split('>');
+              start=0;
+              idu_start=0;
+              console.log('최신순 선택ㄱㄱㄱ:'+industryTitle);
+              if(industryTitle==="전체>"){ 
+                //전체페이지에서
+                start=0;
+                ep_databox.empty();
+                append_list(industryTitle,change_alignment,select_career,area_text[0],area_text[1],user_id,mode);
+
+              }else {
+                //세부산업 페이지에서
+                ep_databox.empty();
+                idu_start=0;
+                var select_industrydaile=$('select[name=industry]').val();
+                industry_append_list(industryTitle, change_alignment,select_career,area_text[0],area_text[1],select_industrydaile,user_id,mode);
+              }
+
+              
+
+            });
             
-            $('#industry_list').off('change');
+            
             // 세부 산업셀렉트박스 선택했을 때 체인지 이벤트
-            $('#industy_list').on("change",function(){
+            $('#industy_list').off('change').on("change",function(){
               var title=$('.title#search_all');
               var change_industryList=$(this).val();
               var select_career=$('select[name=career]').val();
+              var select_alignment=$('select[name=alignment]').val();
               var select_area=$('#area_selectBox > p').text();
               var strArea=select_area.replace(/(\s*)/g,"");
               var area_text=strArea.split('>');
               console.log("디테일산업 클릭했을때 " + change_industryList + "/ idu_start : "+idu_start);
               ep_databox.empty();
               idu_start=0;
-              industry_append_list($.trim(title.text()), select_alignment,select_career,area_text[0],area_text[1],change_industryList,user_id,'recruitment');
+              industry_append_list($.trim(title.text()), select_alignment,select_career,area_text[0],area_text[1],change_industryList,user_id,mode);
             });
     
               $('#career_list').off('change');
             //경력셀렉트 선택했을 떄 체인지 이벤트
-              $('#career_list').on("change",function(){
+              $('#career_list').off().on("change",function(){
                   var title=$('.title#search_all'),
-                      select_alignment=$(this).val(),
                       select_area=$('#area_selectBox > p').text();
                   var strArea=select_area.replace(/(\s*)/g,"");
+                  var select_alignment=$('select[name=alignment]').val();
                   var area_text=strArea.split('>');
                   var select_career_data=$(this).val();
                   var select_industrydaile=$('select[name=industry]').val();
@@ -360,7 +404,8 @@
 
             var area_list=$('#area_tb li');
             //지역 selsect박스 안에 지역 데이터 구현
-            $('#area_tb li').click(function(){
+            
+            $('#area_tb li').off('click').click(function(){
               area=$(this).text();
               console.log(area);
               isSelectArea=true;
@@ -384,8 +429,9 @@
                });
             });
             
-            $('#btn_si_gun_gu').off('click');
+          
             //지역 셀렉트 박스안에 선택버튼  클릭시 이벤트
+            $('#btn_si_gun_gu').off('click');
             $('#btn_si_gun_gu').click(function(){
                       area_list.removeClass('area_active');
                       var checkData=$('input[name=si_gun_gu]:checked').val(),
@@ -393,6 +439,7 @@
                           industry_title=$('#search_all').text(),
                           areaSelctBox=$('#area_selectBox > p'),
                           select_industrydaile=$('#industy_list option:selected').val();
+                      var select_alignment=$('select[name=alignment]').val();
                           if(isSelectArea===false){
                             alert("검색할 지역을 선택해주세요!");
                             return;
@@ -487,10 +534,9 @@
                         $(item).addClass("fadein");
                     });
 
-                    // 기존 이벤트 제거
-                    $('.interest_insert').off('click');
+                    
                     //관심공고 누를떄(하트누를떄)
-                    $('.interest_insert').click(function(e){
+                    $('.interest_insert').off('click').click(function(e){
                       console.log("cliclick", e);
                       var pick_job_num=$(this).find('input[name=pick_job]').val();
                       if (user_id=='') {
@@ -569,7 +615,7 @@
 
 
             //모달창(지역 셀렉트) 클릭 이벤트(열기)
-             $('#area_selectBox').click(function(){
+             $('#area_selectBox').off('click').click(function(){
               $('#area_contents').addClass('open');
               $('#area_contents').removeClass('cancel');
                 setTimeout(function(){
@@ -579,7 +625,7 @@
             });
 
             //모달창(지역 셀렉트) 클릭 이벤트(닫기)
-            $('#area_close').click(function(){
+            $('#area_close').off('click').click(function(){
                   modal_close();
             });
 
@@ -737,7 +783,6 @@
 
   //nav active 활성화
     document.querySelectorAll('.nav-item').forEach(function(data, idx){
-    console.log(data, idx);
     data.classList.remove('active');
 
     if(idx === 1){

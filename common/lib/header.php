@@ -95,7 +95,7 @@
          <li class="nav-item dropdown" id="nav_user">
              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              <?php
-               echo $username;
+               echo $username."<span class='message_alarm'></span>";
               ?>
              </a>
              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -103,7 +103,7 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_applicant_reading.php">지원자 열람</a>
                  <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_plan_manager.php">공고 플랜관리</a>
-                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase\member_page\common\notification.php">알림</a>
+                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase\member_page\common\notification.php">알림<span class='message_alarm'></span></a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/logout.php">로그아웃</a>
              </div>
@@ -115,7 +115,7 @@
          <li class="nav-item dropdown" id="nav_user">
              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              <?php
-               echo $username;
+               echo $username."<span class='message_alarm'></span>";
               ?>
              </a>
              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -123,7 +123,7 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/apply_history.php">지원 내역</a>
                  <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/favorite.php">관심 공고</a>
-                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/notification.php">알림</a>
+                 <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/notification.php">알림<span class='message_alarm'></span></a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/logout.php">로그아웃</a>
              </div>
@@ -135,3 +135,32 @@
 
   </div>
 </nav>
+<script>
+   var user_id='<?=$id?>';
+  $(function() {
+
+   
+    //실시간 알람메시지 구현
+    setInterval(function(){
+
+      $.ajax({
+
+        url:'http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/lib/dml_message_alarm.php',
+        type:'post',
+        data:{'user_id':user_id},
+        success:function(data){
+          if(data==="true"){
+              $('.message_alarm').css({'display':'inline-block'});
+
+          }else {
+            $('.message_alarm').hide();
+          }
+        }
+      });
+
+    },0.5);
+
+
+  });
+
+</script>
