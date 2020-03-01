@@ -86,7 +86,6 @@ if($mode === 'update'){
           ?>
         </h3>
   	    <form name="write_notice" method="post" action="" enctype="multipart/form-data">
-            <input type="hidden" name="hit" value="<?=$hit?>">
             <ul id="write_notice">
               <li>
                 <label for="input_subject">제목</label>

@@ -123,14 +123,7 @@ function delete_notice(){
   $num   = $_GET["num"];
   $page   = $_GET["page"];
 
-  $sql = "select * from notice where num = $num;";
-  $result = mysqli_query($conn, $sql);
-  if(!$result){
-    die('Error: ' . mysqli_error($conn));
-  }
-
-  // ---------------------------------------------------------------------------------------------------------------
-  $sql = "delete from notice_comment where parent = '$num';";
+  $sql = "select file_copied from notice where num = $num;";
   $result = mysqli_query($conn, $sql);
   if(!$result){
     die('Error: ' . mysqli_error($conn));
@@ -139,21 +132,29 @@ function delete_notice(){
   $row = mysqli_fetch_array($result);
   $copied_name = $row["file_copied"];
 
-	if ($copied_name)
-	{
+  // 첨부 파일 삭제
+	if ($copied_name){
 		$file_path = "./data/".$copied_name;
 		unlink($file_path);
-    }
+  }
 
-    $sql = "delete from notice where num = $num";
-    mysqli_query($conn, $sql);
-    mysqli_close($conn);
+  // 해당 공지의 댓글 삭제
+  $sql = "delete from notice_comment where parent = '$num';";
+  $result = mysqli_query($conn, $sql);
+  if(!$result){
+    die('Error: ' . mysqli_error($conn));
+  }
 
-    echo "
-	     <script>
-	         location.href = 'notice.php?page=$page';
-	     </script>
-	   ";
+  // 해당 공지 삭제
+  $sql = "delete from notice where num = $num";
+  mysqli_query($conn, $sql);
+  mysqli_close($conn);
+
+  echo "
+      <script>
+        //  location.href = 'notice.php?page=$page';
+      </script>
+    ";
 }
 
 function send_notification($title, $content){
