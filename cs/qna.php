@@ -31,7 +31,7 @@
         <h3 class="title">1:1 문의</h3>
             <div class="send_question">
                 <!-- 일하세 메세지 -->
-                <div style="margin-bottom: 1rem;">
+                <div class="description" style="margin-bottom: 1rem;">
                     <div id="top_description">
                         <span>불편한 점이 있으신가요?</span><br />
                         <span>문의하실 내용을 보내주시면 검토 후 답변드리겠습니다.</span>
@@ -42,12 +42,12 @@
                     </div>
                 </div>
                 <!-- 사용자 메세지 -->
-                <div>
+                <div class="description">
                     <div class="profile">
                         <img src="https://image.flaticon.com/icons/svg/42/42877.svg" alt="user" srcset=""><br />
                         <span><?=$user_name?></span>
                     </div>
-                    <form action="dml_qna.php?mode=q_insert" method="post" style="width: 80%;">
+                    <form action="dml_qna.php?mode=q_insert" method="post">
                         <input type="hidden" name="user_id" value="<?=$user_id?>">
                         <input type="hidden" name="user_name" value="<?=$user_name?>">
                         <textarea name="content" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요."></textarea>
@@ -59,7 +59,7 @@
         <h3 class="title past_qna">지난 문의 내역</h3>
         <div class="past_qna">
             <!-- 동적으로 추가 -->
-            
+
         </div>
     </div>
     <div>
@@ -82,7 +82,7 @@
         document.querySelectorAll('.nav-item').forEach(function(data, idx){
           console.log(data, idx);
           data.classList.remove('active');
-        
+
           if(idx === 3){
             data.classList.add('active');
           }
