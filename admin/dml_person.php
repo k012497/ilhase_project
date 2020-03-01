@@ -74,17 +74,19 @@
         global $conn, $id;
 
         $name = $_POST['name'];
-        $birth = $_POST['birth'];
         $gender = $_POST['gender'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
 
-        $sql = "update person set name = '$name', birth = '$birth', gender = '$gender', email = '$email', phone = '$phone' where id = '$id'";
+        $sql = "update person set name = '$name', gender = '$gender', email = '$email', phone = '$phone' where id = '$id'";
         $result = mysqli_query($conn, $sql);
         if($result){
-            // echo "업데이트 성공";
+            echo "<script>
+                alert('$id 회원 정보를 수정하였습니다.');
+                history.go(-1);
+            </script>";
         } else {
-            echo "업데이트 실패".mysqli_error($conn);
+            echo "업데이트 실패 ".mysqli_error($conn);
         }
     }
 
@@ -94,7 +96,10 @@
         $sql = "delete from person where id = '$id'";
         $result = mysqli_query($conn, $sql);
         if($result){
-            // echo "삭제 성공";
+            echo "<script>
+                alert('$id 회원을 삭제하였습니다.');
+                history.go(-1);
+            </script>";
         } else {
             echo "삭제 실패 ".mysqli_error($conn);
         }

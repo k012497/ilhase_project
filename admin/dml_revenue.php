@@ -21,7 +21,9 @@
         $result = mysqli_query($conn, $sql);
         if($result){
             while($row = mysqli_fetch_array($result)){
-                array_push($products_array, $row[0]);
+                if($row[0] != '무료 체험') {
+                    array_push($products_array, $row[0]);
+                }
             }
         } else {
             echo mysqli_error($conn);

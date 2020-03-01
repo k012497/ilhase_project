@@ -43,7 +43,6 @@
                 'b_license_num' => $row['b_license_num'],
                 'address' => $row['address'],
                 'email' => $row['email'],
-                'available_service' => $row['available_service'],
                 'member_type' => $type
               );
             echo json_encode($member_data, JSON_UNESCAPED_UNICODE);
@@ -81,9 +80,8 @@
         $ceo = $_POST['ceo'];
         $address = $_POST['address'];
         $email = $_POST['email'];
-        $available_service = $_POST['available_service'];
 
-        $sql = "update corporate set b_name = '$b_name', ceo = '$ceo', address = '$address', email = '$email', available_service = '$available_service' where id = '$id'";
+        $sql = "update corporate set b_name = '$b_name', ceo = '$ceo', address = '$address', email = '$email' where id = '$id'";
         $result = mysqli_query($conn, $sql);
         if($result){
             // echo "업데이트 성공";
