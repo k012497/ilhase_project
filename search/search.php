@@ -45,11 +45,8 @@
             if($mode==='index_search'){
               //검색해서 들어왔을 때
               echo "검색 > ".$serch_word;
-            }else if($mode==='applicant'){
-              //기업회원으로 로그인해서 인재를 눌렀을 때
-              echo "> 인재";
-            }else { 
-              //채용을 클릭했을때
+            }else if($mode==='recruitment'){
+              // 채용을 클릭했을 때
               echo "<a href='./search.php?mode=recruitment'>전체</a><span>></span>";
             }
           ?>
@@ -118,7 +115,7 @@
           if($mode==='index_search'){    
               echo"<p>\"".$serch_word."\"의 대한 검색결과 입니다</p>";
           }else if($mode==='applicant'){
-              echo "<h3 id='apply_title'><span id='apply_log'></span><span id='apply_inner'>이력서<span id='ex_text'>구인자들 중에 공개된 이력서입니다!</span></span></h3>
+              echo "<h3 id='applicant_title'><span id='apply_log'></span><span id='apply_inner'>인재<span id='ex_text'>구직자들의 공개된 이력서입니다.</span></span></h3>
               ";
           }else{
         ?>

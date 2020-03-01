@@ -1,6 +1,6 @@
 /* search css */
 /* 작성자: 남채현 */
-#search_all, #sh_text {
+#search_all, #sh_text, #apply_inner {
   margin: 3rem 0 1rem 0;
   font-size: 24px;
   font-weight: 700;
@@ -349,6 +349,7 @@ button:focus {
 #apply_box {
   text-align: center;
   cursor: pointer;
+  padding: 1rem;
 }
 #ap_img{
   width:100%;
@@ -359,7 +360,7 @@ button:focus {
 #ap_title {
   font-size:1.5rem;
 }
-#apply_title #apply_log {
+#applicant_title #apply_log {
   position: absolute; 
   left:1rem;
   bottom:0.5rem;
@@ -373,11 +374,12 @@ button:focus {
 #ap_pay,#ap_address {
   font-size:1rem;
 }
-#apply_title {
+#applicant_title {
   position: relative;
   line-height:50px;
   border-bottom:1px solid #333;
   margin-bottom:2rem;
+  margin-top: -4.5rem;
 }
 #ex_text {
   margin:3rem 1rem;
