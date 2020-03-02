@@ -60,7 +60,6 @@
         global $conn, $monthly_data_array, $month_array;
         
         foreach($month_array as $month){
-            echo "<script>console.log('$plan_name', '$month', 'get_revenue_data');</script>";
             $sql = "select sum(price) from purchase where plan_name = '$plan_name' and date like '%$month%';";
             $result = mysqli_query($conn, $sql);
             if($result){

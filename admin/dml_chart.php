@@ -157,15 +157,4 @@
             echo $count;
         }
     }
-
-    function get_monthly_revenue(){
-        global $conn;
-
-        $sql = "select sum(price), MID(date, 1, 7) as m from purchase where plan_name = 'small plan' group by m order by m desc limit 6;";
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_array($result)){
-            //echo;
-        }
-        
-    }
 ?>

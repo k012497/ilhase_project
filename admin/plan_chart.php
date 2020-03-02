@@ -79,7 +79,6 @@
         let start_idx = product_count * <?=$limit?>;
 
         data.series['name'] = total_products[product_count];
-        // console.log(total_products[product_count], data.series[product_count]['name']);
 
         let data_array = new Array();
         for(let month_data = 0 ; month_data < <?=$limit?> ; month_data++){
@@ -98,11 +97,5 @@
         data.series.push(revenue_data);
     }
 
-
-    // For apply theme tui.chart.registerTheme('myTheme', theme); options.theme =
-    // 'myTheme';
-
-    tui
-        .chart
-        .lineChart(line_chart, data, options);
+    tui.chart.lineChart(line_chart, data, options);
 </script>

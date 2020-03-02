@@ -414,5 +414,4 @@ function init() {
 
 document.getElementById('input_id').addEventListener('submit', function(e){
     e.preventDefault();
-    console.log(e);
 });
