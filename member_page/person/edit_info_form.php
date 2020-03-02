@@ -27,7 +27,7 @@ if(isset($_SESSION["username"])){
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div class="container">
+    <div class="div_container">
     <div id="div_left_menu">
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
     </div>
@@ -68,7 +68,7 @@ if(isset($_SESSION["username"])){
         <label for="email"><strong>*</strong>이메일</label> <input type="email" id="email" name="email" value="<?=$email?>" readonly>
       </div>
       <div id="member_phone">
-        <label for="phone"><strong>*</strong>핸드폰 번호</label> <input type="text" id="phone" name="phone" value="<?=$phone?>">  <p id="phoneMsg" style="display:none;">핸드폰 번호를 다시 입력해주세요.</p>
+        <label for="phone"><strong>*</strong>핸드폰 번호</label> <input type="text" id="phone" name="phone" value="<?=$phone?>" placeholder="(-)하이픈 포함 휴대폰번호">  <p id="phoneMsg" style="display:none;">하이픈 포함 휴대폰 번호를 입력해주세요.</p>
       </div>
       <div id="member_address">
           <label for="address"><strong>*</strong>주 소</label> <input type="text" id="zipcode" name="zipcode" value="<?=$zipcode?>"> <input id="btn_address" type="button" name="btn_address" value="우편검색" >
