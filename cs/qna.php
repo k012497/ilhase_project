@@ -50,7 +50,7 @@
                     <form action="dml_qna.php?mode=q_insert" method="post">
                         <input type="hidden" name="user_id" value="<?=$user_id?>">
                         <input type="hidden" name="user_name" value="<?=$user_name?>">
-                        <textarea name="content" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요."></textarea>
+                        <textarea name="content" cols="30" rows="10" placeholder="이곳에 문의할 내용을 입력하신 후, 전송하기 버튼을 눌러주세요." required></textarea>
                         <input type="submit" value="전송하기"></button>
                     </form>
                 </div>

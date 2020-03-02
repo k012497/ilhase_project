@@ -178,9 +178,10 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     <script>
       function add_comment(){
         let comment_area = document.querySelector('#c_content');
-        // let comment_content = document.querySelector('#c_content').value;
+        
         if(!comment_area.value){
           alert("댓글을 입력해주세요");
+          return false;
         }
 
         // 테이블에 insert

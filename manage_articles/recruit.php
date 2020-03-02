@@ -28,11 +28,11 @@ session_start();
 
   mysqli_close($conn);
 
-  // echo "
-  //     <script>
-  //       location.href = './manage_recruitment_form.php';
-  //     </script>
-  // ";
+  echo "
+      <script>
+        location.href = './manage_recruitment_form.php';
+      </script>
+  ";
 
   function insert_recruitment(){
     global $conn, $id, $require;
