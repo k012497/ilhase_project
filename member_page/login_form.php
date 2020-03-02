@@ -20,9 +20,9 @@ if(isset($_SESSION["username"])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"> </script>
     <title>일하세</title>
@@ -105,11 +105,6 @@ if(isset($_SESSION["username"])){
                     <li><div id="naverIdLogin" onclick="naver_login();"></div></li>
                     <!-- kakao -->
                     <li><div class="kakao">
-                        <!-- <form name="member_form" action="../join/join_query.php" method="post">
-                          <input type="hidden" name="mode" value="kakao">
-                          <input type="hidden" name="join_id" id="id" value="">
-                          <input type="hidden" name="join_name" id="name"  value="">
-                          <input type="hidden" name="email" id="email"  value=""> -->
                         <a href="#" type="button" onclick="kakao_login();"
                           style="background-image:url('http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/kakao_account_login_btn.png');"></a>
                         <!-- </form> -->
@@ -155,10 +150,6 @@ if(isset($_SESSION["username"])){
                 console.log(name);
 
                  var array = email.split("@");
-                // console.log(profileImage);
-                // console.log(birthday);
-                // console.log(uniqId);
-                // console.log(age);
                 naverLogin.logout();
                 location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php?userid="+email+"&username="+array[0]+"&usermember_type=sns_log";
               } else {
@@ -202,9 +193,6 @@ if(isset($_SESSION["username"])){
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script>
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){
