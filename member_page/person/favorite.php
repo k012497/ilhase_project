@@ -37,7 +37,7 @@
             <?php
                 include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
-                $sql = "select r.title, r.num, r.work_place, r.period_start, r.period_end, r.file_name from favorite f join recruitment r on f.recruit_id = r.num where f.member_id = '".$user_id."';";
+                $sql = "select r.title, r.num, r.work_place, r.period_start, r.period_end, r.file_copied from favorite f join recruitment r on f.recruit_id = r.num where f.member_id = '".$user_id."';";
                 $result = mysqli_query($conn, $sql);
 
                 while($row = mysqli_fetch_array($result)){
@@ -46,10 +46,10 @@
                     $work_place = $row['work_place'];
                     $period_start = $row['period_start'];
                     $period_end = $row['period_end'];
-                    if($row['file_name']){
+                    if($row['file_copied']){
                         // 파일이 존재하는 경우
-                        $real_file_name = $row['file_name'];
-                        $src_path = 'http://'.$_SERVER['HTTP_HOST'].'/ilhase/search/img/'.$row['file_name'].''; // 경로 설정
+                        $real_file_name = $row['file_copied'];
+                        $src_path = 'http://'.$_SERVER['HTTP_HOST'].'/ilhase/manage_articles/data/'.$row['file_copied'].''; // 경로 설정
                     } else {
                         // 기본 이미지 사용
                         $real_file_name = './img/basicimg.jpg';
