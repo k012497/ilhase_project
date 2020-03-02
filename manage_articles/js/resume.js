@@ -57,13 +57,23 @@ $(document).ready(function() {
   });
 
   $("#btn_insert").click(function() {
-    alert("등록 되었습니다.");
-    document.form_resume.submit();
+    if($('#cover_letter').val() == "" || $('#input_title').val() == ""){
+      alert('제목과 자기소개는 필수입니다.');
+      return;
+    } else {
+      alert("등록 되었습니다.");
+      document.form_resume.submit();
+    }
   });
 
   $("#btn_update").click(function() {
-    alert("수정 되었습니다.");
-    document.form_resume.submit();
+    if($('#cover_letter').val() == "" || $('#input_title').val() == ""){
+      alert('제목과 자기소개는 필수입니다.');
+      return;
+    } else {
+      alert("수정 되었습니다.");
+      document.form_resume.submit();
+    }
   });
 
   $("#btn_cancel").click(function() {

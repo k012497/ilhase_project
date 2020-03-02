@@ -153,7 +153,7 @@ if(isset($_GET['num'])){
       <div id="div_resume_main">
         <div>
           <input type="hidden" name="num" value="<?=$num?>">
-          <input id="input_title" type="text" name="input_title" placeholder="제목을 적어주세요." value="<?=$title?>" required>
+          <input id="input_title" type="text" name="input_title" placeholder="제목을 적어주세요." value="<?=$title?>" required />
             <input id="input_public" type="checkbox" name="input_public" value="<?=$public?>" checked>&nbsp;공개
         </div>
         <div id="div_image_profile">
@@ -174,7 +174,7 @@ if(isset($_GET['num'])){
         <div id="div_cover_letter">
           <div id="div_cover_letter_detail">
             <p>간단하게 자기를 소개 해보세요!!</p>
-            <textarea name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;" required><?=$cover_letter?></textarea>
+            <textarea id="cover_letter" name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;"><?=$cover_letter?></textarea>
           </div>
           <div id="div_show">
             <p id="btn_show" ><span id="btn_more_img"></span>더 자세한 이력을 작성하려면 클릭하세요</p>
@@ -182,7 +182,6 @@ if(isset($_GET['num'])){
           <div id="div_resume_detail" >
             <div class="div_present">
               <p>이전에 하셨던 일이 있나요 ?</p>
-              <!-- <input  id="text_job" type="text" name="" value="" readonly> -->
               <textarea id="text_job" name="text_job" rows="5" cols="80" ><?=$career?></textarea>
               <input id="input_job" type="text" name="job" style="width:250px;" placeholder="맡았던 직무를 간단히 적어주세요">
               <input id="input_date" type="text" name="job_date" style="width:100px;" placeholder="언제">
@@ -191,7 +190,6 @@ if(isset($_GET['num'])){
             </div>
             <div class="div_present">
               <p>보유하신 자격증이 있나요?</p>
-              <!-- <input  id="text_license" type="text" name="" value="서비스직,2015년,5년" readonly> -->
                 <textarea id="text_license" name="text_license" rows="5" cols="80" ><?=$license?></textarea>
               <input id="input_license" type="text" name="license" style="width:305px;" placeholder="자격증 이름">
               <input id="input_license_date" type="text" name="license_date" style="width:250px;" placeholder="취득년도">
@@ -199,7 +197,6 @@ if(isset($_GET['num'])){
             </div>
             <div class="div_present">
               <p>학력도 적어주세요!</p>
-              <!-- <input  id="text_school" type="text" name="" value="서비스직,2015년,5년" readonly> -->
               <textarea id="text_school" name="text_school" rows="5" cols="80" ><?=$education?></textarea>
               <input id="input_school" type="text" name="school" style="width:250px;" placeholder="학교">
               <input id="input_graduation" type="text" name="graduation" style="width:150px;"placeholder="졸업년도">
@@ -225,25 +222,14 @@ if(isset($_GET['num'])){
       </div>
     </form>
     <script>
-      // var show = document.getElementById('div_resume_detail');
-      // var btn = document.getElementById('btn_show');
-
-        // if (show.style.display=='none') {
-        //   show.style.display='block';
-        // }else{
-        //   show.style.display='none';
-        // }
-   
-
        //클릭 효과
        $(function(){  
         $('#btn_show').off('click');
         $('#btn_show').click(function(){
           $('#div_resume_detail').fadeToggle('500');
         });
-        
-
       });
+
       //img를 누르면 upload 파일을 클릭
       $(function(){
         $('#img_upload').click(function(){

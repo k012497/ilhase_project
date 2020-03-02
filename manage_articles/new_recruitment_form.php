@@ -106,8 +106,6 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       $detail = strstr($total_detail[0], "\n");
       $person_detail = strstr($total_detail[1], "\n");
       $envir_detail = strstr($total_detail[2], "\n");
-
-
     }
   }else{
     $corporate_id = $_SESSION['userid'];
