@@ -91,7 +91,7 @@ if(isset($_GET['num'])){
                   if($member_type=="person") {
 
                   }else{
-                    echo "<a href='location.href='./delete_recruitment_closed.php''>마감된 공고 삭제하기</a>";
+                    echo "<a onclick='location.href=`./delete_recruitment_closed.php`'>마감된 공고 삭제하기</a>";
                   }
                ?>
             </div>
@@ -150,7 +150,7 @@ if(isset($_GET['num'])){
                     if($period_end < date('Y-m-d')){
                       // 마감일이 지난 공고
                       ?>
-                    <p id="finish_resume">마감</p> 
+                    <p id="finish_resume">마감</p>
                     <?php
                     }
                     ?>
@@ -160,8 +160,8 @@ if(isset($_GET['num'])){
                 <?php
                 } // end of while
               } // end of else
-                
-                
+
+
                 $sql="select*from person where id='$userid'";
                   $result=mysqli_query($conn,$sql);
                     if($member_type=="person") {
