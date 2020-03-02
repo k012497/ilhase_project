@@ -805,7 +805,7 @@ function insert_init_data($conn, $table_name){
                 break;
             
             case 'purchase' :
-                $sql = "insert into `purchase` values (null, '2019-08-20 11:11:23', 'ilhase', '5', '무료 체험', 0, '0', '-'),
+                $sql = "insert into `purchase` values (null, '2019-08-20 11:11:23', 'ilhase', '0', '무료 체험', 0, '0', '-'),
                 (null, '2019-09-20 11:11:23', 'chamchi', '5', 'small plan', 8, '49900', '카카오페이'),
                 (null, '2019-09-20 00:11:23', 'chamchi', '5', 'small plan', 8,  '49900', '카카오페이'),
                 (null, '2019-09-20 11:31:23', 'chamchi', '6', 'basic plan', 8,  '229000', '카카오페이'),
