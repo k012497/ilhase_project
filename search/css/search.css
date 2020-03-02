@@ -158,11 +158,11 @@ button:focus {
 #area_contents {
   position: relative;
   background-color: #fefefe;
-  margin: 5% auto;
+  margin:1.5% auto;
   /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 30%;
+  width:50%;
   box-shadow: 0 25px 40px -20px #3c4a56;
   border-radius: 1rem;
 }
@@ -226,12 +226,13 @@ button:focus {
 
 #si_gun_gu {
   display: grid;
-  grid-template-columns: repeat(7, 14.2%);
-  grid-auto-rows: minmax(20px, 30px);
+  grid-template-columns: repeat(7, 14.5%);
+  grid-auto-rows: minmax(40px, 40px);
 }
 
 #si_gun_gu label {
-  text-align: left;
+  text-align: center;
+  line-height:40px;
   font-size: 1rem;
 }
 

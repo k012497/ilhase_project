@@ -399,9 +399,9 @@
 
            
 
-            var area_list=$('#area_tb li');
+          
             //지역 selsect박스 안에 지역 데이터 구현
-            
+            var area_list=$('#area_tb li');
             $('#area_tb li').click(function(){
               area=$(this).text();
               console.log(area);
@@ -441,7 +441,7 @@
                             alert("검색할 지역을 선택해주세요!");
                             return;
                           }
-
+                          $('#si_gun_gu').empty();
                         if ($.trim(industry_title)==="전체>") {
 
                             if (area==="전체") {
@@ -768,13 +768,6 @@
 
           
             
-           
-           
-            
-
-
-
-
   });
 
 
