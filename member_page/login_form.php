@@ -226,7 +226,12 @@ if(isset($_SESSION["username"])){
         background-color: rgb(133, 198, 241);
         border: 0;
       }
-
+      .btn-secondary.focus {
+        box-shadow:0 0 0 0rem rgba(108,117,125,.5);
+      }
+      .btn-secondary:focus {
+        box-shadow:0 0 0 0rem rgba(108,117,125,.5);
+      }
       .btn-primary:hover {
         background-color : #5DB6DE;
         border: 0;
