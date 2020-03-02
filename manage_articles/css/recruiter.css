@@ -10,6 +10,11 @@ p{
   width: 1100px;
   margin: auto;
 }
+
+#div_main input {
+  padding: 0 1rem;
+}
+
 #recruiter_title{
     display: inline-block;
     margin: 20px 0 50px 0;
@@ -204,7 +209,8 @@ textarea{
 
 #div_image_upload{
   margin-top: 30px;
-
+  width: 500px;
+  display: inline-block;
 }
 #div_image_upload p{
   display: inline;

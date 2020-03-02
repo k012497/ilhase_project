@@ -111,14 +111,14 @@ if(isset($_GET['num'])){
                    if ($file_copied) {
                      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
                    }else {
-                     $src='./img/userImg.png';
+                     $src='./img/default_profile.jpg';
                    }
                ?>
 
-                <li class="li_resume" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'">
-                  <?php echo "<img src='$src' alt='액박이니?'>"; ?>
-                  <p class="p_title"><span class="resume_title"><?=$title?></span><br/><?=$regist_date?></p>
-                  <img class="btn_image" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
+                <li class="li_resume">
+                  <?php echo "<img src='$src' alt='이력서 사진'>"; ?>
+                  <p class="p_title" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'"><span class="resume_title"><?=$title?></span><br/><?=$regist_date?></p>
+                  <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
                 </li>
                 <?php
                 }
@@ -142,7 +142,7 @@ if(isset($_GET['num'])){
                 <li class="li_resume">
                   <?php echo "<img src='$src' alt='액박이니?'>"; ?>
                   <p class="p_title" onclick="location.href='new_recruitment_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
-                  <img class="btn_image" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'">
+                  <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'; return false">
                 </li>
                 <?php
                 }
