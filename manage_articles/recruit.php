@@ -139,12 +139,13 @@ session_start();
         $career= "무관";
     }else{
         $require=filter_data($_POST["require"]);
-        $career=$require."년";
+        $career="경력 ".$require."년";
     }
 
-    $category=$industry." ".$section;
-    $total_pay=$rdo_pay." ".$pay."원";
-    $total_detail=$detail." ".$person_detail." ".$envir_detail;
+    $category = $industry." ".$section;
+    $total_pay = $rdo_pay." ".$pay."원";
+    $total_detail = "우리는 이런 회사예요\n".$detail."\n\n이런 사람 원해요\n".$person_detail."\n\n이런 환경에서 일해요\n".$envir_detail;
+    $total_detail = mysqli_real_escape_string($conn, $total_detail);
 
     include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/upload_file.php"; // 파일 업로드
 
