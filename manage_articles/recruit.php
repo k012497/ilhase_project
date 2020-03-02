@@ -94,12 +94,13 @@ session_start();
         $career= "무관";
     }else{
         $require=filter_data($_POST["require"]);
-        $career=$require."년";
+        $career="경력 ".$require."년";
     }
 
-    $category=$industry." ".$section;
-    $total_pay=$rdo_pay." ".$pay."원";
-    $total_detail=$detail." ".$person_detail." ".$envir_detail;
+    $category = $industry." ".$section;
+    $total_pay = $rdo_pay." ".$pay."원";
+    $total_detail = "우리는 이런 회사예요\n".$detail."\n\n이런 사람 원해요\n".$person_detail."\n\n이런 환경에서 일해요\n".$envir_detail;
+    $total_detail = mysqli_real_escape_string($conn, $total_detail);
 
     $sql="insert into recruitment(corporate_id, title, details, recruiter_name, recruiter_phone, recruiter_email, homepage, industry, personnel, require_career, require_edu, pay, recruit_type, period_start, period_end, work_place, file_name, file_copied, regist_date)";
     $sql .= "values('$corporate_id', '$title', '$total_detail', '$name', '$phone', '$email', '$homepage', '$category', '$personnel', '$career', '$edu', '$total_pay', '$rdo_type', '$start', '$end', '$work', '$upfile_name', '$copied_file_name', now());";

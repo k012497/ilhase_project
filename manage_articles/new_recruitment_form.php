@@ -102,10 +102,12 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       $career=explode("년",$row["require_career"]);
       $require=$career[0];
 
-      $total_detail=explode(" ",$row["details"]);
-      $detail=$total_detail[0];
-      $person_detail=$total_detail[1];
-      $envir_detail=$total_detail[2];
+      $total_detail=explode("\n\n",$row["details"]);
+      $detail = strstr($total_detail[0], "\n");
+      $person_detail = strstr($total_detail[1], "\n");
+      $envir_detail = strstr($total_detail[2], "\n");
+
+
     }
   }else{
     $corporate_id = $_SESSION['userid'];
