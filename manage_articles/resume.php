@@ -72,12 +72,6 @@
       global $conn, $public;
 
       $num=$_POST["num"]; // 이력서 num
-      $name = filter_data($_POST["input_name"]);
-      $email = filter_data($_POST["input_email"]);
-      $address=filter_data($_POST["input_address"]);
-      $gender=filter_data($_POST["input_gender"]);
-      $birth=filter_data($_POST["input_birth"]);
-      $phone=filter_data($_POST["input_phone"]);
       $title= filter_data($_POST["input_title"]);
       $cover_letter = filter_data($_POST["cover_letter"]);
       $career  = filter_data($_POST["text_job"]);
@@ -86,8 +80,14 @@
 
       include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/upload_file.php"; // 파일 업로드
 
-      // 업데이트를 할 경우
-      $sql = "update resume set public='".$public."', title='".$title."', cover_letter='".$cover_letter."', career='".$career."',license='$license',education='$education', file_name = '$upfile_name', file_copied ='$copied_file_name'  where num = '$num';";
+      // 기존에 올렸던 파일이 있고 수정 시 파일을 업로드하지 않았을 때
+      $sql = "select file_copied from resume where num = '$num'";
+      $file_exists = mysqli_fetch_array(mysqli_query($conn, $sql))[0];
+      if($file_exists && !$upfile_name){
+        $sql = "update resume set public='".$public."', title='".$title."', cover_letter='".$cover_letter."', career='".$career."',license='$license',education='$education' where num ='$num';";
+      } else {
+        $sql = "update resume set public='".$public."', title='".$title."', cover_letter='".$cover_letter."', career='".$career."',license='$license',education='$education', file_name = '$upfile_name', file_copied ='$copied_file_name' where num = '$num';";
+      }
       $result=mysqli_query($conn, $sql);
       if (!$result) {
         echo mysqli_error($conn).$sql;
