@@ -5,6 +5,7 @@ $num =$_POST['num'];
 $name =$_POST['name'];
 $price =$_POST['price'];
 $account =$_POST['account'];
+echo $account;
 
 if(isset($_POST['p_type'])){
   $p_type ="무통장(".$account.")";

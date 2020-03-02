@@ -33,114 +33,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
-    <style media="screen">
-
-      #manage_plan {
-        position: relative;
-        top: 90px;
-        width: 700px;
-        display: inline-block;
-      }
-
-      .plan_item {
-        border: 1px solid lightgray;
-        height: 230px;
-        margin: 0.5rem;
-        border-radius: 15px;
-      }
-
-      .col-sm-5 {
-        padding: 0;
-      }
-
-      .plan_item label {
-        padding: 2rem;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        cursor: pointer;
-      }
-
-      .plan_item img {
-        margin-bottom: 0.2rem;
-      }
-
-      .plan_item input[type="radio"] {
-        display: none;
-      }
-
-      .plan_item p {
-        margin-bottom: 1rem;
-      }
-
-      #plan_list {
-        text-align: center;
-        margin-bottom: 5rem;
-      }
-
-      .plan_name {
-        font-size: larger;
-        font-weight: 600;
-      }
-
-      .plan_count {
-        font-weight: 500;
-      }
-
-      .check_mark {
-        position: relative;
-        float: right;
-        right: -2.5rem;
-        z-index: 1;
-        top: -250px;
-        display: none;
-      }
-
-      span.plan_name {
-        border: 1px solid #777;
-        border-radius: 15px 0px 0px 15px;
-        /* width: 200px; */
-        text-align: center;
-        /* height: 70px; */
-        padding: 0.5rem;
-      }
-
-      span.plan_count {
-        border: 1px solid #777;
-        border-radius: 0px 15px 15px 0px;
-        /* width: 200px;  */
-        text-align: center;
-        /* height: 70px; */
-        padding: 0.5rem;
-      }
-      .div_div{
-        width:1100px;
-         margin: 0 auto;
-      }
-
-      #available_plan, #purchase_history {
-        margin-bottom: 5rem;
-      }
-
-      .available_plan_item {
-        height: 70px;
-        border-radius: 15px;
-        margin: 5px 0;
-      }
-      .history_scroll{
-        height: 300px;
-        overflow-y: scroll;
-      }
-      .ac_plan{
-        height: 242px;
-        overflow-y: scroll;
-      }
-      .plan_scroll{
-        padding: 20px;
-        height: 510px;
-        overflow-y: scroll;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/plan_manager.css">
     <script type="text/javascript">
         $(function(){
           $('#option1_0').click(function(){
@@ -178,33 +71,33 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         <!-- 플랜 구매 -->
         <h3 class="subtitle">📌 구인 플랜 구매</h3>
         <div class="plan_scroll">
-        <form class="row justify-content-center" id="plan_list"
-        action="purchase_form.php">
-        <input type="hidden" name="id" value="<?=$_SESSION['userid']?>">
-          <?php
-            for ($i=0; $i < $numrow; $i++) {
-              if($i==0){
-                $sec="checked";
-              }else{
-                $sec="";
-              }
-                echo "
-                <div class='col-sm-5 plan_item'>
-                <input type='radio' autocomplete='off'
-                ".$sec." name='recruit_plan' value='".$row[$i]['num']."' id='input_".$i."'/>
-                <label for='input_".$i."' onclick='select_plan(this);'>
-                  <p class='plan_name' id='span_".$i."'>".$row[$i]['name']."</p>
-                  <img src='./img/file.png'>
-                  <p class='plan_count'>공고 ".$row[$i]['count']." 개</p>
-                  <p class='plan_price'>".$row[$i]['price']."원</p>
-                </label>
-                <img class='check_mark' src='./img/tick.png'>
-                </div>
-                ";
-              }
-          ?>
-        </div>
+          <form class="row justify-content-center" id="plan_list"
+          action="purchase_form.php">
+          <input type="hidden" name="id" value="<?=$_SESSION['userid']?>">
+            <?php
+              for ($i=0; $i < $numrow; $i++) {
+                if($i==0){
+                  $sec="checked";
+                }else{
+                  $sec="";
+                }
+                  echo "
+                  <div class='col-sm-5 plan_item'>
+                  <input type='radio' autocomplete='off'
+                  ".$sec." name='recruit_plan' value='".$row[$i]['num']."' id='input_".$i."'/>
+                  <label for='input_".$i."' onclick='select_plan(this);'>
+                    <p class='plan_name' id='span_".$i."'>".$row[$i]['name']."</p>
+                    <img src='./img/file.png'>
+                    <p class='plan_count'>공고 ".$row[$i]['count']." 개</p>
+                    <p class='plan_price'>".$row[$i]['price']."원</p>
+                  </label>
+                  <img class='check_mark' src='./img/tick.png'>
+                  </div>
+                  ";
+                }
+            ?>
           <input type="submit" class="btn btn-primary btn-block" id="purchase_plan" value="구매하기">
+        </div>
         </form>
 
 

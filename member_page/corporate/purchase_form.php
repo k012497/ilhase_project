@@ -61,6 +61,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                 num : "<?php echo $row_recruit_plan['num'] ?>",
                 name : "<?php echo $row_recruit_plan['name'] ?>",
                 price : "<?php echo $row_recruit_plan['price'] ?>",
+                account : document.querySelector('#account').value.slice(0, 2),
                 p_type : p_typeValue
              }
            }).done(function(data){
@@ -106,11 +107,11 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                   </td>
               </tr>
               <tr>
-                  <td style="width: 25%" >
+                  <td style="width: 30%" >
                     <input type="radio" class="form-control" name="purchase_method" value="무통장" id="mutong">
                     <label for="mutong">무통장 입금</label>
                   </td>
-                  <td style="width: 75%">
+                  <td style="width: 70%">
                     <input type="radio" class="form-control" value="kakao" name="purchase_method" id="kakaopay">
                     <label for="kakaopay">카카오페이</label>
                   </td>
@@ -118,7 +119,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
               <tr class="hid">
                 <td colspan="2" class="hid">
                   <!-- <h5>입금 계좌<span style="color:red">*</span></h3> -->
-                    <select class="form-control"name="account" id="account">
+                  <select class="form-control" name="account" id="account">
                     <option>-입금계좌를 선택해 주세요-</option>
                     <option>농협 123-10-1234567</option>
                     <option>신한 12-2424-23232</option>
