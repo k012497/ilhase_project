@@ -37,6 +37,10 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
       .hid{
         display: none;
       }
+      .div_div{
+        width:1100px;
+         margin: 0 auto;
+      }
     </style>
     <script type="text/javascript">
     $(function(){
@@ -88,7 +92,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div class="container" style="margin-top:100px;">
+    <div class="div_div" style="margin-top:100px;">
       <table class="table table-sm">
           <tbody>
             <tr>

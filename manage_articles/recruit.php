@@ -28,14 +28,42 @@ session_start();
 
   mysqli_close($conn);
 
-  echo "
-      <script>
-        location.href = './manage_recruitment_form.php';
-      </script>
-  ";
+  // echo "
+  //     <script>
+  //       location.href = './manage_recruitment_form.php';
+  //     </script>
+  // ";
 
   function insert_recruitment(){
     global $conn, $id, $require;
+
+    $sqli="SELECT * FROM purchase WHERE member_id='".$_SESSION['userid']."' ORDER BY num ASC;";
+    echo $sqli;
+    $result_count = mysqli_query($conn, $sqli);
+    $numrow = mysqli_num_rows($result_count);
+    if($numrow==0)
+    {
+      echo "<script>alert('공고 플랜을 구입해주세요');
+        //history.go(-1);
+      </script>";;
+    }
+     //행(ROW) 수 만큼
+      for($i=0; $i<$numrow; $i++){
+          // mysql_fetch_array를 반복합니다.
+          $row[$i]=mysqli_fetch_array($result_count);
+      }
+      for($i=0; $i<$numrow; $i++){
+        if($row[$i]['available_count']==1){
+          $sqli2="delete from purchase where num=".$row[$i]['num'].";";
+          mysqli_query($conn, $sqli2);
+          break;
+        }else{
+          $count1=$row[$i]['available_count']-1;
+          $sqli2="update purchase set available_count=".$count1." where num=".$row[$i]['num'].";";
+          mysqli_query($conn, $sqli2);
+          break;
+        }
+      }
 
 
     $corporate_id=filter_data($_POST["corporate_id"]);

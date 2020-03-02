@@ -116,6 +116,10 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         /* height: 70px; */
         padding: 0.5rem;
       }
+      .div_div{
+        width:1100px;
+         margin: 0 auto;
+      }
     </style>
     <script type="text/javascript">
         $(function(){
@@ -149,7 +153,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div class="container">
+    <div class="div_div">
       <div id="div_left_menu">
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
       </div>

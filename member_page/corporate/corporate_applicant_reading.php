@@ -18,12 +18,18 @@ if(isset($_SESSION['userid']))
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+    <style media="screen">
+      .div_div{
+        width:1100px;
+         margin: 0 auto;
+      }
+    </style>
   </head>
   <body>
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-	<div class="container">
+	<div class="div_div">
 		<div id="div_left_menu">
 			<?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
 		</div>

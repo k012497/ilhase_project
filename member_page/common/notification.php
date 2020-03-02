@@ -20,12 +20,18 @@
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <title>일하세</title>
+    <style media="screen">
+    .div_div{
+      width:1100px;
+       margin: 0 auto;
+    }
+    </style>
   </head>
   <body>
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div class="container">
+    <div class="div_div">
       <div id="div_left_menu">
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/member_page/common/member_side_menu.php";?>
       </div>
