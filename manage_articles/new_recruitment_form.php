@@ -51,6 +51,16 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
   <body>
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
+      <script type="text/javascript">
+        $(function(){
+          var n_date=new Date().toISOString().substring(0, 10);
+          $("#period_start").attr('min',n_date);
+          $("#period_end").click(function(){
+            var start_date=$("#period_start").val();
+            $("#period_end").attr('min',start_date);
+          });
+        });
+      </script>
     </header>
 
   <?php
