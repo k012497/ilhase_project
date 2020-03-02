@@ -27,7 +27,6 @@ if(isset($_SESSION["username"])){
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
     </script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -35,7 +34,7 @@ if(isset($_SESSION["username"])){
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="../js/daumMap.js"></script>
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </head>
 <body>
     <header>
@@ -52,7 +51,7 @@ if(isset($_SESSION["username"])){
             <h1>사용하실 아이디를 적어주세요</h1>
           </div>
           <div class="input1">
-            <input type="text" name="id" id="id" size="50"   value="a9807221a"><br>
+            <input type="text" name="id" id="id" size="50"><br>
             <h4 id="idSubMsg">*공백없이 2~6글자만 가능합니다.</h4>
           </div>
         </div>
@@ -62,7 +61,7 @@ if(isset($_SESSION["username"])){
             <h1 >사용하실 비밀번호를 적어주세요</h1>
           </div>
           <div class="input1">
-            <input type="password" name="pass" id="pass_1" size="50" value="12"><br>
+            <input type="password" name="pass" id="pass_1" size="50"><br>
             <h4 id="passSubMsg1">*공백없이 6~15글자만 가능합니다.</h4>
           </div>
         </div>
@@ -152,8 +151,8 @@ if(isset($_SESSION["username"])){
           </div>
           <div id="provision_box">
           <textarea cols="100" rows="10" disabled>
-정보통신망법 규정에 따라 일하세버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다. 
-1. 수집하는 개인정보 
+정보통신망법 규정에 따라 일하세버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
+1. 수집하는 개인정보
 
 이용자는 회원가입을 하지 않아도 정보 검색, 뉴스 보기 등 대부분의 일하세 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페, 블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 일하세는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.
 회원가입 시점에 일하세가 이용자로부터 수집하는 개인정보는 아래와 같습니다.
@@ -179,7 +178,7 @@ if(isset($_SESSION["username"])){
 
 3. 개인정보의 파기
 회사는 원칙적으로 이용자의 개인정보를 회원 탈퇴 시 지체없이 파기하고 있습니다.
-단, 이용자에게 개인정보 보관기간에 대해 별도의 동의를 얻은 경우, 또는 법령에서 일정 기간 정보보관 의무를 부과하는 경우에는 해당 기간 동안 개인정보를 안전하게 
+단, 이용자에게 개인정보 보관기간에 대해 별도의 동의를 얻은 경우, 또는 법령에서 일정 기간 정보보관 의무를 부과하는 경우에는 해당 기간 동안 개인정보를 안전하게
 이용자에게 개인정보 보관기간에 대해 회원가입 시 또는 서비스 가입 시 동의를 얻은 경우는 아래와 같습니다.
 부정가입 및 징계기록 등의 부정이용기록은 부정 가입 및 이용 방지를 위하여 수집 시점으로부터 6개월간 보관하고 파기하고 있습니다. 부정이용기록 내 개인정보는 가입인증 휴대폰 번호(만 14세 미만 회원의 경우 법정대리인 DI)가 있습니다.
 부정이용으로 징계를 받기 전에 회원 가입 및 탈퇴를 반복하며 서비스를 부정 이용하는 사례를 막기 위해 탈퇴한 이용자의 휴대전화번호를 복호화가 불가능한 일방향 암호화(해시 처리)하여 6개월간 보관합니다. QR코드 서비스에서 연락처를 등록한 이후 QR코드 삭제 시, 복구 요청 대응을 위해 삭제 시점으로 부터 6개월 보관합니다. 스마트 플레이스 서비스에서 휴대전화번호를 등록한 경우 분쟁 조정 및 고객문의 등을 목적으로 업체 등록/수정 요청시, 또는 등록 이후 업체 삭제 요청 시로부터 최대 1년간 보관 할 수
@@ -225,6 +224,6 @@ if(isset($_SESSION["username"])){
     </div>
      <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
-      
+
 </body>
 </html>
