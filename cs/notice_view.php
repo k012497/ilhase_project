@@ -160,7 +160,7 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
               // 세션 값을 검사해서 관리자일 때만 수정/삭제 버튼
               if($_SESSION['userid'] === 'admin'){
             ?>
-                <li><button class="list_button" onclick="location.href='dml_notice_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수정</button></li>
+                <li><button class="list_button" onclick="location.href='write_notice_form.php?mode=update&num=<?=$num?>&page=<?=$page?>'">수정</button></li>
                 <li><button class="list_button" onclick="location.href='dml_notice.php?mode=delete&num=<?=$num?>&page=<?=$page?>'">삭제</button></li>
             <?php
               }

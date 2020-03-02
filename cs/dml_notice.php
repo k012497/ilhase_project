@@ -69,7 +69,7 @@ function update_notice(){
 
   // 원래 파일 삭제하기
   if(isset($_POST['del_file']) && $_POST['del_file'] == '1'){
-    $sql="SELECT `file_copied` from `free` where num ='$num';";
+    $sql="SELECT `file_copied` from `notice` where num ='$num';";
     $result = mysqli_query($conn,$sql);
 
     if (!$result) {
@@ -82,7 +82,7 @@ function update_notice(){
       unlink("./data/".$file_copied); // 파일 삭제
     }
 
-    $sql="UPDATE `free` SET `file_name`='', `file_copied` ='', `file_type` =''  WHERE `num`=$num;";
+    $sql="UPDATE `notice` SET `file_name`='', `file_copied` ='', `file_type` =''  WHERE `num`=$num;";
     $result = mysqli_query($conn,$sql);
     if (!$result) {
       die('Error: ' . mysqli_error($conn));
@@ -92,14 +92,14 @@ function update_notice(){
   // 새로운 파일 업로드
   if(!empty($_FILES['upfile']['name'])){
     include $_SERVER['DOCUMENT_ROOT']."/ilhase/common/lib/upload_file.php"; // 파일을 검사 후 저장
-    $sql="UPDATE `free` SET `file_name`= '$upfile_name', `file_copied` ='$copied_file_name', `file_type` ='$upfile_type' WHERE `num`=$num;";
+    $sql="UPDATE `notice` SET `file_name`= '$upfile_name', `file_copied` ='$copied_file_name', `file_type` ='$upfile_type' WHERE `num`=$num;";
     $result = mysqli_query($conn,$sql);
     if (!$result) {
       die('Error: ' . mysqli_error($conn));
     }
   } // end of !empty($_FILES['upfile']['name'])
 
-  $sql  = "update notice set subject='$n_subject', content='$n_content', file_name='$upfile_name', file_type='$upfile_type', file_copied='$copied_file_name' where num = $num;";
+  $sql  = "update notice set subject='$n_subject', content='$n_content' where num = $num;";
 
   $result = mysqli_query($conn,$sql);
   if(!$result){
@@ -152,7 +152,7 @@ function delete_notice(){
 
   echo "
       <script>
-        //  location.href = 'notice.php?page=$page';
+         location.href = 'notice.php?page=$page';
       </script>
     ";
 }
