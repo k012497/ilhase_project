@@ -38,14 +38,14 @@ session_start();
     global $conn, $id, $require;
 
     $sqli="SELECT * FROM purchase WHERE member_id='".$_SESSION['userid']."' ORDER BY num ASC;";
-    echo $sqli;
+
     $result_count = mysqli_query($conn, $sqli);
     $numrow = mysqli_num_rows($result_count);
-    if($numrow==0)
-    {
-      echo "<script>alert('공고 플랜을 구입해주세요');
-        //history.go(-1);
-      </script>";;
+    if($numrow==0) {
+      echo "<script> alert('공고를 올릴 수 없습니다. 플랜을 구입해주세요');
+        location.href = '../member_page/corporate/corporate_plan_manager.php';
+      </script>";
+      exit;
     }
      //행(ROW) 수 만큼
       for($i=0; $i<$numrow; $i++){
@@ -64,7 +64,6 @@ session_start();
           break;
         }
       }
-
 
     $corporate_id=filter_data($_POST["corporate_id"]);
     $name=filter_data($_POST["recruiter_name"]);
@@ -104,7 +103,6 @@ session_start();
 
     $result = mysqli_query($conn, $sql);
 
-echo $sql;
     if (!$result) {
       echo mysqli_error($conn).$sql;
     }
