@@ -35,13 +35,9 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <style media="screen">
 
-      .container .title {
-        margin: 3rem 0;
-      }
-
       #manage_plan {
         position: relative;
-        top: 20px;
+        top: 90px;
         width: 700px;
         display: inline-block;
       }
@@ -79,6 +75,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
       #plan_list {
         text-align: center;
+        margin-bottom: 5rem;
       }
 
       .plan_name {
@@ -120,6 +117,17 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         width:1100px;
          margin: 0 auto;
       }
+
+      #available_plan, #purchase_history {
+        margin-bottom: 5rem;
+      }
+
+      .available_plan_item {
+        height: 70px; 
+        border-radius: 15px; 
+        margin: 5px 0;
+      }
+
     </style>
     <script type="text/javascript">
         $(function(){
@@ -187,12 +195,12 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
 
         <!-- 이용중인 플랜 -->
-    <h3 class="subtitle">이용중인 플랜</h3>
-      <div class="row" id="buy_plan">
+    <h3 class="subtitle">📌 이용중인 플랜</h3>
+      <div class="row" id="available_plan">
         <?php
           for($i=0;$i<$numrow_purchase; $i++){
             echo "
-            <div class='col-sm-4'style='height:70px;border-radius:15px;margin:5px;'>
+            <div class='col-sm-4 available_plan_item'>
               <table >
                 <tr style='background-color: #eee;'>
                   <th style='border-radius:15px 0px 0px 15px; width:150px;border:0px;text-align:center;height:70px;'>
@@ -204,6 +212,10 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
               </table>
             </div>
             ";
+          }
+
+          if($numrow_purchase === 0){
+            echo "이용중인 플랜이 없습니다.";
           }
          ?>
     </div>
@@ -271,8 +283,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
       }
     </style>
     <script>
-	  //nav active 활성화
-	  document.querySelectorAll('.nav-item').forEach(function(data, idx){
+      //nav active 활성화
+      document.querySelectorAll('.nav-item').forEach(function(data, idx){
           data.classList.remove('active');
 
           if(idx === 4){
@@ -283,7 +295,9 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         // 사이드 메뉴 표시
         const current_menu = document.querySelectorAll('.side_menu_item')[2];
         current_menu.style.backgroundColor = 'rgb(133, 198, 241)';
-		current_menu.style.color = 'white';
+        current_menu.style.color = 'white';
+        
+        document.getElementById('input_0').nextElementSibling.click();
 	</script>
   </body>
 </html>

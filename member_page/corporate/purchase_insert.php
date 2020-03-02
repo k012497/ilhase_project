@@ -4,8 +4,10 @@ $id =$_POST['id'];
 $num =$_POST['num'];
 $name =$_POST['name'];
 $price =$_POST['price'];
+$account =$_POST['account'];
+
 if(isset($_POST['p_type'])){
-  $p_type ="무통장입금";
+  $p_type ="무통장(".$account.")";
 }else{
   $p_type="카카오페이";
 }
