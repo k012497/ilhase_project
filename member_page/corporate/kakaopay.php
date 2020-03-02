@@ -311,9 +311,7 @@ PC 결제
                  price : "<?php echo $row_recruit_plan['price'] ?>"
               }
             }).done(function(data){
-              console.log(data);
             }).fail(function() {
-              console.log("error");
             });
 
 

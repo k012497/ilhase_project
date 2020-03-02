@@ -146,14 +146,10 @@ if(isset($_SESSION["username"])){
                 var birthday = naverLogin.user.getBirthday();
                 var uniqId = naverLogin.user.getId();
                 var age = naverLogin.user.getAge();
-                console.log(email);
-                console.log(name);
 
                  var array = email.split("@");
                 naverLogin.logout();
                 location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php?userid="+email+"&username="+array[0]+"&usermember_type=sns_log";
-              } else {
-                console.log("AccessToken이 올바르지 않습니다.");
               }
             });
             function kakao_login(){
@@ -167,11 +163,6 @@ if(isset($_SESSION["username"])){
                          $("#id").val(JSON.stringify(res.id));
                          $("#name").val(JSON.stringify(res.properties.nickname));
                          $("#email").val(JSON.stringify(res.kaccount_email));
-                         console.log(JSON.stringify(res.id));
-                         console.log(JSON.stringify(res.properties.nickname));
-                         console.log(JSON.stringify(res.kaccount_email));
-                         console.log(JSON.stringify(res.kakao_account.email));
-                         console.log(JSON.stringify(res.kakao_account.is_email_verified));
                          location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/index.php?userid="+JSON.stringify(res.id)+"&username="+JSON.stringify(res.properties.nickname)+"&usermember_type=sns_log";
                          // document.member_form.submit();
                     },

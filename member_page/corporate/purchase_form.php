@@ -73,9 +73,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                 p_type : p_typeValue
              }
            }).done(function(data){
-             console.log(data);
            }).fail(function() {
-             console.log("error");
            });
            alert('결제가 완료되었습니다.');
           location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/corporate_plan_manager.php"
