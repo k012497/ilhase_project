@@ -124,7 +124,6 @@
                   <div id="select_resume_box">
                   </div>
                   <input type="hidden" name="user_id" value=<?=$id?>>
-                  
                   <input type="hidden" name="receiver_email" value=<?=$recruiter_email?>>
                   <input type="hidden" name="receiver_name" value=<?=$recruiter_name?>>                  
                   <input id="btn_email_submit" type="submit" value="담당자에게 보내기">                    
@@ -370,7 +369,7 @@
 
                 
                   //지원하기 버튼
-                $('#btn_apply').click(function(){
+                $('#btn_apply').off('click').click(function(){
                   if($user_id===''){
                     alert('로그인을 해주세요!');
                     return;
@@ -397,7 +396,7 @@
                           'pointer-events':'none',
                           'opacity':'0.4'
                         });
-                        return;
+       
                       }else {
                         //해당 아이디가 기본이력서가 있을때
                         $('#btn_email_submit').prop("disabled",false);

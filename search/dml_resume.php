@@ -8,9 +8,9 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
     $result=mysqli_query($conn,$find_resume_sql);
 
     $count=mysqli_num_rows($result);
-    if(!isset($row)){
+    if($count===0){
             echo "<p id='none_message'>입력하신 기본 이력서가 없습니다.<br>기본 입력서를 작성해주세요!</p>
-                <a href='http://".$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/write_resume.php' id='go_resume'>기본이력서 작성하러 가기</a>
+                <a href='http://".$_SERVER["HTTP_HOST"]."/ilhase/manage_articles/write_resume_form.php' id='go_resume'>기본이력서 작성하러 가기</a>
             ";
         exit;
     }else{

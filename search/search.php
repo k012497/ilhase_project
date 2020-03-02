@@ -436,6 +436,7 @@
                           industry_title=$('#search_all').text(),
                           areaSelctBox=$('#area_selectBox > p'),
                           select_industrydaile=$('#industy_list option:selected').val();
+                      var select_career=$('select[name=career]').val();
                       var select_alignment=$('select[name=alignment]').val();
                           if(isSelectArea===false){
                             alert("검색할 지역을 선택해주세요!");

@@ -11,7 +11,7 @@ switch ($mode) {
 
       $all_applicant_sql="select * from resume where public= 1 order by num desc";
       $result=mysqli_query($conn,$all_applicant_sql);
-
+      
       
       if(!$result){
         echo  "<p>공개된 지원자의 이력서가 없습니다.</p>";    
@@ -343,10 +343,10 @@ function all_area_select($conn,$start,$list,$select_alignment,$select_career,$se
   $filter_sql='';
   if($select_alignment==='인기순'){
     
-    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career='$select_career' and work_place like '%$select_area_contents%' group by r.num order by count(recruit_id) desc";
+    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career='$select_career' and work_place like '%".$select_area_contents."%' group by r.num order by count(recruit_id) desc";
 
   }else{
-    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
+    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%".$select_area_contents."%' order by num desc";
   }
 
  
