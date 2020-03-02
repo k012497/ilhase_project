@@ -48,10 +48,8 @@
               }
             })
             .done(function() {
-              console.log("success");
             })
             .fail(function() {
-              console.log("error");
             });
         }else{
           $.ajax({
@@ -66,10 +64,8 @@
             }
           })
           .done(function() {
-            console.log("success");
           })
           .fail(function() {
-            console.log("error");
           });
         }
       });
@@ -92,10 +88,8 @@
             }
           })
           .done(function() {
-            console.log("success");
           })
           .fail(function() {
-            console.log("error");
           });
       }else{
         $.ajax({
@@ -114,10 +108,8 @@
           }
         })
         .done(function() {
-          console.log("success");
         })
         .fail(function() {
-          console.log("error");
         });
       }
     });

@@ -44,7 +44,7 @@ if(isset($_SESSION["username"])){
           $('#email_sub').html("<span style='color:red'></span>");
           email_check=0;
         }else{
-          $('#email_sub').html("<span style='color:red'>번호가 틀렸습니다..</span>");
+          $('#email_sub').html("<span style='color:red'>번호가 틀렸습니다.</span>");
           email_check=0;
         }
       });
@@ -55,19 +55,15 @@ if(isset($_SESSION["username"])){
           type: 'POST',
           data: {"email":emailValue},
           success: function(data){
-            console.log(data);
             email_check_num=data;
             $('#email_check_num').prop("type", "text");
           }
         })
         .done(function() {
-          console.log("success");
         })
         .fail(function() {
-          console.log("error");
         })
         .always(function() {
-          console.log("complete");
         });
       });
       $('#b_license_num_button').click(function(){
@@ -78,7 +74,6 @@ if(isset($_SESSION["username"])){
           type: 'POST',
           data: {"b_license_num":b_license_num_value},
           success: function(data){
-            console.log(data);
             b_license_num_value_result=data;
             if(b_license_num_value_result==b_license_num_value){
               $("#b_license_num_h4").html("<span style='color:#777'>인증되었습니다.</span>");
@@ -90,14 +85,11 @@ if(isset($_SESSION["username"])){
           }
         })
         .done(function() {
-          console.log("success");
         })
         .fail(function() {
-          console.log("error");
           $("#b_license_num_h4").html("<span style='color:red'>올바른 번호를 입력해주세요.</span>");
         })
         .always(function() {
-          console.log("complete");
         });
       });
       $('#pass_1, #pass_2').keyup(function(){
@@ -147,7 +139,6 @@ if(isset($_SESSION["username"])){
             type: 'POST',
             data: {"inputId":idValue},
             success: function(data){
-              console.log(data);
               if(data==0){
                 $("#id_h5").html("<span style='color:red'>사용 가능한 아이디입니다.</span>");
                 id_check=1;
@@ -158,15 +149,12 @@ if(isset($_SESSION["username"])){
             }
           })
           .done(function() {
-            console.log("success");
           })
           .fail(function() {
-            console.log("error");
             $("#id_h5").html("<span style='color:red'>올바른 아이디를 입력해주세요.</span>");
             id_check=0;
           })
           .always(function() {
-            console.log("complete");
           });
         }
       });

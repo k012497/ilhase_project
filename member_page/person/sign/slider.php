@@ -13,14 +13,14 @@ $(function () {
   $('#sample4_postcode').attr('disabled', true);
   $('#sample4_roadAddress').attr('disabled', true);
   $('#sample4_jibunAddress').attr('disabled', true);
-  $(document).keyup(function(){
+  $("#id").keyup(function(){
     var idValue = inputId.val();
     var exp = /^[a-zA-Z0-9]{6,12}$/;
     if(idValue === ""){
       idSubMsg.html("<span style='color:red'>아이디입력요망</span>");
       $('.slick-next').attr('disabled', true);
     }else if(!exp.test(idValue)){
-      idSubMsg.html("<span style='color:red'>형식안맞어/^[a-zA-Z0-9]{6,12}$/</span>");
+      idSubMsg.html("<span style='color:red'>특수문자없이 영어와 숫자를포함하여 6~12글자만 사용해주세요</span>");
       $('.slick-next').attr('disabled', true);
     }else{
       $.ajax({
@@ -28,7 +28,6 @@ $(function () {
         type: 'POST',
         data: {"inputId":idValue},
         success: function(data){
-          console.log(data);
           if(data === "1"){
             idSubMsg.html("<span style='color:red'>중복된아이디 다시입력</span>");
             $('.slick-next').attr('disabled', true);
@@ -36,19 +35,16 @@ $(function () {
             idSubMsg.html("<span style='color:red'>사용가능한 아이디입니다.</span>");
             $('.slick-next').attr('disabled', false);
           }else{
-            idSubMsg.html("<span style='color:red'>비상사태 정부는 정신차려라.</span>");
+            idSubMsg.html("<span style='color:red'>에러 발생.</span>");
             $('.slick-next').attr('disabled', true);
           }
         }
       })
       .done(function() {
-        console.log("success");
       })
       .fail(function() {
-        console.log("error");
       })
       .always(function() {
-        console.log("complete");
       });
     }
   }); //inputId.blur end regex
@@ -66,14 +62,14 @@ $(document).keyup(function(){
       $('.slick-next').attr('disabled', false);
     }
   });
-$(document).keyup(function(){
+$("#pass_2").keyup(function(){
     var pass_1_value= pass_1.val(),
         pass_2_value= pass_2.val();
         if(pass_1_value===pass_2_value){
-            passSubMsg.html("<span style='color:red'>패스워드가 똑같아요 다음으로 가세요</span>");
+            passSubMsg.html("<span style='color:red'>패스워드가 일치합니다 다음으로 가세요</span>");
             $('.slick-next').attr('disabled', false);
         }else{
-          passSubMsg.html("<span style='color:red'>패스워드가 틀려요 ㅠㅠ</span>");
+          passSubMsg.html("<span style='color:red'>패스워드가 틀립니다.</span>");
           $('.slick-next').attr('disabled', true);
         }
   });
@@ -81,7 +77,6 @@ $(document).keyup(function(){
 
   $('.slick-next').click(function(){
     count+=1;
-    console.log(count);
     $('.slick-next').attr('disabled', true);
     if(count==2){
       $('.slick-next').attr('disabled', true);
@@ -97,7 +92,6 @@ $(document).keyup(function(){
   });
   $('.slick-prev').click(function(){
     count-=1;
-    console.log(count);
     if(count===1){
       $('.slick-next').attr('disabled', false);
     }
@@ -141,7 +135,6 @@ $(document).keyup(function(){
   var valueSub=$('#valueSub');
   button.click(function(){
     var phone_val=document.getElementById("phone").value;
-    console.log(phone_val);
     $.ajax({
       url: 'http://'+'<?=$_SERVER['HTTP_HOST']?>'+'/ilhase/member_page/person/sign/moonja.php',
       type: 'POST',
@@ -149,21 +142,18 @@ $(document).keyup(function(){
       data: {phone:phone_val}
     })
     .done(function(data) {
-      console.log(data);
       phone_num=data;
       // alert(h_code);
       alert("문자인증 번호가 발송되었습니다.");
     })
     .fail(function() {
       alert("문자인증 번호 발송실패!");
-      console.log("error");
     })
     .always(function() {
-      console.log("complete");
    });
 
   }); //inputId.blur end regex
-$(document).keyup(function(){
+$('#phone_num').keyup(function(){
     if($('#phone_num').val()==phone_num){
       valueSub.html("<span style='color:red'>인증이 완료되었습니다.</span>")
       $("#phone_injung").val(1);
@@ -175,7 +165,7 @@ $(document).keyup(function(){
     }
   });
 });
-$(document).keyup(function(){
+$("#name").keyup(function(){
   if($("#name").val()===""){
     $('.name_space').html("<span style='color:red'>성함을 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
@@ -191,8 +181,8 @@ $(document).keyup(function(){
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
-  if($("#phone_injung").val()==""){
+$("#email").keyup(function(){
+  if($("#email").val()==""){
     $('#email_sub').html("<span style='color:red'>이메일을 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
   }else{
@@ -209,9 +199,9 @@ $(document).keyup(function(){
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
+$("#sample4_postcode").keyup(function(){
   if($("#sample4_postcode").val()==""){
-    $('#adress_sub').html("<span style='color:red'>주민등록번호를 입력해주세요!</span>");
+    $('#adress_sub').html("<span style='color:red'>주소를 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
   }else{
     $('#adress_sub').html("<span style='color:red'>다음으로 이동해주세요!</span>");

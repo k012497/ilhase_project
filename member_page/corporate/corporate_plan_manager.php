@@ -127,7 +127,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
               $('input[name=options]').val();
           });
           $('#plan_buy').click(function(){
-            console.log($('input[name="options"]:checked').val());
             location.href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/kakaopay.php?plan="+$('input[name="options"]:checked').val()
             +"&id=<?=$_SESSION['userid']?>";
           });
@@ -141,8 +140,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
 
           const check_sign = label.nextElementSibling;
           const radio = label.control;
-          console.log(radio, check_sign);
-          console.log(radio.checked);
 
           check_sign.style.display = "inline";
 
@@ -164,7 +161,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         action="purchase_form.php">
         <input type="hidden" name="id" value="<?=$_SESSION['userid']?>">
           <?php
-            // echo "<div class='btn-group btn-group-toggle text-center' data-toggle='buttons'>";
             for ($i=0; $i < $numrow; $i++) {
               if($i==0){
                 $sec="checked";

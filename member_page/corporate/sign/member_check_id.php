@@ -4,7 +4,6 @@
     if (isset($_POST["inputId"])) {
       $id = $_POST["inputId"];
     }else{
-      // echo "뭐지";
       return false;
     }
 

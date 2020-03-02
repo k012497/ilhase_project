@@ -29,7 +29,7 @@ if($num===null){
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
     <?php
-       
+
           $sql="select * from resume where num='$num'";
           $result1=mysqli_query($conn,$sql);
           $row=mysqli_fetch_array($result1);
@@ -117,11 +117,11 @@ if($num===null){
      <!-- 확대/축소 버튼 -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
 <script>
-  
-      
+
+
       //클릭 효과
       $(function(){
-        
+
         $('#btn_more_img').off('click');
         $('#btn_more_img').click(function(){
           $('#div_resume_detail').fadeToggle('500');
@@ -132,7 +132,6 @@ if($num===null){
 
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){
-      console.log(data, idx);
       data.classList.remove('active');
 
       if(idx === 1){
