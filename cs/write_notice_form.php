@@ -59,7 +59,7 @@ if($mode === 'update'){
           if(mode === 'insert'){
             document.write_notice.action = 'dml_notice.php?mode=insert';
           } else if (mode === 'update'){
-            document.write_notice.action = 'dml_notice.php?mode=update&num=<?=$num?>&page=<?=$page?>';
+            document.write_notice.action = 'dml_notice.php?mode=update&num=<?=$num?>&page=<?=$page?>&del_file='+$("#del_file").val();
           }
 
           document.write_notice.submit();

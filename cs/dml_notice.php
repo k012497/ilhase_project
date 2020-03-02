@@ -66,19 +66,27 @@ function update_notice(){
   $content = filter_data($_POST["content"]);
   $n_subject = mysqli_real_escape_string($conn, $subject);
   $n_content = mysqli_real_escape_string($conn, $content);
-
+  echo $_GET['del_file'];
   // 원래 파일 삭제하기
-  if(isset($_POST['del_file']) && $_POST['del_file'] == '1'){
+  if(isset($_GET['del_file']) && $_GET['del_file'] == '1'){
     $sql="SELECT `file_copied` from `notice` where num ='$num';";
     $result = mysqli_query($conn,$sql);
+
 
     if (!$result) {
       die('Error: ' . mysqli_error($conn));
     }
 
     $row = mysqli_fetch_array($result);
+    $rere= mysqli_num_rows($result);
     $file_copied = $row['file_copied'];
+
     if(!empty($file_copied)){
+      echo "<javascript>alert('삭제')</javascript>";
+      unlink("./data/".$file_copied); // 파일 삭제
+    }
+    if($rere==0){
+      echo "<javascript>alert('삭제')</javascript>";
       unlink("./data/".$file_copied); // 파일 삭제
     }
 
@@ -105,7 +113,7 @@ function update_notice(){
   if(!$result){
     echo mysqli_error($result);
   } else {
-    echo $subject.$content.$sql;
+    echo $subject.$content.$sql."성공이냐?";
   }
 
   mysqli_close($conn);

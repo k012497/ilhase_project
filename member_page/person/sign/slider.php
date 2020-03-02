@@ -48,7 +48,7 @@ $(function () {
       });
     }
   }); //inputId.blur end regex
-$(document).keyup(function(){
+$("#pass_1").keyup(function(){
     var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
 
     if(pass_1.val() === ""){
@@ -63,9 +63,9 @@ $(document).keyup(function(){
     }
   });
 $("#pass_2").keyup(function(){
-    var pass_1_value= pass_1.val(),
-        pass_2_value= pass_2.val();
-        if(pass_1_value===pass_2_value){
+    var pass_1_value= pass_1.val();
+    var pass_2_value= pass_2.val();
+        if(pass_1_value==pass_2_value){
             passSubMsg.html("<span style='color:red'>패스워드가 일치합니다 다음으로 가세요</span>");
             $('.slick-next').attr('disabled', false);
         }else{
@@ -174,7 +174,7 @@ $("#name").keyup(function(){
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
+$("#phone_num").keyup(function(){
   if($("#phone_injung").val()==0){
     $('.slick-next').attr('disabled', true);
   }else{
@@ -190,7 +190,7 @@ $("#email").keyup(function(){
     $('.slick-next').attr('disabled', false);
   }
 });
-$(document).keyup(function(){
+$("#birth").keyup(function(){
   if($("#birth").val()==""||$("#gender").val()==""){
     $('#birth_sub').html("<span style='color:red'>주민등록번호를 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
