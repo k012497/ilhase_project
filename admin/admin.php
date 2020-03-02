@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>일하세 | 관리자 모드</title>
+    <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/css/common.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/admin.css">
 </head>
@@ -25,7 +26,7 @@
     <script src="./js/jquery.animateNumber.js"></script>
 
     <!-- main container -->
-    <div class="container">
+    <div class="admin_container">
         <!-- 회원 관리 -->
         <div class="fit_height admin_menu" id="manage_member">
             <h2 class="title">회원 관리</h2>
@@ -48,7 +49,7 @@
                     <div class="manage_member_item">
                         <span>등록된 공고</span>
                         <br /><br />
-                        <span id="recruitment_count" style="font-size: 30px;"></span><span>개</span>
+                        <span id="recruitment_count" class="target" style="font-size: 30px;"></span><span>개</span>
                     </div>
                 </li>
             </ul>
@@ -81,11 +82,11 @@
                     <form name="p_member_info" method="post">
                         <input type="hidden" name="id">
                         <label for="">이름</label><input type="text" name="name"><br />
-                        <label for="">생년월일</label><input type="text" name="birth"><br />
+                        <label for="">생년월일</label><input type="text" name="birth" readonly><br />
                         <label for="">성별</label><input type="text" name="gender"><br />
                         <label for="">이메일</label><input type="text" name="email"><br />
                         <label for="">휴대폰</label><input type="text" name="phone"><br />
-                        <label for="">주소</label><input type="text" name="address" disabled="true"><br />
+                        <label for="">주소</label><input type="text" name="address" readonly><br />
                         <div class="apply_history">
                             <div>
                                 <span class="col1">지원한 공고</span><span class="col2">직종</span><span class="col3">날짜</span>
@@ -108,14 +109,13 @@
                     <form name="c_member_info" method="post">
                         <input type="hidden" name="id">
                         <label for="">회사명</label><input type="text" name="b_name"><br />
-                        <label for="">업종</label><input type="text" name="job_category" disabled="true"><br />
+                        <label for="">업종</label><input type="text" name="job_category" readonly><br />
                         <label for="">대표자명</label><input type="text" name="ceo"><br />
-                        <label for="">사업자 번호</label><input type="text" name="b_license_num" disabled="true"><br />
+                        <label for="">사업자 번호</label><input type="text" name="b_license_num" readonly><br />
                         <label for="">주소</label><input type="text" name="address"><br />
                         <label for="">이메일</label><input type="text" name="email"><br />
-                        <label for="">남은 이용 횟수</label><input type="text" name="available_service" ><br />
                     </form>
-
+                    <br /><br />
                     <button onclick="query_corporate('update');">수정</button>
                     <button onclick="query_corporate('delete');">삭제</button>
                 </div>
@@ -153,11 +153,6 @@
                     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/admin/plan_chart.php";?>
                 </div>
                 <div class="add_plan">
-                    <!-- <select name="sort" id="sort_plan_list">정렬
-                        <option value="">번호순</option>
-                        <option value="">판매량순</option>
-                        <option value="">매출순</option>
-                    </select><br /> -->
                     <ul class="plan_list">
                         <li>
                             <span class="col1">NO</span>
