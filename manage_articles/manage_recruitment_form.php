@@ -91,7 +91,7 @@ if(isset($_GET['num'])){
                   if($member_type=="person") {
 
                   }else{
-                    echo "<a onclick='location.href=`./delete_recruitment_closed.php`'>마감된 공고 삭제하기</a>";
+                    echo "<a href='delete_recruitment_closed.php'>마감된 공고 삭제하기</a>";
                   }
                ?>
             </div>
@@ -115,12 +115,13 @@ if(isset($_GET['num'])){
                      $src='./img/default_profile.jpg';
                    }
                ?>
-
-                <li class="li_resume">
-                  <?php echo "<img src='$src' alt='이력서 사진'>"; ?>
-                  <p class="p_title" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'"><span class="resume_title"><?=$title?></span><br/><?=$regist_date?></p>
-                  <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='resume_delete.php?num=<?=$num?>'">
-                </li>
+                <div class="list_item_box">
+                  <li class="li_resume">
+                    <?php echo "<img src='$src' alt='이력서 사진'>"; ?>
+                    <p class="p_title" onclick="location.href='write_resume_form.php?mode=update&num=<?=$num?>'"><span class="resume_title"><?=$title?></span><br/><?=$regist_date?></p>
+                  </li>
+                  <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='resume_delete.php?num=<?=$num?>';}">
+                </div>
                 <?php
                 }
 
@@ -142,7 +143,7 @@ if(isset($_GET['num'])){
                      $src='./img/basicimg.jpg';
                    }
                ?>
-               <div class="resume_item_box">
+               <div class="list_item_box">
                 <li class="li_resume">
                   <?php echo "<img src='$src' alt='액박이니?'>"; ?>
                   <p class="p_title" onclick="location.href='new_recruitment_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
@@ -150,24 +151,24 @@ if(isset($_GET['num'])){
                     if($period_end < date('Y-m-d')){
                       // 마감일이 지난 공고
                       ?>
-                    <p id="finish_resume">마감</p>
+                    <p id="finish_resume">마감</p> 
                     <?php
                     }
                     ?>
                 </li>
-                <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'; return false">
+                <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='recruit.php?mode=delete&num=<?=$num?>';}">
               </div>
                 <?php
                 } // end of while
               } // end of else
-
-
+                
+                
                 $sql="select*from person where id='$userid'";
                   $result=mysqli_query($conn,$sql);
                     if($member_type=="person") {
-                        echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`write_resume_form.php`'><img  src='./img/upload.png'>신규 이력서 작성하기</li>";
+                        echo "<div class='list_item_box'><li class='li_resume' id='li_write_resume' onclick='location.href=`write_resume_form.php`'><img  src='./img/upload.png'>신규 이력서 작성하기</li></div>";
                     }else{
-                        echo "<div class='resume_item_box'><li class='li_resume' id='li_write_resume' onclick='location.href=`new_recruitment_form.php`' ><img  src='./img/upload.png'>신규 공고 작성하기</li></div>";
+                        echo "<div class='list_item_box'><li class='li_resume' id='li_write_resume' onclick='location.href=`new_recruitment_form.php`' ><img  src='./img/upload.png'>신규 공고 작성하기</li></div>";
                     }
                  ?>
 

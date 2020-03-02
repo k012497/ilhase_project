@@ -35,7 +35,7 @@ session_start();
   ";
 
   function insert_recruitment(){
-    global $conn, $id, $require;
+    global $conn, $require;
 
     $sqli="SELECT * FROM purchase WHERE member_id='".$_SESSION['userid']."' ORDER BY num ASC;";
 
@@ -109,10 +109,9 @@ session_start();
   }
 
   function update_recruitment(){
-    global $conn,$id;
+    global $conn;
 
     $num=$_GET["num"];
-    $corporate_id=filter_data($_POST["corporate_id"]);
     $name=filter_data($_POST["recruiter_name"]);
     $phone=filter_data($_POST["recruiter_phone"]);
     $email=filter_data($_POST["recruiter_email"]);
@@ -132,8 +131,6 @@ session_start();
     $person_detail=filter_data( $_POST["person_detail"]);
     $envir_detail=filter_data($_POST["environment_detail"]);
 
-    include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/upload_file.php"; // 파일 업로드
-
     if (isset($_POST["require_check"])) {
         $career= "무관";
     }else{
@@ -145,7 +142,18 @@ session_start();
     $total_pay=$rdo_pay." ".$pay."원";
     $total_detail=$detail." ".$person_detail." ".$envir_detail;
 
-    $sql= "update recruitment set title='".$title."', details='".$total_detail."', recruiter_name='".$name."', recruiter_phone='".$phone."', recruiter_email='".$email."', homepage='".$homepage."',industry='".$category."', personnel='".$personnel."', require_career='".$career."',require_edu='".$edu."', pay='".$total_pay."', recruit_type='".$rdo_type."', period_start='".$start."', period_end='".$end."' , work_place='".$work."', file_name='$upfile_name', file_copied='$copied_file_name' where num ='$num';";
+    include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/upload_file.php"; // 파일 업로드
+
+    // 기존에 올렸던 파일이 있고 수정 시 파일을 업로드하지 않았을 때
+    $sql = "select file_copied from recruitment where num = '$num'";
+    $file_exists = mysqli_fetch_array(mysqli_query($conn, $sql))[0];
+    if($file_exists && !$upfile_name){
+      $sql = "update recruitment set title='".$title."', details='".$total_detail."', recruiter_name='".$name."', recruiter_phone='".$phone."', recruiter_email='".$email."', homepage='".$homepage."',industry='".$category."', personnel='".$personnel."', require_career='".$career."',require_edu='".$edu."', pay='".$total_pay."', recruit_type='".$rdo_type."', period_start='".$start."', period_end='".$end."' , work_place='".$work."' where num ='$num';";
+    } else {
+      // 
+      $sql= "update recruitment set title='".$title."', details='".$total_detail."', recruiter_name='".$name."', recruiter_phone='".$phone."', recruiter_email='".$email."', homepage='".$homepage."',industry='".$category."', personnel='".$personnel."', require_career='".$career."',require_edu='".$edu."', pay='".$total_pay."', recruit_type='".$rdo_type."', period_start='".$start."', period_end='".$end."' , work_place='".$work."', file_name='$upfile_name', file_copied='$copied_file_name' where num ='$num';";
+    }
+
 
     $result=mysqli_query($conn, $sql);
     if (!$result) {
