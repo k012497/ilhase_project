@@ -1,0 +1,256 @@
+body,html {
+    width:100%;
+    min-height:100%;
+    padding-bottom:0px;
+    padding-bottom:180px;
+    box-sizing:border-box;
+}
+h1,h2,h3,h4,h5,h6 {
+    margin-bottom:0;
+
+}
+#wrap {
+    width:100%;
+    min-height:100%;
+  
+}
+.slick-list {
+    width:100%;
+    height:100%;
+}
+#wrap_inner{
+    width:100%;
+    height:100%;
+}
+.slick-current {
+    height:100%;
+}
+.visual{
+    width:100%;
+    height:100%;
+}
+.slick-track {
+    height:100%;
+}
+.slick-slide {
+    height:100%;
+    padding:0 0;
+    box-sizing:border-box;
+    outline:none;
+}
+.visual button {
+    position:absolute;
+    z-index:10; 
+    top:50%;
+    transform:translateY(-50%);
+    width:71px;
+    height:71px;
+    border-radius: 100%;background:rgba(0,0,0,.5);
+    border:none;
+    outline:none;
+}
+.visual button:before{
+    font-family: 'xeicon';
+    color:#fff;
+    font-size: 45px;
+}
+.visual button.slick-prev {
+    left:0; 
+    font-size:0;
+    color:transparent;
+    margin-left:2rem;
+    outline:none;
+}
+.visual button.slick-prev:before{
+    content:"\e93d";
+}
+    
+.visual button.slick-next {
+    right:0;
+    font-size:0;
+    color:transparent;
+    margin-right:2rem;
+    outline:none;
+}
+#check_address_box {
+    margin-top:1rem;
+}
+.check_box {
+    margin-top:7rem;
+    width:100%;
+    height:100%;
+}
+.visual button.slick-next:before{
+    content:"\e940";
+}
+.div1 { 
+    width:80%;  
+    margin:0 auto;
+    font-size: 24px;
+    text-align:center;
+    padding:2rem 0rem;
+}
+.div2 {
+    width:80%;  
+    margin:0 auto;
+    font-size: 24px;
+    text-align:center;
+    padding:0rem 0rem;
+}
+
+.input1 {
+    width:80%;
+    margin:0 auto;
+    text-align:center;
+    clear: both;
+}
+.input1 #idSubMsg,#passSubMsg1,#passSubMsg,#h4_2,#email_sub,#birth_sub,#adress_sub {
+    margin-bottom:0;
+    padding:2rem;
+}
+.input1 input {
+    font-size: 24px;
+    text-align:center;
+    height:80px;
+    border-radius:0.3rem;
+    outline:none;
+    border:1px solid #333;
+}
+.input2 {
+    width:80%;
+    margin:0 auto;
+}
+.input2 .input_checkclallnum {
+    font-size: 24px;
+    width:70%;
+    height:80px;
+    border-radius:0.3rem;
+    outline:none;
+    padding-left:3rem;
+    border:1px solid #333;
+}
+#check_callnum {
+    width:100%;
+    margin:2rem 0;
+    position: relative;
+}
+#check_callnum_box {
+    position: absolute;
+    left:50%;
+    width:60%;
+    transform:translateX(-50%);
+}
+#check_callnum_inner {
+    width:100%;
+}
+#valueSub {
+    margin-top:1rem;
+}
+#check_callnum #button_1 {
+    width:20%;
+    height:80px;
+    border:0;
+    background-color:#5DB6DE;
+    color:#fff;
+    cursor: pointer;
+    border-radius:0.3rem;
+    outline:none;
+    font-size: 24px;
+    margin-left:1.5rem;
+}
+#phone_num {
+    margin-top:1rem;
+}
+h4{color:red;}
+#span_tag {
+    display: inline-block;
+    width:5%;
+    height:80px;
+    line-height:80px;
+    font-size:4rem;
+}
+#span_tag2 {
+    font-size:4rem;
+    vertical-align:middle;
+    margin-left:5px;
+}
+#birth {
+    
+    margin-right:10px;
+}
+#gender {
+    margin-left:10px;
+}
+
+#address_box {
+    width:50%;
+    margin:0 auto;
+    clear: both;
+}
+#sample4_postcode{
+    background-color:#eee;
+}
+.column {
+    width:49%;
+    height:80px;
+    border-radius:0.3rem;
+    margin-bottom:1rem;
+    border:1px solid #333;
+    padding-left:2rem;
+    outline:none;
+}
+.column_left {
+    float: left;
+}
+.column_right {
+    float: right;
+}
+#btn_address_check {
+    width:49%;
+    height:80px;
+    margin-bottom:1rem;
+    border:none;
+    font-size:1.5rem;
+    background-color:#5DB6DE;
+    text-align:center;
+    border-radius:0.3rem;
+    color:#fff;
+    border:1px solid #fff;
+    cursor: pointer;
+    outline:none;
+
+}
+#provision {
+    margin-top:1rem;
+}
+#provision_box {
+    width:80%;
+    margin:0 auto;
+    text-align: center;
+}
+#provision_box textarea {
+    display:inline-block;
+    width:50%;
+    border:1px solid rgb(190, 190, 190);
+    resize:none;
+    padding: 1.1em; /* prevents text jump on Enter keypress */
+    padding-bottom: 0.2em;
+    line-height: 1.6;
+    background-color:#eee;
+    border-radius:0.5rem;
+    text-align:left;
+}
+#submit_1 {
+    width:50%;
+    height:80px;
+    border:none;
+    font-size:1.5rem;
+    background-color:#5DB6DE;
+    text-align:center;
+    border-radius:0.3rem;
+    color:#fff;
+    border:1px solid #fff;
+    cursor: pointer;
+    outline:none;
+    margin-top:1rem;
+}
