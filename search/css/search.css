@@ -162,7 +162,7 @@ button:focus {
   /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width:50%;
+  width:1100px;
   box-shadow: 0 25px 40px -20px #3c4a56;
   border-radius: 1rem;
 }
@@ -178,11 +178,6 @@ button:focus {
   background-repeat: no-repeat;
   text-indent: -9999px;
   cursor: pointer;
-}
-
-#area_contents {
-  /* padding:1rem 1rem; */
-  width: 70%;
 }
 
 #area_contents h3 {
@@ -226,12 +221,12 @@ button:focus {
 
 #si_gun_gu {
   display: grid;
-  grid-template-columns: repeat(7, 14.5%);
+  grid-template-columns: repeat(7, 14.4%);
   grid-auto-rows: minmax(40px, 40px);
 }
 
 #si_gun_gu label {
-  text-align: center;
+  text-align: left;
   line-height:40px;
   font-size: 1rem;
 }
