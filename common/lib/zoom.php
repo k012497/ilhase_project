@@ -59,10 +59,6 @@ var distance= 620;
     //쫄쫄이 메뉴
     $(function(){
         $('#zoom_box').offset({top : $(window).scrollTop() + (innerHeight * 0.9)});
-
-        $(window).resize(function(){
-            window.innerHeight;
-        });
         
         //스크롤 할때
         $(window).scroll(function(){
