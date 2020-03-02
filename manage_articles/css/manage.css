@@ -84,8 +84,13 @@ section {
   cursor: pointer;
 }
 
+.resume_item_box {
+  display: inline-block;
+  position: relative;
+}
+
 #li_write_resume{
-  width: 330px;
+  width: 340px;
   height: 100px;
   text-decoration: none;
   border-radius: 10px;
@@ -107,18 +112,20 @@ section {
 }
 
 #recruit_list #finish_resume{
-  width: 30%;
-  height: 100px;
-  list-style: none;
-  display:none;
-  text-decoration: none;
+  user-select: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: auto;
+  width: 340px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   border-radius: 10px;
   background-color: lightgray;
   text-align: center;
   line-height: 100px;
-  position: absolute;
   opacity: 0.7;
-  color: white;
+  color: black;
   margin: 5px;
   z-index: 3;
 }
@@ -157,7 +164,9 @@ section {
   z-index: 999;
   width: 17px;
   height: 17px;
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   margin-top: 10px;
   margin-right:10px;
   cursor: pointer;

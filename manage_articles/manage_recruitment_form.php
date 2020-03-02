@@ -91,7 +91,7 @@ if(isset($_GET['num'])){
                   if($member_type=="person") {
 
                   }else{
-                    echo "<a href='#'>마감된 공고 삭제하기</a>";
+                    echo "<a href='location.href='./delete_recruitment_closed.php''>마감된 공고 삭제하기</a>";
                   }
                ?>
             </div>
@@ -99,6 +99,7 @@ if(isset($_GET['num'])){
                 <ul>
               <?php
               if ($member_type=="person") {
+                // 개인 회원일 경우
                 $sql="SELECT * from resume where m_id ='$userid' order by num desc";
                 $result = mysqli_query($conn,$sql);
 
@@ -123,7 +124,8 @@ if(isset($_GET['num'])){
                 <?php
                 }
 
-              }else{
+              } else {
+                // 기업 회원일 경우
                 $sql="SELECT * from recruitment where corporate_id ='$userid' order by num desc";
                 $result = mysqli_query($conn,$sql);
 
@@ -132,6 +134,7 @@ if(isset($_GET['num'])){
                   $title=$row['title'];
                   $regist_date=$row['regist_date'];
                   $file_copied=$row['file_copied'];
+                  $period_end = $row['period_end'];
                   $src='';
                    if ($file_copied) {
                      $src='http://'.$_SERVER["HTTP_HOST"].'/ilhase/manage_articles/data/'.$file_copied;
@@ -139,29 +142,35 @@ if(isset($_GET['num'])){
                      $src='./img/basicimg.jpg';
                    }
                ?>
+               <div class="resume_item_box">
                 <li class="li_resume">
                   <?php echo "<img src='$src' alt='액박이니?'>"; ?>
                   <p class="p_title" onclick="location.href='new_recruitment_form.php?mode=update&num=<?=$num?>'"><?=$title?><br/><?=$regist_date?></p>
-                  <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'; return false">
+                  <?php
+                    if($period_end < date('Y-m-d')){
+                      // 마감일이 지난 공고
+                      ?>
+                    <p id="finish_resume">마감</p> 
+                    <?php
+                    }
+                    ?>
                 </li>
+                <img id="btn_close" name="upfile" src="./img/cross.png" alt="버튼" onclick="location.href='recruit.php?mode=delete&num=<?=$num?>'; return false">
+              </div>
                 <?php
-                }
-              }
-                ?>
-                <li id="finish_resume"><p>마감</p>
-                </li>
-                <?php
+                } // end of while
+              } // end of else
+                
+                
                 $sql="select*from person where id='$userid'";
                   $result=mysqli_query($conn,$sql);
                     if($member_type=="person") {
                         echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`write_resume_form.php`'><img  src='./img/upload.png'>신규 이력서 작성하기</li>";
                     }else{
-                        echo "<li class='li_resume' id='li_write_resume' onclick='location.href=`new_recruitment_form.php`' ><img  src='./img/upload.png'>신규 공고 등록하기</li>";
+                        echo "<div class='resume_item_box'><li class='li_resume' id='li_write_resume' onclick='location.href=`new_recruitment_form.php`' ><img  src='./img/upload.png'>신규 공고 작성하기</li></div>";
                     }
                  ?>
 
-                <!-- <li id="new_resume"><img src="./img/upload.png" alt=""><p> 신규 공고 등록하기</p>
-                </li> -->
               </ul>
             </div>
           </div>

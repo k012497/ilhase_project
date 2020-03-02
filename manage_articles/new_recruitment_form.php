@@ -105,7 +105,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
     $phone="";
     $email="";
     $homepage="";
-    $personnel="";
+    $personnel="2";
     $require = "";
     $require_career="";
     $require_edu="";
@@ -118,7 +118,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
     $category="";
     $section="";
     $rdo_pay="";
-    $pay="";
+    $pay="100000";
     $detail="";
     $person_detail="";
     $envir_detail="";
@@ -144,13 +144,13 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
             <div id="div_recruiter_name">
               <input type="hidden" id="corporate_id" name="corporate_id" value="<?=$corporate_id?>">
               <p>채용 담당자 명<strong>*</strong></p>
-              <input type="text" id="recruiter_name" name="recruiter_name" placeholder="이름" value="<?=$name?>">
+              <input type="text" id="recruiter_name" name="recruiter_name" placeholder="이름" value="<?=$name?>" required>
               <p id="name_msg" style="display:none;">이름을 다시 적어주세요.</p>
             </div>
             <div id="div_recruiter_phone">
               <p>전화 번호<strong>*</strong></p>
               <input id="recruiter_phone"type="text" name="recruiter_phone"
-              placeholder="(-)포함 휴대폰 번호" value="<?=$phone?>">
+              placeholder="(-)포함 휴대폰 번호" value="<?=$phone?>" required>
                 <p id="phone_msg" style="display:none;">번호를 다시 입력 해주세요.</p>
             </div>
           </div>
@@ -172,7 +172,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
         <div id="div_industry">
           <p>산업 분류<strong>*</strong></p>
           <div id="div_category">
-            <select id="category_select" size="1"name="industry" onchange="get_section(this.value);" >
+            <select id="category_select" size="1"name="industry" onchange="get_section(this.value);" required>
               <option value="선택 없음">선택해주세요.</option>
               <option <?php if ($category=="생산/제조/단순노무") {
                   echo 'selected';
@@ -213,7 +213,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
             </select>
           </div>
           <div id="industry_detail">
-            <select id="select_section" size="1" name="section">
+            <select id="select_section" size="1" name="section" required>
               <option value="<?=$section?>" onchange="set_section();"><?=$section?></option>
 
             </select>
@@ -221,12 +221,12 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
           <div id="div_career">
             <div id="div_personnel">
               <p>모집 인원<strong>*</strong></p>
-              <input type="number" name="personnel" value="<?=$personnel?>">명
+              <input type="number" name="personnel" min="0" value="<?=$personnel?>" required>명
             </div>
             <div id="div_require_career">
               <p>지원 자격<strong>*</strong></p>
-                경력<input id="require" type="number" name="require" value="">년 이상 <input id="unrelate" type="checkbox" name="require_check" onclick="disable_input(this);" >무관
-                <select id="edu_select" size="1" name="edu_select">
+                경력<input id="require" type="number" name="require" min="0" value="">년 이상 <input id="unrelate" type="checkbox" name="require_check" onclick="disable_input(this);" >무관
+                <select id="edu_select" size="1" name="edu_select" required>
                   <option value="학력 선택">학력 선택</option>
                   <option <?php if ($require_edu=="무관") {
                       echo 'selected';
@@ -250,7 +250,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
         <div id="div_pay">
           <p>급여<strong>*</strong></p>
         <div id="input_pay">
-          <input type="number" id="pay" name="pay" placeholder="급여" value="<?=(int)$pay?>">원
+          <input type="number" id="pay" name="pay" min="0" placeholder="급여" value="<?=(int)$pay?>">원
           <input type="radio" id="hour_pay" name="rdo_pay" <?php if ($rdo_pay=="시급") {
               echo 'checked';
             }
@@ -289,13 +289,13 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
         <div id="div_period">
           <p>모집 기간<strong>*</strong></p>
         <div id="period">
-          <input type="text" id="period_start" name="period_start" placeholder="접수 시작일" onfocus="(this.type='date')" value="<?=$period_start?>"> ~ <input type="text" id="period_end" name="period_end" placeholder="접수 마감일" onfocus="(this.type='date')" value="<?=$period_end?>">
+          <input type="text" id="period_start" name="period_start" placeholder="접수 시작일" onfocus="(this.type='date')" value="<?=$period_start?>" required> ~ <input type="text" id="period_end" name="period_end" placeholder="접수 마감일" onfocus="(this.type='date')" value="<?=$period_end?>" required>
         </div>
         </div>
         <div id="div_workplace">
           <p>근무지<strong>*</strong></p>
         <div id="workplace">
-          <input type="text" id="text_work" name="text_work" placeholder="OO시 OO구 OO동 OO빌딩 4~5층" value="<?=$work_place?>" maxlength="30">
+          <input type="text" id="text_work" name="text_work" placeholder="OO시 OO구 OO동 OO빌딩 4~5층" value="<?=$work_place?>" maxlength="30" required>
         </div>
         </div>
       </div>
@@ -305,34 +305,33 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       <div id="div_recruit_title">
         <p>제목<strong>*</strong></p>
         <div id="div_title">
-          <input type="text" id="recruit_title" name="recruit_title" placeholder="제목" value="<?=$title?>" maxlength="20">
+          <input type="text" id="recruit_title" name="recruit_title" placeholder="제목" value="<?=$title?>" maxlength="20" required>
         </div>
       <div id="div_corporate_detail">
         <p>저희는 이런 회사예요<strong>*</strong></p>
-        <textarea name="corporate_detail" rows="7" cols="75" placeholder="어떤 일을 하는 곳인가요 ?" style="resize: none;" ><?=$detail?></textarea>
+        <textarea name="corporate_detail" rows="7" cols="75" placeholder="어떤 일을 하는 곳인가요 ?" style="resize: none;" required ><?=$detail?></textarea>
       </div>
       <div id="div_person_detail">
         <p>이런 사람 원해요<strong>*</strong></p>
-        <textarea name="person_detail" rows="7" cols="75" placeholder="특별히 원하는 인재상을 알려주세요." style="resize: none;"><?=$person_detail?></textarea>
+        <textarea name="person_detail" rows="7" cols="75" placeholder="특별히 원하는 인재상을 알려주세요." style="resize: none;" required><?=$person_detail?></textarea>
       </div>
       <div id="div_environment_detail">
         <p>이런 환경에서 일해요<strong>*</strong></p>
-        <textarea name="environment_detail" rows="7" cols="75" placeholder="구체적인 업무, 근무 시간, 근무 장소,주의할 점 등에 대해 알려주세요." style="resize: none;"><?=$envir_detail?></textarea>
+        <textarea name="environment_detail" rows="7" cols="75" placeholder="구체적인 업무, 근무 시간, 근무 장소,주의할 점 등에 대해 알려주세요." style="resize: none;" required><?=$envir_detail?></textarea>
       </div>
       <div id="div_image_upload">
         <p>사진 업로드</p>
-        <input id="imageFile" type="file" name="upfile" accept="image/*"><img src="./img/plus.png" alt=""> <label for="imageFile" id="label_file"><?=$file_name?></label>
+        <input id="imageFile" type="file" name="upfile" accept="image/*"><img src="./img/plus.png" alt=""> <label for="imageFile" id="label_file" required><?=$file_name?></label>
       </div>
       </div>
       <div id="div_btn_regist">
         <?php
           if ($mode=='update') {
-            echo "<input type='button' name='btn_update' id='btn_update' value='수정하기'>";
+            echo "<input type='submit' name='btn_update' id='btn_update' value='수정하기'>";
           }else{
-            echo "<input type='button' name='btn_regist' id='btn_regist' value='등록하기'>";
+            echo "<input type='submit' name='btn_regist' id='btn_regist' value='등록하기'>";
           }
          ?>
-          <!-- <input type="button" name="btn_regist" id="btn_regist" value="등록하기"> -->
       </div>
     </div>
   </form>
@@ -375,6 +374,16 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
             }
             $(this).siblings('#label_file').text(label);
           });
+      });
+
+      //nav active 활성화
+      document.querySelectorAll('.nav-item').forEach(function(data, idx){
+        console.log(data, idx);
+        data.classList.remove('active');
+
+        if(idx === 2){
+          data.classList.add('active');
+        }
       });
 
     </script>
