@@ -98,13 +98,15 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       $envir_detail=$total_detail[2];
     }
   }else{
-    $mode="";
+    $corporate_id = $_SESSION['userid'];
+    $mode="insert";
     $title="";
     $name="";
     $phone="";
     $email="";
     $homepage="";
     $personnel="";
+    $require = "";
     $require_career="";
     $require_edu="";
     $recruit_type="";
@@ -148,7 +150,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
             <div id="div_recruiter_phone">
               <p>전화 번호<strong>*</strong></p>
               <input id="recruiter_phone"type="text" name="recruiter_phone"
-              placeholder="전화 번호" value="<?=$phone?>">
+              placeholder="(-)포함 휴대폰 번호" value="<?=$phone?>">
                 <p id="phone_msg" style="display:none;">번호를 다시 입력 해주세요.</p>
             </div>
           </div>
@@ -350,9 +352,8 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
         var check=document.querySelector("#unrelate");
         var career=document.querySelector("#require");
         var db_value="";
-        if(mode){
+        if(mode === 'update'){
          db_value='<?=$require ?>';
-
         }
         console.log(db_value);
         if(db_value=="무관"){
