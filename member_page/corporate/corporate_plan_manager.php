@@ -123,11 +123,23 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
       }
 
       .available_plan_item {
-        height: 70px; 
-        border-radius: 15px; 
+        height: 70px;
+        border-radius: 15px;
         margin: 5px 0;
       }
-
+      .history_scroll{
+        height: 300px;
+        overflow-y: scroll;
+      }
+      .ac_plan{
+        height: 242px;
+        overflow-y: scroll;
+      }
+      .plan_scroll{
+        padding: 20px;
+        height: 510px;
+        overflow-y: scroll;
+      }
     </style>
     <script type="text/javascript">
         $(function(){
@@ -165,6 +177,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
       <div id="manage_plan">
         <!-- 플랜 구매 -->
         <h3 class="subtitle">📌 구인 플랜 구매</h3>
+        <div class="plan_scroll">
         <form class="row justify-content-center" id="plan_list"
         action="purchase_form.php">
         <input type="hidden" name="id" value="<?=$_SESSION['userid']?>">
@@ -190,12 +203,14 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                 ";
               }
           ?>
+        </div>
           <input type="submit" class="btn btn-primary btn-block" id="purchase_plan" value="구매하기">
         </form>
 
 
         <!-- 이용중인 플랜 -->
     <h3 class="subtitle">📌 이용중인 플랜</h3>
+    <div class="ac_plan">
       <div class="row" id="available_plan">
         <?php
           for($i=0;$i<$numrow_purchase; $i++){
@@ -219,10 +234,11 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
           }
          ?>
     </div>
-
+  </div>
     <div id="text_div_3">
       <h3 class="subtitle">구매 내역 <span class="xi-credit-card"></span> </h3>
     </div>
+    <div class="history_scroll">
     <div id="purchase_history">
       <table class="table table-striped">
         <thead>
@@ -249,7 +265,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         </tbody>
       </table>
     </div>
-
+    </div>
       </div><!-- manage plan -->
     </div><!-- container -->
 
@@ -296,7 +312,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
         const current_menu = document.querySelectorAll('.side_menu_item')[2];
         current_menu.style.backgroundColor = 'rgb(133, 198, 241)';
         current_menu.style.color = 'white';
-        
+
         document.getElementById('input_0').nextElementSibling.click();
 	</script>
   </body>

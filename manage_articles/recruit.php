@@ -53,8 +53,10 @@ session_start();
           $row[$i]=mysqli_fetch_array($result_count);
       }
       for($i=0; $i<$numrow; $i++){
-        if($row[$i]['available_count']==1){
-          $sqli2="delete from purchase where num=".$row[$i]['num'].";";
+        if($row[$i]['available_count']==0){
+          $i++;
+          $count1=$row[$i]['available_count']-1;
+          $sqli2="update purchase set available_count=".$count1." where num=".$row[$i]['num'].";";
           mysqli_query($conn, $sqli2);
           break;
         }else{
@@ -64,6 +66,7 @@ session_start();
           break;
         }
       }
+
 
     $corporate_id=filter_data($_POST["corporate_id"]);
     $name=filter_data($_POST["recruiter_name"]);
@@ -150,7 +153,7 @@ session_start();
     if($file_exists && !$upfile_name){
       $sql = "update recruitment set title='".$title."', details='".$total_detail."', recruiter_name='".$name."', recruiter_phone='".$phone."', recruiter_email='".$email."', homepage='".$homepage."',industry='".$category."', personnel='".$personnel."', require_career='".$career."',require_edu='".$edu."', pay='".$total_pay."', recruit_type='".$rdo_type."', period_start='".$start."', period_end='".$end."' , work_place='".$work."' where num ='$num';";
     } else {
-      // 
+      //
       $sql= "update recruitment set title='".$title."', details='".$total_detail."', recruiter_name='".$name."', recruiter_phone='".$phone."', recruiter_email='".$email."', homepage='".$homepage."',industry='".$category."', personnel='".$personnel."', require_career='".$career."',require_edu='".$edu."', pay='".$total_pay."', recruit_type='".$rdo_type."', period_start='".$start."', period_end='".$end."' , work_place='".$work."', file_name='$upfile_name', file_copied='$copied_file_name' where num ='$num';";
     }
 

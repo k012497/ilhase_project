@@ -186,11 +186,26 @@ $("#email").keyup(function(){
     $('#email_sub').html("<span style='color:red'>이메일을 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
   }else{
+    var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;//이메일 정규식
+
+    if(!emailRule.test($("#email").val())){
+
+    }else{
     $('#email_sub').html("<span style='color:red'>다음으로 이동해주세요!</span>");
     $('.slick-next').attr('disabled', false);
   }
+  }
 });
 $("#birth").keyup(function(){
+  if($("#birth").val()==""||$("#gender").val()==""){
+    $('#birth_sub').html("<span style='color:red'>주민등록번호를 입력해주세요!</span>");
+    $('.slick-next').attr('disabled', true);
+  }else{
+    $('#birth_sub').html("<span style='color:red'>다음으로 이동해주세요!</span>");
+    $('.slick-next').attr('disabled', false);
+  }
+});
+$("#gender").keyup(function(){
   if($("#birth").val()==""||$("#gender").val()==""){
     $('#birth_sub').html("<span style='color:red'>주민등록번호를 입력해주세요!</span>");
     $('.slick-next').attr('disabled', true);
