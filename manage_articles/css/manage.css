@@ -84,7 +84,7 @@ section {
   cursor: pointer;
 }
 
-.resume_item_box {
+.list_item_box {
   display: inline-block;
   position: relative;
 }
