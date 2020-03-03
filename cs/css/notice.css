@@ -446,6 +446,10 @@
 	margin: 1rem auto;
 }
 
+.c_content {
+	width: 670px;
+}
+
 .comment_content {
 	width: 800px;
 	padding: 1rem;
