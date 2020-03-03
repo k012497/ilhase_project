@@ -224,7 +224,7 @@ if(isset($_GET['num'])){
 
     <!-- 확대/축소 버튼 -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
-    
+
     <script>
        //클릭 효과
        $(function(){
@@ -241,6 +241,18 @@ if(isset($_GET['num'])){
 
         });
       });
+
+      function public_check(){
+        const mode= "<?= $mode ?>";
+        var public=document.querySelector("#input_public");
+        var public_value="<?=$public?>";
+        if(public_value=="1"){
+          public.checked=true;
+        }else{
+          public.checked=false;
+        }
+      }
+      public_check();
 
     </script>
   </body>
