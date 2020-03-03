@@ -99,10 +99,6 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       $rdo_pay=$total_pay[0];
       $pay=$total_pay[1];
 
-      $career=explode(" ",$row["require_career"]);
-      // $require=$career[0];
-      $require=$career[1];
-
       $total_detail=explode("\n\n",$row["details"]);
       $detail = strstr($total_detail[0], "\n");
       $person_detail = strstr($total_detail[1], "\n");
@@ -367,8 +363,9 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
            check.checked=true;
            career.disabled=true;
          }else{
-           db_value='<?=$require?>';
-           career.value=db_value;
+           var db_split=db_value.split(" ");
+           console.log(db_split);
+           career.value=db_split[1];
          }
         }
         console.log(db_value);
