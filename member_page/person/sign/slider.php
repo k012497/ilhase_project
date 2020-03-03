@@ -73,7 +73,9 @@ $("#pass_2").keyup(function(){
           $('.slick-next').attr('disabled', true);
         }
   });
-
+  $('#sample4_detailAddress').keyup(function(){
+    $('.slick-next').attr('disabled', false);
+  });
 
   $('.slick-next').click(function(){
     count+=1;
