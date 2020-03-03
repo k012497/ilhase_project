@@ -25,7 +25,7 @@ if($user_id==""){
 
             $src='';
             if ($file_copied) {
-            $src="http://".$_SERVER['HTTP_HOST']."/ilhase/manage_articles/data/"+$file_copied;
+            $src="http://".$_SERVER['HTTP_HOST']."/ilhase/manage_articles/data/".$file_copied;
             }else {
             $src="http://".$_SERVER['HTTP_HOST']."/ilhase/common/img/basicimg.jpg";
             }
@@ -89,7 +89,7 @@ if($user_id==""){
 
         $src='';
         if ($file_copied) {
-          $src="http://".$_SERVER['HTTP_HOST']."/ilhase/manage_articles/data/"+$file_copied;
+          $src="http://".$_SERVER['HTTP_HOST']."/ilhase/manage_articles/data/".$file_copied;
         }else {
           $src="http://".$_SERVER['HTTP_HOST']."/ilhase/common/img/basicimg.jpg";
         }
@@ -140,7 +140,7 @@ if($user_id==""){
 
             $src='';
             if ($file_copied) {
-            $src="http://".$_SERVER['HTTP_HOST']."/ilhase/manage_articles/data/"+$file_copied;
+            $src="http://".$_SERVER['HTTP_HOST']."/ilhase/manage_articles/data/".$file_copied;
             }else {
             $src="http://".$_SERVER['HTTP_HOST']."/ilhase/common/img/basicimg.jpg";
             }
