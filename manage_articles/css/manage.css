@@ -103,10 +103,10 @@ section {
 
 }
 #li_write_resume img{
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   position: relative;
-  top: 36px;
+  top: 31px;
   left:80px;
   margin-right: 1rem;
 }
@@ -147,7 +147,7 @@ section {
   width: 95px;
   height: 98px;
   float: left;
-  margin-right: 1rem;
+  padding: 0.5rem;
 }
 
 .li_resume .p_title{
