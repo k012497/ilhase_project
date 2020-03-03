@@ -131,6 +131,7 @@ if(isset($_GET['num'])){
         $num="";
         $mode="";
         $title="";
+        $public="";
         $cover_letter="";
         $career="";
         $license="";
@@ -245,12 +246,18 @@ if(isset($_GET['num'])){
       function public_check(){
         const mode= "<?= $mode ?>";
         var public=document.querySelector("#input_public");
-        var public_value="<?=$public?>";
-        if(public_value=="1"){
-          public.checked=true;
+        var public_value="";
+        if (mode=="update") {
+          public_value="<?=$public?>";
+          if(public_value=="1"){
+            public.checked=true;
+          }else{
+            public.checked=false;
+          }
         }else{
-          public.checked=false;
+          public_value;
         }
+
       }
       public_check();
 
