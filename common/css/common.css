@@ -138,6 +138,10 @@ button {
   margin:0.5rem 0rem;
 }
 
+#recommend_box #card_title {
+  letter-spacing: -1px;
+}
+
 #open_resume {
   margin:2rem 0rem;
 }

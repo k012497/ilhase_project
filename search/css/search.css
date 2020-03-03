@@ -223,6 +223,7 @@ button:focus {
   display: grid;
   grid-template-columns: repeat(7, 14.4%);
   grid-auto-rows: minmax(40px, 40px);
+  padding: 1rem 2rem;
 }
 
 #si_gun_gu label {
