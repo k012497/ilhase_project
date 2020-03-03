@@ -404,7 +404,7 @@
                         $('#btn_email_submit').off('click');
                         
                         $('#btn_email_submit').click(function(){
-                          console.log("1");
+                          // console.log("1");
                           var check_resume_num=$('input:radio[name=resume]:checked').prev().val();     
                           var isCheck = $('input:radio[name="resume"]').is(':checked')
                           var title=$('input:radio[name="resume"]:checked').val();                   
@@ -413,7 +413,7 @@
                             return false;
                           }else{
                             applyresume($user_id,recruit_id,title,check_resume_num);
-                            console.log($user_id,recruit_id,title,check_resume_num);
+                            // console.log($user_id,recruit_id,title,check_resume_num);
                             $('#loading').show();
                           }
                          
@@ -438,7 +438,7 @@
               //resume apply 등록
               function applyresume(user_id,recruit_id,title,check_resume_num){
 
-                console.log(user_id,recruit_id,title);
+                // console.log(user_id,recruit_id,title);
                 $.ajax({
 
                   url:'./dml_apply.php',
@@ -450,7 +450,7 @@
                         'receiver' : '<?=$c_id?>'
                         },
                   success:function(data){
-                      console.log(data);
+                      // console.log(data);
 
                   }
                 });
@@ -506,7 +506,7 @@
 
                 //관심공고 삭제
             function favorite_job_remove(id,pick_job_num){
-                    console.log('favorite_job_remove?');
+                    // console.log('favorite_job_remove?');
                     $.ajax({
                       url:'./dml_favorite.php?mode=remove',
                       type:'POST',
@@ -522,7 +522,7 @@
                             
                       },
                       error:function(request,status,error){
-                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                        // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                       }
                     });
 

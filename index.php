@@ -105,7 +105,6 @@ if(isset($_SESSION["usermember_type"]))
                     $industry_str=end($array_industry);
 
                     echo"
-                        <script>console.log('".$industry_str."');</script>
                         <li>#".$industry_str."</li>
                     ";
                   }
@@ -272,7 +271,7 @@ if(isset($_SESSION["usermember_type"]))
      var address='';
      var rute="<?= $_SERVER['HTTP_HOST']?>";
      var member_type="<?=$member_type?>";
-     console.log(rute);
+    //  console.log(rute);
 
       //지도 경도와 위치를 가져와서 구글 api로 지역주소 string으로 변환
      function getLocation() {
@@ -281,7 +280,7 @@ if(isset($_SESSION["usermember_type"]))
           navigator.geolocation.getCurrentPosition(function (position) {
                 lat = position.coords.latitude; //위도
                 lng = position.coords.longitude; //경도
-                console.log(lat + " / " + lng);
+                // console.log(lat + " / " + lng);
                 jQuery.ajax({
                     url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng +
                             '&sensor=true&key=AIzaSyD0d6XLU_Z9YZZUKaOqLKtOfy-ZXoJ4ysU',
@@ -293,7 +292,7 @@ if(isset($_SESSION["usermember_type"]))
                             if(user_id==''){
                               $('#location_info').text(address+")");
                             }
-                            console.log(address);
+                            // console.log(address);
                             $.ajax({
                                 url:'./common/lib/recommend_based_on_location.php',
                                 type : 'post',
@@ -314,7 +313,7 @@ if(isset($_SESSION["usermember_type"]))
 
                                 },
                                 error:function(request,status,error){
-                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                    // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                                 }
                             }); // end of ajax
 
@@ -396,7 +395,7 @@ $(function(){
                 $(this).click(function(){
                   // $('#search_job').val('');
                   $('#search_job').val($(this).text());
-                  console.log($('#search_job').val());
+                  // console.log($('#search_job').val());
                 });
 
             }); //end of each
@@ -426,7 +425,7 @@ $('#pick_job ul li').off('click');
 $('#pick_job ul li').click(function(){
 
     var select_word =$(this).text();
-    console.log(select_word);
+    // console.log(select_word);
     var str_select=select_word.split("#");
     $('input[name=search_word]').eq(1).val(str_select[1]);
 

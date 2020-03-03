@@ -273,6 +273,7 @@ button:focus {
   border: 1px solid #BFBFBF;
   border-radius: 0.23rem;
   font-size: 0.8rem;
+  text-align:center;
 }
 #employment_data ul li .recruit_text_box {
   padding:0.8rem 0.8rem;
