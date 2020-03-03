@@ -139,7 +139,7 @@ session_start();
         $career= "무관";
     }else{
         $require=filter_data($_POST["require"]);
-        $career="경력 ".$require."년";
+        $career="경력 ".$require." 년";
     }
 
     $category = $industry." ".$section;

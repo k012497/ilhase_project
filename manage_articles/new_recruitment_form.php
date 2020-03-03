@@ -99,8 +99,8 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       $rdo_pay=$total_pay[0];
       $pay=$total_pay[1];
 
-      $career=explode("년",$row["require_career"]);
-      $require=$career[0];
+      $career=explode(" ",$row["require_career"]);
+      $require=$career[1];
 
       $total_detail=explode("\n\n",$row["details"]);
       $detail = strstr($total_detail[0], "\n");
