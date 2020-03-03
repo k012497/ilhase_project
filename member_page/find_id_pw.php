@@ -213,10 +213,11 @@
         .btn-secondary:not(:disabled):not(.disabled).active {
             background-color: rgb(133, 198, 241);
         }
-
+        
         .btn-group>.btn:not(:first-child), .btn-secondary:not(:disabled):not(.disabled).active,
         .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
             border: 0;
+            box-shadow:0 0 0 0.1rem rgba(108,117,125,.05);
         }
 
         hr {
