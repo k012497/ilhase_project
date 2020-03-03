@@ -81,9 +81,6 @@ $("#pass_2").keyup(function(){
     if(count==2){
       $('.slick-next').attr('disabled', true);
     }else{
-      setTimeout(function() {
-        $('.slick-next').attr('disabled', false);
-      }, 1000);
     }
     if(count==8){
       $('.slick-next').css('visibility','hidden');
@@ -103,6 +100,9 @@ $("#pass_2").keyup(function(){
       if(count==0){
         $('.slick-prev').css('visibility','hidden');
       }
+  });
+  $('.slick-prev').mouseup(function(){
+      $('.slick-next').attr('disabled', false);
   });
   $("#submit_1").click(function(){
 
