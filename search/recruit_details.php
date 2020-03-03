@@ -101,7 +101,7 @@
               ?>
              
               <?php
-                if($check_row){
+                if($check_row || ($period_end < date('Y-m-d'))){
                   echo"
                      <button id='btn_apply_cancel'  name='button'>지원하기</button>
                   ";
@@ -111,9 +111,16 @@
               <?php 
                 }
 
-                mysqli_close($conn);
+                if($period_end < date('Y-m-d')){
+                  echo "<span id='period'>마감</span>";
+                }else {
+                
               ?>            
-              <span id="period"><?=$period_start?> ~ <?=$period_end?>
+              <span id="period"><?=$period_start?> ~ <?=$period_end?></span>
+              <?php 
+               }
+               mysqli_close($conn);
+              ?>
             </h1> 
             <div id="email_apply">
                 <div id="loading">

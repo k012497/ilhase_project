@@ -358,6 +358,30 @@ if(isset($_SESSION["usermember_type"]))
                 });
             }, function (error) {
                 console.error(error);
+                $('#location_info').text("서울 강남구)");
+                            $.ajax({
+                                url:'./common/lib/recommend_based_on_location.php',
+                                type : 'post',
+                                data:{
+                                   'loc' : '서울 강남구',
+                                   'user_id' : user_id
+                                },
+                                success:function(data){
+                                  if(data){
+                                    // 받은 데이터 리스트 뿌리기
+                                  $('#near_location_job').append(data);
+
+                                  }else {
+                                     // 받은 데이터 없을때
+                                    $('#near_location_job').text(data);
+                                  }
+
+
+                                },
+                                error:function(request,status,error){
+                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                }
+                            }); // end of ajax
             }, {
                 enableHighAccuracy: false, //배터리를 더 소모해서 더 정확한 위치를 찾음,
                 maximumAge: 0, //한번 찾은 위치 정보를 해당 초만큼 캐싱
