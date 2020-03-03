@@ -149,7 +149,8 @@
         type:'post',
         data:{'user_id':user_id},
         success:function(data){
-          if(data==="true"){
+          console.log(data);
+          if(data){
               $('.message_alarm').css({'display':'inline-block'});
 
           }else {
@@ -158,7 +159,7 @@
         }
       });
 
-    }, 30);
+    },3000);
 
 
   });
