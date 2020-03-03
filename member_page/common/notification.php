@@ -96,6 +96,13 @@
       </div><!-- noti message -->
     </div><!-- container -->
 
+    <?php
+      if($member_type == 'person'){
+        // 확대/축소 버튼
+        include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";
+      }
+    ?>
+
     <script>
       function toggle_content(title){
         const p_content = title.nextElementSibling.nextElementSibling;

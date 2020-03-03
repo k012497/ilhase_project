@@ -31,7 +31,8 @@
      <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/notification.php"><li class="side_menu_item">알림</li></a>
      <?php
    }
-      ?>
+    ?>
     </ul>
+
   </div>
 </aside>

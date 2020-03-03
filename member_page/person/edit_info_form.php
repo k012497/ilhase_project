@@ -85,6 +85,9 @@ if(isset($_SESSION["username"])){
     </div>
     </div>
 
+    <!-- 확대/축소 버튼 -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>  
+    
     <script src="./js/edit.js"></script>
   </body>
 </html>

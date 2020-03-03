@@ -79,6 +79,10 @@
       </table>
     </div>
     </div>
+
+    <!-- 확대/축소 버튼 -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>  
+    
     <script>
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){
