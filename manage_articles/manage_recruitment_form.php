@@ -32,7 +32,7 @@ if(isset($_GET['num'])){
     <header>
       <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header.php";?>
     </header>
-    <div class="container">
+    <div id="container">
     <?php
     	if (!$userid )
     	{
@@ -177,14 +177,14 @@ if(isset($_GET['num'])){
           </div>
       </form>
     </div>
+     <!-- Footer -->
+     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
+    </div>
 
     <!-- 확대/축소 버튼 -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
 
-    <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
-    </div>
-
+   
     <script>
       //nav active 활성화
       document.querySelectorAll('.nav-item').forEach(function(data, idx){

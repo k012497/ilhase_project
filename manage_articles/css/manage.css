@@ -1,20 +1,24 @@
 .form_manage {
   min-height: 35rem;
 }
-
-#wrap {
+body,html {
+  width:100%;
   min-height:100%;
+  padding-bottom:100px;
 }
-
-section {
+#wrap {
+  width:100%;
   height:100%;
-  padding-bottom:210px;
+  box-sizing: border-box;
 }
-
 #div_recruit_sample{
   border-bottom: 1px solid black;
 }
-
+#container {
+  width:80%;
+  height:100%;
+  margin:0 auto;
+}
 #recruit_title{
   display: inline-block;
   margin: 3rem 0;
