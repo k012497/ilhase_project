@@ -118,7 +118,6 @@ if(isset($_SESSION["username"])){
           $('#id_h5_1').html("<span style='color:red'>이름을 입력해주세요</span>");
         }else if(!ckname.test(ceo)){
           $('#id_h5_1').html("<span style='color:red'>한글 2-5자만 가능합니다</span>");
-          id_check=0;
         }else{
           $('#id_h5_1').html("");
         }
@@ -151,8 +150,6 @@ if(isset($_SESSION["username"])){
           .done(function() {
           })
           .fail(function() {
-            $("#id_h5").html("<span style='color:red'>올바른 아이디를 입력해주세요.</span>");
-            id_check=0;
           })
           .always(function() {
           });
