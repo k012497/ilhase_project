@@ -53,7 +53,7 @@
             });
         }else{
           $.ajax({
-            url: 'http://localhost/ilhase/member_page/find_id_pw_action.php',
+            url: 'http://<?=$_SERVER['HTTP_HOST']?>/ilhase/member_page/find_id_pw_action.php',
             type: 'POST',
             data: {"name":name_1,
                    "ph":ph_1,
@@ -76,7 +76,7 @@
         var ph_2=$('#ph_2').val();
         if(obtion=="person"){
           $.ajax({
-            url: 'http://localhost/ilhase/member_page/find_id_pw_action.php',
+            url: 'http://<?=$_SERVER['HTTP_HOST']?>/ilhase/member_page/find_id_pw_action.php',
             type: 'POST',
             data: {"name":name_2,
                    "ph":ph_2,
@@ -93,7 +93,7 @@
           });
       }else{
         $.ajax({
-          url: 'http://localhost/ilhase/member_page/find_id_pw_action.php',
+          url: 'http://<?=$_SERVER['HTTP_HOST']?>/ilhase/member_page/find_id_pw_action.php',
           type: 'POST',
           data: {"name":name_2,
                  "ph":ph_2,
@@ -213,7 +213,7 @@
         .btn-secondary:not(:disabled):not(.disabled).active {
             background-color: rgb(133, 198, 241);
         }
-        
+
         .btn-group>.btn:not(:first-child), .btn-secondary:not(:disabled):not(.disabled).active,
         .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
             border: 0;
