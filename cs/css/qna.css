@@ -114,6 +114,8 @@ form {
 .message{
     padding: 0.7rem 1rem;
     border-radius: 3px;
+    display: inline-block;
+    max-width: 72%;
 }
 
 .date {

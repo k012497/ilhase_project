@@ -40,9 +40,15 @@ $number = $total_record - $start;
     <meta charset="utf-8">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/common/css/notification.css">
+    <script src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/js/check_notification.js"></script>
     <title>일하세</title>
   </head>
-  <body>
+  <body <?php
+      if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
+        echo "onload='get_unanswerd_questions();'";
+        $user_id = $_SESSION['userid'];
+      }
+    ?>>
     <header>
       <?php 
       if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){

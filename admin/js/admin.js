@@ -347,6 +347,24 @@ $(document).ready(function () {
         const target = $(this).attr("data-target");
         if(target){
             var scrollPosition = $(target).offset().top;
+
+            switch(target){
+                case '#manage_member':
+                    // animate
+                    get_person_count();
+                    get_corporate_count();
+                    get_recruitment_count();
+                    break;
+                case '#manage_product':
+                    // animate
+                    get_sales();
+                    get_revenue();
+                    break;
+                case '#customer_support':
+                    // animate
+                    get_unanswerd_questions();
+                    break;
+            }
     
             $('html, body').animate({
                 scrollTop: scrollPosition - 71
@@ -355,23 +373,23 @@ $(document).ready(function () {
     });
 
     $(window).scroll(function(){
-        const scroll_top = $(this).scrollTop(); //스크롤바의 상단위치
-        const scroll_height = $(window).height(); //스크롤바를 갖는 window의 높이
-        const scroll_position = scroll_top + scroll_height;
+        // const scroll_top = $(this).scrollTop(); //스크롤바의 상단위치
+        // const scroll_height = $(window).height(); //스크롤바를 갖는 window의 높이
+        // const scroll_position = scroll_top + scroll_height;
 
-        if(scroll_position >= 905 && scroll_position <= 912){
-            // console.log('회원관리');
-            get_person_count();
-            get_corporate_count();
-            get_recruitment_count();
-        } else if(scroll_position >= 1990 && scroll_position <= 1997) {
-            // console.log('상품관리');
-            get_sales();
-            get_revenue();
-        } else if(scroll_position >= 3125 && scroll_position <= 3132){
-            // console.log('고객센터');
-            get_unanswerd_questions();
-        }
+        // if(scroll_position >= 905 && scroll_position <= 912){
+        //     // console.log('회원관리');
+        //     get_person_count();
+        //     get_corporate_count();
+        //     get_recruitment_count();
+        // } else if(scroll_position >= 1990 && scroll_position <= 1997) {
+        //     // console.log('상품관리');
+        //     get_sales();
+        //     get_revenue();
+        // } else if(scroll_position >= 3125 && scroll_position <= 3132){
+        //     // console.log('고객센터');
+        //     get_unanswerd_questions();
+        // }
 
     });
 

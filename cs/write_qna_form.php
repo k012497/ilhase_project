@@ -30,7 +30,7 @@
   }
   $row=mysqli_fetch_array($result);
 
-  $origin_content = $row['content'];
+  $origin_content = explode("\n", $row['content'])[0];
 
   $subject= htmlspecialchars($row['subject']);
   $content= htmlspecialchars($row['content']);
@@ -73,6 +73,7 @@
           }
           switch(mode){
             case 'response':
+              console.log('<?=$origin_content?>');
               document.write_qna.action = "dml_qna.php?mode=r_insert&num=<?=$q_num?>&question=<?=$origin_content?>";
               break;
 

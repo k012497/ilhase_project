@@ -41,6 +41,7 @@ if($mode === 'update'){
   <head>
     <meta charset="utf-8">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/js/check_notification.js"></script>
     <script>
       function check_input() {
         const mode = '<?=$mode?>';
@@ -69,7 +70,7 @@ if($mode === 'update'){
     <title>일하세</title>
   </head>
 
-  <body>
+  <body onload="get_unanswerd_questions();">
     <header>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";?>
         <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/css/plain_admin_header.css">

@@ -55,8 +55,8 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     $image_width = $image_info[0];
     $image_height = $image_info[1];
     $image_type = $image_info[2];
-    if($image_width > 400){
-      $image_width = 400;
+    if($image_width > 780){
+      $image_width = 780;
     }
   } else {
     $image_width = 0;
@@ -73,16 +73,23 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <link rel="icon" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/common/img/favicon.png" sizes="128x128">
     <title>일하세</title>
+    <script src="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/admin/js/check_notification.js"></script>
   </head>
-  <body>
+  <body
+    <?php
+      if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
+        echo "onload='get_unanswerd_questions();'";
+        $user_id = $_SESSION['userid'];
+      }
+    ?>>
     <header>
 
         <?php
-          if(empty($_SESSION['userid'])){
+          if(!$user_id){
             echo "<script>alert('로그인 후 이용해주세요!');
                 history.go(-1);
               </script>";
-          } else if($_SESSION['userid'] === 'admin'){
+          } else if($user_id === 'admin'){
             // 관리자일 경우
             include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/header_admin.php";
             ?>
@@ -220,6 +227,7 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
         }
 
       }
+
     </script>
   </body>
 </html>
