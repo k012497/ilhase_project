@@ -15,6 +15,10 @@ p{
   padding: 0 1rem;
 }
 
+#div_main textarea {
+  padding: 1rem;
+}
+
 #recruiter_title{
     display: inline-block;
     margin: 20px 0 50px 0;
