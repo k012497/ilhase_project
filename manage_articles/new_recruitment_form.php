@@ -231,11 +231,11 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
           <div id="div_career">
             <div id="div_personnel">
               <p>모집 인원<strong>*</strong></p>
-              <input type="number" name="personnel" min="0" value="<?=$personnel?>" required>명
+              <input type="number" name="personnel" min="0" max="999" value="<?=$personnel?>" required>명
             </div>
             <div id="div_require_career">
               <p>지원 자격<strong>*</strong></p>
-                경력<input id="require" type="number" name="require" min="0" value="">년 이상 <input id="unrelate" type="checkbox" name="require_check" onclick="disable_input(this);" >무관
+                경력<input id="require" type="number" name="require" min="0" max="99" value="">년 이상 <input id="unrelate" type="checkbox" name="require_check" onclick="disable_input(this);" >무관
                 <select id="edu_select" size="1" name="edu_select" required>
                   <option value="학력 선택">학력 선택</option>
                   <option <?php if ($require_edu=="무관") {
@@ -260,7 +260,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
         <div id="div_pay">
           <p>급여<strong>*</strong></p>
         <div id="input_pay">
-          <input type="number" id="pay" name="pay" min="0" placeholder="급여" value="<?=(int)$pay?>">원
+          <input type="number" id="pay" name="pay" min="0"  max="999999999" placeholder="급여" value="<?=(int)$pay?>">원
           <input type="radio" id="hour_pay" name="rdo_pay" <?php if ($rdo_pay=="시급") {
               echo 'checked';
             }
