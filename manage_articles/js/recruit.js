@@ -34,7 +34,8 @@ $(document).ready(function() {
   var ckname = /^[가-힣]{2,5}$/;
   var ckphone = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
   var ckemail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  var ckhomepage=/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[A-Za-z]{2,6}(\:[0-9]+)?(\/\S*)?$/;
+  var ckhomepage=/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?$/
+
 
   var name_msg=$('#name_msg'),
   phone_msg=$('#phone_msg'),
@@ -68,7 +69,10 @@ $(document).ready(function() {
   });
   $("#recruiter_email").blur(function(event) {
     var email_value=email.val();
-    if (!(ckemail.test(email_value))){
+    if (email_value==""){
+      email_msg.hide();
+      return;
+    }else if(!(ckemail.test(email_value))){
       email_msg.show();
       return;
     }else{
@@ -76,9 +80,12 @@ $(document).ready(function() {
       return;
     }
   });
-  $("#recruiter_homepage").blur(function(event) {
+  $("#recruiter_homepage").keyup(function(event) {
     var homepage_value=homepage.val();
-    if (!(ckhomepage.test(homepage_value))){
+    if (homepage_value==""){
+      homepage_msg.hide();
+      return;
+    }else if(!(ckhomepage.test(homepage_value))){
       homepage_msg.show();
       return;
     }else{
@@ -99,13 +106,7 @@ $(document).ready(function() {
     console.log(type);
 
 
-    $("#btn_regist").click(function() {
-      alert("등록 되었습니다.");
-      // document.form_recruit.action="recruit.php?mode=ddd&num=<?=$num?>";
-      document.form_recruit.submit();
-    });
-    $("#btn_update").click(function() {
-      alert("수정 되었습니다.");
-      document.form_recruit.submit();
-    });
+
+
+
 });

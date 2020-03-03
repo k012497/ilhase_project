@@ -174,7 +174,7 @@ if(isset($_GET['num'])){
         <div id="div_cover_letter">
           <div id="div_cover_letter_detail">
             <p>간단하게 자기를 소개 해보세요!!</p>
-            <textarea id="cover_letter" name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;"><?=$cover_letter?></textarea>
+            <textarea id="cover_letter" name="cover_letter" rows="7" cols="70" placeholder="자기소개" style="border-radius: 3px;" required><?=$cover_letter?></textarea>
           </div>
           <div id="div_show">
             <p id="btn_show" ><span id="btn_more_img"></span>더 자세한 이력을 작성하려면 클릭하세요</p>
@@ -223,7 +223,7 @@ if(isset($_GET['num'])){
     </form>
     <script>
        //클릭 효과
-       $(function(){  
+       $(function(){
         $('#btn_show').off('click');
         $('#btn_show').click(function(){
           $('#div_resume_detail').fadeToggle('500');
@@ -237,7 +237,7 @@ if(isset($_GET['num'])){
 
         });
       });
-      
+
     </script>
   </body>
 </html>
