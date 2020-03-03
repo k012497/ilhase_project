@@ -227,10 +227,10 @@ if(isset($_SESSION["username"])){
         border: 0;
       }
       .btn-secondary.focus {
-        box-shadow:0 0 0 0rem rgba(108,117,125,.5);
+      
       }
       .btn-secondary:focus {
-        box-shadow:0 0 0 0rem rgba(108,117,125,.5);
+
       }
       .btn-primary:hover {
         background-color : #5DB6DE;
@@ -257,7 +257,24 @@ if(isset($_SESSION["username"])){
       .login_bottom, .login_bottom a {
         color: #555;
       }
-
+      .btn_membership {
+        margin:0.4rem 0;
+      }
+      #btn_person,#btn_corporate {
+        background-color:rgb(133, 198, 241); color:#fff;
+      }
+      #btn_person:hover {
+        background-color:#5DB6DE;
+      }
+      #btn_corporate:hover {
+        background-color:#5DB6DE;
+      }
+      .btn-secondary.focus, .btn-secondary:focus {
+        box-shadow:0 0 0 0 rgba(0,0,0,0);
+      }
+      .btn.focus, .btn:focus {
+        box-shadow:0 0 0 0 rgba(0,0,0,0);
+      } 
 
     </style>
     <div class="modal fade" id="layerpop" >
@@ -274,13 +291,12 @@ if(isset($_SESSION["username"])){
       <!-- body -->
       <div class="modal-body">
 
-        <label for="person" class="sr-only">person</label>
-        <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/sign/person_sign_form.php" type="button" name="person" id="person" class="btn btn-lg btn-block"
-        style="background-color:#BCF5A9">개인 회원 가입</a>
-        <label for="corporate" class="sr-only">corporate</label>
-        <a href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/sign/coporate_sign.php" type="button" name="corporate" id="corporate" class="btn btn-lg btn-block"
-        style="background-color:#81F7F3">기업 회원 가입</a><br>
-
+        <label class="btn_membership" for="person" class="sr-only"></label>
+        <a id="btn_person" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/person/sign/person_sign_form.php" type="button" name="person" id="person" class="btn btn-lg btn-block">개인 회원 가입</a>
+        <label class="btn_membership" for="corporate" class="sr-only"></label>
+        <a id="btn_corporate" href="http://<?= $_SERVER['HTTP_HOST'];?>/ilhase/member_page/corporate/sign/coporate_sign.php" type="button" name="corporate" id="corporate" class="btn btn-lg btn-block"
+        >기업 회원 가입</a><br>
+        
       </div>
       <!-- Footer -->
       <div class="modal-footer">
