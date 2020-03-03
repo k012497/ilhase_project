@@ -81,7 +81,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       $email = $row["recruiter_email"];
       $homepage = $row["homepage"];
       $personnel = $row["personnel"];
-      // $require_career = $row["require_career"];
+      $require_career = $row["require_career"];
       $require_edu = $row["require_edu"];
       $recruit_type = $row["recruit_type"];
       $period_start = $row["period_start"];
@@ -100,6 +100,7 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       $pay=$total_pay[1];
 
       $career=explode(" ",$row["require_career"]);
+      // $require=$career[0];
       $require=$career[1];
 
       $total_detail=explode("\n\n",$row["details"]);
@@ -360,17 +361,17 @@ if (isset($_GET["mode"]) && $_GET["mode"]=="get_section") {
       function require_value(){
         var check=document.querySelector("#unrelate");
         var career=document.querySelector("#require");
-        var db_value="";
+        var db_value="<?=$require_career?>";
         if(mode === 'update'){
-         db_value='<?=$require ?>';
+         if(db_value=="무관"){
+           check.checked=true;
+           career.disabled=true;
+         }else{
+           db_value='<?=$require?>';
+           career.value=db_value;
+         }
         }
         console.log(db_value);
-        if(db_value=="무관"){
-          check.checked=true;
-          career.disabled=true;
-        }else{
-          career.value=db_value;
-        }
       }
       require_value();
 
