@@ -159,11 +159,11 @@ function all_data($conn,$start,$list,$select_career,$select_alignment,$user_id) 
   $filter_sql='';
   if($select_alignment==="인기순"){
     //인기순일때
-    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career='$select_career' group by r.num order by count(recruit_id) desc";
+    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career like '%$select_career%' group by r.num order by count(recruit_id) desc";
 
   }else{
      //최신순일때(기본값)
-    $filter_sql="select num, c.b_name,title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where require_career='$select_career' order by num desc";
+    $filter_sql="select num, c.b_name,title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where require_career like '%$select_career%' order by num desc";
   }
 
  
@@ -252,9 +252,9 @@ function all_industry_select_data($conn,$start,$list,$select_alignment,$select_c
   $filter_sql='';
   
   if($select_alignment==='인기순'){
-    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' group by r.num order by count(recruit_id) desc";
+    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career like '%$select_career%' and work_place like '%$select_area_contents%$select_gu%' group by r.num order by count(recruit_id) desc";
   }else {
-    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
+    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career like '%$select_career%' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
   }
 
  
@@ -343,10 +343,10 @@ function all_area_select($conn,$start,$list,$select_alignment,$select_career,$se
   $filter_sql='';
   if($select_alignment==='인기순'){
     
-    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career='$select_career' and work_place like '%".$select_area_contents."%' group by r.num order by count(recruit_id) desc";
+    $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where r.require_career like '%$select_career%' and work_place like '%".$select_area_contents."%' group by r.num order by count(recruit_id) desc";
 
   }else{
-    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career='$select_career' and work_place like '%".$select_area_contents."%' order by num desc";
+    $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where num>0 and require_career like '%$select_career%' and work_place like '%".$select_area_contents."%' order by num desc";
   }
 
  
@@ -435,9 +435,9 @@ function production_data() {
   if ($select_area_contents==="전체") {
     //지역을 선택할떄 전체일때
     if($select_alignment==="인기순"){
-      $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' group by r.num order by count(recruit_id) desc";
+      $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career like '%$select_career%' group by r.num order by count(recruit_id) desc";
     }else{
-      $filter_sql="select r.num, c.b_name, r.industry, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' order by num desc";
+      $filter_sql="select r.num, c.b_name, r.industry, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career like '%$select_career%' order by num desc";
     }
    
 
@@ -446,18 +446,18 @@ function production_data() {
     if ($select_gu===($select_area_contents." 전체") || ($select_gu===($select_area_contents."전체"))) {
       if($select_alignment==="인기순"){
         
-        $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' and work_place like '%$select_area_contents%' group by r.num order by count(recruit_id) desc";
+        $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career like '%$select_career%' and work_place like '%$select_area_contents%' group by r.num order by count(recruit_id) desc";
       }else{
-        $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' and work_place like '%$select_area_contents%' order by num desc";
+        $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career like '%$select_career%' and work_place like '%$select_area_contents%' order by num desc";
       }
     
     }else{
       //그외 지역 선택할떄
       if($select_alignment==="인기순"){
         
-        $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' group by r.num order by count(recruit_id) desc";
+        $filter_sql="select recruit_id,count(recruit_id),r.num,r.industry,r.corporate_id,r.require_career, r.title, r.pay, r.period_start,c.b_name,r.period_end, r.work_place, r.file_copied from favorite f right join recruitment r on f.recruit_id = r.num join corporate c on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career like '%$select_career%' and work_place like '%$select_area_contents%$select_gu%' group by r.num order by count(recruit_id) desc";
       }else{
-        $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career='$select_career' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
+        $filter_sql="select num, c.b_name, title, pay, period_start, period_end, work_place, file_copied from corporate c join recruitment r on c.id = r.corporate_id where substring_index(industry, ' ', -1) like '%".$select_industryDtaile."%' and require_career like '%$select_career%' and work_place like '%$select_area_contents%$select_gu%' order by num desc";
       }
       
     }
