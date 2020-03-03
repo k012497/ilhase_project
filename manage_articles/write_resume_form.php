@@ -221,6 +221,10 @@ if(isset($_GET['num'])){
         </div>
       </div>
     </form>
+
+    <!-- 확대/축소 버튼 -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
+    
     <script>
        //클릭 효과
        $(function(){

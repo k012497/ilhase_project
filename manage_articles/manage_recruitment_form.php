@@ -178,6 +178,9 @@ if(isset($_GET['num'])){
       </form>
     </div>
 
+    <!-- 확대/축소 버튼 -->
+    <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/zoom.php";?>
+
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/footer.php";?>
     </div>
