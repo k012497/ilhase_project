@@ -101,6 +101,12 @@ if(isset($_GET['num'])){
         $name = $row["name"];
         $birth = $row["birth"];
         $gender=$row["gender"];
+        
+        if($gender==="2" || $gender==="4"){
+          $gender="여";
+        }else if($gender==="1" || $gender==="3"){
+          $gender="남";
+        }
         $phone = $row["phone"];
         $email = $row["email"];
         $new_address =$row["new_address"];
