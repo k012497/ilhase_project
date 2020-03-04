@@ -52,10 +52,10 @@ $("#pass_1").keyup(function(){
     var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
 
     if(pass_1.val() === ""){
-      passSubMsg1.html("<span style='color:red'>비밀번호 입력바람니다.</span>");
+      passSubMsg1.html("<span style='color:red'>비밀번호 입력바랍니다.</span>");
       $('.slick-next').attr('disabled', true);
     }else if(!regex.test(pass_1.val())){
-      passSubMsg1.html("<span style='color:red'>영어 숫자 특수문자를 포함한 6글자 이상 15글자 이하로 써주시길 바람니다.</span>");
+      passSubMsg1.html("<span style='color:red'>영어 숫자 특수문자를 포함한 6글자 이상 15글자 이하로 써주시길 바랍니다.</span>");
       $('.slick-next').attr('disabled', true);
     }else{
       passSubMsg1.html("<span style='color:red'>알맞은 비밀번호입니다.</span>");

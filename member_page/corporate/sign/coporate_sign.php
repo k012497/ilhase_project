@@ -273,7 +273,7 @@ if(isset($_SESSION["username"])){
                             <td colspan="2">
                                 <h6><span style="color:red">*</span>사업자 등록번호</h6>
                                 <input
-                                    type="text"
+                                    type="password"
                                     class="form-control"
                                     placeholder="사업자 등록번호를 입력해주세요"
                                     id="b_license_num"
