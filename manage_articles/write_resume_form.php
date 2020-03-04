@@ -258,6 +258,7 @@ if(isset($_GET['num'])){
           public_value;
         }
 
+
       }
       public_check();
 

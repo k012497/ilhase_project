@@ -535,8 +535,14 @@
                     
                     //관심공고 누를떄(하트누를떄)
                     $('.interest_insert').off('click').click(function(e){
+                      var member_type='<?=$member_type?>';
+                      console.log(member_type);
                       console.log("cliclick", e);
                       var pick_job_num=$(this).find('input[name=pick_job]').val();
+                      if(member_type==="corporate") {
+                        alert('기업은 관심공고 누를 수가 없습니다.');
+                        return;
+                      }
                       if (user_id=='') {
                         alert('로그인 해주세요!');
                         return;
@@ -707,9 +713,14 @@
                     // 기존 이벤트 제거
                     $('.interest_insert').off('click');
                     //관심공고 누를떄(하트누를떄)
+                    var member_type='<?=$member_type?>';
                     $('.interest_insert').click(function(e){
                       console.log("click", e);
                       var pick_job_num=$(this).find('input[name=pick_job]').val();
+                      if(member_type==="corporate") {
+                        alert('기업은 관심공고 누를 수가 없습니다.');
+                        return;
+                      }
                       if (user_id=='') {
                         alert('로그인 해주세요!');
                         return;

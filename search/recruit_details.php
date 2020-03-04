@@ -101,7 +101,7 @@
               ?>
              
               <?php
-                if($check_row || ($period_end < date('Y-m-d'))){
+                if($check_row || ($period_end < date('Y-m-d')) || $member_type==="corporate"){
                   echo"
                      <button id='btn_apply_cancel'  name='button'>지원하기</button>
                   ";
@@ -470,6 +470,11 @@
               
               $('#recruit_fav_box').off('click');
               $('#recruit_fav_box').click(function(){
+                var member_type='<?=$member_type?>';
+                  if(member_type==="corporate"){
+                    alert('기업은 관심 공고를 누를 수가 없습니다.');
+                    return;
+                  }
                   if(user_id===''){
                     alert('로그인을 해주세요!');
                     return;

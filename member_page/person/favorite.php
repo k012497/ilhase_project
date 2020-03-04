@@ -58,7 +58,7 @@
 
                     // <a href="http://'.$_SERVER['HTTP_HOST'].'ilhase/search/recruit_details.php?pick_job_num='.$num.'&img='.$real_file_name.'&title='.$title.'">
                     echo '<li>
-                        <a href="../../search/recruit_details.php?pick_job_num='.$num.'&img='.$real_file_name.'&title='.$title.'">
+                        <a href="../../search/recruit_details.php?pick_job_num='.$num.'&img='.$src_path.'&title='.$title.'">
                         <img src="'.$src_path.'" alt="회사이미지">
                         <div class="recruit_text_box">
                             <span id="ep_title">'.$title.'</span>
@@ -66,9 +66,9 @@
                             <span id="ep_period">접수기간 : '.$period_start.' ~ '.$period_end.'</span>
                         </div>
                         </a>
-                        <div id="interest_insert">
+                        <div class="interest_insert">
                             <span class="heart_img click_heart"></span>
-                            <input type="hidden" name="pick_job" value="$num">
+                            <input type="hidden" name="pick_job" value="'.$num.'">
                         </div>
                     </li>';
                 }
@@ -100,21 +100,19 @@
 
         //관심공고 누를떄(하트누를떄)
         $(function () {
-            $('#interest_insert p').click(function (e) {
+            $('.interest_insert').click(function (e) {
                 console.log("cliclick", e);
-                var pick_job_num = $(this)
-                    .nextAll('input[type=hidden]')
-                    .val();
-                if ($(this).next().hasClass('click_heart')) {
+                var pick_job_num=$(this).find('input[name=pick_job]').val();
+                if ($(this).find('.heart_img').hasClass('click_heart')) {
                     console.log('has class?');
                     favorite_job_remove(id, pick_job_num);
                     $(this)
-                        .next()
+                        .find('.heart_img')
                         .removeClass('click_heart');
                 } else {
                     favorite_job_add(id, pick_job_num);
                     $(this)
-                        .next()
+                        .find('.heart_img')
                         .addClass('click_heart');
                 }
             });
