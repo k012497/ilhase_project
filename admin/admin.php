@@ -166,8 +166,8 @@
                     <form action="dml_plan.php?mode=insert" id="add_plan_form" method="post">
                         <label for="id">새로운 플랜 추가</label>
                         <input type="text" placeholder="이름" name="name">
-                        <input type="number" max="9999999" placeholder="내용" name="count">
-                        <input type="number" max="9999999" placeholder="가격" name="price">
+                        <input type="number" min="0" max="9999999" placeholder="내용" name="count">
+                        <input type="number" min="0" max="9999999" placeholder="가격" name="price">
                         <input type="button" id="btn_add_plan" value="추가">
                     </form>
                 </div>

@@ -79,8 +79,8 @@ if(isset($_GET["num"]) && !empty($_GET["hit"])){
     <?php
       if(isset($_SESSION['userid']) && $_SESSION['userid'] === 'admin'){
         echo "onload='get_unanswerd_questions();'";
-        $user_id = $_SESSION['userid'];
       }
+      $user_id = $_SESSION['userid'];
     ?>>
     <header>
 
