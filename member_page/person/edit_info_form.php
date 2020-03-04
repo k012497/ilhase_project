@@ -45,6 +45,12 @@ if(isset($_SESSION["username"])){
         $zipcode = $row["zipcode"];
         $new_address =$row["new_address"];
         $old_address =$row["old_address"];
+        
+        if($gender==="2" || $gender==="4"){
+          $gender="여";
+        }else if($gender==="1" || $gender==="3"){
+          $gender="남";
+        }
 
         mysqli_close($conn);
     ?>
