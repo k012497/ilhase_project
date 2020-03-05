@@ -599,6 +599,33 @@
                               $(item).addClass("fadein");
                           });
                           idu_start += idu_list;
+
+                              
+                    //관심공고 누를떄(하트누를떄)
+                    $('.interest_insert').off('click').click(function(e){
+                      var member_type='<?=$member_type?>';
+                      console.log(member_type);
+                      console.log("cliclick", e);
+                      var pick_job_num=$(this).find('input[name=pick_job]').val();
+                      if(member_type==="corporate") {
+                        alert('기업은 관심공고 누를 수가 없습니다.');
+                        return;
+                      }
+                      if (user_id=='') {
+                        alert('로그인 해주세요!');
+                        return;
+                      }
+                      if($(this).find('.heart_img').hasClass('click_heart')){
+                        console.log('has class?');
+                        favorite_job_remove(user_id,pick_job_num,$(this));
+                        $(this).find('.heart_img').removeClass('click_heart');
+                      }else{
+                        favorite_job_add(user_id,pick_job_num,$(this));
+                        $(this).find('.heart_img').addClass('click_heart');
+                      }
+                    });
+
+
                           return;
                     } else {
                       if($('#ep_databox li').length===0){
