@@ -73,7 +73,7 @@
                 if(data){
                     $('div.past_qna').append(data);
                 } else {
-                    $('div.past_qna').append('<p style="text-align: center; color: gray;"> 📄 문의 내역이 없습니다.</p>');
+                    $('div.past_qna').append('<p class="nothing_to_show"> 📄 문의 내역이 없습니다.</p>');
                 }
             });
         });

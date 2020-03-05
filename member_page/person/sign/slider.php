@@ -157,7 +157,8 @@ $("#pass_2").keyup(function(){
   }); //inputId.blur end regex
 $('#phone_num').keyup(function(){
     if($('#phone_num').val()==phone_num){
-      valueSub.html("<span style='color:red'>인증이 완료되었습니다.</span>")
+      valueSub.html("<span style='color:red'>인증이 완료되었습니다.</span>");
+      $('#button_1').attr('disabled', true);
       $("#phone_injung").val(1);
       $('.slick-next').attr('disabled', false);
     }else{

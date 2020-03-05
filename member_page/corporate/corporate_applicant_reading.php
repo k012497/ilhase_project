@@ -87,8 +87,8 @@ if(isset($_SESSION['userid']))
   ?>
   				<li>
   					<span class="col1"><?=$number?></span>
-  					<span class="col2"><a href="corporate_resume_view.php?num=<?=$resume_num?>"><?=$title?></a></span>
-  					<span class="col3"><?=$subject?></span>
+  					<span class="col2"><?=$title?></span>
+  					<span class="col3"><a href="corporate_resume_view.php?num=<?=$resume_num?>"><?=$subject?></a></span>
   					<span class="col4"><?=$name?></span>
   					<span class="col5"><?=$regist_day?></span>
   				</li>

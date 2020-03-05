@@ -120,7 +120,7 @@ if(isset($_SESSION["username"])){
             <h1>주민번호 앞자리와 뒷자리 첫번째 자리수를 적어주세요</h1>
           </div>
           <div class="input1">
-            <input type="text" value="" maxlength="6" placeholder="생년월일 6자리 ex)671004" id="birth" name="birth">
+            <input type="text" value="" maxlength="6" placeholder="ex)671004" id="birth" name="birth">
             <span id="span_tag"> - </span>
             <input type="text" value="" size="1" maxlength="1" id="gender"name="gender"><span id="span_tag2">******</span><br>
             <h4 id="birth_sub" ></h4>
