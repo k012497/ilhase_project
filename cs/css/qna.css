@@ -111,6 +111,12 @@ form {
     margin: 1rem 0;
 }
 
+.nothing_to_show {
+    text-align: center; 
+    color: gray;
+    width: 80%;
+}
+
 .message{
     padding: 0.7rem 1rem;
     border-radius: 3px;
