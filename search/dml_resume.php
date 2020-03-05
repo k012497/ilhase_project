@@ -20,15 +20,14 @@ include $_SERVER["DOCUMENT_ROOT"]."/ilhase/common/lib/db_connector.php";
                 $num=$row['num'];
                 
                     echo"<label class='select_resume'>
-                        <input type='hidden' name='num' value='".$num."'>
-                        <input  type='radio' name='resume' value='".$title."' />
+                        <input type='radio' name='resume' value='".$title.",".$num."' />
                         ".$title."</label>";
                 
             }
     }
 
          
-
+    // <input id='select_resume' type='hidden' name='num' value='".$num.">
         
   
 

@@ -1,8 +1,14 @@
 <?php
 // $email=$_POST['email'];
 
-$resume=$_POST['resume'];
-$num=$_POST['num'];
+$resume_data=$_POST['resume'];
+$result=explode(",",$resume_data);
+$resume=$result[0];
+$num=$result[1];
+
+
+$apply_industry=$_POST['apply_industry'];
+$pick_job_num=$_POST['pick_job_num'];
 
 
 $receiver_email=$_POST['receiver_email'];
@@ -77,7 +83,7 @@ try {
     $mail ->Host = "smtp.naver.com";                      // email 보낼때 사용할 서버를 지정
     $mail ->SMTPAuth = true;                                // SMTP 인증을 사용함
     $mail ->Username = "cogus633@naver.com";  // 메일 계정
-    $mail ->Password = "*skacod1786*";                   // 메일 비밀번호
+    $mail ->Password = "*skacod6331786*";                   // 메일 비밀번호
     $mail ->SMTPSecure = "ssl";                             // SSL을 사용함
     $mail ->Port = 465;                                        // email 보낼때 사용할 포트를 지정
     $mail ->CharSet = "utf-8";                                // 문자셋 인코딩
@@ -102,6 +108,7 @@ try {
       <h1><이력서></h1>
       <ul>
         <li><h4>이름 : ".$sender_name."</h4></li>
+        <li>지원 공고 :  <a href='http://".$_SERVER["HTTP_HOST"]."/ilhase/search/recruit_details.php?pick_job_num=$pick_job_num&img=$src&title=$apply_industry'>".$apply_industry."</a>
         <li>생년월일 : ".$sender_birthday.", 성별: ".$sender_gender."</li>
         <li>전화번호 :".$sender_phone."</li>
         <li>이메일 :".$sender_email."</li>

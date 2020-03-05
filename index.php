@@ -294,7 +294,7 @@ if(isset($_SESSION["usermember_type"]))
                             }
                             // console.log(address);
                             $.ajax({
-                                url:'./common/lib/recommend_based_on_location.php',
+                                url:'http://'+rute+'/ilhase/common/lib/recommend_based_on_location.php',
                                 type : 'post',
                                 data:{
                                    'loc' : address,
@@ -360,7 +360,7 @@ if(isset($_SESSION["usermember_type"]))
                 console.error(error);
                 $('#location_info').text("서울 강남구)");
                             $.ajax({
-                                url:'./common/lib/recommend_based_on_location.php',
+                                url:'http://'+rute+'/ilhase/common/lib/recommend_based_on_location.php',
                                 type : 'post',
                                 data:{
                                    'loc' : '서울 강남구',

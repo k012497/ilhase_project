@@ -37,7 +37,9 @@ if($user_id==""){
                 echo "
                 <div class='col-lg-3 col-md-6 mb-4'>
                     <div class='card h-100'>
-                        <img class='card-img-top' src='".$src."' alt='회사이미지'>
+                        <div id='img_box'>
+                        <img id='img_card' class='card-img-top' src='".$src."' alt='회사이미지'>
+                        </div>
                         <div class='card-body'>
                             <a id='go_recruit_details' href='http://".$_SERVER['HTTP_HOST']."/ilhase/search/recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                                 <h5 id='card_title' class='card-title'>".$title."</h5>
@@ -101,7 +103,9 @@ if($user_id==""){
             echo "
             <div class='col-lg-3 col-md-6 mb-4'>
                 <div class='card h-100'>
-                    <img class='card-img-top' src='".$src."' alt='회사이미지'>
+                    <div id='img_box'>
+                    <img id='img_card' class='card-img-top' src='".$src."' alt='회사이미지'>
+                    </div>
                     <div class='card-body'>
                         <a id='go_recruit_details' href='http://".$_SERVER['HTTP_HOST']."/ilhase/search/recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                             <h5 id='card_title' class='card-title'>".$title."</h5>
@@ -152,7 +156,9 @@ if($user_id==""){
                 echo "
                 <div class='col-lg-3 col-md-6 mb-4'>
                     <div class='card h-100'>
-                        <img class='card-img-top' src='".$src."' alt='회사이미지'>
+                        <div id='img_box'>
+                        <img id='img_card' class='card-img-top' src='".$src."' alt='회사이미지'>
+                        </div>
                         <div class='card-body'>
                             <a id='go_recruit_details' href='http://".$_SERVER['HTTP_HOST']."/ilhase/search/recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                                 <h5 id='card_title' class='card-title'>".$title."</h5>
@@ -210,7 +216,9 @@ if($user_id==""){
             echo "
             <div class='col-lg-3 col-md-6 mb-4'>
                 <div class='card h-100'>
-                    <img class='card-img-top' src='".$src."' alt='회사이미지'>
+                    <div id='img_box'>
+                    <img id='img_card' class='card-img-top' src='".$src."' alt='회사이미지'>
+                    </div>
                     <div class='card-body'>
                         <a id='go_recruit_details' href='http://".$_SERVER['HTTP_HOST']."/ilhase/search/recruit_details.php?pick_job_num=$num&img=$src&title=$title'>
                             <h5 id='card_title' class='card-title'>".$title."</h5>

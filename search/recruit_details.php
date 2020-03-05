@@ -34,11 +34,7 @@
     $recruit_type           = $row['recruit_type'];
     $c_id = $row['corporate_id'];
 
-    //선택한 공고의 num값으로 해당 아이디가 그 공고에 지원했는지 안했는지 검사
-    $check_resume_sql="select * from apply where recruit_id=$pick_job_num";
-    $check_result=mysqli_query($conn,$check_resume_sql);
-    $check_row=mysqli_fetch_array($check_result);
-
+  
    ?>
   <head>
     <meta charset="utf-8">
@@ -62,9 +58,16 @@
               <span id="sub_title">(<?=$b_name?>)</span>
  
               <?php
-
-                  
-
+                  //선택한 공고의 num값으로 해당 아이디가 그 공고에 지원했는지 안했는지 검사
+                  $check_row='';
+                  if($id==='') {
+                    $check_row='';
+                  }else {
+                    $check_resume_sql="select * from apply where recruit_id=$pick_job_num";
+                    $check_result=mysqli_query($conn,$check_resume_sql);
+                    $check_row=mysqli_fetch_array($check_result);
+                  }
+                
                   if($id===''){
                     //아이디가 없을때
                     echo "
@@ -101,6 +104,7 @@
               ?>
              
               <?php
+                
                 if($check_row || ($period_end < date('Y-m-d')) || $member_type==="corporate"){
                   echo"
                      <button id='btn_apply_cancel'  name='button'>지원하기</button>
@@ -130,9 +134,11 @@
                   <h2><?=$id?>님의 이력서 <span id="close_btn"></span></h2>
                   <div id="select_resume_box">
                   </div>
-                  <input type="hidden" name="user_id" value=<?=$id?>>
-                  <input type="hidden" name="receiver_email" value=<?=$recruiter_email?>>
-                  <input type="hidden" name="receiver_name" value=<?=$recruiter_name?>>                  
+                  <input type="hidden" name="user_id" value="<?=$id?>">
+                  <input type="hidden" name="receiver_email" value="<?=$recruiter_email?>">
+                  <input type="hidden" name="receiver_name" value="<?=$recruiter_name?>">
+                  <input type="hidden" name="apply_industry" value="<?=$title?>">
+                  <input type="hidden" name="pick_job_num" value="<?=$pick_job_num?>">                     
                   <input id="btn_email_submit" type="submit" value="담당자에게 보내기">                    
                 </form>
             </div>  
@@ -411,16 +417,17 @@
                         $('#btn_email_submit').off('click');
                         
                         $('#btn_email_submit').click(function(){
-                          // console.log("1");
-                          var check_resume_num=$('input:radio[name=resume]:checked').prev().val();     
-                          var isCheck = $('input:radio[name="resume"]').is(':checked')
-                          var title=$('input:radio[name="resume"]:checked').val();                   
+                          // console.log("1");  
+                          var isCheck = $('input:radio[name="resume"]').is(':checked');
+                          var resume_val=$('input:radio[name="resume"]:checked').val(); 
+                          var data=resume_val.split(',');
+                          var title=data[0];
+                          var check_resume_num=data[1];
                           if(isCheck === false){
                             alert('이력서를 선택해주세요!');
                             return false;
                           }else{
                             applyresume($user_id,recruit_id,title,check_resume_num);
-                            // console.log($user_id,recruit_id,title,check_resume_num);
                             $('#loading').show();
                           }
                          
@@ -491,9 +498,8 @@
 
               });
 
-
-                //관심공고 등록
-            function favorite_job_add(id,pick_job_num){
+               //관심공고 등록
+               function favorite_job_add(id,pick_job_num){
 
                     $.ajax({
                       url:'./dml_favorite.php?mode=add',
@@ -513,11 +519,11 @@
                       }
                     });
 
-            }
+                 }
 
 
                 //관심공고 삭제
-            function favorite_job_remove(id,pick_job_num){
+                function favorite_job_remove(id,pick_job_num){
                     // console.log('favorite_job_remove?');
                     $.ajax({
                       url:'./dml_favorite.php?mode=remove',
@@ -538,9 +544,9 @@
                       }
                     });
 
-                    }
+                 }
 
-              });
+      });
      
 
     </script>
