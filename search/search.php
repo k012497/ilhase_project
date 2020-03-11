@@ -245,7 +245,8 @@
 
         
           //스크롤 할시 구직 데이터 가져오기
-          $(window).scroll(function(){
+          $(window).scroll(function(e){
+            e.stopPropagation();
             var dh=$(document).height(),
                 wh=$(window).height(),
                 st=$(window).scrollTop(),
@@ -285,7 +286,8 @@
 
           //산업종류 선택시
               
-          $('.col_box button').off('click').click(function(){
+          $('.col_box button').click(function(e){
+            e.stopPropagation();
               select_industy=$.trim($(this).text());
               industry_list.show();
               industry_list.empty();
@@ -328,7 +330,8 @@
 
 
             //최신순/ 인기순 선택했을때 
-            $('#alignment').off('change').on("change",function(){
+            $('#alignment').on("change",function(e){
+              e.stopPropagation();
               var industryTitle=$.trim($('#search_all').text());
               var change_alignment=$(this).val();
               var select_career=$('select[name=career]').val();
@@ -358,7 +361,8 @@
             
             
             // 세부 산업셀렉트박스 선택했을 때 체인지 이벤트
-            $('#industy_list').off('change').on("change",function(){
+            $('#industy_list').on("change",function(e){
+              e.stopPropagation();
               var title=$('.title#search_all');
               var change_industryList=$(this).val();
               var select_career=$('select[name=career]').val();
@@ -372,9 +376,10 @@
               industry_append_list($.trim(title.text()), select_alignment,select_career,area_text[0],area_text[1],change_industryList,user_id,mode);
             });
     
-              $('#career_list').off('change');
+         
             //경력셀렉트 선택했을 떄 체인지 이벤트
-              $('#career_list').off().on("change",function(){
+              $('#career_list').off().on("change",function(e){
+                e.stopPropagation();
                   var title=$('.title#search_all'),
                       select_area=$('#area_selectBox > p').text();
                   var strArea=select_area.replace(/(\s*)/g,"");
@@ -402,7 +407,8 @@
           
             //지역 selsect박스 안에 지역 데이터 구현
             var area_list=$('#area_tb li');
-            $('#area_tb li').click(function(){
+            $('#area_tb li').click(function(e){
+              e.stopPropagation();
               area=$(this).text();
               console.log(area);
               isSelectArea=true;
@@ -428,8 +434,8 @@
             
           
             //지역 셀렉트 박스안에 선택버튼  클릭시 이벤트
-            $('#btn_si_gun_gu').off('click');
-            $('#btn_si_gun_gu').click(function(){
+            $('#btn_si_gun_gu').click(function(e){
+                     e.stopPropagation();
                       area_list.removeClass('area_active');
                       var checkData=$('input[name=si_gun_gu]:checked').val(),
                           ischeckData=$('input[name=si_gun_gu]').is(':checked'),
@@ -533,8 +539,10 @@
                     });
 
                     
+               
                     //관심공고 누를떄(하트누를떄)
-                    $('.interest_insert').off('click').click(function(e){
+                    $('.interest_insert').click(function(e){
+                      e.stopPropagation();
                       var member_type='<?=$member_type?>';
                       console.log(member_type);
                       console.log("cliclick", e);
@@ -600,9 +608,10 @@
                           });
                           idu_start += idu_list;
 
-                              
+                           
                     //관심공고 누를떄(하트누를떄)
-                    $('.interest_insert').off('click').click(function(e){
+                    $('.interest_insert').click(function(e){
+                      e.stopPropagation();
                       var member_type='<?=$member_type?>';
                       console.log(member_type);
                       console.log("cliclick", e);
@@ -646,7 +655,8 @@
 
 
             //모달창(지역 셀렉트) 클릭 이벤트(열기)
-             $('#area_selectBox').off('click').click(function(){
+             $('#area_selectBox').click(function(e){
+              e.stopPropagation();
               $('#area_contents').addClass('open');
               $('#area_contents').removeClass('cancel');
                 setTimeout(function(){
@@ -656,7 +666,8 @@
             });
 
             //모달창(지역 셀렉트) 클릭 이벤트(닫기)
-            $('#area_close').off('click').click(function(){
+            $('#area_close').click(function(e){
+                e.stopPropagation();
                   modal_close();
             });
 
