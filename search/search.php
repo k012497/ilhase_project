@@ -246,12 +246,12 @@
         
           //스크롤 할시 구직 데이터 가져오기
           $(window).scroll(function(e){
-           
+            e.stopPropagation();
             var dh=$(document).height(),
                 wh=$(window).height(),
                 st=$(window).scrollTop(),
                 st=Math.ceil(st);
-                console.log("dh:"+dh+" | wh:"+wh+" | st:"+st);
+                // console.log("dh:"+dh+" | wh:"+wh+" | st:"+st);
                 
                 if((wh+st)==dh){
 
