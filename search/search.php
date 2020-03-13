@@ -541,11 +541,11 @@
                     
                
                     //관심공고 누를떄(하트누를떄)
-                    $('.interest_insert').click(function(e){
-                      e.stopPropagation();
+                    $('.interest_insert').click(function(event){
+                      event.stopImmediatePropagation();
                       var member_type='<?=$member_type?>';
                       console.log(member_type);
-                      console.log("cliclick", e);
+                      console.log("cliclick", event);
                       var pick_job_num=$(this).find('input[name=pick_job]').val();
                       if(member_type==="corporate") {
                         alert('기업은 관심공고 누를 수가 없습니다.');
@@ -563,6 +563,7 @@
                         favorite_job_add(user_id,pick_job_num,$(this));
                         $(this).find('.heart_img').addClass('click_heart');
                       }
+                      return false;
                     });
 
                   } else {
@@ -610,11 +611,12 @@
 
                            
                     //관심공고 누를떄(하트누를떄)
-                    $('.interest_insert').click(function(e){
-                      e.stopPropagation();
+
+                    $('.interest_insert').click(function(event){
+                      event.stopImmediatePropagation();
                       var member_type='<?=$member_type?>';
                       console.log(member_type);
-                      console.log("cliclick", e);
+                      console.log("cliclick", event);
                       var pick_job_num=$(this).find('input[name=pick_job]').val();
                       if(member_type==="corporate") {
                         alert('기업은 관심공고 누를 수가 없습니다.');
@@ -632,6 +634,7 @@
                         favorite_job_add(user_id,pick_job_num,$(this));
                         $(this).find('.heart_img').addClass('click_heart');
                       }
+                      return false;
                     });
 
 
@@ -694,7 +697,6 @@
                       pick.find('.fav_count').text("("+data+")");
                     
                       
-
                 },
                 error:function(request,status,error){
                   console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -748,12 +750,13 @@
                         $(item).addClass("fadein");
                     });
 
-                    // 기존 이벤트 제거
-                    $('.interest_insert').off('click');
+                    // // 기존 이벤트 제거
+                    // $('.interest_insert').off('click');
                     //관심공고 누를떄(하트누를떄)
                     var member_type='<?=$member_type?>';
-                    $('.interest_insert').click(function(e){
-                      console.log("click", e);
+                    $('.interest_insert').click(function(event){
+                      console.log("click", event);
+                      event.stopImmediatePropagation();
                       var pick_job_num=$(this).find('input[name=pick_job]').val();
                       if(member_type==="corporate") {
                         alert('기업은 관심공고 누를 수가 없습니다.');
@@ -771,6 +774,7 @@
                         favorite_job_add(user_id,pick_job_num,$(this));
                         $(this).find('.heart_img').addClass('click_heart');
                       }
+                      return false;
                     });
 
                     return;
