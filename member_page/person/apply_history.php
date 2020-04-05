@@ -61,7 +61,7 @@
               $period_end = $row['period_end'];
               $date_applied = $row['date_applied'];
               if(!$file_name){
-                $file_name = './img/basicimg.jpg';
+                $file_name = 'basicimg.jpg';
               }
 
               echo '<tr>
