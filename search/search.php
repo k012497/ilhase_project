@@ -220,10 +220,6 @@
                 industry_list.hide();
            }
 
-           console.log(industry_title+select_alignment+select_career+selectAreainit.text());
-
-          
-
           var strArea=select_area.replace(/(\s*)/g,"");
           var area_text=strArea.split('>');
 
@@ -246,7 +242,7 @@
         
           //스크롤 할시 구직 데이터 가져오기
           $(window).scroll(function(e){
-            e.stopPropagation();
+  
             var dh=$(document).height(),
                 wh=$(window).height(),
                 st=$(window).scrollTop(),
@@ -262,6 +258,7 @@
                     var strArea=select_area.replace(/(\s*)/g,"");
                     var select_alignment=$('select[name=alignment]').val()
                     var area_text=strArea.split('>'); 
+                    
                     if (industryTitle === "전체>") {
                       console.log(industryTitle);
                       append_list(industryTitle,select_alignment,select_career,area_text[0],area_text[1],user_id,mode);
@@ -281,13 +278,18 @@
                       search_result(serch_word,user_id,mode);
 
                   }
+
+                  
+               
                }// end of (wh+st == dh)
+
+      
              });
 
           //산업종류 선택시
               
           $('.col_box button').click(function(e){
-            e.stopPropagation();
+   
               select_industy=$.trim($(this).text());
               industry_list.show();
               industry_list.empty();
@@ -331,7 +333,7 @@
 
             //최신순/ 인기순 선택했을때 
             $('#alignment').on("change",function(e){
-              e.stopPropagation();
+
               var industryTitle=$.trim($('#search_all').text());
               var change_alignment=$(this).val();
               var select_career=$('select[name=career]').val();
@@ -362,7 +364,7 @@
             
             // 세부 산업셀렉트박스 선택했을 때 체인지 이벤트
             $('#industy_list').on("change",function(e){
-              e.stopPropagation();
+
               var title=$('.title#search_all');
               var change_industryList=$(this).val();
               var select_career=$('select[name=career]').val();
@@ -408,7 +410,7 @@
             //지역 selsect박스 안에 지역 데이터 구현
             var area_list=$('#area_tb li');
             $('#area_tb li').click(function(e){
-              e.stopPropagation();
+  
               area=$(this).text();
               console.log(area);
               isSelectArea=true;
@@ -435,7 +437,7 @@
           
             //지역 셀렉트 박스안에 선택버튼  클릭시 이벤트
             $('#btn_si_gun_gu').click(function(e){
-                     e.stopPropagation();
+ 
                       area_list.removeClass('area_active');
                       var checkData=$('input[name=si_gun_gu]:checked').val(),
                           ischeckData=$('input[name=si_gun_gu]').is(':checked'),
@@ -539,10 +541,10 @@
                     });
 
                     
-               
+                    $('.interest_insert').unbind('click');
                     //관심공고 누를떄(하트누를떄)
                     $('.interest_insert').click(function(event){
-                      event.stopImmediatePropagation();
+                      // event.stopImmediatePropagation();
                       var member_type='<?=$member_type?>';
                       console.log(member_type);
                       console.log("cliclick", event);
@@ -611,9 +613,10 @@
 
                            
                     //관심공고 누를떄(하트누를떄)
-
+                    $('.interest_insert').unbind('click');
+                    
                     $('.interest_insert').click(function(event){
-                      event.stopImmediatePropagation();
+                      event.stopImmediatePropagation(); 
                       var member_type='<?=$member_type?>';
                       console.log(member_type);
                       console.log("cliclick", event);
